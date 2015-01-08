@@ -8,7 +8,10 @@
 
     <body>
         <header>
-            <h1 class="logo">A2DF Informatique</h1>
+            <p class="flotte">
+            <img src="img/mouse.png" alt="logo" />
+            </p>
+            <h1 style="line-height:65px;" class="logo">A2DF Informatique</h1>
         </header>
         
         <nav>
