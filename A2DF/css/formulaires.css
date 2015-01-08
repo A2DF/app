@@ -8,7 +8,7 @@ body {
 }
 
 .boxGauche {
-    background-color: lightblue;
+    //background-color: lightblue;
     display: inline-block;
     //width: 300px;
     //height: 200px;
@@ -16,7 +16,7 @@ body {
 }
 
 .boxDroite {
-    background-color: lightgreen;
+    //background-color: lightgreen;
     display: inline-block;
     //width: 300px;
     //height: 200px;
@@ -24,7 +24,7 @@ body {
 }
 
 .boutons {
-    background-color: orange;
+    //background-color: orange;
     display: inline-block;
     float: bottom;
     height: 50px;

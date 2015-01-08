@@ -4,6 +4,7 @@ include ('html/head.html');
 <html>
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <body>
+        <section>
         <h1>Liste des appels</h1>
         <?php
         //Affichage de la première ligne du tableau
@@ -18,5 +19,6 @@ include ('html/head.html');
             echo "</tr>";
             echo "</table>";
         ?>
+        </section>
     </body>
 </html>
