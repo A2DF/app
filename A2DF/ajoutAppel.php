@@ -4,13 +4,14 @@ include ('html/head.html');
 <html>
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <body>
+        <section>
         <h1>Ajout d'un appel</h1>
         <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
             
             <div class="boxGauche">
             <fieldset>
             <legend>Informations</legend>
-            <table border="1">
+            <table border="0">
                 <tr>
                     <td>Date de l'appel</td>
                     <td><input type='text' name='personnel' maxlength='50' value=''></td>
@@ -39,10 +40,9 @@ include ('html/head.html');
             <div class="boxDroite">
             <fieldset>
             <legend>Message</legend>
-            <table border="1">
+            <table border="0">
                 <tr>
-                    <td>Message</td>
-                    <td><input type='text' name='personnel' maxlength='50' value=''></td>
+                    <td colspan="2"><textarea name="message" rows="5" cols="60"></textarea></td>
                 </tr>
                 <tr>
                     <td>Priorite</td>
@@ -55,11 +55,12 @@ include ('html/head.html');
             </table>
             </fieldset>
             </div>
-            
+            <br />
             <div class="boutons">
             <input type='reset' value='Annuler'>
             <input type='submit' value='Valider'>
             </div>
         </form>
+        </section>
     </body>
 </html>

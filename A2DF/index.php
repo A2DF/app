@@ -1,23 +1,8 @@
-<!DOCTYPE html>
+<?php
+include ('html/head.html');
+?>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
-        <title>A2DF Informatique</title>
-    </head>
-
     <body>
-        <header>
-            <h1 class="logo">A2DF Informatique</h1>
-        </header>
-        
-        <nav>
-            <p><center>MENU</center></p>
-            <ul>
-                <li><a href="http://hugo-pc/a2df/listeAppel.php">Liste des appels</a></li>
-                <li><a href="http://hugo-pc/a2df/ajoutAppel.php">Ajout d'un appel</a></li>
-            </ul>
-        </nav>
         
         <section>
             <aside>

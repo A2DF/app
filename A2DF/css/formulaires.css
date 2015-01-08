@@ -8,32 +8,41 @@ body {
 }
 
 .boxGauche {
-    //background-color: lightblue;
+    background-color: lightblue;
     display: inline-block;
-    height: 150px;
+    //width: 300px;
+    //height: 200px;
     float: left;
 }
 
 .boxDroite {
-    //background-color: lightgreen;
+    background-color: lightgreen;
     display: inline-block;
-    height: 150px;
+    //width: 300px;
+    //height: 200px;
     float: left;
 }
 
 .boutons {
-    //background-color: orange;
+    background-color: orange;
     display: inline-block;
     float: bottom;
+    height: 50px;
+    vertical-align: bottom;
 }
 
 input[type="text"] {
-    width: 200px;
+    width: 219px;
 }
 
 select {
-    width: 200px;
+    width: 219px;
 }
 table td {
     width: 160px;
+}
+
+fieldset {
+    height: 125px;
+    font-family: Arial;
 }
