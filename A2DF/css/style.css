@@ -1,0 +1,46 @@
+body
+{
+    background-image: url(../img/bg.png);    
+    background-position: top;
+    background-repeat: repeat;
+}
+nav
+{
+    display: inline-block;
+    width: 150px;
+    border: 1px solid grey;
+    vertical-align: top;
+    padding: 10px 10px 30px 10px;
+    
+}
+
+section
+{
+    display: inline-block;    
+    border: 1px solid grey;
+    vertical-align: top;
+    border-radius: 6px;
+    padding: 10px 10px 30px 10px;
+    background-color: white;
+}
+
+header {
+  background-color: #444; /*#2B2B2B*/
+  height: 35px;
+  width: 100%;
+  opacity: .9;
+  margin-bottom: 10px;
+}
+
+header h1.logo {
+  margin: 0;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  float: left;
+}
+
+header h1.logo:hover {
+  color: #33cccc;
+  text-decoration: none;
+}
