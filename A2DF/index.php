@@ -3,20 +3,7 @@ include ('html/head.html');
 ?>
 <html>
     <body>
-        <header>
-            <p class="flotte">
-            <img src="img/mouse.png" alt="logo" />
-            </p>
-            <h1 style="line-height:65px;" class="logo">A2DF Informatique</h1>
-        </header>
         
-        <nav>
-            <p><center>MENU</center></p>
-            <ul>
-                <li><a href="http://hugo-pc/a2df/listeAppel.php">Liste des appels</a></li>
-                <li><a href="http://hugo-pc/a2df/ajoutAppel.php">Ajout d'un appel</a></li>
-            </ul>
-        </nav>
         
         <section>
             <aside>
