@@ -1,11 +1,7 @@
-<!DOCTYPE html>
+<?php
+include ('html/head.html');
+?>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="css/style.css" />
-        <title>A2DF Informatique</title>
-    </head>
-
     <body>
         <header>
             <p class="flotte">

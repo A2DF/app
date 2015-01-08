@@ -14,8 +14,7 @@ nav
     
 }
 
-section
-{
+section {
     display: inline-block;    
     border: 1px solid grey;
     vertical-align: top;
