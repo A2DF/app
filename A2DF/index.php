@@ -4,6 +4,7 @@ include ('html/head.html');
 <html>
     <body>
         
+        
         <section>
             <aside>
                 <h1>À propos de l'auteur</h1>
