@@ -11,6 +11,8 @@ nav
     border: 1px solid grey;
     vertical-align: top;
     padding: 10px 10px 30px 10px;
+    margin-left: -55px;
+    
     
 }
 
@@ -27,7 +29,7 @@ header {
   background-color: #444; /*#2B2B2B*/
   height: 80px;
   opacity: .9;
-  margin: -10px;
+  margin: -8px;
   margin-bottom: 10px;
 }
 
