@@ -4,8 +4,8 @@ include ('html/head.html');
 <html>
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <body>
-        <section>
-        <h1>Ajout d'un appel</h1>
+        
+        <h2>Ajout d'un appel</h2>
         <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
             
             <div class="boxGauche">
@@ -61,6 +61,5 @@ include ('html/head.html');
             <input type='submit' value='Valider'>
             </div>
         </form>
-        </section>
     </body>
 </html>

@@ -1,6 +1,7 @@
 body
 {
-    background-image: url(../img/bg.png);    
+    //background-image: url(../img/bg.png);
+    background-color: white;
     background-position: top;
     background-repeat: repeat;
     display: block;
