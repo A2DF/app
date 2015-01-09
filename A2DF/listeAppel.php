@@ -5,7 +5,7 @@ include ('html/head.html');
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <body>
         <section>
-        <h1>Liste des appels</h1>
+            <h1>Liste des appels</h1><a href="ajoutAppel.php"><img src="img/telephone_add.png" title="Ajouter un appel"/></a>
         <?php
         //Affichage de la première ligne du tableau
             echo "<table border='1'>";
