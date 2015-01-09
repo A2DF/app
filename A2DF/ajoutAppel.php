@@ -55,7 +55,7 @@ include ('html/head.html');
             </table>
             </fieldset>
             </div>
-            <br />
+
             <div class="boutons">
             <input type='reset' value='Annuler'>
             <input type='submit' value='Valider'>

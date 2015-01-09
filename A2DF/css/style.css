@@ -3,6 +3,7 @@ body
     background-image: url(../img/bg.png);    
     background-position: top;
     background-repeat: repeat;
+    display: block;
 }
 nav
 {
@@ -10,10 +11,20 @@ nav
     width: 150px;
     border: 1px solid grey;
     vertical-align: top;
+    
+}
+
+.menu {
     padding: 10px 10px 30px 10px;
-    margin-left: -55px;
-    
-    
+    margin-left: -64px;
+    margin-top: -10px;
+    margin-right: 10px;
+    background-color: #444;
+    opacity: .9;
+    width: 160px;
+    height: 100%;
+    float: left;
+
 }
 
 section {
@@ -23,6 +34,7 @@ section {
     border-radius: 6px;
     padding: 10px 10px 30px 10px;
     background-color: white;
+    float: left;
 }
 
 header {
