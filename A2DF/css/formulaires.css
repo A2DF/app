@@ -19,30 +19,48 @@ body {
     float: left;
 }
 
+table td {
+    width: 219px;
+}
+
+legend {
+    color:#36AAE7;
+    font-weight:bold
+}
+
+fieldset {
+    height: 120px;
+    font-family: Arial;
+    padding:10px 20px 20px 20px;
+    margin-bottom:10px;
+    border:1px solid #DF3F3F;
+    border-color: #36AAE7;
+}
+
+input, textarea, select, option {
+    background-color:#F5FAFE;
+}
+
+input, textarea, select {
+    border:1px solid #F5FAFE;
+    border-radius:3px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+}
+ 
+input, select {
+    border:1px solid #F5FAFE;
+    border-radius:3px;
+    width:217px;
+    box-shadow:1px 1px 2px #C0C0C0 inset;
+}
+ 
+textarea {
+    resize: none;
+}
+
 .boutons {
     //background-color: orange;
     display: inline-block;
     float: bottom;
     vertical-align: bottom;
-}
-
-input[type="text"] {
-    width: 218px;
-}
-
-select {
-    width: 218px;
-}
-table td {
-    width: 218px;
-}
-
-fieldset {
-    height: 125px;
-    width: 450px;
-    font-family: Arial;
-}
-
-textarea {
-   resize: none;
 }
