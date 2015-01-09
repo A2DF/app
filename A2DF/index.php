@@ -7,12 +7,20 @@ include ('html/head.html');
         
         <section>
             <aside>
-                <h1>À propos de l'auteur</h1>
-                <p>C'est moi, Zozor ! Je suis né un 23 novembre 2005.</p>
+                <h1>Bienvenue à A2DF Informatique</h1>
+                <p>Nous vous souhaitons une execellente année 2015, tous nos meilleurs Voeux !!!</p>
             </aside>
             <article>                
-                <h1>Je suis un grand voyageur</h1>
-                <p>Bla bla bla bla (texte de l'article)</p>
+                <h1>A2DF Informatique vous propose ses multiples services : </h1>
+                <center><p>- Réparations</p></center>
+
+                <center><p>- Dépannages</p></center>
+
+                <center><p>- Vente de multimédia</p></center>
+
+                <center><p>- Création de site internet</p></center>
+                <br/>
+                <center><img src="img/computer.png" alt="Ordinateur" /></center>
             </article>
         </section>
         
