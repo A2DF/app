@@ -5,7 +5,16 @@ include ('html/head.html');
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <body>
         
-        <h2>Ajout d'un appel</h2>
+        <div class="ribbon-wrapper">
+        <div class="ribbon-front">Ajout d'un appel</div>
+        <div class="ribbon-edge-topleft"></div>
+        <div class="ribbon-edge-topright"></div>
+        <div class="ribbon-edge-bottomleft"></div>
+        <div class="ribbon-edge-bottomright"></div>
+        <div class="ribbon-back-left"></div>
+        <div class="ribbon-back-right"></div>
+	</div>
+
         <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
             
             <div class="boxGauche">
