@@ -13,19 +13,19 @@ include ('html/head.html');
             <legend>Informations</legend>
             <table border="0">
                 <tr>
-                    <td>Date de l'appel</td>
+                    <td>Date de l'appel :</td>
                     <td><input type='text' name='personnel' maxlength='50' value=''></td>
                 </tr>
                 <tr>
-                    <td>Client</td>
+                    <td>Client :</td>
                     <td><input type='text' name='personnel' maxlength='50' value=''></td>
                 </tr>
                 <tr>
-                    <td>Numero</td>
+                    <td>Numero :</td>
                     <td><input type='text' name='personnel' maxlength='50' value=''></td>
                 </tr>
                 <tr>
-                    <td>Personnel concerne</td>
+                    <td>Personnel concerne :</td>
                     <td><select>
                         <option value="">Francois</option>
                         <option value="">Manon</option>
@@ -45,7 +45,7 @@ include ('html/head.html');
                     <td colspan="2"><textarea name="message" rows="5" cols="60"></textarea></td>
                 </tr>
                 <tr>
-                    <td>Priorite</td>
+                    <td>Priorite :</td>
                     <td><select>
                         <option value="">Non prioritaire</option>
                         <option value="">Important (-72h)</option>

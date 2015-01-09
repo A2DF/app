@@ -10,16 +10,12 @@ body {
 .boxGauche {
     //background-color: lightblue;
     display: inline-block;
-    //width: 300px;
-    //height: 200px;
     float: left;
 }
 
 .boxDroite {
     //background-color: lightgreen;
     display: inline-block;
-    //width: 300px;
-    //height: 200px;
     float: left;
 }
 
@@ -27,22 +23,26 @@ body {
     //background-color: orange;
     display: inline-block;
     float: bottom;
-    height: 50px;
     vertical-align: bottom;
 }
 
 input[type="text"] {
-    width: 219px;
+    width: 218px;
 }
 
 select {
-    width: 219px;
+    width: 218px;
 }
 table td {
-    width: 160px;
+    width: 218px;
 }
 
 fieldset {
     height: 125px;
+    width: 450px;
     font-family: Arial;
+}
+
+textarea {
+   resize: none;
 }
