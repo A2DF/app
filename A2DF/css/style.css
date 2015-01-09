@@ -43,26 +43,33 @@ section {
 }
 
 header {
-  background-color: #444; /*#2B2B2B*/
-  height: 80px;
-  opacity: .9;
-  margin: -8px;
-  margin-bottom: 10px;
+    background-color: #444; /*#2B2B2B*/
+    height: 80px;
+    opacity: .9;
+    margin-top: -20px;
+    margin-left: -8px;
+    margin-bottom: 10px;
 }
 
-header h1.logo {
-  margin: 0;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  float: left;
-  padding-top: 10px;
-  position: relative;
+header a {
+    text-decoration: none;
+    color: white;
 }
 
-header h1.logo:hover {
-  color: #33cccc;
-  text-decoration: none;
+.logo a {
+    margin: 0;
+    font-size: 1.7em;
+    font-style: normal;
+    color: #fff;
+    text-transform: uppercase;
+    float: left;
+    padding-top: 10px;
+    position: relative;
+}
+
+.logo:hover {
+    color: #33cccc;
+    text-decoration: none;
 }
 
 .flotte {
