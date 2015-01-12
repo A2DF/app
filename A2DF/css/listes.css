@@ -2,3 +2,34 @@ html {
     font-family: Arial;
     font-size: 15px;
 }
+
+table.sortable {
+    text-align: center;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table.sortable thead {
+    cursor: default;
+}
+
+table.sortable th {
+    height: 40px;
+    background-color: #FFFFFF;
+}
+
+table.sortable tr:nth-child(odd) {
+    background-color: #F0F5FF;
+}
+
+table.sortable tr:hover {
+    background-color: #D1E0FF;
+}
+
+table.sortable tr.own:hover {
+    cursor: pointer;
+}
+
+table.sortable td {
+    height: 50px;
+}

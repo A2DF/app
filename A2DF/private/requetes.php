@@ -15,7 +15,7 @@ try {
 
 function listeAppel(){
         global $connexion;
-        $resultat = $connexion->query("  SELECT * 
+        $resultat = $connexion->query(" SELECT * 
                                         FROM appel
                                         ORDER BY appel.idAppel ASC;");
         return $resultat;
