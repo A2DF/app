@@ -75,7 +75,7 @@ float:left;
 .connex a{
  color: white;
  float:right;
- margin-top: -60px;
+ margin-top: -70px;
  margin-right: 10px;
  text-decoration: none;
  display:inline-block;
@@ -89,12 +89,9 @@ float:left;
 /*
 * Images connexion
 */
-div#connexion{
-  background:url(img/co_on.png);
-
-}
-div#connexion:hover{
-  background:url(img/co_off.png);
+.imgco{
+ vertical-align:middle;
+ margin-right: 5px;
 }
 
 /*
