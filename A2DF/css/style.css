@@ -20,7 +20,7 @@ nav
 }
 
 .menu {
-    padding: 20px;
+    padding: 10px;
     margin-left: -64px;
     margin-top: -10px;
     margin-right: 20px;
@@ -47,7 +47,7 @@ header {
     background-color: #444; /*#2B2B2B*/
     height: 80px;
     opacity: .9;
-    margin-top: -20px;
+    margin-top: -10px;
     margin-left: -8px;
     margin-bottom: 10px;
     margin-right: -8px;

@@ -1,4 +1,4 @@
-<?php 
+<?php
 include ('html/head.html');
 ?>
 <html>
@@ -6,7 +6,7 @@ include ('html/head.html');
     <body>
         
         <div class="ribbon-wrapper">
-        <div class="ribbon-front">Ajout d'un appel</div>
+        <div class="ribbon-front"><div class="titre">Ajout d'un appel</div></div>
         <div class="ribbon-edge-topleft"></div>
         <div class="ribbon-edge-topright"></div>
         <div class="ribbon-edge-bottomleft"></div>
