@@ -12,8 +12,13 @@ body {
  .ribbon-wrapper {
 	position: relative;
         float: left;
-        margin-top: -10px;
+        margin-top: 10px;
         margin-left: -20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+        vertical-align: middle;
 
 }
   .ribbon-front {
@@ -26,8 +31,11 @@ body {
         color: white;
         font-size: 20px;
         font-weight: bold;
+        vertical-align: middle;
+        //padding-top: 15px;
 }
 
+/*  Ombres du ruban
   .ribbon-front,
   .ribbon-back-left,
   .ribbon-back-right
@@ -37,6 +45,7 @@ body {
     -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
     -o-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
 }
+*/
 
   .ribbon-edge-topleft,
   .ribbon-edge-topright,
