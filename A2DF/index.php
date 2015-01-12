@@ -3,7 +3,7 @@ include ('html/head.html');
 ?>
 <html>
     <body>
-        
+
 
         <section>
             <aside>
@@ -22,10 +22,10 @@ include ('html/head.html');
                 <center><img src="img/computer.png" alt="Ordinateur" /></center>
             </article>
         </section>
-        
+
         <footer>
 
         </footer>
-        
+
     </body>
 </html>

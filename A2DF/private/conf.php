@@ -1,7 +1,8 @@
 <?php
 
-    //Indentifiants MySQL
-    $mysql_host = "mysql:host=localhost;dbname=wifi";
-    $mysql_user = "wifi";
-    $mysql_pass = "wifi";
+//Indentifiants MySQL
+$mysql_host = "mysql:host=localhost;dbname=a2df";
+$mysql_user = "root";
+$mysql_pass = "root";
+?>
 
