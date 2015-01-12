@@ -20,7 +20,7 @@ nav
 }
 
 .menu {
-    padding: 20px;
+    padding: 10px;
     margin-left: -64px;
     margin-top: -10px;
     margin-right: 20px;
@@ -84,7 +84,7 @@ float:left;
 
 .connex:hover a {
     color: #33cccc;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /*
@@ -95,6 +95,14 @@ float:left;
  margin-right: 5px;
 }
 
+
+.imgmenu{
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    float: right;
+    margin-top: -5px;
+}
 /*
 * MENU
 *
