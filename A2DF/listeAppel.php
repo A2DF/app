@@ -17,8 +17,8 @@
         echo "<th id='client'>Client</th>";
         echo "<th id='numero'>Numero</th>";
         echo "<th id='pour'>Pour</th>";
-        echo "<th id='statut'>Statut</th>";
-        echo "<th id='commentaire'>Commentaire</th>";
+        echo "<th id='motif'>Motif</th>";
+        echo "<th id='commentaire'>Priorite</th>";
         echo "</tr>";
 
         $listeAppel = listeAppel();
@@ -39,8 +39,7 @@
             echo "<td>" . $numero . "</td>";
             echo "<td>" . $personnel . "</td>";
             echo "<td>" . $motif . "</td>";
-            echo "<td>" . $prorite . "</td>";
-            echo "<td>";
+            echo "<td>" . $priorite . "</td>";
             echo "</tr>";
             echo "</table>";
         }
