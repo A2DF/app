@@ -49,22 +49,15 @@ header {
     margin-top: -20px;
     margin-left: -8px;
     margin-bottom: 10px;
+    margin-right: -8px;
 }
 
-header a {
-    text-decoration: none;
+
+.logo{
     color: white;
-}
-
-.logo a {
-    margin: 0;
-    font-size: 1.7em;
-    font-style: normal;
-    color: #fff;
-    text-transform: uppercase;
-    float: left;
-    padding-top: 10px;
-    position: relative;
+    text-decoration: none;
+    display:inline-block;
+    margin-top: -20px;
 }
 
 .logo:hover {
@@ -77,39 +70,32 @@ float:left;
 }
 
 /*
-  * Boutton bleu
-  */
-
-.btn {
-  background: #3498db;
-  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-  background-image: -o-linear-gradient(top, #3498db, #2980b9);
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  text-shadow: 1px 1px 3px #666666;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 14px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  
+* Texte Connexion en haut à droite
+*/
+.connex a{
+ color: white;
+ float:right;
+ margin-top: -60px;
+ margin-right: 10px;
+ text-decoration: none;
+ display:inline-block;
 }
 
-.btn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
+.connex:hover a {
+    color: #33cccc;
+    text-decoration: underline;
 }
 
+/*
+* Images connexion
+*/
+div#connexion{
+  background:url(img/co_on.png);
 
+}
+div#connexion:hover{
+  background:url(img/co_off.png);
+}
 
 /*
 * MENU

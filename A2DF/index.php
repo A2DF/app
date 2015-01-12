@@ -4,10 +4,9 @@ include ('html/head.html');
 <html>
     <body>
         
-        
+
         <section>
             <aside>
-                <h1>Bienvenue à A2DF Informatique</h1>
                 <p>Nous vous souhaitons une execellente année 2015, tous nos meilleurs Voeux !!!</p>
             </aside>
             <article>                
