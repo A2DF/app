@@ -15,8 +15,11 @@ try {
 
 function listeAppel(){
     global $connexion;
-    $resultat = $connexion->query(" SELECT * 
-                                    FROM appel
+    $resultat = $connexion->query(" SELECT appel.date, client.nom AS client, client.tel, personnel.nom AS personnel, appel.motif, priorite.libelle
+                                    FROM appel, client, personnel, priorite
+                                    WHERE appel.idClient = client.idClient
+                                    AND appel.idPersonnel = personnel.idPersonnel
+                                    AND appel.idPriorite = priorite.idPriorite
                                     ORDER BY appel.idAppel ASC;");
     return $resultat;
 }

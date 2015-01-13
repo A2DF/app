@@ -37,11 +37,11 @@
 
             //Récupération des données dans la base
             $date = $appel['date'];
-            $client = $appel['idClient'];
-            $numero = $appel['idClient'];
-            $personnel = $appel['idPersonnel'];
+            $client = $appel['client'];
+            $numero = $appel['tel'];
+            $personnel = $appel['personnel'];
             $motif = $appel['motif'];
-            $priorite = $appel['idPriorite'];
+            $priorite = $appel['libelle'];
 
             //Affichage des données dans le tableau
             echo "<tr>";
