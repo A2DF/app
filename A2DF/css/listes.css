@@ -8,6 +8,7 @@ table.sortable {
     text-align: center;
     border-spacing: 0px;
     border-collapse: collapse;
+    
 }
 
 table.sortable thead {
@@ -148,7 +149,6 @@ table.sortable td {
     float: left;
     position: relative;
     padding-top: 30px;
-    padding-right: 150px;
 }
 /* Image ajout dans le ribbon */
 .img_liste {
@@ -158,9 +158,34 @@ padding-right: 10px;
 position: relative;
 z-index: 1;
 }
+/* Bouton retour en haut */
 .backtotop
 {
 	bottom: 10px;
 	right: 30px;
 	position:fixed;
+}
+
+#date {
+    width: 100px;
+}
+
+#client {
+    width: 150px;
+}
+
+#numero {
+    width: 150px;
+}
+
+#pour {
+    width: 100px;
+}
+
+#motif {
+    width: 300px;
+}
+
+#commentaire {
+    width: 150px;
 }
