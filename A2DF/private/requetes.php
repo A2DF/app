@@ -15,7 +15,7 @@ try {
 
 function listeAppel(){
     global $connexion;
-    $resultat = $connexion->query(" SELECT appel.date, client.nom AS client, client.tel, personnel.nom AS personnel, appel.motif, priorite.libelle
+    $resultat = $connexion->query(" SELECT appel.date, client.nom AS client, client.tel, personnel.prenom AS personnel, appel.motif, priorite.libelle
                                     FROM appel, client, personnel, priorite
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
