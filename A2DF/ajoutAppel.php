@@ -5,8 +5,22 @@
     include ('private/requetes.php');
     
     //Insertion des données dans la table "Appel"
+    
+    $date = "";
+    $idClient = "";
+    $idPersonnel = "";
+    $motif = "";
+    $idPriorite = "";
+        
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        ajoutAppel($date, $client, $numero, $personnel, $motif, $priorite);
+        
+        $date = filter_input(INPUT_POST, "date");
+        $idClient = filter_input(INPUT_POST, "client");
+        $idPersonnel = filter_input(INPUT_POST, "personnel");
+        $motif = filter_input(INPUT_POST, "motif");
+        $idPriorite = filter_input(INPUT_POST, "priorite");
+        
+        ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite);
     }
     ?>
 
@@ -35,22 +49,24 @@
                         </tr>
                         <tr>
                             <td>Client :</td>
-                            <td><input type='text' name='client' maxlength='50' value='<?php echo $client ?>'></td>
+                            <td><input type='text' name='client' maxlength='50' value='<?php echo $idClient ?>'></td>
                         </tr>
                         <tr>
                             <td>Numero :</td>
-                            <td><input type='text' name='numero' maxlength='50' value='<?php echo $numero ?>'></td>
+                            <td><input type='text' name='numero' maxlength='50' value=''></td>
                         </tr>
                         <tr>
                             <td>Personnel concerne :</td>
-                            <td><select>
+                            <td><select name="personnel">
                                     <?php
                                     $comboboxPersonnel = comboboxPersonnel();
                                     foreach ($comboboxPersonnel as $personnel){
-                                        echo "<option value=" . $personnel . "> . $personnel . </option>";
+                                        $idPers = $personnel['idPersonnel'];
+                                        $prenom = $personnel['prenom'];
+                                        echo "<option value=" . $idPers . ">$prenom</option>";
                                     }
                                     ?>
-                                </select></td>
+                            </select></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -61,15 +77,20 @@
                     <legend>Message</legend>
                     <table border="0">
                         <tr>
-                            <td colspan="2"><textarea name="message" rows="5" cols="60" value='<?php echo $motif ?>'></textarea></td>
+                            <td colspan="2"><textarea name="motif" rows="5" cols="60" value='<?php echo $motif ?>'></textarea></td>
                         </tr>
                         <tr>
                             <td>Priorite :</td>
-                            <td><select>
-                                    <option value="">Non prioritaire</option>
-                                    <option value="">Important (-72h)</option>
-                                    <option value="">Urgent (-24h)</option>
-                                </select></td>
+                            <td><select name="priorite">
+                                    <?php
+                                    $comboboxPriorite = comboboxPriorite();
+                                    foreach ($comboboxPriorite as $priorite){
+                                        $idPrio = $priorite['idPriorite'];
+                                        $libelle = $priorite['libelle'];
+                                        echo "<option value=" . $idPrio . ">$libelle</option>";
+                                    }
+                                    ?>
+                            </select></td>
                         </tr>
                     </table>
                 </fieldset>

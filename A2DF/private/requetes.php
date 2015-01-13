@@ -24,19 +24,27 @@ function listeAppel(){
     return $resultat;
 }
 
-function ajoutAppel(){
+function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite){
     global $connexion;
-    $resultat = $connexion->query(" SELECT * 
-                                    FROM appel
-                                    ORDER BY appel.idAppel ASC;");
+    $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
+                                    VALUES ('$date', '$idClient', '$idPersonnel', '$motif', '$idPriorite');");
     return $resultat;
 }
 
 function comboboxPersonnel(){
     global $connexion;
-    $resultat = $connexion->query(" SELECT * 
-                                    FROM appel
-                                    ORDER BY appel.idAppel ASC;");
+    $resultat = $connexion->query(" SELECT idPersonnel, prenom 
+                                    FROM personnel
+                                    ORDER BY personnel.idStatut ASC;");
     return $resultat;
 }
+
+function comboboxPriorite(){
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idPriorite, libelle 
+                                    FROM priorite
+                                    ORDER BY priorite.idPriorite ASC;");
+    return $resultat;
+}
+
 ?>
