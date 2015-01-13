@@ -14,10 +14,26 @@ try {
 }
 
 function listeAppel(){
-        global $connexion;
-        $resultat = $connexion->query(" SELECT * 
-                                        FROM appel
-                                        ORDER BY appel.idAppel ASC;");
-        return $resultat;
-    }
+    global $connexion;
+    $resultat = $connexion->query(" SELECT * 
+                                    FROM appel
+                                    ORDER BY appel.idAppel ASC;");
+    return $resultat;
+}
+
+function ajoutAppel(){
+    global $connexion;
+    $resultat = $connexion->query(" SELECT * 
+                                    FROM appel
+                                    ORDER BY appel.idAppel ASC;");
+    return $resultat;
+}
+
+function comboboxPersonnel(){
+    global $connexion;
+    $resultat = $connexion->query(" SELECT * 
+                                    FROM appel
+                                    ORDER BY appel.idAppel ASC;");
+    return $resultat;
+}
 ?>

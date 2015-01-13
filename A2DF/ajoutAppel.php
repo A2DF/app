@@ -3,6 +3,11 @@
     <?php
     include ('html/head.html');
     include ('private/requetes.php');
+    
+    //Insertion des données dans la table "Appel"
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        ajoutAppel($date, $client, $numero, $personnel, $motif, $priorite);
+    }
     ?>
 
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
@@ -26,23 +31,25 @@
                     <table border="0">
                         <tr>
                             <td>Date de l'appel :</td>
-                            <td><input type='text' name='personnel' maxlength='50' value=''></td>
+                            <td><input type='date' name='date' maxlength='50' value='<?php echo $date ?>'></td>
                         </tr>
                         <tr>
                             <td>Client :</td>
-                            <td><input type='text' name='personnel' maxlength='50' value=''></td>
+                            <td><input type='text' name='client' maxlength='50' value='<?php echo $client ?>'></td>
                         </tr>
                         <tr>
                             <td>Numero :</td>
-                            <td><input type='text' name='personnel' maxlength='50' value=''></td>
+                            <td><input type='text' name='numero' maxlength='50' value='<?php echo $numero ?>'></td>
                         </tr>
                         <tr>
                             <td>Personnel concerne :</td>
                             <td><select>
-                                    <option value="">Francois</option>
-                                    <option value="">Manon</option>
-                                    <option value="">Damien</option>
-                                    <option value="">Kevin</option>
+                                    <?php
+                                    $comboboxPersonnel = comboboxPersonnel();
+                                    foreach ($comboboxPersonnel as $personnel){
+                                        echo "<option value=" . $personnel . "> . $personnel . </option>";
+                                    }
+                                    ?>
                                 </select></td>
                         </tr>
                     </table>
@@ -54,7 +61,7 @@
                     <legend>Message</legend>
                     <table border="0">
                         <tr>
-                            <td colspan="2"><textarea name="message" rows="5" cols="60"></textarea></td>
+                            <td colspan="2"><textarea name="message" rows="5" cols="60" value='<?php echo $motif ?>'></textarea></td>
                         </tr>
                         <tr>
                             <td>Priorite :</td>
