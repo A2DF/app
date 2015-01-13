@@ -6,18 +6,12 @@ include ('html/head.html');
 
 
         <section>
-            <aside>
-                <p>Nous vous souhaitons une execellente année 2015, tous nos meilleurs Voeux !!!</p>
-            </aside>
             <article>                
-                <h1>A2DF Informatique vous propose ses multiples services : </h1>
-                <center><p>- Réparations</p></center>
+                <center><h1>VERSION ALPHA !</h1></center>
+                <center><p>Seule la fonction <u>appels</u> est actuellement disponible.</p></center>
 
-                <center><p>- Dépannages</p></center>
+                <center><p>Veuillez contacter Hugo ou Alexandre en cas de problèmes.</p></center>
 
-                <center><p>- Vente de multimédia</p></center>
-
-                <center><p>- Création de site internet</p></center>
                 <br/>
                 <center><img src="img/computer.png" alt="Ordinateur" /></center>
             </article>
