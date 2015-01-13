@@ -8,8 +8,17 @@
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <script src="js/sorttable.js"></script>
     <body>
-        <h1>Liste des appels</h1><a href="ajoutAppel.php"><img src="img/telephone_add.png" title="Ajouter un appel"/></a>
-
+        <div class="ribbon-wrapper">
+            <a  href="ajoutAppel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
+            <div class="ribbon-front"><div>Liste des appels</div></div>
+            <div class="ribbon-edge-topleft"></div>
+            <div class="ribbon-edge-topright"></div>
+            <div class="ribbon-edge-bottomleft"></div>
+            <div class="ribbon-edge-bottomright"></div>
+            <div class="ribbon-back-left"></div>
+            <div class="ribbon-back-right"></div>
+        </div>
+        <div class="tableaux">
         <?php
         //Affichage de la première ligne du tableau
         echo "<table border='1' class='sortable'>";
@@ -46,6 +55,6 @@
         
         echo "</table>";
         ?>
-
+        </div>
     </body>
 </html>
