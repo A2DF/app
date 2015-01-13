@@ -7,6 +7,7 @@
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <script src="js/sorttable.js"></script>
+
     <body>
         <div class="ribbon-wrapper">
             <a  href="ajoutAppel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
@@ -55,6 +56,18 @@
         
         echo "</table>";
         ?>
-        </div>
+    </div>
+        <a class="backtotop" href="#" onclick="backtotop();return false;"><img src="img/up.png" onclick="backtotop();return false;" alt="Retour haut de page">
+</a>
+        <script>
+            var timeOut;
+            function backtotop() {
+                if (document.body.scrollTop!==0 || document.documentElement.scrollTop!==0){
+                    window.scrollBy(0,-50);
+                    timeOut=setTimeout('backtotop()',25);
+                }
+                else clearTimeout(timeOut);
+            }
+            </script>
     </body>
 </html>

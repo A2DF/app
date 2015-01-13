@@ -158,3 +158,9 @@ padding-right: 10px;
 position: relative;
 z-index: 1;
 }
+.backtotop
+{
+	bottom: 10px;
+	right: 30px;
+	position:fixed;
+}

@@ -277,3 +277,18 @@ header {
 #cssmenu ul ul li > a:hover::after {
     border-color: #ffffff;
 }
+
+.bouton-top{
+width:40px;
+height:40px;
+position:absolute;
+margin-left:998px
+}
+
+#btn_up{
+position:fixed;
+cursor: pointer;
+bottom:25%;
+right:auto;
+display:none
+}
