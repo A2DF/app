@@ -9,13 +9,13 @@ body {
 
 .boxGauche {
     //background-color: lightblue;
-    display: inline-block;
+    //display: inline-block;
     float: left;
 }
 
 .boxDroite {
     //background-color: lightgreen;
-    display: inline-block;
+    //display: inline-block;
     float: left;
 }
 
@@ -56,7 +56,7 @@ input, select {
  
 textarea {
     resize: none;
-    width: 439px;
+    width: 440px;
 }
 
 .boutons {

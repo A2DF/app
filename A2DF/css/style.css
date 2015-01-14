@@ -8,6 +8,7 @@ body
     font-family: Arial;
     font-size: 15px;
 }
+
 nav
 {
     display: inline-block;
@@ -20,36 +21,21 @@ nav
 }
 
 .menu {
+    //display: inline;
     padding: 10px;
-    margin-left: -8px;
+    margin-left: -64px;
     margin-top: -10px;
     margin-right: 20px;
     background-color: #444;
-    opacity: .9;
-    width: 160px;
+    //width: 160px;
     height: 100%;
-    float: left;
-    position: absolute;
-
-}
-
-section {
-    display: inline-block;    
-    border: 1px solid grey;
-    vertical-align: top;
-    border-radius: 6px;
-    padding: 10px 10px 30px 10px;
-    background-color: white;
-    float: left;
-    position: relative;
-    margin-left: 165px;
-
+    //float: left;
+    //position: fixed;
 }
 
 header {
     background-color: #444; /*#2B2B2B*/
     height: 80px;
-    opacity: .9;
     margin-top: -10px;
     margin-left: -8px;
     margin-bottom: 10px;
@@ -109,6 +95,14 @@ header {
     float: right;
     margin-top: -5px;
 }
+
+.contenu {
+    //background-color : lightskyblue;
+    float: left;
+    width: 500px;
+    margin-left: -5px;
+}
+
 /*
 * MENU
 *
@@ -285,45 +279,45 @@ header {
 }
 
 .bouton-top{
-width:40px;
-height:40px;
-position:absolute;
-margin-left:998px
+    width:40px;
+    height:40px;
+    position:absolute;
+    margin-left:998px
 }
 
 #btn_up{
-position:fixed;
-cursor: pointer;
-bottom:25%;
-right:auto;
-display:none
+    position:fixed;
+    cursor: pointer;
+    bottom:25%;
+    right:auto;
+    display:none
 }
 
 /* ribbon style */
 
- .ribbon-wrapper {
-	position: relative;
-        float: left;
-        margin-left: -20px;
-        margin-bottom: 10px;
-        font-size: 14px;
-        font-weight: bold;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-        
+.ribbon-wrapper {
+    position: relative;
+    float: left;
+    margin-left: -15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+
 
 }
-  .ribbon-front {
-	background-color: #36AAE7;	
-        height: 46px;
-	width: 560px;
-	//position: relative;
-	left:0px;
-	z-index: 2;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        line-height:40px
+.ribbon-front {
+    background-color: #36AAE7;	
+    height: 46px;
+    width: 560px;
+    //position: relative;
+    left:0px;
+    z-index: 2;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height:40px
 }
 
 
@@ -339,10 +333,10 @@ display:none
 }
 */
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-topright,
-  .ribbon-edge-bottomleft,
-  .ribbon-edge-bottomright {
+.ribbon-edge-topleft,
+.ribbon-edge-topright,
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
     position: absolute;
     z-index: 1;
     border-style:solid;
@@ -350,45 +344,45 @@ display:none
     width:0px;
 }
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-topright {
+.ribbon-edge-topleft,
+.ribbon-edge-topright {
     left: 100px;
 }
 
-  .ribbon-edge-bottomleft,
-  .ribbon-edge-bottomright {
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
     top: 46px;
 }
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-bottomleft {
+.ribbon-edge-topleft,
+.ribbon-edge-bottomleft {
     left: 0px;
     border-color: transparent #1977AE transparent transparent;
 }
 
-  .ribbon-edge-topleft {
+.ribbon-edge-topleft {
     top: 0px;
     border-width: 0px 0px 0 0;
 }
-  .ribbon-edge-bottomleft {
+.ribbon-edge-bottomleft {
     border-width: 0 0px 0px 0;
 }
 
-  .ribbon-edge-topright,
-  .ribbon-edge-bottomright {
+.ribbon-edge-topright,
+.ribbon-edge-bottomright {
     left: 535px;
     border-color: transparent transparent transparent #1977AE;
 }
 
-  .ribbon-edge-topright {
+.ribbon-edge-topright {
     top: 0px;
     border-width: 0px 0 0 25px;
 }
-  .ribbon-edge-bottomright {
+.ribbon-edge-bottomright {
     border-width: 0 0 25px 25px;
 }
 
-  .ribbon-back-left {
+.ribbon-back-left {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -397,7 +391,7 @@ display:none
     z-index: 0;
 }
 
-  .ribbon-back-right {
+.ribbon-back-right {
     position: absolute;
     top: 25px;
     right: -25px;
@@ -406,3 +400,4 @@ display:none
     background-color: #36AAE7;	
     z-index: 0;
 }
+

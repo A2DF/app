@@ -26,7 +26,7 @@
 
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <body>
-
+        <div class="contenu">
         <div class="ribbon-wrapper">
             <div class="ribbon-front"><div class="titre">Ajout d'un appel</div></div>
             <div class="ribbon-edge-topleft"></div>
@@ -36,7 +36,7 @@
             <div class="ribbon-back-left"></div>
             <div class="ribbon-back-right"></div>
         </div>
-
+        
         <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
 
             <div class="boxGauche">
@@ -101,5 +101,6 @@
                 <input type='submit' value='Valider'>
             </div>
         </form>
+        </div>
     </body>
 </html>
