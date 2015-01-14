@@ -77,7 +77,7 @@
                     <legend>Message</legend>
                     <table border="0">
                         <tr>
-                            <td colspan="2"><textarea name="motif" rows="5" cols="60" value='<?php echo $motif ?>'></textarea></td>
+                            <td colspan="2"><textarea name="motif" rows="5" value='<?php echo $motif ?>'></textarea></td>
                         </tr>
                         <tr>
                             <td>Priorite :</td>
