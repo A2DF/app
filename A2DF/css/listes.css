@@ -9,6 +9,7 @@ table.sortable {
     border-spacing: 0px;
     border-collapse: collapse;
     position: relative;
+    margin-left: -29px;
     
 }
 
