@@ -46,17 +46,21 @@ input, textarea, select {
     border-radius:3px;
     box-shadow:1px 1px 2px #C0C0C0 inset;
 }
- 
+
 input, select {
     border:1px solid #F5FAFE;
     border-radius:3px;
     width:217px;
     box-shadow:1px 1px 2px #C0C0C0 inset;
 }
- 
+
 textarea {
     resize: none;
     width: 440px;
+}
+
+#datalist {
+
 }
 
 .boutons {
@@ -69,9 +73,9 @@ textarea {
 
 /* Image retour dans le ribbon */
 .img_liste {
-float: right;
-padding-top: 8px;
-padding-right: 10px;
-position: relative;
-z-index: 1;
+    float: right;
+    padding-top: 8px;
+    padding-right: 10px;
+    position: relative;
+    z-index: 1;
 }

@@ -13,7 +13,7 @@ try {
     $connexion = null;
 }
 
-function listeAppel(){
+function listeAppel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT appel.date, client.nom AS client, client.tel, personnel.prenom AS personnel, appel.motif, priorite.libelle
                                     FROM appel, client, personnel, priorite
@@ -24,14 +24,22 @@ function listeAppel(){
     return $resultat;
 }
 
-function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite){
+function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
                                     VALUES ('$date', '$idClient', '$idPersonnel', '$motif', '$idPriorite');");
     return $resultat;
 }
 
-function comboboxPersonnel(){
+function comboboxClient() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idClient, nom 
+                                    FROM client
+                                    ORDER BY client.nom ASC;");
+    return $resultat;
+}
+
+function comboboxPersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idPersonnel, prenom 
                                     FROM personnel
@@ -39,7 +47,7 @@ function comboboxPersonnel(){
     return $resultat;
 }
 
-function comboboxPriorite(){
+function comboboxPriorite() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idPriorite, libelle 
                                     FROM priorite
