@@ -64,4 +64,15 @@ textarea {
     display: inline-block;
     float: bottom;
     vertical-align: bottom;
+    margin-top: 10px;
+    
+}
+
+/* Image ajout dans le ribbon */
+.img_liste {
+float: right;
+padding-top: 8px;
+padding-right: 10px;
+position: relative;
+z-index: 1;
 }
