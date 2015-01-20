@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Personnel concerne :</td>
+                                <td>Personnel concerné :</td>
                                 <td>
                                     <select name="personnel" class="chosen-select" value='<?php echo $personnel_ ?>'>
                                         <option selected disabled hidden value=''></option>
