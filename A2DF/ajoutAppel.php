@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <table border="0">
                             <tr>
                                 <td>Date de l'appel :</td>
-                                <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>'></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>' readonly></td>
                             </tr>
                             <tr>
                                 <td>Client :</td>
