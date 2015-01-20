@@ -59,7 +59,7 @@
         echo "</table>";
         ?>
     </div>
-        <a class="backtotop" href="#" onclick="backtotop();return false;"><img src="img/up.png" onclick="backtotop();return false;" alt="Retour haut de page">
+        <a class="backtotop" href="#" onclick="backtotop();return false;"><img src="img/up6.png" onclick="backtotop();return false;" alt="Retour haut de page">
 </a>
         <script>
             var timeOut;
