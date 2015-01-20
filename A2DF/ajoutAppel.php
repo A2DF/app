@@ -6,26 +6,27 @@
 
     //Insertion des données dans la table "Appel"
 
-    $date = "";
-    $idClient = "";
-    $idPersonnel = "";
-    $motif = "";
-    $idPriorite = "";
+    $date_ = "";
+    $client_ = "";
+    $personnel_ = "";
+    $motif_ = "";
+    $priorite_ = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $date = filter_input(INPUT_POST, "date");
-        $idClient = filter_input(INPUT_POST, "client");
-        $idPersonnel = filter_input(INPUT_POST, "personnel");
-        $motif = filter_input(INPUT_POST, "motif");
-        $idPriorite = filter_input(INPUT_POST, "priorite");
+        $date_ = filter_input(INPUT_POST, "date");
+        $client_ = filter_input(INPUT_POST, "client");
+        $personnel_ = filter_input(INPUT_POST, "personnel");
+        $motif_ = filter_input(INPUT_POST, "motif");
+        $priorite_ = filter_input(INPUT_POST, "priorite");
 
-        ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite);
+        ajoutAppel($date_, $client_, $personnel_, $motif_, $priorite_);
     }
     ?>
 
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.css" rel="stylesheet" type='text/css' >
+    <link href="css/pikaday.css" rel="stylesheet" type="text/css">
     <body>
         <div class="contenu">
             <div class="ribbon-wrapper">
@@ -47,45 +48,25 @@
                         <table border="0">
                             <tr>
                                 <td>Date de l'appel :</td>
-                                <td><input type='date' name='date' maxlength='50' value='<?php echo $date ?>'></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>'></td>
                             </tr>
                             <tr>
                                 <td>Client :</td>
-                                <td><select data-placeholder="Choose a Country..." class="chosen-select" style="width:350px;" tabindex="2">
-                                        <option value=""></option>
-                                        <option value="United States">United States</option>
-                                        <option value="United Kingdom">United Kingdom</option>
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Aland Islands">Aland Islands</option>
-                                        <option value="Albania">Albania</option>
-                                        <option value="Algeria">Algeria</option>
-                                        <option value="American Samoa">American Samoa</option>
-                                        <option value="Andorra">Andorra</option>
-                                        <option value="Angola">Angola</option>
+                                <td><select class="chosen-select" tabindex="2" name="client">
+                                        <option selected="selected" disabled="disabled">Choisissez un client...</option>
+                                        <?php
+                                        $comboboxClient = comboboxClient();
+                                        foreach ($comboboxClient as $client) {
+                                            $idClie = $client['idClient'];
+                                            $nom = $client['nom'];
+                                            echo "<option value=" . $idClie . ">" . $nom . "</option>";
+                                        }
+                                        ?>
                                     </select></td>
-
-                                <!--
-                                <td><input list='datalist' type='text' name='client' maxlength='50' value='<?php echo $idClient ?>'>
-                                <datalist id="datalist">
-                                <?php
-                                /*
-                                  $comboboxClient = comboboxClient();
-                                  foreach ($comboboxClient as $client){
-                                  $nom = $client['nom'];
-                                  echo "<option value=" . $nom . "></option>";
-                                  }
-                                 */
-                                ?>
-                                </datalist></td>
-                                -->
-                            </tr>
-                            <tr>
-                                <td>Numero :</td>
-                                <td><input type='text' name='numero' maxlength='50' value=''></td>
                             </tr>
                             <tr>
                                 <td>Personnel concerne :</td>
-                                <td><select name="personnel">
+                                <td><select name="personnel" class="chosen-select">
                                         <?php
                                         $comboboxPersonnel = comboboxPersonnel();
                                         foreach ($comboboxPersonnel as $personnel) {
@@ -105,11 +86,11 @@
                         <legend>Message</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="2"><textarea name="motif" rows="5" value='<?php echo $motif ?>'></textarea></td>
+                                <td colspan="2"><textarea name="motif" rows="5" value='<?php echo $motif_ ?>'></textarea></td>
                             </tr>
                             <tr>
                                 <td>Priorite :</td>
-                                <td><select name="priorite">
+                                <td><select name="priorite" class="chosen-select">
                                         <?php
                                         $comboboxPriorite = comboboxPriorite();
                                         foreach ($comboboxPriorite as $priorite) {
@@ -118,7 +99,8 @@
                                             echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
                                         }
                                         ?>
-                                    </select></td>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </fieldset>
@@ -141,6 +123,19 @@
                     for (var selector in config) {
                         $(selector).chosen(config[selector]);
                     }
+                </script>
+                <script type="text/javascript" src="js/moment.js"></script>
+                <script type="text/javascript" src="js/pikaday.js"></script>
+                <script>
+                    var pickerDebut = new Pikaday(
+                            {
+                                field: document.getElementById('datepicker'),
+                                firstDay: 1,
+                                minDate: new Date('2000-01-01'),
+                                maxDate: new Date('2020-12-31'),
+                                yearRange: [2000, 2020],
+                                format: 'DD/MM/YYYY'
+                            });
                 </script>
             </form>
         </div>
