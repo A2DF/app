@@ -1,29 +1,60 @@
-<html>
 
-    <?php
-    include ('html/head.html');
-    include ('private/requetes.php');
+<?php
+include ('html/head.html');
+include ('private/requetes.php');
+include ('private/fonctions.php');
 
-    //Insertion des données dans la table "Appel"
+//Initialisation du compteur d'erreurs pour le contrôle du formulaire
+$erreurs = 0;
 
-    $date_ = "";
-    $client_ = "";
-    $personnel_ = "";
-    $motif_ = "";
-    $priorite_ = "";
+//Initialisation des valeurs de champs
+$date_ = "";
+$client_ = "";
+$personnel_ = "";
+$motif_ = "";
+$priorite_ = "";
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//Initialisation des messages d'erreur
+$dateErr = "";
+$clientErr = "";
+$personnelErr = "";
+$motifErr = "";
+$prioriteErr = "";
 
-        $date_ = filter_input(INPUT_POST, "date");
-        $client_ = filter_input(INPUT_POST, "client");
-        $personnel_ = filter_input(INPUT_POST, "personnel");
-        $motif_ = filter_input(INPUT_POST, "motif");
-        $priorite_ = filter_input(INPUT_POST, "priorite");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    //Contrôle du champ date
+    $date_temp = filter_input(INPUT_POST, "date");
+    controleDate($date_temp, $dateErr, $date_, $erreurs);
+
+    //Contrôle du champ client
+    $client_temp = filter_input(INPUT_POST, "client");
+    controleClient($client_temp, $clientErr, $client_, $erreurs);
+
+    //Contrôle du champ personnel
+    $personnel_temp = filter_input(INPUT_POST, "personnel");
+    controlePersonnel($personnel_temp, $personnelErr, $personnel_, $erreurs);
+
+    //Contrôle du champ motif
+    $motif_temp = filter_input(INPUT_POST, "motif");
+    controleMotif($motif_temp, $motifErr, $motif_, $erreurs);
+
+    //Contrôle du champ priorite
+    $priorite_temp = filter_input(INPUT_POST, "priorite");
+    controlePriorite($priorite_temp, $prioriteErr, $priorite_, $erreurs);
+
+    if ($erreurs === 0) {
+
+        //Insertion des données dans la table "Appel"
         ajoutAppel($date_, $client_, $personnel_, $motif_, $priorite_);
-    }
-    ?>
 
+        //Redirection vers la liste des appels
+        header('Location: listeAppel.php');
+    }
+}
+?>
+
+<html>
     <link href="css/formulaires.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.css" rel="stylesheet" type='text/css' >
     <link href="css/pikaday.css" rel="stylesheet" type="text/css">
@@ -52,30 +83,43 @@
                             </tr>
                             <tr>
                                 <td>Client :</td>
-                                <td><select class="chosen-select" tabindex="2" name="client">
-                                        <option selected="selected" disabled="disabled">Choisissez un client...</option>
+                                <td>
+                                    <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
+                                        <option selected disabled hidden value=''></option>
                                         <?php
                                         $comboboxClient = comboboxClient();
                                         foreach ($comboboxClient as $client) {
                                             $idClie = $client['idClient'];
                                             $nom = $client['nom'];
-                                            echo "<option value=" . $idClie . ">" . $nom . "</option>";
+                                            if ($idClie == $client_) {
+                                                echo "<option value=" . $idClie . " selected>" . $nom . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idClie . ">" . $nom . "</option>";
+                                            }
                                         }
                                         ?>
-                                    </select></td>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Personnel concerne :</td>
-                                <td><select name="personnel" class="chosen-select">
+                                <td>
+                                    <select name="personnel" class="chosen-select" value='<?php echo $personnel_ ?>'>
+                                        <option selected disabled hidden value=''></option>
                                         <?php
                                         $comboboxPersonnel = comboboxPersonnel();
                                         foreach ($comboboxPersonnel as $personnel) {
                                             $idPers = $personnel['idPersonnel'];
                                             $prenom = $personnel['prenom'];
-                                            echo "<option value=" . $idPers . ">" . $prenom . "</option>";
+                                            if ($idPers == $personnel_) {
+                                                echo "<option value=" . $idPers . " selected>" . $prenom . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idPers . ">" . $prenom . "</option>";
+                                            }
                                         }
                                         ?>
-                                    </select></td>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                     </fieldset>
@@ -86,17 +130,23 @@
                         <legend>Message</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="2"><textarea name="motif" rows="5" value='<?php echo $motif_ ?>'></textarea></td>
+                                <td colspan="2"><textarea name="motif" rows="5"><?php echo $motif_ ?></textarea></td>
                             </tr>
                             <tr>
                                 <td>Priorite :</td>
-                                <td><select name="priorite" class="chosen-select">
+                                <td>
+                                    <select name="priorite" class="chosen-select" value='<?php echo $priorite_ ?>'>
+                                        <option selected disabled hidden value=''></option>
                                         <?php
                                         $comboboxPriorite = comboboxPriorite();
                                         foreach ($comboboxPriorite as $priorite) {
                                             $idPrio = $priorite['idPriorite'];
                                             $libelle = $priorite['libelle'];
-                                            echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
+                                            if ($idPrio == $priorite_) {
+                                                echo "<option value=" . $idPrio . " selected>" . $libelle . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
+                                            }
                                         }
                                         ?>
                                     </select>
@@ -138,6 +188,27 @@
                             });
                 </script>
             </form>
+<?php
+if ($dateErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $dateErr . "<br />";
+}
+
+if ($clientErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
+}
+
+if ($personnelErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $personnelErr . "<br />";
+}
+
+if ($motifErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $motifErr . "<br />";
+}
+
+if ($prioriteErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
+}
+?>
         </div>
     </body>
 </html>
