@@ -7,15 +7,17 @@ body {
     display: block;
 }
 
-.boxGauche {
+.boxHaut {
     //background-color: lightblue;
     //display: inline-block;
     float: left;
 }
 
-.boxDroite {
+.boxBas {
     //background-color: lightgreen;
     //display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 5px;
     float: left;
 }
 
@@ -31,8 +33,7 @@ legend {
 fieldset {
     //height: 120px;
     font-family: Arial;
-    //padding:10px 20px 20px 20px;
-    //margin-bottom:10px;
+    padding-bottom: 13px;
     border:1px solid #DF3F3F;
     border-color: #36AAE7;
 }
@@ -78,6 +79,7 @@ textarea {
     float: bottom;
     vertical-align: bottom;
     margin-top: 10px;
+    padding-left: 2px;
 }
 
 input[type="submit"] {

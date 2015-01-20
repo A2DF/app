@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
 
-                <div class="boxGauche">
+                <div class="boxHaut">
                     <fieldset>
                         <legend>Informations</legend>
                         <table border="0">
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </fieldset>
                 </div>
 
-                <div class="boxDroite">
+                <div class="boxBas">
                     <fieldset>
                         <legend>Message</legend>
                         <table border="0">

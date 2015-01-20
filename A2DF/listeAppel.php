@@ -30,6 +30,7 @@
         echo "<th id='pour'>Pour</th>";
         echo "<th id='motif'>Motif</th>";
         echo "<th id='commentaire'>Priorite</th>";
+        echo "<th id='traite'>Traité</th>";
         echo "</tr>";
 
         $listeAppel = listeAppel();
@@ -51,6 +52,7 @@
             echo "<td>" . $personnel . "</td>";
             echo "<td>" . $motif . "</td>";
             echo "<td>" . $priorite . "</td>";
+            echo "<td><img src='img/tick_light_blue.png' title='Appel traité'/></td>";
             echo "</tr>";
         }
         
