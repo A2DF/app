@@ -7,6 +7,8 @@ body
     display: block;
     font-family: Arial;
     font-size: 15px;
+    z-index: -1;
+    margin-top: 90px;
 }
 
 nav
@@ -23,23 +25,27 @@ nav
 .menu {
     //display: inline;
     padding: 10px;
-    margin-left: -64px;
+    margin-left: -8px;
     margin-top: -10px;
     margin-right: 20px;
     background-color: #444;
     //width: 160px;
     height: 100%;
     //float: left;
-    //position: fixed;
+    position: fixed;
+    z-index: 1;
 }
 
 header {
     background-color: #444; /*#2B2B2B*/
+    margin-top: -90px;
+    position: fixed;
+    //bottom: 600px;
+    width: 100%;
     height: 80px;
-    margin-top: -10px;
-    margin-left: -8px;
-    margin-bottom: 10px;
-    margin-right: -8px;
+    left: 0px;
+    z-index: 2;
+
 }
 
 
@@ -48,7 +54,9 @@ header {
     text-decoration: none;
     display:inline-block;
     margin-top: -20px;
-    position: relative;
+    position: fixed;
+    margin-left: 65px;
+    
 }
 
 .logo:hover {
@@ -58,6 +66,7 @@ header {
 
 .flotte {
     float:left;
+    position: fixed;
 }
 
 /*
@@ -81,10 +90,7 @@ header {
 * Images connexion
 */
 .imgco{
-    vertical-align:middle;
-    margin-left: -30px;
-    z-index: 1;
-    position: absolute;
+z-index: 3;
 }
 
 
