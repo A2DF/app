@@ -96,3 +96,8 @@ input[type="reset"] {
     position: relative;
     z-index: 1;
 }
+
+.contenu{
+    position: absolute;
+    padding-left: 232px;
+}
