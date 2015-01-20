@@ -134,7 +134,7 @@
                                 minDate: new Date('2000-01-01'),
                                 maxDate: new Date('2020-12-31'),
                                 yearRange: [2000, 2020],
-                                format: 'DD/MM/YYYY'
+                                //format: 'DD/MM/YYYY'
                             });
                 </script>
             </form>
