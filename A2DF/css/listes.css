@@ -10,7 +10,8 @@ table.sortable {
     border-collapse: collapse;
     position: relative;
     margin-left: -29px;
-    
+    max-width: max-content;
+    table-layout: fixed;
 }
 
 table.sortable thead {
@@ -189,6 +190,8 @@ z-index: 1;
 
 #motif {
     width: 350px;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 #commentaire {
