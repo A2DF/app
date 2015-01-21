@@ -100,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         ?>
                                     </select>
                                 </td>
+                                <td><button onclick="ajoutClient()">+</button></td>
                             </tr>
                             <tr>
                                 <td>Personnel concerné :</td>
@@ -161,7 +162,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type='submit' value='Valider'>
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-                <script src="js/chosen.jquery.js" type="text/javascript"></script>
+                <script src="lib/chosen.jquery.js" type="text/javascript"></script>
+                <script src="js/ajoutClient.js" type="text/javascript"></script>
                 <script type="text/javascript">
                     var config = {
                         '.chosen-select': {},
@@ -174,8 +176,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $(selector).chosen(config[selector]);
                     }
                 </script>
-                <script type="text/javascript" src="js/moment.js"></script>
-                <script type="text/javascript" src="js/pikaday.js"></script>
+                <script type="text/javascript" src="lib/moment.js"></script>
+                <script type="text/javascript" src="lib/pikaday.js"></script>
                 <script>
                     var pickerDebut = new Pikaday(
                             {
