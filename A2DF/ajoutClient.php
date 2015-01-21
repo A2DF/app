@@ -18,7 +18,9 @@
         ?>
 
         <script language="javascript">
+            var nom = <?php $nom ?>
             window.opener.location = "ajoutAppel.php";
+            parent.opener.document.formAjoutAppel.client.value = nom;
             window.self.close();
         </script>
 

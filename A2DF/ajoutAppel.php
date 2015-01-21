@@ -87,8 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"><img src='img/user_add_1.png' title='Ajouter un client' onclick="window.open('ajoutClient.php', 'search', '\
                                                                                                                                 left=500, \n\
                                                                                                                                 top=150, \n\
-                                                                                                                                width=500, \n\
-                                                                                                                                height=500, \n\
+                                                                                                                                width=450, \n\
+                                                                                                                                height=340, \n\
                                                                                                                                 scrollbars=no, \n\
                                                                                                                                 resizable=no, \n\
                                                                                                                                 dependant=yes')">
