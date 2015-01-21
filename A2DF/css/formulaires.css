@@ -66,13 +66,14 @@ input, select {
 
 textarea {
     resize: none;
-    width: 453px;
+    width: 450px;
     height: 80px;
     border: 1px solid #aaa;
     border-radius: 5px;
     box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
     margin-top: 4px;
     margin-bottom: 5px;
+    margin-left: 3px;
 }
 
 .boutons {

@@ -84,7 +84,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </tr>
                             <tr>
                                 <td class="label">Client :</td>
-                                <td class="images"><img src='img/user_add_1.png' title='Ajouter un client' onclick="window.open('listeAppel.php', 'search', 'width=500, height=500, scrollbars=no, resizable=no')"></td>
+                                <td class="images"><img src='img/user_add_1.png' title='Ajouter un client' onclick="window.open('ajoutClient.php', 'search', '\
+                                                                                                                                left=500, \n\
+                                                                                                                                top=150, \n\
+                                                                                                                                width=500, \n\
+                                                                                                                                height=500, \n\
+                                                                                                                                scrollbars=no, \n\
+                                                                                                                                resizable=no, \n\
+                                                                                                                                dependant=yes')">
+                                </td>
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
                                         <option selected disabled hidden value=''></option>
