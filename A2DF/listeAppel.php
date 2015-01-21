@@ -67,7 +67,7 @@
                         echo "<td class='normal'>" . $priorite . "</td>";
                     }
                     ?>
-                    <td><a href="listeAppel.php?id=<?php echo $idAppel ?>"><img src='img/tick_light_blue.png' title='Appel traité'/></a></td>
+                    <td><a href="listeAppel.php?id=<?php echo $idAppel ?>"><img src='img/tick_light_blue.png' title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
                     <?php
                     echo "</tr>";
                 }
@@ -81,21 +81,15 @@
                         return false;" alt="Retour haut de page">
         </a>
 
-<?php
-$id = filter_input(INPUT_GET, 'id');
-if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
-    ?>
-            <script language="javascript">
-
-                if (confirm("Êtes vous sur(e) de vouloir supprimer cet appel ?")) {
-    <?php traiterAppel($id); ?>
-                    window.self.location = "listeAppel.php";
-                }
-            </script>
-    <?php
-}
-?>
-
+        <?php
+        $id = filter_input(INPUT_GET, 'id');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+            traiterAppel($id);
+            ?>
+            <script language="javascript">window.self.location = "listeAppel.php";</script>    
+            <?php
+        }
+        ?>
 
         <script>
             var timeOut;

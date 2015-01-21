@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                                                                                 left=500, \n\
                                                                                                                                 top=150, \n\
                                                                                                                                 width=450, \n\
-                                                                                                                                height=340, \n\
+                                                                                                                                height=380, \n\
                                                                                                                                 scrollbars=no, \n\
                                                                                                                                 resizable=no, \n\
                                                                                                                                 dependant=yes')">
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             $idClie = $client['idClient'];
                                             $nom = $client['nom'];
                                             $prenom = $client['prenom'];
-                                            if ($idClie == $client_) {
+                                            if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
                                                 echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
                                             } else {
                                                 echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";

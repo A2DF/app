@@ -69,4 +69,5 @@ function traiterAppel($idAppel) {
                                     WHERE idAppel = $idAppel;");
     return $resultat;
 }
+
 ?>

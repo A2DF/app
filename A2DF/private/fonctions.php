@@ -29,6 +29,7 @@ function controlePersonnel(&$champ_temp, &$champErr, &$champ, &$erreurs) {
         $champ = $champ_temp;
     }
 }
+
 function controleMotif(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez saisir le motif de l'appel";
@@ -45,6 +46,32 @@ function controlePriorite(&$champ_temp, &$champErr, &$champ, &$erreurs) {
         $erreurs++;
         $champ = $champ_temp;
     } else {
+        $champ = $champ_temp;
+    }
+}
+
+function controleNom(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez entrer le nom du client";
+        $erreurs++;
+        $champ = $champ_temp;
+    } else {
+        $champ = strtoupper($champ_temp);
+    }
+}
+
+function controlePrenom(&$champ_temp, &$champ, &$lower) {
+    $lower = strtolower($champ_temp);
+    $champ = ucfirst($lower);
+}
+
+function controleTel(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez entrer un numero de téléphone";
+        $erreurs++;
+        $champ = $champ_temp;
+    } else {
+        $champErr = "";
         $champ = $champ_temp;
     }
 }
