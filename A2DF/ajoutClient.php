@@ -20,7 +20,7 @@
         <script language="javascript">
             var nom = <?php $nom ?>
             window.opener.location = "ajoutAppel.php";
-            parent.opener.document.formAjoutAppel.client.value = nom;
+            parent.opener.document.formAjoutAppel.client.selected = nom;
             window.self.close();
         </script>
 
@@ -37,36 +37,36 @@
                 <legend>Coordonnées</legend>
                 <p>
                     <label for="nom">Nom :</label>
-                    <img src="img/tag_blue.png" width="16" height="16" alt="logo" value='nom'/>
-                    <input type="text" name="nom" id="nom" />
+                    <img src="img/tag_blue.png" width="16" height="16"/>
+                    <input type="text" name="nom"/>
                     <br />
                     <label for="prenom">Prénom :</label>
-                    <img src="img/tag_orange.png" width="16" height="16"  alt="logo" value='prenom'/>
-                    <input type="text" name="prenom" id="prenom" />
+                    <img src="img/tag_orange.png" width="16" height="16"/>
+                    <input type="text" name="prenom"/>
                     <br />
                     <label for="adresse">Adresse :</label>
-                    <img src="img/direction.png" width="16" height="16"  alt="logo" value='adresse'/>
-                    <input type="text" name="adresse" id="prenom" />
+                    <img src="img/direction.png" width="16" height="16"/>
+                    <input type="text" name="adresse"/>
                     <br />
                     <label for="cp">Code postal :</label>
-                    <img src="img/counter.png" width="16" height="16"  alt="logo" value='cp'/>
-                    <input type="text" name="cp" id="cp" />
+                    <img src="img/counter.png" width="16" height="16"/>
+                    <input type="text" name="cp"/>
                     <br />
                     <label for="cp">Ville :</label>
-                    <img src="img/church.png" width="16" height="16"  alt="logo" value='ville'/>
-                    <input type="text" name="ville" id="ville" />
+                    <img src="img/church.png" width="16" height="16"/>
+                    <input type="text" name="ville"/>
                     <br />
                     <label for="cp">Courriel :</label>
-                    <img src="img/contact_email.png" width="16" height="16"  alt="logo" value='courriel'/>
-                    <input type="email" name="courriel">
+                    <img src="img/contact_email.png" width="16" height="16"/>
+                    <input type="email" name="courriel"/>
                     <br />
                     <label for="cp">Téléphone fixe :</label>
-                    <img src="img/telephone.png" width="16" height="16"  alt="logo" value='tel'/>
-                    <input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
+                    <img src="img/telephone.png" width="16" height="16"/>
+                    <input type="tel" name='tel' pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
                     <br />
                     <label for="cp">Téléphone portable :</label>
-                    <img src="img/phone.png" width="16" height="16"  alt="logo" value='portable'/>
-                    <input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
+                    <img src="img/phone.png" width="16" height="16"/>
+                    <input type="tel" name="portable" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
             </fieldset>
             <br />
             <input type="submit" name="envoi" value="Envoyer">
