@@ -120,3 +120,6 @@ label {
     float: left;
     width: 150px;
 }
+#exit{
+    float: right;
+}

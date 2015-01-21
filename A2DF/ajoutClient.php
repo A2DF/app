@@ -28,7 +28,7 @@
     }
     ?>
 
-    <body>
+    <body onclick='fermer()'>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
         <link href="css/formulaires.css" rel="stylesheet" type="text/css">
@@ -71,6 +71,13 @@
             <br />
             <input type="submit" name="envoi" value="Envoyer">
             <input type='reset' value='Annuler'>
+            <script language="JavaScript">
+                function fermer() {
+                opener=self;
+                self.close();
+                }
+            </script>
+            <img id="exit" src='img/cross.png' title='Fermer la fenêtre' onclick="window.close();"/>
             </p>
         </form>
     </body>
