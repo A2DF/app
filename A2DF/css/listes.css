@@ -41,29 +41,29 @@ table.sortable td {
 
 /* ribbon style */
 
- .ribbon-wrapper {
-	position: absolute;
-        float: left;
-        margin-left: 212px;
-        margin-bottom: 10px;
-        font-size: 14px;
-        font-weight: bold;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-        
+.ribbon-wrapper {
+    position: absolute;
+    float: left;
+    margin-left: 212px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+
 
 }
-  .ribbon-front {
-	background-color: #36AAE7;	
-        height: 46px;
-	width: 560px;
-	//position: relative;
-	left:0px;
-	z-index: 2;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        line-height:40px
+.ribbon-front {
+    background-color: #36AAE7;	
+    height: 46px;
+    width: 560px;
+    //position: relative;
+    left:0px;
+    z-index: 2;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height:40px
 }
 
 
@@ -79,10 +79,10 @@ table.sortable td {
 }
 */
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-topright,
-  .ribbon-edge-bottomleft,
-  .ribbon-edge-bottomright {
+.ribbon-edge-topleft,
+.ribbon-edge-topright,
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
     position: absolute;
     z-index: 1;
     border-style:solid;
@@ -90,45 +90,45 @@ table.sortable td {
     width:0px;
 }
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-topright {
+.ribbon-edge-topleft,
+.ribbon-edge-topright {
     left: 100px;
 }
 
-  .ribbon-edge-bottomleft,
-  .ribbon-edge-bottomright {
+.ribbon-edge-bottomleft,
+.ribbon-edge-bottomright {
     top: 46px;
 }
 
-  .ribbon-edge-topleft,
-  .ribbon-edge-bottomleft {
+.ribbon-edge-topleft,
+.ribbon-edge-bottomleft {
     left: 0px;
     border-color: transparent #1977AE transparent transparent;
 }
 
-  .ribbon-edge-topleft {
+.ribbon-edge-topleft {
     top: 0px;
     border-width: 0px 0px 0 0;
 }
-  .ribbon-edge-bottomleft {
+.ribbon-edge-bottomleft {
     border-width: 0 0px 0px 0;
 }
 
-  .ribbon-edge-topright,
-  .ribbon-edge-bottomright {
+.ribbon-edge-topright,
+.ribbon-edge-bottomright {
     left: 535px;
     border-color: transparent transparent transparent #1977AE;
 }
 
-  .ribbon-edge-topright {
+.ribbon-edge-topright {
     top: 0px;
     border-width: 0px 0 0 25px;
 }
-  .ribbon-edge-bottomright {
+.ribbon-edge-bottomright {
     border-width: 0 0 25px 25px;
 }
 
-  .ribbon-back-left {
+.ribbon-back-left {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -137,7 +137,7 @@ table.sortable td {
     z-index: 0;
 }
 
-  .ribbon-back-right {
+.ribbon-back-right {
     position: absolute;
     top: 25px;
     right: -25px;
@@ -152,25 +152,25 @@ table.sortable td {
 
     padding-top: 80px;
     padding-left: 250px;
-    
+
 }
 
 
 /* Image ajout dans le ribbon */
 .img_liste {
-float: right;
-padding-top: 8px;
-padding-right: 10px;
-position: relative;
-z-index: 1;
+    float: right;
+    padding-top: 8px;
+    padding-right: 10px;
+    position: relative;
+    z-index: 1;
 }
 /* Bouton retour en haut */
 .backtotop
 {
-	bottom: 0px;
-	left: 80px;
-	position:fixed;
-        z-index: 2;
+    bottom: 0px;
+    left: 80px;
+    position:fixed;
+    z-index: 2;
 }
 
 #date {
@@ -201,4 +201,16 @@ z-index: 1;
 
 #traite {
     width: 50px;
+}
+
+.urgent {
+    color: red;
+}
+
+.important {
+    color: orange;
+}
+
+.normal {
+    color: green;
 }
