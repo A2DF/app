@@ -114,3 +114,9 @@ input[type="reset"] {
 .images {
     width: 33px;
 }
+
+label {
+    display: block;
+    float: left;
+    width: 150px;
+}
