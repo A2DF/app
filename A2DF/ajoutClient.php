@@ -71,13 +71,7 @@
             <br />
             <input type="submit" name="envoi" value="Envoyer">
             <input type='reset' value='Annuler'>
-            <script language="JavaScript">
-                function fermer() {
-                opener=self;
-                self.close();
-                }
-            </script>
-            <img id="exit" src='img/cross.png' title='Fermer la fenêtre' onclick="window.close();"/>
+            <img id="exit" src='img/cross.png' title='Fermer la fenêtre' onclick="window.self.close();"/>
             </p>
         </form>
     </body>
