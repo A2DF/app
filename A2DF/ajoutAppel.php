@@ -78,11 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <legend>Informations</legend>
                         <table border="0">
                             <tr>
-                                <td>Date de l'appel :</td>
+                                <td class="label">Date de l'appel :</td>
+                                <td class="images"></td>
                                 <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>' readonly></td>
                             </tr>
                             <tr>
-                                <td>Client :</td>
+                                <td class="label">Client :</td>
+                                <td class="images"><img src='img/user_add_1.png' title='Ajouter un client' onclick="window.open('listeAppel.php', 'search', 'width=500, height=500, scrollbars=no, resizable=no')"></td>
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
                                         <option selected disabled hidden value=''></option>
@@ -100,10 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         ?>
                                     </select>
                                 </td>
-                                <td><button onclick="ajoutClient()">+</button></td>
+
                             </tr>
                             <tr>
-                                <td>Personnel concerné :</td>
+                                <td class="label">Personnel concerné :</td>
+                                <td class="images"></td>
                                 <td>
                                     <select name="personnel" class="chosen-select" value='<?php echo $personnel_ ?>'>
                                         <option selected disabled hidden value=''></option>
@@ -131,10 +134,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <legend>Message</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="2"><textarea name="motif" rows="5"><?php echo $motif_ ?></textarea></td>
+                                <td colspan="3"><textarea name="motif" rows="5"><?php echo $motif_ ?></textarea></td>
                             </tr>
                             <tr>
-                                <td>Priorite :</td>
+                                <td class='label'>Priorite :</td>
+                                <td class='images'></td>
                                 <td>
                                     <select name="priorite" class="chosen-select" value='<?php echo $priorite_ ?>'>
                                         <option selected disabled hidden value=''></option>
@@ -165,52 +169,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <script src="lib/chosen.jquery.js" type="text/javascript"></script>
                 <script src="js/ajoutClient.js" type="text/javascript"></script>
                 <script type="text/javascript">
-                    var config = {
-                        '.chosen-select': {},
-                        '.chosen-select-deselect': {allow_single_deselect: true},
-                        '.chosen-select-no-single': {disable_search_threshold: 10},
-                        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
-                        '.chosen-select-width': {width: "95%"}
-                    }
-                    for (var selector in config) {
-                        $(selector).chosen(config[selector]);
-                    }
+                                    var config = {
+                                        '.chosen-select': {},
+                                        '.chosen-select-deselect': {allow_single_deselect: true},
+                                        '.chosen-select-no-single': {disable_search_threshold: 10},
+                                        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                                        '.chosen-select-width': {width: "95%"}
+                                    }
+                                    for (var selector in config) {
+                                        $(selector).chosen(config[selector]);
+                                    }
                 </script>
                 <script type="text/javascript" src="lib/moment.js"></script>
                 <script type="text/javascript" src="lib/pikaday.js"></script>
                 <script>
-                    var pickerDebut = new Pikaday(
-                            {
-                                field: document.getElementById('datepicker'),
-                                firstDay: 1,
-                                minDate: new Date('2000-01-01'),
-                                maxDate: new Date('2020-12-31'),
-                                yearRange: [2000, 2020],
-                                //format: 'DD/MM/YYYY'
-                            });
+                                    var pickerDebut = new Pikaday(
+                                            {
+                                                field: document.getElementById('datepicker'),
+                                                firstDay: 1,
+                                                minDate: new Date('2000-01-01'),
+                                                maxDate: new Date('2020-12-31'),
+                                                yearRange: [2000, 2020],
+                                                //format: 'DD/MM/YYYY'
+                                            });
                 </script>
             </form>
-<?php
-if ($dateErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $dateErr . "<br />";
-}
+            <?php
+            if ($dateErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $dateErr . "<br />";
+            }
 
-if ($clientErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
-}
+            if ($clientErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
+            }
 
-if ($personnelErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $personnelErr . "<br />";
-}
+            if ($personnelErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $personnelErr . "<br />";
+            }
 
-if ($motifErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $motifErr . "<br />";
-}
+            if ($motifErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $motifErr . "<br />";
+            }
 
-if ($prioriteErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
-}
-?>
+            if ($prioriteErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
+            }
+            ?>
         </div>
     </body>
 </html>

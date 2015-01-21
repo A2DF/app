@@ -6,7 +6,7 @@
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
-    <script src="js/sorttable.js"></script>
+    <script src="lib/sorttable.js"></script>
 
     <body>
         <div class="ribbon-wrapper">

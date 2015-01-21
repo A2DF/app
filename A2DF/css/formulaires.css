@@ -17,12 +17,13 @@ body {
     //background-color: lightgreen;
     //display: inline-block;
     padding-top: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
     float: left;
 }
 
 table td {
     width: 219px;
+    height: 36px;
 }
 
 legend {
@@ -33,7 +34,7 @@ legend {
 fieldset {
     //height: 120px;
     font-family: Arial;
-    padding-bottom: 13px;
+    padding-bottom: 12px;
     border:1px solid #DF3F3F;
     border-color: #36AAE7;
 }
@@ -65,12 +66,13 @@ input, select {
 
 textarea {
     resize: none;
-    width: 440px;
+    width: 453px;
     height: 80px;
     border: 1px solid #aaa;
     border-radius: 5px;
     box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
-    
+    margin-top: 4px;
+    margin-bottom: 5px;
 }
 
 .boutons {
@@ -102,4 +104,12 @@ input[type="reset"] {
 .contenu{
     position: absolute;
     padding-left: 232px;
+}
+
+.label {
+    width: 195px;
+}
+
+.images {
+    width: 33px;
 }
