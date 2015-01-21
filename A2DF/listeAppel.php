@@ -38,6 +38,7 @@
             foreach ($listeAppel as $appel) {
 
                 //Récupération des données dans la base
+                $idAppel = $appel['idAppel'];
                 $date = $appel['date'];
                 $nomClient = $appel['nomClient'];
                 $prenomClient = $appel['prenomClient'];
@@ -46,27 +47,30 @@
                 $personnel = $appel['personnel'];
                 $motif = $appel['motif'];
                 $priorite = $appel['libelle'];
+                $traite = $appel['traite'];
 
-                //Affichage des données dans le tableau
-                echo "<tr>";
-                echo "<td>" . $date . "</td>";
-                echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
-                echo "<td>" . $tel . "</td>";
-                echo "<td>" . $portable . "</td>";
-                echo "<td>" . $personnel . "</td>";
-                echo "<td>" . $motif . "</td>";
+                if ($traite == 0) {
+                    //Affichage des données dans le tableau
+                    echo "<tr>";
+                    echo "<td>" . $date . "</td>";
+                    echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                    echo "<td>" . $tel . "</td>";
+                    echo "<td>" . $portable . "</td>";
+                    echo "<td>" . $personnel . "</td>";
+                    echo "<td>" . $motif . "</td>";
 
-                if ($priorite == "Urgent") {
-                    echo "<td class='urgent'>" . $priorite . "</td>";
-                } else if ($priorite == "Important") {
-                    echo "<td class='important'>" . $priorite . "</td>";
-                } else if ($priorite == "Normal") {
-                    echo "<td class='normal'>" . $priorite . "</td>";
+                    if ($priorite == "Urgent") {
+                        echo "<td class='urgent'>" . $priorite . "</td>";
+                    } else if ($priorite == "Important") {
+                        echo "<td class='important'>" . $priorite . "</td>";
+                    } else if ($priorite == "Normal") {
+                        echo "<td class='normal'>" . $priorite . "</td>";
+                    }
+                    ?>
+                    <td><a href="listeAppel.php?id=<?php echo $idAppel ?>"><img src='img/tick_light_blue.png' title='Appel traité'/></a></td>
+                    <?php
+                    echo "</tr>";
                 }
-                ?>
-                <td><img src='img/tick_light_blue.png' title='Appel traité' onclick='return(confirm("Etes-vous sûr de vouloir supprimer cette entrée?"));'/></td>
-                <?php
-                echo "</tr>";
             }
 
             echo "</table>";
@@ -76,6 +80,23 @@
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">
         </a>
+
+<?php
+$id = filter_input(INPUT_GET, 'id');
+if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+    ?>
+            <script language="javascript">
+
+                if (confirm("Êtes vous sur(e) de vouloir supprimer cet appel ?")) {
+    <?php traiterAppel($id); ?>
+                    window.self.location = "listeAppel.php";
+                }
+            </script>
+    <?php
+}
+?>
+
+
         <script>
             var timeOut;
             function backtotop() {

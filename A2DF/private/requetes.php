@@ -15,7 +15,7 @@ try {
 
 function listeAppel() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle
+    $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite
                                     FROM appel, client, personnel, priorite
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
@@ -62,4 +62,11 @@ function comboboxPriorite() {
     return $resultat;
 }
 
+function traiterAppel($idAppel) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE appel
+                                    SET traite = 1
+                                    WHERE idAppel = $idAppel;");
+    return $resultat;
+}
 ?>
