@@ -31,6 +31,13 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     return $resultat;
 }
 
+function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $tel, $portable) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, tel, portable)
+                                    VALUES ('$nom', '$prenom', '$adresse', '$cp', '$ville', '$tel', '$portable');");
+    return $resultat;
+}
+
 function comboboxClient() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idClient, nom 
