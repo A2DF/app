@@ -70,7 +70,7 @@
             </fieldset>
             <br />
             <input type="submit" name="envoi" value="Envoyer">
-            <input type='reset' value='Annuler'>
+            <input type='reset' value='Effacer'>
             <img id="exit" src='img/cross.png' title='Fermer la fenêtre' onclick="window.self.close();"/>
             </p>
         </form>

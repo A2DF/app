@@ -174,15 +174,18 @@ table.sortable td {
 }
 
 #date {
-    width: 100px;
+    width: 120px;
 }
 
 #client {
-    width: 150px;
+    width: 200px;
 }
 
-#numero {
-    width: 150px;
+#tel {
+    width: 130px;
+}
+#portable {
+    width: 130px;
 }
 
 #pour {
@@ -200,7 +203,7 @@ table.sortable td {
 }
 
 #traite {
-    width: 50px;
+    width: 65px;
 }
 
 .urgent {

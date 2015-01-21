@@ -171,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div class="boutons">
-                    <input type='reset' value='Annuler'>
+                    <input type='reset' value='Effacer'>
                     <input type='submit' value='Valider'>
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
