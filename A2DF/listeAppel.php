@@ -26,7 +26,8 @@
             echo "<tr>";
             echo "<th id='date'>Date</th>";
             echo "<th id='client'>Client</th>";
-            echo "<th id='numero'>Numero</th>";
+            echo "<th id='tel'>Fixe</th>";
+            echo "<th id='portable'>Portable</th>";
             echo "<th id='pour'>Pour</th>";
             echo "<th id='motif'>Motif</th>";
             echo "<th id='commentaire'>Priorite</th>";
@@ -38,8 +39,10 @@
 
                 //Récupération des données dans la base
                 $date = $appel['date'];
-                $client = $appel['client'];
-                $numero = $appel['tel'];
+                $nomClient = $appel['nomClient'];
+                $prenomClient = $appel['prenomClient'];
+                $tel = $appel['tel'];
+                $portable = $appel['portable'];
                 $personnel = $appel['personnel'];
                 $motif = $appel['motif'];
                 $priorite = $appel['libelle'];
@@ -47,8 +50,9 @@
                 //Affichage des données dans le tableau
                 echo "<tr>";
                 echo "<td>" . $date . "</td>";
-                echo "<td>" . $client . "</td>";
-                echo "<td>" . $numero . "</td>";
+                echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                echo "<td>" . $tel . "</td>";
+                echo "<td>" . $portable . "</td>";
                 echo "<td>" . $personnel . "</td>";
                 echo "<td>" . $motif . "</td>";
 

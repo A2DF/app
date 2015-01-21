@@ -15,7 +15,7 @@ try {
 
 function listeAppel() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT appel.date, client.nom AS client, client.tel, personnel.prenom AS personnel, appel.motif, priorite.libelle
+    $resultat = $connexion->query(" SELECT appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle
                                     FROM appel, client, personnel, priorite
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
@@ -40,7 +40,7 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
 
 function comboboxClient() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT idClient, nom 
+    $resultat = $connexion->query(" SELECT idClient, nom, prenom
                                     FROM client
                                     ORDER BY client.nom ASC;");
     return $resultat;

@@ -101,10 +101,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         foreach ($comboboxClient as $client) {
                                             $idClie = $client['idClient'];
                                             $nom = $client['nom'];
+                                            $prenom = $client['prenom'];
                                             if ($idClie == $client_) {
-                                                echo "<option value=" . $idClie . " selected>" . $nom . "</option>";
+                                                echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
                                             } else {
-                                                echo "<option value=" . $idClie . ">" . $nom . "</option>";
+                                                echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
                                             }
                                         }
                                         ?>
