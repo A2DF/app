@@ -3,6 +3,11 @@
     <?php
     include ('html/head.html');
     include ('private/requetes.php');
+    
+    date_default_timezone_set('UTC');
+    $today_int = date("Y-m-d");
+    $today_date = date_create($today_int);
+
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
@@ -32,6 +37,7 @@
             echo "<th id='couleurProduit'>Couleur</th>";
             echo "<th id='mdpProduit'>Mot de passe</th>";
             echo "<th id='probleme'>Commentaire</th>";
+            echo "<th id='delai'>Délai</th>";
             echo "</tr>";
 
             $listeAtelier = listeAtelier();
@@ -46,9 +52,8 @@
                 $marqueProduit = $atelier['marqueProduit'];
                 $couleurProduit = $atelier['couleurProduit'];
                 $mdpProduit = $atelier['mdpProduit'];
-                $probleme = $atelier['probleme'];
+                $probleme = $atelier['probleme'];         
 
-                
                 //Affichage des données dans le tableau
                 echo "<tr>";
                 echo "<td>" . $dateEntree . "</td>";
@@ -59,15 +64,28 @@
                 echo "<td>" . $couleurProduit . "</td>";
                 echo "<td>" . $mdpProduit . "</td>";
                 echo "<td>" . $probleme . "</td>";
-
-
-                    ?>
-                    <?php
-                    echo "</tr>";
                 
+                $entree_date = date_create($dateEntree);
+                $diff = date_diff($today_date, $entree_date)->format('%a');
+                $duree = (int)$diff;
+                
+                if ($diff <= 0) {
+                echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
+                } else if ($diff == 1) {
+                echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
+                } else if ($diff == 2) {
+                echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
+                } else if ($diff >= 3) {
+                echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
+                }
+                
+                ?>
+                <?php
+                echo "</tr>";
             }
 
             echo "</table>";
+
             ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
