@@ -72,9 +72,7 @@
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">
-        </a>
-
-            <script language="javascript">window.self.location = "listeAtelier.php";</script>    
+        </a>  
 
         <script>
             var timeOut;
