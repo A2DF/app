@@ -3,22 +3,30 @@
 include ('html/head.html');
 include ('private/requetes.php');
 include ('private/fonctions.php');
-/*
+
 //Initialisation du compteur d'erreurs pour le contrôle du formulaire
 $erreurs = 0;
 
 //Initialisation des valeurs de champs
 $date_ = "";
 $client_ = "";
-$personnel_ = "";
-$motif_ = "";
+$formule_ = "";
+$typeMateriel_ = "";
+$marqueMateriel_ = "";
+$couleurMateriel_ = "";
+$mdpMateriel_ = "";
+$probleme_ = "";
 $priorite_ = "";
 
 //Initialisation des messages d'erreur
 $dateErr = "";
 $clientErr = "";
-$personnelErr = "";
-$motifErr = "";
+$formuleErr = "";
+$typeMaterielErr = "";
+$marqueMaterielErr = "";
+$couleurMaterielErr = "";
+$mdpMaterielErr = "";
+$problemeErr = "";
 $prioriteErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,13 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
 
-    //Contrôle du champ personnel
-    $personnel_temp = filter_input(INPUT_POST, "personnel");
-    controlePersonnel($personnel_temp, $personnelErr, $personnel_, $erreurs);
+    //Contrôle du champ formule
+    $formule_temp = filter_input(INPUT_POST, "personnel");
+    controlePersonnel($formule_temp, $formuleErr, $formule_, $erreurs);
 
-    //Contrôle du champ motif
-    $motif_temp = filter_input(INPUT_POST, "motif");
-    controleMotif($motif_temp, $motifErr, $motif_, $erreurs);
+    $typeMateriel_ = filter_input(INPUT_POST, "typeMateriel");
+    $marqueMateriel_ = filter_input(INPUT_POST, "personnel");
+    $couleurMateriel_ = filter_input(INPUT_POST, "personnel");
+    $mdpMateriel_ = filter_input(INPUT_POST, "personnel");
+    
+    //Contrôle du champ probleme
+    $probleme_temp = filter_input(INPUT_POST, "motif");
+    controleMotif($probleme_temp, $problemeErr, $probleme_, $erreurs);
 
     //Contrôle du champ priorite
     $priorite_temp = filter_input(INPUT_POST, "priorite");
@@ -52,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: listeAppel.php');
     }
 }
-*/
+
 ?>
 
 <html>
