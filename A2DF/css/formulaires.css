@@ -13,6 +13,13 @@ body {
     float: left;
 }
 
+.boxMilieu {
+    //background-color: lightgreen;
+    //display: inline-block;
+    padding-top: 10px;
+    float: left;
+}
+
 .boxBas {
     //background-color: lightgreen;
     //display: inline-block;

@@ -3,7 +3,7 @@
 include ('html/head.html');
 include ('private/requetes.php');
 include ('private/fonctions.php');
-
+/*
 //Initialisation du compteur d'erreurs pour le contrôle du formulaire
 $erreurs = 0;
 
@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: listeAppel.php');
     }
 }
+*/
 ?>
 
 <html>
@@ -61,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body>
         <div class="contenu">
             <div class="ribbon-wrapper">
-                <a  href="listeAppel.php"><img class="img_liste" onmouseout="this.src = 'img/arrow_undo.png'" onmouseover="this.src = 'img/arrow_undo1.png'" src="img/arrow_undo.png" /></a>
-                <div class="ribbon-front"><div class="titre">Ajout d'un appel</div></div>
+                <a  href="listeAtelier.php"><img class="img_liste" onmouseout="this.src = 'img/arrow_undo.png'" onmouseover="this.src = 'img/arrow_undo1.png'" src="img/arrow_undo.png" /></a>
+                <div class="ribbon-front"><div class="titre">Ajout d'un suivi d'atelier</div></div>
                 <div class="ribbon-edge-topleft"></div>
                 <div class="ribbon-edge-topright"></div>
                 <div class="ribbon-edge-bottomleft"></div>
@@ -71,16 +72,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="ribbon-back-right"></div>
             </div>
 
-            <form action='ajoutAppel.php' method='POST' name='formAjoutAppel'>
+            <form action='ajoutAtelier.php' method='POST' name='formAjoutAtelier'>
 
                 <div class="boxHaut">
                     <fieldset>
                         <legend>Informations</legend>
                         <table border="0">
                             <tr>
-                                <td class="label">Date de l'appel :</td>
+                                <td class="label">Date d'entrée en atelier :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>' readonly></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php //echo $date_ ?>' readonly></td>
                             </tr>
                             <tr>
                                 <td class="label">Client :</td>
@@ -94,9 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                                                                                 dependant=yes')">
                                 </td>
                                 <td>
-                                    <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
+                                    <select class="chosen-select" tabindex="2" name="client" value='<?php //echo $client_ ?>'>
                                         <option selected disabled hidden value=''></option>
-                                        <?php
+                                        <?php/*
                                         $comboboxClient = comboboxClient();
                                         foreach ($comboboxClient as $client) {
                                             $idClie = $client['idClient'];
@@ -107,19 +108,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             } else {
                                                 echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
                                             }
-                                        }
+                                        }*/
                                         ?>
                                     </select>
                                 </td>
 
                             </tr>
                             <tr>
-                                <td class="label">Personnel concerné :</td>
+                                <td class="label">Formule :</td>
                                 <td class="images"></td>
                                 <td>
-                                    <select name="personnel" class="chosen-select" value='<?php echo $personnel_ ?>'>
+                                    <select name="personnel" class="chosen-select" value='<?php //echo $personnel_ ?>'>
                                         <option selected disabled hidden value=''></option>
-                                        <?php
+                                        <?php/*
                                         $comboboxPersonnel = comboboxPersonnel();
                                         foreach ($comboboxPersonnel as $personnel) {
                                             $idPers = $personnel['idPersonnel'];
@@ -129,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             } else {
                                                 echo "<option value=" . $idPers . ">" . $prenom . "</option>";
                                             }
-                                        }
+                                        }*/
                                         ?>
                                     </select>
                                 </td>
@@ -138,20 +139,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </fieldset>
                 </div>
 
-                <div class="boxBas">
+                <div class="boxMilieu">
                     <fieldset>
-                        <legend>Message</legend>
+                        <legend>Matériel</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="3"><textarea name="motif" rows="5"><?php echo $motif_ ?></textarea></td>
+                                <td class="label">Type :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php //echo $date_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Marque :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php //echo $date_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Couleur :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php //echo $date_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Mot de passe :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='date' id='datepicker' value='<?php //echo $date_ ?>'></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                
+                <div class="boxBas">
+                    <fieldset>
+                        <legend>Problème</legend>
+                        <table border="0">
+                            <tr>
+                                <td colspan="3"><textarea name="motif" rows="5"><?php //echo $motif_ ?></textarea></td>
                             </tr>
                             <tr>
                                 <td class='label'>Priorité :</td>
                                 <td class='images'></td>
                                 <td>
-                                    <select name="priorite" class="chosen-select" value='<?php echo $priorite_ ?>'>
+                                    <select name="priorite" class="chosen-select" value='<?php //echo $priorite_ ?>'>
                                         <option selected disabled hidden value=''></option>
-                                        <?php
+                                        <?php/*
                                         $comboboxPriorite = comboboxPriorite();
                                         foreach ($comboboxPriorite as $priorite) {
                                             $idPrio = $priorite['idPriorite'];
@@ -161,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             } else {
                                                 echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
                                             }
-                                        }
+                                        }*/
                                         ?>
                                     </select>
                                 </td>
@@ -203,7 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             });
                 </script>
             </form>
-            <?php
+            <?php/*
             if ($dateErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $dateErr . "<br />";
             }
@@ -222,8 +251,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($prioriteErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
-            }
+            }*/
             ?>
         </div>
     </body>
 </html>
+
