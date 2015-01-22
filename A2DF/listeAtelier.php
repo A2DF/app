@@ -74,7 +74,7 @@
                         return false;" alt="Retour haut de page">
         </a>
 
-            <script language="javascript">window.self.location = "listeAppel.php";</script>    
+            <script language="javascript">window.self.location = "listeAtelier.php";</script>    
 
         <script>
             var timeOut;
