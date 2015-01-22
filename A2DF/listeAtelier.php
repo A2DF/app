@@ -40,6 +40,7 @@
                 //Récupération des données dans la base
                 $dateEntree = $atelier['dateEntree'];
                 $nomClient = $atelier['nomClient'];
+                $prenomClient = $atelier['prenomClient'];
                 $libelleFormule = $atelier['libelleFormule'];
                 $typeProduit = $atelier['typeProduit'];
                 $marqueProduit = $atelier['marqueProduit'];
@@ -47,23 +48,23 @@
                 $mdpProduit = $atelier['mdpProduit'];
                 $probleme = $atelier['probleme'];
 
-                if ($traite == 0) {
-                    //Affichage des données dans le tableau
-                    echo "<tr>";
-                    echo "<td>" . $dateEntree . "</td>";
-                    echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
-                    echo "<td>" . $libelleFormule . "</td>";
-                    echo "<td>" . $typeProduit . "</td>";
-                    echo "<td>" . $marqueProduit . "</td>";
-                    echo "<td>" . $couleurProduit . "</td>";
-                    echo "<td>" . $mdpProduit . "</td>";
-                    echo "<td>" . $probleme . "</td>";
+                
+                //Affichage des données dans le tableau
+                echo "<tr>";
+                echo "<td>" . $dateEntree . "</td>";
+                echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                echo "<td>" . $libelleFormule . "</td>";
+                echo "<td>" . $typeProduit . "</td>";
+                echo "<td>" . $marqueProduit . "</td>";
+                echo "<td>" . $couleurProduit . "</td>";
+                echo "<td>" . $mdpProduit . "</td>";
+                echo "<td>" . $probleme . "</td>";
 
 
                     ?>
                     <?php
                     echo "</tr>";
-                }
+                
             }
 
             echo "</table>";

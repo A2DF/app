@@ -24,6 +24,17 @@ function listeAppel() {
     return $resultat;
 }
 
+
+function listeAtelier() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT atelier.idAtelier, atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formule.libelle AS libelleFormule, atelier.typeProduit, atelier.marqueProduit, atelier.couleurProduit, atelier.mdpProduit, atelier.probleme
+                                    FROM atelier, client, formule
+                                    WHERE atelier.idClient = client.idClient
+                                    AND atelier.idFormule = formule.idFormule
+                                    ORDER BY atelier.idAtelier ASC;");
+    return $resultat;
+}
+
 function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
@@ -67,17 +78,6 @@ function traiterAppel($idAppel) {
     $resultat = $connexion->query(" UPDATE appel
                                     SET traite = 1
                                     WHERE idAppel = $idAppel;");
-    return $resultat;
-}
-
-function listeAtelier() {
-    global $connexion;
-    $resultat = $connexion->query(" SELECT atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formulle.libelle AS libelleFormule, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite
-                                    FROM appel, client, personnel, priorite
-                                    WHERE appel.idClient = client.idClient
-                                    AND appel.idPersonnel = personnel.idPersonnel
-                                    AND appel.idPriorite = priorite.idPriorite
-                                    ORDER BY appel.idAppel ASC;");
     return $resultat;
 }
 ?>
