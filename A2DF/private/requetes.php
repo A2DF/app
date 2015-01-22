@@ -70,4 +70,14 @@ function traiterAppel($idAppel) {
     return $resultat;
 }
 
+function listeAtelier() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formulle.libelle AS libelleFormule, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite
+                                    FROM appel, client, personnel, priorite
+                                    WHERE appel.idClient = client.idClient
+                                    AND appel.idPersonnel = personnel.idPersonnel
+                                    AND appel.idPriorite = priorite.idPriorite
+                                    ORDER BY appel.idAppel ASC;");
+    return $resultat;
+}
 ?>
