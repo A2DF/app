@@ -42,6 +42,13 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     return $resultat;
 }
 
+function ajoutAtelier($date, $client, $formule, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $probleme, $priorite) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idFormule, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idPriorite)
+                                    VALUES ('$date', '$client', '$formule', '$typeProduit', '$marqueProduit', '$couleurProduit', '$mdpProduit', '$probleme', '$priorite');");
+    return $resultat;
+}
+
 function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, courriel, tel, portable)
@@ -70,6 +77,14 @@ function comboboxPriorite() {
     $resultat = $connexion->query(" SELECT idPriorite, libelle 
                                     FROM priorite
                                     ORDER BY priorite.idPriorite ASC;");
+    return $resultat;
+}
+
+function comboboxFormule() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idFormule, libelle 
+                                    FROM formule
+                                    ORDER BY formule.idFormule ASC;");
     return $resultat;
 }
 
