@@ -38,7 +38,7 @@ function listeAtelier() {
 function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
-                                    VALUES ('$date', '$idClient', '$idPersonnel', '$motif', '$idPriorite');");
+                                    VALUES ('$date', '$idClient', '$idPersonnel', \"$motif\", '$idPriorite');");
     return $resultat;
 }
 

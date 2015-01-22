@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <legend>Message</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="3"><textarea name="motif" rows="5"><?php echo $motif_ ?></textarea></td>
+                                <td colspan="3"><textarea name="motif" rows="5" maxlength='300'><?php echo $motif_ ?></textarea></td>
                             </tr>
                             <tr>
                                 <td class='label'>Priorité :</td>
