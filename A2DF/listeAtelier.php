@@ -92,11 +92,11 @@
                 }
                 
                 if ($traitement == 1) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/traffic_lights_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
                 } else if ($traitement == 2) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/traffic_lights_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
                 } else if ($traitement == 3) {
-                    ?><td><img src='img/traffic_lights_green.png' title='Dépannage terminé'/></td><?php
+                    ?><td><img src='img/ball_green.png' title='Dépannage terminé'/></td><?php
                 } 
                 ?>
                 <?php
