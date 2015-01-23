@@ -88,6 +88,14 @@ function comboboxFormule() {
     return $resultat;
 }
 
+function etatDepannage($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idTraitement
+                                    FROM atelier
+                                    WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
 function traiterAppel($idAppel) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE appel
@@ -95,4 +103,20 @@ function traiterAppel($idAppel) {
                                     WHERE idAppel = $idAppel;");
     return $resultat;
 }
+
+function traiterAtelier($idAtelier, $etat) {
+    global $connexion;
+    
+    if (is_null($etat) == TRUE) {
+        $etat = 1;
+    } else {
+        $etat = 2;
+    }
+    
+    $resultat = $connexion->query(" UPDATE atelier
+                                    SET idTraitement = $etat
+                                    WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
 ?>

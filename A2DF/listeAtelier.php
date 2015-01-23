@@ -45,6 +45,7 @@
             foreach ($listeAtelier as $atelier) {
 
                 //Récupération des données dans la base
+                $idAtelier = $atelier['idAtelier'];
                 $dateEntree = $atelier['dateEntree'];
                 $nomClient = $atelier['nomClient'];
                 $prenomClient = $atelier['prenomClient'];
@@ -84,12 +85,12 @@
                 echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
                 }
                 
-                if ($traitement == 2) {
-                echo "<td><img src='img/traffic_lights_green.png'/></td>";
+                if ($traitement > 1) {
+                    ?><td><img src='img/traffic_lights_green.png' title='Dépannage terminé'/></td><?php
                 } else if ($traitement == 1) {
-                echo "<td><img src='img/traffic_lights_yellow.png'/></td>";
-                } else if ($traitement == 0) {
-                echo "<td><img src='img/traffic_lights_red.png'/></td>";
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>"><img src="img/traffic_lights_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                } else if ($traitement < 1) {
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>"><img src="img/traffic_lights_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
                 } 
                 
                 
@@ -107,6 +108,17 @@
                         return false;" alt="Retour haut de page">
         </a>  
 
+        <?php
+        $id = filter_input(INPUT_GET, 'id');
+        $etat = etatDepannage($id);
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+            traiterAtelier($id, $etat);
+            ?>
+            <script language="javascript">window.self.location = "listeAtelier.php";</script>    
+            <?php
+        }
+        ?>
+            
         <script>
             var timeOut;
             function backtotop() {
