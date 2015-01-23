@@ -38,6 +38,7 @@
             echo "<th id='mdpProduit'>Mot de passe</th>";
             echo "<th id='probleme'>Commentaire</th>";
             echo "<th id='delai'>Délai</th>";
+            echo "<th id='traitement'>Etat</th>";
             echo "</tr>";
 
             $listeAtelier = listeAtelier();
@@ -52,8 +53,9 @@
                 $marqueProduit = $atelier['marqueProduit'];
                 $couleurProduit = $atelier['couleurProduit'];
                 $mdpProduit = $atelier['mdpProduit'];
-                $probleme = $atelier['probleme'];         
-
+                $probleme = $atelier['probleme'];
+                $traitement = $atelier['idTraitement'];  
+                
                 $dateConvert = date_create($dateEntree);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
                     
@@ -81,6 +83,15 @@
                 } else if ($diff >= 3) {
                 echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
                 }
+                
+                if ($traitement == 2) {
+                echo "<td><img src='img/traffic_lights_green.png'/></td>";
+                } else if ($traitement == 1) {
+                echo "<td><img src='img/traffic_lights_yellow.png'/></td>";
+                } else if ($traitement == 0) {
+                echo "<td><img src='img/traffic_lights_red.png'/></td>";
+                } 
+                
                 
                 ?>
                 <?php

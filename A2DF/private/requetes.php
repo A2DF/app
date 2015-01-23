@@ -27,7 +27,7 @@ function listeAppel() {
 
 function listeAtelier() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT atelier.idAtelier, atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formule.libelle AS libelleFormule, atelier.typeProduit, atelier.marqueProduit, atelier.couleurProduit, atelier.mdpProduit, atelier.probleme
+    $resultat = $connexion->query(" SELECT atelier.idAtelier, atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formule.libelle AS libelleFormule, atelier.typeProduit, atelier.marqueProduit, atelier.couleurProduit, atelier.mdpProduit, atelier.probleme, atelier.idTraitement
                                     FROM atelier, client, formule
                                     WHERE atelier.idClient = client.idClient
                                     AND atelier.idFormule = formule.idFormule
