@@ -31,10 +31,10 @@
             echo "<tr>";
             echo "<th id='dateEntree'>Date d'entrée</th>";
             echo "<th id='client'>Client</th>";
-            echo "<th id='formule'>Service</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='mdpProduit'>Mot de passe</th>";
             echo "<th id='probleme'>Commentaire</th>";
+            echo "<th id='formule'>Service</th>";
             echo "<th id='delai'>Délai</th>";
             echo "<th id='traitement'>Etat</th>";
             echo "</tr>";
@@ -62,10 +62,10 @@
                 echo "<tr>";
                 echo "<td>" . $dateFr . "</td>";
                 echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
-                echo "<td>" . $libelleFormule . "</td>";
                 echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                 echo "<td>" . $mdpProduit . "</td>";
                 echo "<td>" . $probleme . "</td>";
+                echo "<td>" . $libelleFormule . "</td>";
                 
                 $entree_date = date_create($dateEntree);
                 $diff = date_diff($today_date, $entree_date)->format('%a');
@@ -81,22 +81,18 @@
                 echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
                 }
                 
-                if ($traitement > 1) {
+                if ($traitement == 1) {
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/traffic_lights_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
+                } else if ($traitement == 2) {
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/traffic_lights_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                } else if ($traitement == 3) {
                     ?><td><img src='img/traffic_lights_green.png' title='Dépannage terminé'/></td><?php
-                } else if ($traitement == 1) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>"><img src="img/traffic_lights_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
-                } else if ($traitement < 1) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>"><img src="img/traffic_lights_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
                 } 
-                
-                
                 ?>
                 <?php
                 echo "</tr>";
             }
-
             echo "</table>";
-
             ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
@@ -106,7 +102,7 @@
 
         <?php
         $id = filter_input(INPUT_GET, 'id');
-        $etat = etatDepannage($id);
+        $etat = filter_input(INPUT_GET, 'etat');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterAtelier($id, $etat);
             ?>

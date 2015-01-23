@@ -44,8 +44,8 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
 
 function ajoutAtelier($date, $client, $formule, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $probleme, $priorite) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idFormule, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idPriorite)
-                                    VALUES ('$date', '$client', '$formule', '$typeProduit', '$marqueProduit', '$couleurProduit', '$mdpProduit', '$probleme', '$priorite');");
+    $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idFormule, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idPriorite, idTraitement)
+                                    VALUES ('$date', '$client', '$formule', '$typeProduit', '$marqueProduit', '$couleurProduit', '$mdpProduit', '$probleme', '$priorite', 1);");
     return $resultat;
 }
 
@@ -106,15 +106,8 @@ function traiterAppel($idAppel) {
 
 function traiterAtelier($idAtelier, $etat) {
     global $connexion;
-    
-    if (is_null($etat) == TRUE) {
-        $etat = 1;
-    } else {
-        $etat = 2;
-    }
-    
     $resultat = $connexion->query(" UPDATE atelier
-                                    SET idTraitement = $etat
+                                    SET idTraitement = $etat + 1
                                     WHERE idAtelier = $idAtelier;");
     return $resultat;
 }
