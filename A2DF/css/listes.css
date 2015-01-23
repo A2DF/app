@@ -207,9 +207,17 @@ table.sortable td {
 }
 
 #delai {
-    width: 400px;
+    width: 100px;
+    min-width: 100px;
 }
 
+#produit {
+    width: 250px;
+}
+
+#formule{
+    width: 200px;
+}
 .urgent {
     color: red;
 }
