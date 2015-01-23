@@ -32,9 +32,7 @@
             echo "<th id='dateEntree'>Date d'entrée</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='formule'>Service</th>";
-            echo "<th id='typeProduit'>Type</th>";
-            echo "<th id='marqueProduit'>Marque</th>";
-            echo "<th id='couleurProduit'>Couleur</th>";
+            echo "<th id='produit'>Produit</th>";
             echo "<th id='mdpProduit'>Mot de passe</th>";
             echo "<th id='probleme'>Commentaire</th>";
             echo "<th id='delai'>Délai</th>";
@@ -65,9 +63,7 @@
                 echo "<td>" . $dateFr . "</td>";
                 echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
                 echo "<td>" . $libelleFormule . "</td>";
-                echo "<td>" . $typeProduit . "</td>";
-                echo "<td>" . $marqueProduit . "</td>";
-                echo "<td>" . $couleurProduit . "</td>";
+                echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                 echo "<td>" . $mdpProduit . "</td>";
                 echo "<td>" . $probleme . "</td>";
                 
