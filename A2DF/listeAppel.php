@@ -3,6 +3,8 @@
     <?php
     include ('html/head.html');
     include ('private/requetes.php');
+    
+    date_default_timezone_set('UTC');
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
@@ -50,9 +52,12 @@
                 $traite = $appel['traite'];
 
                 if ($traite == 0) {
+                    
+                    $dateConvert = date_create($date);
+                    $dateFr = date_format($dateConvert, 'd/m/Y');
                     //Affichage des données dans le tableau
                     echo "<tr>";
-                    echo "<td>" . $date . "</td>";
+                    echo "<td>" . $dateFr . "</td>";
                     echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
                     echo "<td>" . $tel . "</td>";
                     echo "<td>" . $portable . "</td>";
