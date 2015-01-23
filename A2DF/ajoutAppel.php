@@ -4,6 +4,9 @@ include ('html/head.html');
 include ('private/requetes.php');
 include ('private/fonctions.php');
 
+date_default_timezone_set('UTC');
+$today_int = date("Y-m-d");
+
 //Initialisation du compteur d'erreurs pour le contrôle du formulaire
 $erreurs = 0;
 
@@ -80,7 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Date de l'appel :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='date' id='datepicker' value='<?php echo $date_ ?>' readonly></td>
+                                <?php
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $date_ . "' readonly></td>";
+                                } else {
+                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $today_int . "' readonly></td>";
+                                        
+                                }
+                                ?>
                             </tr>
                             <tr>
                                 <td class="label">Client :</td>
@@ -223,6 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($prioriteErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
             }
+            
             ?>
         </div>
     </body>

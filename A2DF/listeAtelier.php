@@ -54,9 +54,12 @@
                 $mdpProduit = $atelier['mdpProduit'];
                 $probleme = $atelier['probleme'];         
 
+                $dateConvert = date_create($dateEntree);
+                $dateFr = date_format($dateConvert, 'd/m/Y');
+                    
                 //Affichage des données dans le tableau
                 echo "<tr>";
-                echo "<td>" . $dateEntree . "</td>";
+                echo "<td>" . $dateFr . "</td>";
                 echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
                 echo "<td>" . $libelleFormule . "</td>";
                 echo "<td>" . $typeProduit . "</td>";
