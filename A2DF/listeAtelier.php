@@ -33,8 +33,9 @@
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='mdp'>MDP</th>";
-            echo "<th id='probleme'>Commentaire</th>";
+            echo "<th id='commentaire'>Problème</th>";
             echo "<th id='formule'>Service</th>";
+            echo "<th id='priorite'>Priorité</th>";
             echo "<th id='delai'>Délai</th>";
             echo "<th id='traite'>Etat</th>";
             echo "</tr>";
@@ -53,6 +54,7 @@
                 $couleurProduit = $atelier['couleurProduit'];
                 $mdpProduit = $atelier['mdpProduit'];
                 $probleme = $atelier['probleme'];
+                $priorite = $atelier['libellePriorite'];
                 $traitement = $atelier['idTraitement'];  
                 
                 $dateConvert = date_create($dateEntree);
@@ -67,6 +69,14 @@
                 echo "<td>" . $probleme . "</td>";
                 echo "<td>" . $libelleFormule . "</td>";
                 
+                if ($priorite == "Urgent") {
+                        echo "<td class='urgent'>" . $priorite . "</td>";
+                    } else if ($priorite == "Important") {
+                        echo "<td class='important'>" . $priorite . "</td>";
+                    } else if ($priorite == "Normal") {
+                        echo "<td class='normal'>" . $priorite . "</td>";
+                    }
+                    
                 $entree_date = date_create($dateEntree);
                 $diff = date_diff($today_date, $entree_date)->format('%a');
                 $duree = (int)$diff;

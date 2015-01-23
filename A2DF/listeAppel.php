@@ -31,8 +31,8 @@
             echo "<th id='tel'>Fixe</th>";
             echo "<th id='portable'>Portable</th>";
             echo "<th id='pour'>Pour</th>";
-            echo "<th id='motif'>Motif</th>";
-            echo "<th id='commentaire'>Priorite</th>";
+            echo "<th id='commentaire'>Motif</th>";
+            echo "<th id='priorite'>Priorite</th>";
             echo "<th id='traite'>Traité</th>";
             echo "</tr>";
 

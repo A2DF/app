@@ -184,6 +184,7 @@ table.sortable td {
 #tel {
     width: 130px;
 }
+
 #portable {
     width: 130px;
 }
@@ -192,14 +193,10 @@ table.sortable td {
     width: 100px;
 }
 
-#motif {
+#commentaire {
     width: 350px;
     word-wrap: break-word;
     overflow: hidden;
-}
-
-#commentaire {
-    width: 150px;
 }
 
 #traite {
@@ -220,6 +217,10 @@ table.sortable td {
 }
 
 #mdp{
+    width: 80px;
+}
+
+#priorite {
     width: 80px;
 }
 
