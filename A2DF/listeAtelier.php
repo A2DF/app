@@ -29,14 +29,14 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='dateEntree'>Date d'entrée</th>";
+            echo "<th id='date'>Date</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
-            echo "<th id='mdpProduit'>Mot de passe</th>";
+            echo "<th id='mdp'>MDP</th>";
             echo "<th id='probleme'>Commentaire</th>";
             echo "<th id='formule'>Service</th>";
             echo "<th id='delai'>Délai</th>";
-            echo "<th id='traitement'>Etat</th>";
+            echo "<th id='traite'>Etat</th>";
             echo "</tr>";
 
             $listeAtelier = listeAtelier();
