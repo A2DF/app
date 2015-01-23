@@ -47,14 +47,14 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
 function ajoutAtelier($date, $client, $formule, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $probleme, $priorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idFormule, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idPriorite, idTraitement)
-                                    VALUES ('$date', '$client', '$formule', '$typeProduit', '$marqueProduit', '$couleurProduit', '$mdpProduit', '$probleme', '$priorite', 1);");
+                                    VALUES ('$date', '$client', '$formule', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$mdpProduit\", \"$probleme\", '$priorite', 1);");
     return $resultat;
 }
 
 function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, courriel, tel, portable)
-                                    VALUES ('$nom', '$prenom', '$adresse', '$cp', '$ville', '$courriel', '$tel', '$portable');");
+                                    VALUES (\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", $courriel, $tel, $portable);");
     return $resultat;
 }
 
