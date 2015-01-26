@@ -62,7 +62,7 @@
             ?>
 
             <script language="javascript">
-                window.opener.location = "ajoutAppel.php?id=<?php echo $nom ?>";
+                window.opener.location = window.opener.location + "?id=<?php echo $nom ?>";
                 window.self.close();
             </script>
 

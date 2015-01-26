@@ -54,7 +54,7 @@ function ajoutAtelier($date, $client, $formule, $typeProduit, $marqueProduit, $c
 function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, courriel, tel, portable)
-                                    VALUES (\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", $courriel, $tel, $portable);");
+                                    VALUES (\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable');");
     return $resultat;
 }
 
