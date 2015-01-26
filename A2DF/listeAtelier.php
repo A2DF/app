@@ -96,7 +96,11 @@
                 } else if ($traitement == 2) {
                     ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
                 } else if ($traitement == 3) {
-                    ?><td><img src='img/ball_green.png' title='Dépannage terminé'/></td><?php
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
+                } else if ($traitement == 4) {
+                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/bell.png" title="Client prévenu" onclick="return(confirm('Rendu au client ?'));"/></a></td><?php
+                } else if ($traitement == 5) {
+                    ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
                 } 
                 ?>
                 <?php
