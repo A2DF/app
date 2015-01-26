@@ -15,7 +15,7 @@ try {
 
 function listeAppel() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite
+    $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite, appel.commentaire
                                     FROM appel, client, personnel, priorite
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
@@ -111,6 +111,14 @@ function traiterAtelier($idAtelier, $etat) {
     $resultat = $connexion->query(" UPDATE atelier
                                     SET idTraitement = $etat + 1
                                     WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
+function commenterAppel($idAppel, $commentaire) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE appel
+                                    SET commentaire = \"$commentaire\"
+                                    WHERE idAppel = $idAppel;");
     return $resultat;
 }
 
