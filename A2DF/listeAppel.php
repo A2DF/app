@@ -80,8 +80,8 @@
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
                                                                                                                                                                     left=500, \n\
                                                                                                                                                                     top=150, \n\
-                                                                                                                                                                    width=500, \n\
-                                                                                                                                                                    height=190, \n\
+                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                    height=200, \n\
                                                                                                                                                                     scrollbars=no, \n\
                                                                                                                                                                     resizable=no, \n\
                                                                                                                                                                     dependant=yes')"/></a></td><?php
