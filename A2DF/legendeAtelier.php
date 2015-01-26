@@ -1,4 +1,21 @@
 <html>
+    <style type="text/css">
+        html {
+            font-family: Arial;
+            font-size: 15px;
+        }
+        legend {
+            color:#36AAE7;
+            font-weight:bold
+        }
+        fieldset {
+            font-family: Arial;
+            padding-bottom: 12px;
+            border:1px solid #DF3F3F;
+            border-color: #36AAE7;
+        }
+
+    </style>
     <meta charset="UTF-8">
     <fieldset>
         <legend>Etat</legend>
