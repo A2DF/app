@@ -90,7 +90,11 @@ header {
 * Images connexion
 */
 .imgco{
-z-index: 3;
+    z-index: 4;
+    float: right;
+    position: relative;
+    margin-right: 10px;
+    margin-top: 25px;
 }
 
 
