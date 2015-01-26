@@ -75,14 +75,20 @@
                     echo "<td>" . $portable . "</td>";
                     echo "<td>" . $personnel . "</td>";
                     echo "<td>" . $motif . "</td>";
-                    ?><td><a href="listeAppel.php?com=<?php echo $idAppel ?>"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php', 'search', '\
-                                                                                                                                                                left=500, \n\
-                                                                                                                                                                top=150, \n\
-                                                                                                                                                                width=450, \n\
-                                                                                                                                                                height=380, \n\
-                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                dependant=yes')"/></a></td><?php
+                    
+                    if ($commentaire == "") {
+                        ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
+                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                    width=500, \n\
+                                                                                                                                                                    height=190, \n\
+                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                    dependant=yes')"/></a></td><?php
+                    } else {
+                        echo "<td>" . $commentaire . "</td>";
+                    }
+                    
                     ?><td><a href="listeAppel.php?id=<?php echo $idAppel ?>"><img src='img/tick_light_blue.png' title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td><?php
                     echo "</tr>";
                 }
@@ -98,15 +104,8 @@
 
         <?php
         $id = filter_input(INPUT_GET, 'id');
-        $com = filter_input(INPUT_GET, 'com');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterAppel($id);
-            ?>
-            <script language="javascript">window.self.location = "listeAppel.php";</script>    
-            <?php
-        }
-        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($com > 0)) {
-            commenterAppel($com);
             ?>
             <script language="javascript">window.self.location = "listeAppel.php";</script>    
             <?php

@@ -31,12 +31,12 @@
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
             echo "<th id='date'>Date</th>";
+            echo "<th id='priorite'>Priorité</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='mdp'>MDP</th>";
             echo "<th id='commentaire'>Problème</th>";
             echo "<th id='formule'>Service</th>";
-            echo "<th id='priorite'>Priorité</th>";
             echo "<th id='delai'>Délai</th>";
             echo "<th id='traite'>Etat</th>";
             echo "</tr>";
@@ -60,17 +60,14 @@
                 
                 $dateConvert = date_create($dateEntree);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
-                    
-                //Affichage des données dans le tableau
-                echo "<tr>";
-                echo "<td>" . $dateFr . "</td>";
-                echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
-                echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
-                echo "<td>" . $mdpProduit . "</td>";
-                echo "<td>" . $probleme . "</td>";
-                echo "<td>" . $libelleFormule . "</td>";
                 
-                if ($priorite == "Urgent") {
+                if ($traitement < 5) {
+
+                    //Affichage des données dans le tableau
+                    echo "<tr>";
+                    echo "<td>" . $dateFr . "</td>";
+                    
+                    if ($priorite == "Urgent") {
                         echo "<td class='urgent'>" . $priorite . "</td>";
                     } else if ($priorite == "Important") {
                         echo "<td class='important'>" . $priorite . "</td>";
@@ -78,34 +75,42 @@
                         echo "<td class='normal'>" . $priorite . "</td>";
                     }
                     
-                $entree_date = date_create($dateEntree);
-                $diff = date_diff($today_date, $entree_date)->format('%a');
-                $duree = (int)$diff;
-                
-                if ($diff <= 0) {
-                echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
-                } else if ($diff == 1) {
-                echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
-                } else if ($diff == 2) {
-                echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
-                } else if ($diff >= 3) {
-                echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
+                    echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                    echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
+                    echo "<td>" . $mdpProduit . "</td>";
+                    echo "<td>" . $probleme . "</td>";
+                    echo "<td>" . $libelleFormule . "</td>";
+
+                    $entree_date = date_create($dateEntree);
+                    $diff = date_diff($today_date, $entree_date)->format('%a');
+                    $duree = (int)$diff;
+
+                    if ($diff <= 0) {
+                    echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
+                    } else if ($diff == 1) {
+                    echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
+                    } else if ($diff == 2) {
+                    echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
+                    } else if ($diff >= 3) {
+                    echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
+                    }
+
+                    if ($traitement == 1) {
+                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
+                    } else if ($traitement == 2) {
+                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                    } else if ($traitement == 3) {
+                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
+                    } else if ($traitement == 4) {
+                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/bell.png" title="Client prévenu" onclick="return(confirm('Rendu au client ?'));"/></a></td><?php
+                    } else if ($traitement == 5) {
+                        ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
+                    } 
+                    ?>
+                    <?php
+                    echo "</tr>";
+                                    
                 }
-                
-                if ($traitement == 1) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
-                } else if ($traitement == 2) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
-                } else if ($traitement == 3) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
-                } else if ($traitement == 4) {
-                    ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/bell.png" title="Client prévenu" onclick="return(confirm('Rendu au client ?'));"/></a></td><?php
-                } else if ($traitement == 5) {
-                    ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
-                } 
-                ?>
-                <?php
-                echo "</tr>";
             }
             echo "</table>";
             ?>

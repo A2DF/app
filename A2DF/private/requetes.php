@@ -58,6 +58,14 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
+function ajoutCommentaire($idAppel, $commentaire) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE appel
+                                    SET commentaire = \"$commentaire\"
+                                    WHERE idAppel = $idAppel;");
+    return $resultat;
+}
+
 function comboboxClient() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idClient, nom, prenom
@@ -111,14 +119,6 @@ function traiterAtelier($idAtelier, $etat) {
     $resultat = $connexion->query(" UPDATE atelier
                                     SET idTraitement = $etat + 1
                                     WHERE idAtelier = $idAtelier;");
-    return $resultat;
-}
-
-function commenterAppel($idAppel, $commentaire) {
-    global $connexion;
-    $resultat = $connexion->query(" UPDATE appel
-                                    SET commentaire = \"$commentaire\"
-                                    WHERE idAppel = $idAppel;");
     return $resultat;
 }
 
