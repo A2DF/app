@@ -170,7 +170,7 @@ table.sortable td {
     bottom: 0px;
     left: 80px;
     position:fixed;
-    z-index: 2;
+    z-index: 4;
 }
 
 #date {
