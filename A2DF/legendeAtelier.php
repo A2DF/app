@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td><img src="img/give_back.png" alt="logo" /></td>
-                <td>: Machine rendu au client</td>
+                <td>: Machine rendue au client</td>
             </tr>
         </table>
     </fieldset>
@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td><img src="img/prog_red.png" alt="logo" /></td>
-                <td>: Plus de 72h écoulées</td>
+                <td>: 72h écoulées (ou +)</td>
             </tr>
         </table>
     </fieldset>
