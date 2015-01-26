@@ -12,7 +12,7 @@
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <script src="lib/sorttable.js"></script>
-
+    <script type="text/javascript" src="lib/nhpup_1.1.js"></script>
     <body>
         <div class="ribbon-wrapper">
             <a  href="ajoutAtelier.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
@@ -25,6 +25,7 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
+            <div class="mousehover"<A HREF="#" onMouseOver=" openPopUp('legendeAtelier.php')" onMouseOut=" closePopUp('legendeAtelier.php')">Légende</A></div>
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";

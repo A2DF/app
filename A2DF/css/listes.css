@@ -317,3 +317,10 @@ table.sortable td {
     width: 100%;
     background-color: #f63a0f;
 }
+/*
+ * Mouse hover POPUP
+ */
+.mousehover {
+    float: right;
+    margin-top: -20px;
+}
