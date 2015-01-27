@@ -33,7 +33,7 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
-            <div class="mousehover"<A HREF="#" onMouseOver="openPopUp('legendeAtelier.php')" onMouseOut="closePopUp('legendeAtelier.php')">Légende</A></div>
+            <div class="mousehover"<A HREF="#" onMouseOver="openPopUp('infoAtelier.php')" onMouseOut="closePopUp('infoAtelier.php')">Légende</A></div>
             <div class="filtres">
             <form action='listeAtelier.php' method='POST' name='formFiltreClient'>
                 <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
