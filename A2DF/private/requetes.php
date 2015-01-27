@@ -20,7 +20,7 @@ function listeAppel() {
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
                                     AND appel.idPriorite = priorite.idPriorite
-                                    ORDER BY appel.date ASC;");
+                                    ORDER BY appel.date DESC;");
     return $resultat;
 }
 
@@ -32,7 +32,7 @@ function listeAtelier() {
                                     WHERE atelier.idClient = client.idClient
                                     AND atelier.idPriorite = priorite.idPriorite
                                     AND atelier.idFormule = formule.idFormule
-                                    ORDER BY atelier.dateEntree ASC;");
+                                    ORDER BY atelier.dateEntree DESC;");
     return $resultat;
 }
 
