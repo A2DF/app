@@ -390,3 +390,7 @@ table.sortable td {
     width:200px;
     height: 25px;
 }
+
+.filtres {
+    float: top;
+}

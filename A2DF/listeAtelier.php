@@ -34,6 +34,7 @@
         </div>
         <div class="tableaux">
             <div class="mousehover"<A HREF="#" onMouseOver="openPopUp('legendeAtelier.php')" onMouseOut="closePopUp('legendeAtelier.php')">Légende</A></div>
+            <div class="filtres">
             <form action='listeAtelier.php' method='POST' name='formFiltreClient'>
                 <select class="chosen-select" tabindex="2" name="client">
                     <option selected hidden value=''>Tous les clients</option>
@@ -64,6 +65,7 @@
                 </select>
                 <input type='submit' value='Valider'>
             </form>
+            </div>
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
