@@ -132,9 +132,9 @@ table.sortable td {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 0px;
+    width: 200px;
     height: 46px;
-    z-index: 0;
+    z-index: -1;
 }
 
 .ribbon-back-right {
@@ -144,7 +144,7 @@ table.sortable td {
     width: 50px;
     height: 46px;
     background-color: #36AAE7;	
-    z-index: 0;
+    z-index: -1;
 }
 
 /* Position du tableau */

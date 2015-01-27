@@ -36,6 +36,14 @@ function listeAtelier() {
     return $resultat;
 }
 
+function unClient($idClient) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, tel, portable
+                                    FROM client
+                                    WHERE idClient = $idClient");
+    return $resultat;
+}
+
 function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
@@ -54,6 +62,14 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, courriel, tel, portable)
                                     VALUES (\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable');");
+    return $resultat;
+}
+
+function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
+    global $connexion;
+    $resultat = $connexion->exec("  UPDATE client
+                                    SET nom = \"$nom\", prenom = \"$prenom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable'
+                                    WHERE idClient = $idClient;");
     return $resultat;
 }
 

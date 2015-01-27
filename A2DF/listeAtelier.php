@@ -115,7 +115,17 @@
                         echo "<td class='normal'>" . $priorite . "</td>";
                     }
 
-                    echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                    ?>
+                    <td onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                                            left=500, \n\
+                                            top=150, \n\
+                                            width=450, \n\
+                                            height=380, \n\
+                                            scrollbars=no, \n\
+                                            resizable=no, \n\
+                                            dependant=yes')"><?php echo $nomClient . " " . $prenomClient ?>
+                    </td>
+                    <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $mdpProduit . "</td>";
                     echo "<td>" . $probleme . "</td>";
