@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
     $mdpProduit_ = filter_input(INPUT_POST, "mdpProduit");
-    
+
     //Contrôle du champ probleme
     $probleme_temp = filter_input(INPUT_POST, "probleme");
     controleMotif($probleme_temp, $problemeErr, $probleme_, $erreurs);
@@ -68,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: listeAtelier.php');
     }
 }
-
 ?>
 
 <html>
@@ -188,7 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </table>
                     </fieldset>
                 </div>
-                
+
                 <div class="boxBas">
                     <fieldset>
                         <legend>Problème</legend>
@@ -227,7 +226,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
                 <script src="lib/chosen.jquery.js" type="text/javascript"></script>
-                <script src="js/ajoutClient.js" type="text/javascript"></script>
                 <script type="text/javascript">
                                     var config = {
                                         '.chosen-select': {},

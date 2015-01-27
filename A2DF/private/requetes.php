@@ -20,20 +20,19 @@ function listeAppel() {
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
                                     AND appel.idPriorite = priorite.idPriorite
-                                    ORDER BY appel.idAppel ASC;");
+                                    ORDER BY appel.date ASC;");
     return $resultat;
 }
 
-
 function listeAtelier() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT  atelier.idAtelier, atelier.dateEntree, client.nom AS nomClient, client.prenom AS prenomClient, formule.libelle AS libelleFormule, atelier.typeProduit, atelier.marqueProduit, 
+    $resultat = $connexion->query(" SELECT  atelier.idAtelier, atelier.dateEntree, atelier.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, formule.libelle AS libelleFormule, atelier.typeProduit, atelier.marqueProduit, 
                                             atelier.couleurProduit, atelier.mdpProduit, atelier.probleme, priorite.libelle AS libellePriorite, atelier.idTraitement
                                     FROM atelier, client, formule, priorite
                                     WHERE atelier.idClient = client.idClient
                                     AND atelier.idPriorite = priorite.idPriorite
                                     AND atelier.idFormule = formule.idFormule
-                                    ORDER BY atelier.idAtelier ASC;");
+                                    ORDER BY atelier.dateEntree ASC;");
     return $resultat;
 }
 
