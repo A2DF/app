@@ -13,7 +13,7 @@
         $filterEtat = filter_input(INPUT_POST, 'etat');
     } else {
         $filterClient = "";
-        $filterEtat = 0;
+        $filterEtat = 1;
     }
     ?>
 
@@ -36,7 +36,7 @@
             <div class="mousehover"<A HREF="#" onMouseOver="openPopUp('legendeAtelier.php')" onMouseOut="closePopUp('legendeAtelier.php')">Légende</A></div>
             <div class="filtres">
             <form action='listeAtelier.php' method='POST' name='formFiltreClient'>
-                <select class="chosen-select" tabindex="2" name="client">
+                <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
                     <option selected hidden value=''>Tous les clients</option>
                     <?php
                     $comboboxClient = comboboxClient();
@@ -52,18 +52,17 @@
                     }
                     ?></select>
 
-                <select class="chosen-select" tabindex="2" name="etat">
+                <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
                     <?php
                     if ($filterEtat < 1) {
-                        echo "<option value='0' selected>Tous les dépannages</option>";
                         echo "<option value='1'>Dépannages en cours</option>";
+                        echo "<option value='0' selected>Tous les dépannages</option>";
                     } else {
-                        echo "<option value='0'>Tous les dépannages</option>";
                         echo "<option value='1' selected>Dépannages en cours</option>";
+                        echo "<option value='0'>Tous les dépannages</option>";
                     }
                     ?>
                 </select>
-                <input type='submit' value='Valider'>
             </form>
             </div>
             <?php
