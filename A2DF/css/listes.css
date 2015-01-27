@@ -358,7 +358,8 @@ table.sortable td {
     text-align:center;
     text-shadow:1px 1px 0px #ffffff;
     float: right;
-    margin-top: -35px;
+    margin-top: -43px;
+    z-index: 4;
 }
 .mousehover:hover {
     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
@@ -392,5 +393,8 @@ table.sortable td {
 }
 
 .filtres {
-    float: top;
+    float: right;
+    margin-top: -40px;
+    margin-right: 95px;
+    z-index: 4;
 }
