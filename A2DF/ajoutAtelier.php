@@ -13,24 +13,28 @@ $erreurs = 0;
 //Initialisation des valeurs de champs
 $date_ = "";
 $client_ = "";
-$formule_ = "";
+$priorite_ = "";
 $typeProduit_ = "";
 $marqueProduit_ = "";
 $couleurProduit_ = "";
 $mdpProduit_ = "";
 $probleme_ = "";
-$priorite_ = "";
+$solution_ = "";
+$prix_= "";
+
 
 //Initialisation des messages d'erreur
 $dateErr = "";
 $clientErr = "";
-$formuleErr = "";
+$prioriteErr = "";
 $typeProduitErr = "";
 $marqueProduitErr = "";
 $couleurProduitErr = "";
 $mdpProduitErr = "";
 $problemeErr = "";
-$prioriteErr = "";
+$solutionErr = "";
+$prixErr = "";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -42,27 +46,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
 
-    //Contrôle du champ formule
-    $formule_temp = filter_input(INPUT_POST, "formule");
-    controleFormule($formule_temp, $formuleErr, $formule_, $erreurs);
+    //Contrôle du champ priorite
+    $priorite_temp = filter_input(INPUT_POST, "priorite");
+    controlePriorite($priorite_temp, $prioriteErr, $priorite_, $erreurs);
 
     $typeProduit_ = filter_input(INPUT_POST, "typeProduit");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
     $mdpProduit_ = filter_input(INPUT_POST, "mdpProduit");
-
-    //Contrôle du champ probleme
-    $probleme_temp = filter_input(INPUT_POST, "probleme");
-    controleMotif($probleme_temp, $problemeErr, $probleme_, $erreurs);
-
-    //Contrôle du champ priorite
-    $priorite_temp = filter_input(INPUT_POST, "priorite");
-    controlePriorite($priorite_temp, $prioriteErr, $priorite_, $erreurs);
+    $probleme_ = filter_input(INPUT_POST, "probleme");
+    $solution_ = filter_input(INPUT_POST, "solution");
+    $prix_ = filter_input(INPUT_POST, "prix");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "Appel"
-        ajoutAtelier($date_, $client_, $formule_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_, $priorite_);
+        ajoutAtelier($date_, $client_, $priorite_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_, $solution_, $prix_);
 
         //Redirection vers la liste des appels
         header('Location: listeAtelier.php');
@@ -133,23 +132,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         ?>
                                     </select>
                                 </td>
-
                             </tr>
                             <tr>
-                                <td class="label">Formule :</td>
-                                <td class="images"></td>
+                                <td class='label'>Priorité :</td>
+                                <td class='images'></td>
                                 <td>
-                                    <select class="chosen-select" name="formule" value='<?php echo $formule_ ?>'>
+                                    <select name="priorite" class="chosen-select" value='<?php echo $priorite_ ?>'>
                                         <option selected disabled hidden value=''></option>
                                         <?php
-                                        $comboboxFormule = comboboxFormule();
-                                        foreach ($comboboxFormule as $formule) {
-                                            $idForm = $formule['idFormule'];
-                                            $libelle = $formule['libelle'];
-                                            if ($idForm == $formule_) {
-                                                echo "<option value=" . $idForm . " selected>" . $libelle . "</option>";
+                                        $comboboxPriorite = comboboxPriorite();
+                                        foreach ($comboboxPriorite as $priorite) {
+                                            $idPrio = $priorite['idPriorite'];
+                                            $libelle = $priorite['libelle'];
+                                            if ($idPrio == $priorite_) {
+                                                echo "<option value=" . $idPrio . " selected>" . $libelle . "</option>";
                                             } else {
-                                                echo "<option value=" . $idForm . ">" . $libelle . "</option>";
+                                                echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
                                             }
                                         }
                                         ?>
@@ -219,34 +217,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </table>
                     </fieldset>
                 </div>
-
+                
                 <div class="boxBas">
                     <fieldset>
-                        <legend>Problème</legend>
+                        <legend>Devis</legend>
                         <table border="0">
                             <tr>
-                                <td colspan="3"><textarea name="probleme" rows="5"><?php echo $probleme_ ?></textarea></td>
+                                <td colspan="3"><textarea name="probleme" rows="5" placeholder="Problème"><?php echo $probleme_ ?></textarea></td>
                             </tr>
                             <tr>
-                                <td class='label'>Priorité :</td>
-                                <td class='images'></td>
-                                <td>
-                                    <select name="priorite" class="chosen-select" value='<?php echo $priorite_ ?>'>
-                                        <option selected disabled hidden value=''></option>
-                                        <?php
-                                        $comboboxPriorite = comboboxPriorite();
-                                        foreach ($comboboxPriorite as $priorite) {
-                                            $idPrio = $priorite['idPriorite'];
-                                            $libelle = $priorite['libelle'];
-                                            if ($idPrio == $priorite_) {
-                                                echo "<option value=" . $idPrio . " selected>" . $libelle . "</option>";
-                                            } else {
-                                                echo "<option value=" . $idPrio . ">" . $libelle . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </td>
+                                <td colspan="3"><textarea name="solution" rows="5" placeholder="Solution"><?php echo $solution_ ?></textarea></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Prix :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -291,14 +276,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($clientErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
-            }
-
-            if ($formuleErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $formuleErr . "<br />";
-            }
-
-            if ($problemeErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $problemeErr . "<br />";
             }
 
             if ($prioriteErr <> "") {

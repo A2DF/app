@@ -194,7 +194,7 @@ table.sortable td {
 }
 
 #commentaire {
-    width: 350px;
+    width: 250px;
     word-wrap: break-word;
     overflow: hidden;
 }
@@ -209,11 +209,11 @@ table.sortable td {
 }
 
 #produit {
-    width: 220px;
+    width: 250px;
 }
 
-#formule{
-    width: 200px;
+#prix{
+    width: 65px;
 }
 
 #mdp{

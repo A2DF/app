@@ -26,15 +26,15 @@ function listeAppel() {
 
 function listeAtelier() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT  atelier.idAtelier, atelier.dateEntree, atelier.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, 
-                                            formule.libelle AS libelleFormule, materiel.libelle AS typeProduit, marque.libelle AS marqueProduit, 
-                                            atelier.couleurProduit, atelier.mdpProduit, atelier.probleme, priorite.libelle AS libellePriorite, atelier.idTraitement
-                                    FROM atelier, client, priorite, materiel, marque, formule
+    $resultat = $connexion->query(" SELECT  atelier.idAtelier, atelier.dateEntree, atelier.idClient AS idClient, priorite.libelle AS libellePriorite, 
+                                            client.nom AS nomClient, client.prenom AS prenomClient, 
+                                            materiel.libelle AS typeProduit, marque.libelle AS marqueProduit, 
+                                            atelier.couleurProduit, atelier.mdpProduit, atelier.probleme, atelier.solution, atelier.prix, atelier.idTraitement
+                                    FROM atelier, client, priorite, materiel, marque
                                     WHERE atelier.idClient = client.idClient
                                     AND atelier.idPriorite = priorite.idPriorite
                                     AND atelier.typeProduit = materiel.idMateriel
                                     AND atelier.marqueProduit = marque.idMarque
-                                    AND atelier.idFormule = formule.idFormule
                                     ORDER BY atelier.idAtelier DESC;");
     return $resultat;
 }
@@ -72,10 +72,10 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     return $resultat;
 }
 
-function ajoutAtelier($date, $client, $formule, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $probleme, $priorite) {
+function ajoutAtelier($date, $client, $priorite, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $probleme, $solution, $prix) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idFormule, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idPriorite, idTraitement)
-                                    VALUES ('$date', '$client', '$formule', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$mdpProduit\", \"$probleme\", '$priorite', 1);");
+    $resultat = $connexion->exec("  INSERT INTO atelier (dateEntree, idClient, idPriorite, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, solution, prix, idTraitement)
+                                    VALUES ('$date', '$client', '$priorite', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$mdpProduit\", \"$probleme\", \"$solution\", \"$prix\", 1);");
     return $resultat;
 }
 

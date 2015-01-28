@@ -75,7 +75,8 @@
             echo "<th id='produit'>Produit</th>";
             echo "<th id='mdp'>MDP</th>";
             echo "<th id='commentaire'>Problème</th>";
-            echo "<th id='formule'>Service</th>";
+            echo "<th id='commentaire'>Solution</th>";
+            echo "<th id='prix'>Prix</th>";
             echo "<th id='delai'>Délai</th>";
             echo "<th id='traite'>Etat</th>";
             echo "</tr>";
@@ -86,16 +87,18 @@
                 //Récupération des données dans la base
                 $idAtelier = $atelier['idAtelier'];
                 $dateEntree = $atelier['dateEntree'];
+                $priorite = $atelier['libellePriorite'];
                 $idClient = $atelier['idClient'];
                 $nomClient = $atelier['nomClient'];
                 $prenomClient = $atelier['prenomClient'];
-                $libelleFormule = $atelier['libelleFormule'];
                 $typeProduit = $atelier['typeProduit'];
                 $marqueProduit = $atelier['marqueProduit'];
                 $couleurProduit = $atelier['couleurProduit'];
                 $mdpProduit = $atelier['mdpProduit'];
                 $probleme = $atelier['probleme'];
-                $priorite = $atelier['libellePriorite'];
+                $solution = $atelier['solution'];
+                $prix = $atelier['prix'];
+                
                 $traitement = $atelier['idTraitement'];
 
                 $dateConvert = date_create($dateEntree);
@@ -129,7 +132,8 @@
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $mdpProduit . "</td>";
                     echo "<td>" . $probleme . "</td>";
-                    echo "<td>" . $libelleFormule . "</td>";
+                    echo "<td>" . $solution . "</td>";
+                    echo "<td>" . $prix . "€</td>";
 
                     $entree_date = date_create($dateEntree);
                     $diff = date_diff($today_date, $entree_date)->format('%a');
