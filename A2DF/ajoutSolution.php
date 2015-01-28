@@ -5,22 +5,33 @@
 
     $id = filter_input(INPUT_GET, 'id');
 
-    $commentaire = "";
+    $solution = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $commentaire = filter_input(INPUT_POST, "commentaire");
+        $solution = filter_input(INPUT_POST, "solution");
 
         //Insertion des données dans la table
-        ajoutCommentaire($id, $commentaire);
+        modificationSolution($id, $solution);
         ?>
 
         <script language="javascript">
-            window.opener.location = "listeAppel.php";
+            window.opener.location = "listeAtelier.php";
             window.self.close();
         </script>
 
         <?php
+    } else {
+
+        $uneSolution = uneSolution($id);
+        foreach ($uneSolution as $soluce) {
+            $solution = $soluce['solution'];
+            if (isset($soluce['solution'])) {
+                $solution = $soluce['solution'];
+            } else {
+                $solution = "";
+            }
+        }
     }
     ?>
 
@@ -28,10 +39,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
         <link href="css/formulaires.css" rel="stylesheet" type="text/css">
-        <form method="post" action="ajoutCommentaire.php?id=<?php echo $id; ?>" autocomplete="off">
+        <form method="post" action="ajoutSolution.php?id=<?php echo $id; ?>" autocomplete="off">
             <fieldset>
-                <legend>Commentaire</legend>
-                <textarea name="commentaire" rows="5" maxlength='300'><?php echo $commentaire ?></textarea>
+                <legend>Solution</legend>
+                <textarea name="solution" rows="5" maxlength='300'><?php echo $solution ?></textarea>
                 <br />
             </fieldset>
             <br />

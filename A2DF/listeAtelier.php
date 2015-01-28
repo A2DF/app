@@ -35,35 +35,35 @@
         <div class="tableaux">
             <div class="mousehover"<A HREF="#" onMouseOver="openPopUp('infoAtelier.php')" onMouseOut="closePopUp('infoAtelier.php')">Légende</A></div>
             <div class="filtres">
-            <form action='listeAtelier.php' method='POST' name='formFiltreClient'>
-                <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
-                    <option selected hidden value=''>Tous les clients</option>
-                    <?php
-                    $comboboxClient = comboboxClient();
-                    foreach ($comboboxClient as $client) {
-                        $filterId = $client['idClient'];
-                        $filterNom = $client['nom'];
-                        $filterPrenom = $client['prenom'];
-                        if ($filterClient == $filterId) {
-                            echo "<option value=" . $filterId . " selected>" . $filterNom . " " . $filterPrenom . "</option>";
-                        } else {
-                            echo "<option value=" . $filterId . ">" . $filterNom . " " . $filterPrenom . "</option>";
+                <form action='listeAtelier.php' method='POST' name='formFiltreClient'>
+                    <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
+                        <option selected hidden value=''>Tous les clients</option>
+                        <?php
+                        $comboboxClient = comboboxClient();
+                        foreach ($comboboxClient as $client) {
+                            $filterId = $client['idClient'];
+                            $filterNom = $client['nom'];
+                            $filterPrenom = $client['prenom'];
+                            if ($filterClient == $filterId) {
+                                echo "<option value=" . $filterId . " selected>" . $filterNom . " " . $filterPrenom . "</option>";
+                            } else {
+                                echo "<option value=" . $filterId . ">" . $filterNom . " " . $filterPrenom . "</option>";
+                            }
                         }
-                    }
-                    ?></select>
+                        ?></select>
 
-                <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
-                    <?php
-                    if ($filterEtat < 1) {
-                        echo "<option value='1'>Dépannages en cours</option>";
-                        echo "<option value='0' selected>Tous les dépannages</option>";
-                    } else {
-                        echo "<option value='1' selected>Dépannages en cours</option>";
-                        echo "<option value='0'>Tous les dépannages</option>";
-                    }
-                    ?>
-                </select>
-            </form>
+                    <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
+                        <?php
+                        if ($filterEtat < 1) {
+                            echo "<option value='1'>Dépannages en cours</option>";
+                            echo "<option value='0' selected>Tous les dépannages</option>";
+                        } else {
+                            echo "<option value='1' selected>Dépannages en cours</option>";
+                            echo "<option value='0'>Tous les dépannages</option>";
+                        }
+                        ?>
+                    </select>
+                </form>
             </div>
             <?php
             //Affichage de la première ligne du tableau
@@ -99,7 +99,7 @@
                 $probleme = $atelier['probleme'];
                 $solution = $atelier['solution'];
                 $prix = $atelier['prix'];
-                
+
                 $traitement = $atelier['idTraitement'];
 
                 $dateConvert = date_create($dateEntree);
@@ -119,54 +119,63 @@
                     } else if ($priorite == "Normal") {
                         echo "<td class='normal'>" . $priorite . "</td>";
                     }
-
                     ?>
-                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " "?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>',   'search', '\
-                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                            height=380, \n\
-                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                            dependant=yes')"/>
+                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $mdpProduit . "</td>";
                     echo "<td>" . $probleme . "</td>";
-                    echo "<td>" . $solution . "</td>";
-                    echo "<td>" . $prix . "€</td>";
+                    echo "<td>" . $solution;
+                    ?>
+                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier la solution' onclick="window.open('ajoutSolution.php?id=<?php echo $idAtelier; ?>', 'search', '\
+                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                            width=520, \n\
+                                                                                                                                                                            height=200, \n\
+                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                            dependant=yes')"/></a>
+                                                    <?php
+                        echo "</td>";
+                        echo "<td>" . $prix . "€</td>";
 
-                    $entree_date = date_create($dateEntree);
-                    $diff = date_diff($today_date, $entree_date)->format('%a');
-                    $duree = (int) $diff;
+                        $entree_date = date_create($dateEntree);
+                        $diff = date_diff($today_date, $entree_date)->format('%a');
+                        $duree = (int) $diff;
 
-                    if ($diff <= 0) {
-                        echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
-                    } else if ($diff == 1) {
-                        echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
-                    } else if ($diff == 2) {
-                        echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
-                    } else if ($diff >= 3) {
-                        echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
-                    }
+                        if ($diff <= 0) {
+                            echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
+                        } else if ($diff == 1) {
+                            echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
+                        } else if ($diff == 2) {
+                            echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
+                        } else if ($diff >= 3) {
+                            echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
+                        }
 
-                    if ($traitement == 1) {
-                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
-                    } else if ($traitement == 2) {
-                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
-                    } else if ($traitement == 3) {
-                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
-                    } else if ($traitement == 4) {
-                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/bell.png" title="Client prévenu" onclick="return(confirm('Rendu au client ?'));"/></a></td><?php
-                    } else if ($traitement == 5) {
-                        ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
-                    }
-                        ?>
-                        <?php
-                        
-                        echo "<td id='print'><img src='img/printer.png' title='Imprimer la fiche atelier'/></td>";
-                        echo "</tr>";
+                        if ($traitement == 1) {
+                            ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
+                        } else if ($traitement == 2) {
+                            ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                            } else if ($traitement == 3) {
+                                ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
+                            } else if ($traitement == 4) {
+                                ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/bell.png" title="Client prévenu" onclick="return(confirm('Rendu au client ?'));"/></a></td><?php
+                            } else if ($traitement == 5) {
+                                ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
+                            }
+                            ?>
+                            <?php
+                            echo "<td id='print'><img src='img/printer.png' title='Imprimer la fiche atelier'/></td>";
+                            echo "</tr>";
                         }
                     }
                     echo "</table>";
@@ -177,31 +186,31 @@
                         return false;" alt="Retour haut de page">
         </a>
 
-        <?php
-        $id = filter_input(INPUT_GET, 'id');
-        $etat = filter_input(INPUT_GET, 'etat');
-        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
-            traiterAtelier($id, $etat);
-            ?>
+<?php
+$id = filter_input(INPUT_GET, 'id');
+$etat = filter_input(INPUT_GET, 'etat');
+if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+    traiterAtelier($id, $etat);
+    ?>
             <script language="javascript">
                 window.self.location = "listeAtelier.php";
             </script>
-            <?php
-        }
-        ?>
+    <?php
+}
+?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <script src="lib/chosen.jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
-            var config = {
-                '.chosen-select': {},
-                '.chosen-select-deselect': {allow_single_deselect: true},
-                '.chosen-select-no-single': {disable_search_threshold: 10},
-                '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
-                '.chosen-select-width': {width: "95%"}
-            }
-            for (var selector in config) {
-                $(selector).chosen(config[selector]);
-            }
+                var config = {
+                    '.chosen-select': {},
+                    '.chosen-select-deselect': {allow_single_deselect: true},
+                    '.chosen-select-no-single': {disable_search_threshold: 10},
+                    '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                    '.chosen-select-width': {width: "95%"}
+                }
+                for (var selector in config) {
+                    $(selector).chosen(config[selector]);
+                }
         </script>
         <script>
             var timeOut;

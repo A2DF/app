@@ -67,48 +67,48 @@
         $unClient = unClient($idClient);
         foreach ($unClient as $client) {
             $nom = $client['nom'];
-            
-            if(isset($client['prenom'])){
+
+            if (isset($client['prenom'])) {
                 $prenom = $client['prenom'];
             } else {
                 $prenom = "";
             }
-            
-            if(isset($client['adresse'])){
+
+            if (isset($client['adresse'])) {
                 $adresse = $client['adresse'];
             } else {
                 $adresse = "";
             }
-            
-            if(isset($client['cp'])){
+
+            if (isset($client['cp'])) {
                 $cp = $client['cp'];
             } else {
                 $cp = "";
             }
-            
-            if(isset($client['ville'])){
+
+            if (isset($client['ville'])) {
                 $ville = $client['ville'];
             } else {
                 $ville = "";
             }
-            
-            if(isset($client['courriel'])){
+
+            if (isset($client['courriel'])) {
                 $courriel = $client['courriel'];
             } else {
                 $courriel = "";
             }
-            
-            if(isset($client['tel'])){
+
+            if (isset($client['tel'])) {
                 $tel = $client['tel'];
             } else {
                 $tel = "";
             }
-            
-            if(isset($client['portable'])){
+
+            if (isset($client['portable'])) {
                 $portable = $client['portable'];
             } else {
                 $portable = "";
-            }   
+            }
         }
     }
     ?>

@@ -49,12 +49,20 @@ function listeCommande() {
                                     ORDER BY commande.idCommande DESC;");
     return $resultat;
 }
-    
-    function unClient($idClient) {
+
+function unClient($idClient) {
     global $connexion;
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, courriel, tel, portable
                                     FROM client
                                     WHERE idClient = $idClient");
+    return $resultat;
+}
+
+function uneSolution($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT solution
+                                    FROM atelier
+                                    WHERE idAtelier = $idAtelier");
     return $resultat;
 }
 
@@ -99,6 +107,14 @@ function ajoutCommentaire($idAppel, $commentaire) {
     $resultat = $connexion->query(" UPDATE appel
                                     SET commentaire = \"$commentaire\"
                                     WHERE idAppel = $idAppel;");
+    return $resultat;
+}
+
+function modificationSolution($idAtelier, $solution) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE atelier
+                                    SET solution = \"$solution\"
+                                    WHERE idAtelier = $idAtelier;");
     return $resultat;
 }
 

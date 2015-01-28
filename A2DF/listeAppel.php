@@ -78,13 +78,13 @@
                     
                     if ($commentaire == "") {
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
-                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                    width=520, \n\
-                                                                                                                                                                    height=200, \n\
-                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                    dependant=yes')"/></a></td><?php
+                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                width=520, \n\
+                                                                                                                                                                                height=200, \n\
+                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                dependant=yes')"/></a></td><?php
                     } else {
                         echo "<td>" . $commentaire . "</td>";
                     }
