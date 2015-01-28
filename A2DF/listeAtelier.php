@@ -116,14 +116,14 @@
                     }
 
                     ?>
-                    <td class="info" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                            left=500, \n\
-                                            top=150, \n\
-                                            width=450, \n\
-                                            height=380, \n\
-                                            scrollbars=no, \n\
-                                            resizable=no, \n\
-                                            dependant=yes')"><?php echo $nomClient . " " . $prenomClient ?>
+                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " "?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>',   'search', '\
+                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                            height=380, \n\
+                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                            dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
