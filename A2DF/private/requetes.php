@@ -52,7 +52,7 @@ function listeCommande() {
     
     function unClient($idClient) {
     global $connexion;
-    $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, tel, portable
+    $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, courriel, tel, portable
                                     FROM client
                                     WHERE idClient = $idClient");
     return $resultat;
