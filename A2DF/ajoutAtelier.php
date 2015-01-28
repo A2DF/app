@@ -166,13 +166,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <table border="0">
                             <tr>
                                 <td class="label">Type :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='typeProduit' value='<?php echo $typeProduit_ ?>'></td>
+                                <td class="images">
+                                <td>
+                                <select class="chosen-select" tabindex="2" name="client" value='<?php echo $typeProduit_ ?>'>
+                                        <option selected disabled hidden value=''></option>
+                                        <?php
+                                        $comboboxMateriel = comboboxMateriel();
+                                        foreach ($comboboxMateriel as $materiel) {
+                                            $idMate = $materiel['idMateriel'];
+                                            $libelleMateriel = $materiel['libelle'];
+                                            if ($idMate == $typeProduit_) {
+                                                echo "<option value=" . $idMate . " selected>" . $libelleMateriel . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idMate . ">" . $libelleMateriel . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="label">Marque :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='marqueProduit' value='<?php echo $marqueProduit_ ?>'></td>
+                                <td class="images">
+                                <td>
+                                <select class="chosen-select" tabindex="2" name="client" value='<?php echo $marqueProduit_ ?>'>
+                                        <option selected disabled hidden value=''></option>
+                                        <?php
+                                        $comboboxMarque = comboboxMarque();
+                                        foreach ($comboboxMarque as $marque) {
+                                            $idMarq = $marque['idMarque'];
+                                            $libelleMarque = $marque['libelle'];
+                                            if ($idMarq == $marqueProduit_) {
+                                                echo "<option value=" . $idMarq . " selected>" . $libelleMarque . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idMarq . ">" . $libelleMarque . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="label">Couleur :</td>

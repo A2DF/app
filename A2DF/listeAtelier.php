@@ -116,7 +116,7 @@
                     }
 
                     ?>
-                    <td onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                    <td class="info" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
                                             left=500, \n\
                                             top=150, \n\
                                             width=450, \n\

@@ -49,11 +49,12 @@
         }
 
         if ($erreurs === 0) {
-            //Insertion des données dans la table "Client"
+            //Modification des données dans la table "Client"
             modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable);
             ?>
 
             <script language="javascript">
+                window.opener.location = "listeAtelier.php";
                 window.self.close();
             </script>
 
@@ -112,11 +113,11 @@
     }
     ?>
 
-    <body onclick='fermer()'>
+    <body>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
         <link href="css/formulaires.css" rel="stylesheet" type="text/css">
-        <form method="post" action="infoClient.php" autocomplete="off">
+        <form method="post" action="infoClient.php?id=<?php echo $idClient ?>" autocomplete="off">
             <fieldset>
                 <legend>Coordonnées</legend>
                 <p>
@@ -153,7 +154,7 @@
                     <input type="tel" name="portable" value='<?php echo $portable ?>' pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
             </fieldset>
             <br />
-            <input type="submit" name="envoi" value="Enregistrer">
+            <input type="submit" value="Enregistrer">
             <input type='reset' value='Réinitialiser'>
             <img id="exit" src='img/cross.png' title='Fermer la fenêtre' onclick="window.self.close();"/>
         </p>

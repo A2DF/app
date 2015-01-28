@@ -89,6 +89,22 @@ function comboboxClient() {
     return $resultat;
 }
 
+function comboboxMateriel() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idMateriel, libelle
+                                    FROM materiel
+                                    ORDER BY materiel.libelle ASC;");
+    return $resultat;
+}
+
+function comboboxMarque() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idMarque, libelle
+                                    FROM marque
+                                    ORDER BY marque.libelle ASC;");
+    return $resultat;
+}
+
 function comboboxPersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idPersonnel, prenom 
