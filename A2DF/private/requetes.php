@@ -36,7 +36,16 @@ function listeAtelier() {
     return $resultat;
 }
 
-function unClient($idClient) {
+function listeCommande() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, commande.typeProduit, commande.marqueProduit, 
+                                            commande.couleurProduit, commande.prix, commande.idTraitement, commande.traite
+                                    FROM commande, client
+                                    WHERE commande.idClient = client.idClient");
+    return $resultat;
+}
+    
+    function unClient($idClient) {
     global $connexion;
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, tel, portable
                                     FROM client
