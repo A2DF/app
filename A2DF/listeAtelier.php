@@ -69,6 +69,7 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
+            echo "<th id='numero'>N°</th>";
             echo "<th id='date'>Date</th>";
             echo "<th id='priorite'>Priorité</th>";
             echo "<th id='client'>Client</th>";
@@ -108,6 +109,7 @@
 
                     //Affichage des données dans le tableau
                     echo "<tr>";
+                    echo "<td>" . $idAtelier . "</td>";
                     echo "<td>" . $dateFr . "</td>";
 
                     if ($priorite == "Urgent") {
@@ -162,6 +164,8 @@
                     }
                         ?>
                         <?php
+                        
+                        echo "<td id='print'><img src='img/printer.png' title='Imprimer la fiche atelier'/></td>";
                         echo "</tr>";
                         }
                     }

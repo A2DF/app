@@ -173,6 +173,10 @@ table.sortable td {
     z-index: 4;
 }
 
+#numero {
+    width: 50px;
+}
+
 #date {
     width: 120px;
 }
@@ -194,7 +198,7 @@ table.sortable td {
 }
 
 #commentaire {
-    width: 250px;
+    width: 235px;
     word-wrap: break-word;
     overflow: hidden;
 }
@@ -209,7 +213,7 @@ table.sortable td {
 }
 
 #produit {
-    width: 250px;
+    width: 235px;
 }
 
 #prix{
@@ -222,6 +226,10 @@ table.sortable td {
 
 #priorite {
     width: 80px;
+}
+
+#print {
+    width: 65px;
 }
 
 .urgent {
