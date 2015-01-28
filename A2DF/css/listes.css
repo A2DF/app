@@ -201,6 +201,7 @@ table.sortable td {
     width: 235px;
     word-wrap: break-word;
     overflow: hidden;
+    min-width: 200px;
 }
 
 #traite {

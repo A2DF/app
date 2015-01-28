@@ -182,10 +182,10 @@ function traiterAppel($idAppel) {
     return $resultat;
 }
 
-function traiterCommande($idCommande) {
+function traiterCommande($idCommande, $etat) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE commande
-                                    SET traite = 1
+                                    SET idTraitement = $etat + 1
                                     WHERE idCommande = $idCommande;");
     return $resultat;
 }

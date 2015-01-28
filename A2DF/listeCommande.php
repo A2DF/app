@@ -34,7 +34,7 @@
             echo "<th id='produit'>Produit</th>";
             echo "<th id='prix'>Prix TTC</th>";
             echo "<th id='acompte'>Acompte</th>";
-            echo "<th id='trait'>Statut</th>";
+            echo "<th id='traite'>Statut</th>";
             echo "<th id='traitement'>Paiement éffectué</th>";
             echo "</tr>";
 
@@ -65,43 +65,46 @@
                     echo "<tr>";
                     echo "<td>" . $dateFr . "</td>";
                     ?>
-                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " "?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>',   'search', '\
-                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                            height=380, \n\
-                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                            dependant=yes')"/>
+                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $prix . "€</td>";
                     echo "<td>" . $acompte . "€</td>";
-                                        if ($idTraitement == 1) {
-                        ?><td><a href="listeCommande.php?id=<?php echo $idAtelier ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
+                    
+                    if ($idTraitement == 1) {
+                        ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
                     } else if ($idTraitement == 2) {
-                        ?><td><a href="listeCommander.php?id=<?php echo $idAtelier ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
-                    } else if ($idTraitement == 3) {
-                        ?><td><a href="listeCommande.php?id=<?php echo $idAtelier ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
-                    } 
-                        ?>
-                        <?php
-                        echo "</tr>";
-                    ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>"><img src='img/tick_light_blue.png' title='Paiement effectué' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette commande ?'));"/></a></td><?php
-                    echo "</tr>";
-                }
-            }
+                        ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                            } else if ($idTraitement == 3) {
+                                ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>&etat=<?php echo $idTraitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
+                            }
+                            ?>
+                            <?php
+                            
+                            
+                            ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>">
+                                <img src='img/tick_light_blue.png' title='Paiement effectué' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette commande ?'));"/></a></td><?php
+                            echo "</tr>";
+                        }
+                    }
 
-            echo "</table>";
-            ?>
+                    echo "</table>";
+                    ?>
         </div>
 
-            <?php
-            $id = filter_input(INPUT_GET, 'id');
-            if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
-                traiterCommande($id);
-                ?>
+        <?php
+        $id = filter_input(INPUT_GET, 'id');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+            traiterCommande($id);
+            ?>
             <script language="javascript">window.self.location = "listeCommande.php";</script>    
             <?php
         }
