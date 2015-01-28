@@ -84,7 +84,7 @@ table.sortable td {
 .ribbon-edge-bottomleft,
 .ribbon-edge-bottomright {
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     border-style:solid;
     height:0px;
     width:0px;
@@ -390,11 +390,13 @@ table.sortable td {
     white-space: nowrap;
     width:200px;
     height: 25px;
+    z-index: 1;
+    
 }
 
 .filtres {
     float: right;
     margin-top: -40px;
     margin-right: 95px;
-    z-index: 4;
+    z-index: 1;
 }
