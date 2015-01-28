@@ -43,7 +43,7 @@ function listeCommande() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient as idClient, 
                                             client.nom AS nomClient, client.prenom AS prenomClient, commande.typeProduit, commande.marqueProduit, 
-                                            commande.couleurProduit, commande.prix, commande.idTraitement, commande.traite
+                                            commande.couleurProduit, commande.prix, commande.acompte, commande.idTraitement, commande.traite
                                     FROM commande, client
                                     WHERE client.idClient = commande.idClient
                                     ORDER BY commande.idCommande DESC;");
@@ -55,6 +55,13 @@ function listeCommande() {
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, tel, portable
                                     FROM client
                                     WHERE idClient = $idClient");
+    return $resultat;
+}
+
+function ajoutCommande($date, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $prix, $acompte) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO commande (date, idClient, typeProduit, marqueProduit, couleurProduit, prix, acompte)
+                                    VALUES ('$date', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit','$prix', '$acompte');");
     return $resultat;
 }
 

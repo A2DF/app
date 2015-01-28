@@ -12,24 +12,25 @@ $erreurs = 0;
 
 //Initialisation des valeurs de champs
 $dateCommande_ = "";
-$dateBonCommande_ = "";
 $client_ = "";
 $typeProduit_ = "";
 $marqueProduit_ = "";
 $couleurProduit_ = "";
 $prix_ = "";
-$commentaire_ = "";
+$acompte_="";
+$idTraitement_ = "";
+$traite_="";
 
 //Initialisation des messages d'erreur
 $dateCommandeErr = "";
-$dateBonCommandeErr = "";
 $clientErr = "";
-$formuleErr = "";
 $typeProduitErr = "";
 $marqueProduitErr = "";
 $couleurProduitErr = "";
 $prixErr = "";
-$commentaireErr = "";
+$acompteErr_="";
+$idTraiementErr_= "";
+$traiteErr_="";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //controleDate($date_temp, $dateCommandeErr, $dateCommande_, $erreurs);
     
     //Contrôle du champ date
-    $date_temp = filter_input(INPUT_POST, "dateBonCommande");
-    controleDate($date_temp, $dateBonCommandeErr, $dateBonCommande_, $erreurs);
+    $date_temp = filter_input(INPUT_POST, "dateCommande");
+    controleDate($date_temp, $dateCommandeErr, $dateCommande_, $erreurs);
 
     //Contrôle du champ client
     $client_temp = filter_input(INPUT_POST, "client");
@@ -52,12 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
 
     $prix_ = filter_input(INPUT_POST, "prix");
-    $commentaire_ = filter_input(INPUT_POST, "commentaire");
+    $acompte_ = filter_input(INPUT_POST, "acompte");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "Commande"
-        ajoutCommande($date_, $client_, $formule_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_, $priorite_);
+        ajoutCommande($dateCommande_, $client_, $typeProduit_, $marqueProduit_, $couleurProduit_, $prix_, $acompte_);
 
         //Redirection vers la liste des commandes
         header('Location: listeCommande.php');
@@ -89,13 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <legend>Informations</legend>
                         <table border="0">
                             <tr>
-                                <td class="label">Date bon de commande :</td>
+                                <td class="label">Date de commande :</td>
                                 <td class="images"></td>
-                                <?php
+                               <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='date' id='datepicker' value='<?php echo $dateBonCommande_ ?>' readonly></td>";
+                                    echo "<td><input type='text' name='dateCommande' id='datepicker' value='" . $dateCommande_ . "' readonly></td>";
                                 } else {
-                                    echo "<td><input type='text' name='date' id='datepicker' value='<?php echo $today_int ?>' readonly></td>";
+                                    echo "<td><input type='text' name='dateCommande' id='datepicker' value='" . $today_int . "' readonly></td>";
+                                        
                                 }
                                 ?>
                             </tr>
@@ -155,24 +157,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><input type='text' name='couleurProduit' value='<?php echo $couleurProduit_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Prix :</td>
+                                <td class="label">Prix TTC :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Acompte :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='acompte' value='<?php echo $acompte_ ?>'></td>
                             </tr>
                         </table>
                     </fieldset>
                 </div>
 
-                <div class="boxBas">
-                    <fieldset>
-                        <legend>Commentaire</legend>
-                        <table border="0">
-                            <tr>
-                                <td colspan="3"><textarea name="probleme" rows="5"><?php echo $commentaire_ ?></textarea></td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </div>
 
                 <div class="boutons">
                     <input type='reset' value='Effacer'>
@@ -213,10 +210,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($clientErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
-            }
-
-            if ($typeProduitErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $problemeErr . "<br />";
             }
             ?>
         </div>

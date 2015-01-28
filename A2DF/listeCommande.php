@@ -32,7 +32,9 @@
             echo "<th id='dateCommande'>Date commande</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
-            echo "<th id='prix'>Prix</th>";
+            echo "<th id='prix'>Prix TTC</th>";
+            echo "<th id='acompte'>Acompte</th>";
+            echo "<th id='trait'>Statut</th>";
             echo "<th id='traitement'>Paiement éffectué</th>";
             echo "</tr>";
 
@@ -50,9 +52,10 @@
                 $marqueProduit = $commande['marqueProduit'];
                 $couleurProduit = $commande['couleurProduit'];
                 $prix = $commande['prix'];
+                $acompte = $commande['acompte'];
                 $idTraitement = $commande['idTraitement'];
                 $traite = $commande['traite'];
-                $dateConvert = date_create($date);
+                $dateConvert = date_create($dateCommande);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
 
                 if ($traite == 0) {
@@ -60,11 +63,13 @@
 
                     //Affichage des données dans le tableau
                     echo "<tr>";
-                    echo "<td>" . $dateCommande . "</td>";
+                    echo "<td>" . $dateFr . "</td>";
                     echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $prix . "</td>";
+                    echo "<td>" . $acompte . "</td>";
                     echo "<td>" . $idTraitement . "</td>";
+                    echo "<td>" . $traite . "</td>";
                 }
             }
 
