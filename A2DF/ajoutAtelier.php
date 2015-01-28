@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Type :</td>
                                 <td class="images">
                                 <td>
-                                <select class="chosen-select" tabindex="2" name="client" value='<?php echo $typeProduit_ ?>'>
+                                    <select class="chosen-select" tabindex="2" name="typeProduit" value='<?php echo $typeProduit_ ?>'>
                                         <option selected disabled hidden value=''></option>
                                         <?php
                                         $comboboxMateriel = comboboxMateriel();
@@ -189,7 +189,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Marque :</td>
                                 <td class="images">
                                 <td>
-                                <select class="chosen-select" tabindex="2" name="client" value='<?php echo $marqueProduit_ ?>'>
+                                    <select class="chosen-select" tabindex="2" name="marqueProduit" value='<?php echo $marqueProduit_ ?>'>
                                         <option selected disabled hidden value=''></option>
                                         <?php
                                         $comboboxMarque = comboboxMarque();
@@ -308,4 +308,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </body>
 </html>
-
