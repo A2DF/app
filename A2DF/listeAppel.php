@@ -89,7 +89,10 @@
                         echo "<td>" . $commentaire . "</td>";
                     }
                     
-                    ?><td><a href="listeAppel.php?id=<?php echo $idAppel ?>"><img src='img/tick_light_blue.png' title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td><?php
+                    ?>
+                        <td><a href="listeAppel.php?id=<?php echo $idAppel ?>">
+                            <img <?php if($commentaire == "") { echo "src='img/tick_light_blue.png'"; } else { echo "src='img/time.png'"; } ?>title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
+                    <?php
                     echo "</tr>";
                 }
             }
