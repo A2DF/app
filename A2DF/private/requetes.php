@@ -58,10 +58,10 @@ function listeCommande() {
     return $resultat;
 }
 
-function ajoutCommande($date, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $prix, $acompte) {
+function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $prix, $acompte) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO commande (date, idClient, typeProduit, marqueProduit, couleurProduit, prix, acompte)
-                                    VALUES ('$date', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit','$prix', '$acompte');");
+    $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, prix, acompte)
+                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit','$prix', '$acompte');");
     return $resultat;
 }
 
@@ -163,6 +163,14 @@ function traiterAppel($idAppel) {
     $resultat = $connexion->query(" UPDATE appel
                                     SET traite = 1
                                     WHERE idAppel = $idAppel;");
+    return $resultat;
+}
+
+function traiterCommande($idCommande) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE commande
+                                    SET traite = 1
+                                    WHERE idCommande = $idCommande;");
     return $resultat;
 }
 
