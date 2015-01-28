@@ -41,10 +41,12 @@ function listeAtelier() {
 
 function listeCommande() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, commande.typeProduit, commande.marqueProduit, 
+    $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient as idClient, 
+                                            client.nom AS nomClient, client.prenom AS prenomClient, commande.typeProduit, commande.marqueProduit, 
                                             commande.couleurProduit, commande.prix, commande.idTraitement, commande.traite
                                     FROM commande, client
-                                    WHERE commande.idClient = client.idClient");
+                                    WHERE client.idClient = commande.idClient
+                                    ORDER BY commande.idCommande DESC;");
     return $resultat;
 }
     
