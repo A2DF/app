@@ -69,7 +69,7 @@ function uneSolution($idAtelier) {
 function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $quantite, $prix, $acompte) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, quantite, prix, acompte)
-                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit', '$quantite', '$prix', '$acompte');");
+                                    VALUES ('$dateCommande', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", '$quantite', '$prix', '$acompte');");
     return $resultat;
 }
 
@@ -182,6 +182,14 @@ function traiterAppel($idAppel) {
     return $resultat;
 }
 
+function payerCommande($idCommande) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE commande
+                                    SET traite = 1
+                                    WHERE idCommande = $idCommande;");
+    return $resultat;
+}
+
 function traiterCommande($idCommande, $etat) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE commande
@@ -195,6 +203,14 @@ function traiterAtelier($idAtelier, $etat) {
     $resultat = $connexion->query(" UPDATE atelier
                                     SET idTraitement = $etat + 1
                                     WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
+function ajoutDateBonCommande($idCommande, $today_int) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE commande
+                                    SET dateBonCommande = '$today_int'
+                                    WHERE idCommande = $idCommande;");
     return $resultat;
 }
 

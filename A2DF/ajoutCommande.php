@@ -49,6 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
 
+        //Contrôle du champ quantite
+    $quantite_temp = filter_input(INPUT_POST, "quantite");
+    controleQuantite($quantite_temp, $quantiteErr, $quantite_, $erreurs);
+    
     $typeProduit_ = filter_input(INPUT_POST, "typeProduit");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
@@ -160,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Quantité :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='quantite' value='<?php echo $quantite_ ?>'></td>
+                                <td><input type='number' name='quantite' value='<?php echo $quantite_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Prix TTC :</td>
@@ -216,6 +220,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($clientErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
+            }
+            
+            if ($quantiteErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
             }
             ?>
         </div>

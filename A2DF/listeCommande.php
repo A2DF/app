@@ -25,11 +25,15 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
+            
+            
+            
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='dateCommande'>Date commande</th>";
+            echo "<th id='dateCommande'>Date de commande</th>";
+            echo "<th id='dateBonCommande'>Date bon de commande</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='quantite'>Quantité</th>";
@@ -59,29 +63,36 @@
                 $traite = $commande['traite'];
                 $dateConvert = date_create($dateCommande);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
+                $dateConverter = date_create($dateBonCommande);
+                $dateFrBon = date_format($dateConverter, 'd/m/Y');
 
-                if ($traite == 0) {
+                if ($dateBonCommande == 0000-00-00) {
+                    $dateFrBon = "";
+                }
+
+                if ($idTraitement < 2) {
 
 
                     //Affichage des données dans le tableau
                     echo "<tr>";
                     echo "<td>" . $dateFr . "</td>";
+                    echo "<td>" . $dateFrBon . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                                            height=380, \n\
+                                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                                            dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>x" . $quantite . "</td>";
                     echo "<td>" . $prix . "€</td>";
                     echo "<td>" . $acompte . "€</td>";
-                    
+
                     if ($idTraitement == 0) {
                         ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>&etat=<?php echo $idTraitement ?>"><INPUT type="button" name="nom" value="Non commandée" onclick="return(confirm('La commande a été passée ?'));"/></a></td><?php
                     } else if ($idTraitement == 1) {
@@ -91,11 +102,14 @@
                             }
                             ?>
                             <?php
-                            echo "</td>";
-                            
-                            ?><td><a href="listeCommande.php?id_=<?php echo $idCommande ?>">
-                                <img src='img/tick_light_blue.png' title='Paiement effectué' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette commande ?'));"/></a></td><?php
-                            echo "</tr>";
+                            if ($traite == 0) {
+                                ?><td><a href="listeCommande.php?id_=<?php echo $idCommande ?>">
+                                <img src='img/coins_in_hand.png' title='Valider le paiement' onclick="return(confirm('La commande a t-elle été réglée ?'));"/></a></td><?php
+                    echo "</tr>";
+                } else if ($traite == 1) {
+                                ?><td><img src='img/tick_circle_frame.png' title='Paiement effectué'/></a></td><?php
+                                echo "</tr>";
+                            }
                         }
                     }
 
@@ -108,6 +122,19 @@
         $etat = filter_input(INPUT_GET, 'etat');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterCommande($id, $etat);
+            //if($etat==1){
+            ajoutDateBonCommande($id, $today_int);
+
+            //}
+            ?>
+            <script language="javascript">window.self.location = "listeCommande.php";</script>    
+            <?php
+        }
+        ?>
+        <?php
+        $id_ = filter_input(INPUT_GET, 'id_');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
+            payerCommande($id_);
             ?>
             <script language="javascript">window.self.location = "listeCommande.php";</script>    
             <?php

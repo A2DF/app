@@ -54,7 +54,7 @@
             ?>
 
             <script language="javascript">
-                window.opener.location = "listeAtelier.php";
+                window.opener.location=window.opener.location+"";
                 window.self.close();
             </script>
 

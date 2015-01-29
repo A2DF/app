@@ -233,6 +233,9 @@ table.sortable td {
     width: 65px;
 }
 
+#dateBonCommande {
+    width: 120px;
+}
 .urgent {
     color: red;
 }
