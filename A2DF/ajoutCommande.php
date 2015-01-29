@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
 
-
     $typeProduit_ = filter_input(INPUT_POST, "typeProduit");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");

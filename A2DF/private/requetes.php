@@ -69,7 +69,7 @@ function uneSolution($idAtelier) {
 function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $quantite, $prix, $acompte) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, quantite, prix, acompte)
-                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit', '$quantite', $prix', '$acompte');");
+                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit', '$quantite', '$prix', '$acompte');");
     return $resultat;
 }
 

@@ -93,7 +93,7 @@
                             <?php
                             echo "</td>";
                             
-                            ?><td><a href="listeCommande.php?id=<?php echo $idCommande ?>">
+                            ?><td><a href="listeCommande.php?id_=<?php echo $idCommande ?>">
                                 <img src='img/tick_light_blue.png' title='Paiement effectué' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette commande ?'));"/></a></td><?php
                             echo "</tr>";
                         }
