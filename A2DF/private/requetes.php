@@ -43,7 +43,7 @@ function listeCommande() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient as idClient, 
                                             client.nom AS nomClient, client.prenom AS prenomClient, commande.typeProduit, commande.marqueProduit, 
-                                            commande.couleurProduit, commande.prix, commande.acompte, commande.idTraitement, commande.traite
+                                            commande.couleurProduit, commande.quantite, commande.prix, commande.acompte, commande.idTraitement, commande.traite
                                     FROM commande, client
                                     WHERE client.idClient = commande.idClient
                                     ORDER BY commande.idCommande DESC;");
@@ -66,10 +66,10 @@ function uneSolution($idAtelier) {
     return $resultat;
 }
 
-function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $prix, $acompte) {
+function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $quantite, $prix, $acompte) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, prix, acompte)
-                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit','$prix', '$acompte');");
+    $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, quantite, prix, acompte)
+                                    VALUES ('$dateCommande', '$idClient', '$typeProduit', '$marqueProduit', '$couleurProduit', '$quantite', $prix', '$acompte');");
     return $resultat;
 }
 

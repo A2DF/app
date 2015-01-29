@@ -16,6 +16,7 @@ $client_ = "";
 $typeProduit_ = "";
 $marqueProduit_ = "";
 $couleurProduit_ = "";
+$quantite_="";
 $prix_ = "";
 $acompte_="";
 $idTraitement_ = "";
@@ -27,6 +28,7 @@ $clientErr = "";
 $typeProduitErr = "";
 $marqueProduitErr = "";
 $couleurProduitErr = "";
+$quantiteErr = "";
 $prixErr = "";
 $acompteErr_="";
 $idTraiementErr_= "";
@@ -51,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $typeProduit_ = filter_input(INPUT_POST, "typeProduit");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
-
+    $quantite_ = filter_input(INPUT_POST, "quantite");
     $prix_ = filter_input(INPUT_POST, "prix");
     $acompte_ = filter_input(INPUT_POST, "acompte");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "Commande"
-        ajoutCommande($dateCommande_, $client_, $typeProduit_, $marqueProduit_, $couleurProduit_, $prix_, $acompte_);
+        ajoutCommande($dateCommande_, $client_, $typeProduit_, $marqueProduit_, $couleurProduit_,$quantite_, $prix_, $acompte_);
 
         //Redirection vers la liste des commandes
         header('Location: listeCommande.php');
@@ -155,6 +157,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Couleur :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='couleurProduit' value='<?php echo $couleurProduit_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Quantité :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='quantite' value='<?php echo $quantite_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Prix TTC :</td>
