@@ -58,9 +58,25 @@ function unClient($idClient) {
     return $resultat;
 }
 
+function unProbleme($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT probleme
+                                    FROM atelier
+                                    WHERE idAtelier = $idAtelier");
+    return $resultat;
+}
+
 function uneSolution($idAtelier) {
     global $connexion;
     $resultat = $connexion->query(" SELECT solution
+                                    FROM atelier
+                                    WHERE idAtelier = $idAtelier");
+    return $resultat;
+}
+
+function unPrix($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT prix
                                     FROM atelier
                                     WHERE idAtelier = $idAtelier");
     return $resultat;
@@ -110,10 +126,26 @@ function ajoutCommentaire($idAppel, $commentaire) {
     return $resultat;
 }
 
+function modificationProbleme($idAtelier, $probleme) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE atelier
+                                    SET probleme = \"$probleme\"
+                                    WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
 function modificationSolution($idAtelier, $solution) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE atelier
                                     SET solution = \"$solution\"
+                                    WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
+function modificationPrix($idAtelier, $prix) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE atelier
+                                    SET prix = \"$prix\"
                                     WHERE idAtelier = $idAtelier;");
     return $resultat;
 }

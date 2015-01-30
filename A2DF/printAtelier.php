@@ -1,4 +1,5 @@
 <?php
+
 setlocale(LC_CTYPE, 'fr_FR.UTF-8');
 date_default_timezone_set('UTC');
 require('lib/fpdf.php');
@@ -57,6 +58,7 @@ $border = 0;
 $width = 127;
 $pdf = new FPDF('L', 'mm', 'A4');
 $pdf->AddPage();
+$pdf->SetAutoPageBreak(1, 5);
 $pdf->Ln(5);
 
 $pdf->SetFont('Arial', 'B', 16);
@@ -124,17 +126,77 @@ $pdf->SetFont('Arial', '', 14);
 $pdf->Cell($width, 10, 'Mot de passe : ' . iconv('UTF-8', 'ISO-8859-15', $mdpProduit), $border);
 $pdf->Ln(9);
 
-$pdf->SetFont('Arial', '', 14);
-$pdf->MultiCell($width, 6, 'Probleme : ' . iconv('UTF-8', 'ISO-8859-15', $probleme), $border);
-$pdf->Ln(1);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+
+$pdf->SetXY($x, $y);
 
 $pdf->SetFont('Arial', '', 14);
-$pdf->MultiCell($width, 6, 'Solution : ' . iconv('UTF-8', 'ISO-8859-15', $solution), $border);
+if ($probleme <> "") {
+    $pdf->MultiCell($width, 6, 'Probleme : ' . iconv('UTF-8', 'ISO-8859-15', $probleme), $border);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+    $pdf->Cell(23, 10, '', $border, 0);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+} else {
+    $pdf->MultiCell($width, 6, 'Probleme : ........................................................................ '
+            . '...........................................................................................'
+            . '...........................................................................................', $border);
+}
+
+$pdf->SetXY($x, $y + 20);
+
+$pdf->SetFont('Arial', '', 14);
+if ($solution <> "") {
+    $pdf->MultiCell($width, 6, 'Solution : ' . iconv('UTF-8', 'ISO-8859-15', $solution), $border);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+    $pdf->Cell(23, 10, '', $border, 0);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+} else {
+    $pdf->MultiCell($width, 6, 'Solution : ........................................................................... '
+            . '...........................................................................................'
+            . '...........................................................................................', $border);
+}
+
+$pdf->SetXY($x + 150, $y);
+
+$pdf->SetFont('Arial', '', 14);
+if ($probleme <> "") {
+    $pdf->MultiCell($width, 6, 'Probleme : ' . iconv('UTF-8', 'ISO-8859-15', $probleme), $border);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+} else {
+    $pdf->MultiCell($width, 6, 'Probleme : ........................................................................ '
+            . '...........................................................................................'
+            . '...........................................................................................', $border);
+}
+
+$pdf->Ln(1);
+
+$pdf->SetXY($x + 150, $y + 20);
+
+$pdf->SetFont('Arial', '', 14);
+if ($solution <> "") {
+    $pdf->MultiCell($width, 6, 'Solution : ' . iconv('UTF-8', 'ISO-8859-15', $solution), $border);
+    $pdf->SetFont('Arial', '', 14);
+    $pdf->Cell($width, 10, '...........................................................................................', $border);
+} else {
+    $pdf->MultiCell($width, 6, 'Solution : ........................................................................... '
+            . '...........................................................................................'
+            . '...........................................................................................', $border);
+}
 $pdf->Ln(6);
+
+$pdf->SetXY($x, $y + 45);
 
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell($width, 10, 'Prix : ' . $prix . iconv('UTF-8', 'ISO-8859-15', ' euros'), 1, 0, 'C');
-$pdf->Cell(23, 10, '', $border, 0);
+
+$pdf->SetXY($x + 150, $y + 45);
+
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell($width, 10, 'Prix : ' . $prix . iconv('UTF-8', 'ISO-8859-15', ' euros'), 1, 0, 'C');
 $pdf->Ln(14);
@@ -165,10 +227,10 @@ $pdf->Cell($width, 10, '2 rue des claircontres 44330 LE PALLET', $border, 0, 'C'
 $pdf->Ln(5);
 
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell($width, 10, '02 40 97 29 61 - www.a2dfinformatique.com', $border, 0, 'C');
+$pdf->Cell($width, 10, '02 40 97 29 61 - contact@a2dfinformatique.com', $border, 0, 'C');
 $pdf->Cell(23, 10, '', $border, 0);
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell($width, 10, '02 40 97 29 61 - www.a2dfinformatique.com', $border, 0, 'C');
+$pdf->Cell($width, 10, '02 40 97 29 61 - contact@a2dfinformatique.com', $border, 0, 'C');
 
 $pdf->Line(148.5, 0, 148.5, 220);
 

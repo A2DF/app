@@ -132,8 +132,18 @@
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
                     echo "<td>" . $mdpProduit . "</td>";
-                    echo "<td>" . $probleme . "</td>";
-                    echo "<td>" . $solution;
+                    echo "<td>" . $probleme;
+                    ?>
+                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le problème' onclick="window.open('ajoutProbleme.php?id=<?php echo $idAtelier; ?>', 'search', '\
+                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                            width=520, \n\
+                                                                                                                                                                            height=200, \n\
+                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                            dependant=yes')"/></a>
+                    <?php
+                    echo "</td><td>" . $solution;
                     ?>
                     <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier la solution' onclick="window.open('ajoutSolution.php?id=<?php echo $idAtelier; ?>', 'search', '\
                                                                                                                                                                             left=500, \n\
@@ -143,9 +153,21 @@
                                                                                                                                                                             scrollbars=no, \n\
                                                                                                                                                                             resizable=no, \n\
                                                                                                                                                                             dependant=yes')"/></a>
+                    
                                                     <?php
                         echo "</td>";
-                        echo "<td>" . $prix . "€</td>";
+                        echo "<td>" . $prix . "€";
+                        ?>
+                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le prix' onclick="window.open('ajoutPrix.php?id=<?php echo $idAtelier; ?>', 'search', '\
+                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                            width=520, \n\
+                                                                                                                                                                            height=200, \n\
+                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                            dependant=yes')"/></a>
+                    <?php
+                    echo "</td>";
 
                         $entree_date = date_create($dateEntree);
                         $diff = date_diff($today_date, $entree_date)->format('%a');
@@ -173,8 +195,9 @@
                                 ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
                             }
                             ?>
+                            <td id='print'><a target=_blank href="printAtelier.php?id=<?php echo $idAtelier ?>"><img src='img/printer.png' title='Imprimer la fiche atelier'/></a></td>
                             <?php
-                            echo "<td id='print'><img src='img/printer.png' title='Imprimer la fiche atelier'/></td>";
+                            
                             echo "</tr>";
                         }
                     }
