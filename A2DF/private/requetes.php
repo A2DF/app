@@ -35,7 +35,7 @@ function listeAtelier() {
                                     AND atelier.idPriorite = priorite.idPriorite
                                     AND atelier.typeProduit = materiel.idMateriel
                                     AND atelier.marqueProduit = marque.idMarque
-                                    ORDER BY atelier.idAtelier DESC;");
+                                    ORDER BY atelier.idTraitement ASC;");
     return $resultat;
 }
 
