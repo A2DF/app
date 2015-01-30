@@ -39,10 +39,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
         <link href="css/formulaires.css" rel="stylesheet" type="text/css">
-        <form method="post" action="ajoutSolution.php?id=<?php echo $id; ?>" autocomplete="off">
+        <form method="post" action="ajoutSolution.php?id=<?= $id ?>" autocomplete="off">
             <fieldset>
                 <legend>Solution</legend>
-                <textarea name="solution" rows="5" maxlength='300'><?php echo $solution ?></textarea>
+                <textarea name="solution" rows="5" maxlength='300'><?= $solution ?></textarea>
                 <br />
             </fieldset>
             <br />

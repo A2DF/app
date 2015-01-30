@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images">
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="typeProduit" value='<?php echo $typeProduit_ ?>'>
-                                        <option selected disabled hidden value=''></option>
+                                        <option selected value='10'></option>
                                         <?php
                                         $comboboxMateriel = comboboxMateriel();
                                         foreach ($comboboxMateriel as $materiel) {
@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images">
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="marqueProduit" value='<?php echo $marqueProduit_ ?>'>
-                                        <option selected disabled hidden value=''></option>
+                                        <option selected value='443'></option>
                                         <?php
                                         $comboboxMarque = comboboxMarque();
                                         foreach ($comboboxMarque as $marque) {
