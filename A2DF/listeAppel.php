@@ -5,9 +5,16 @@
     include ('private/requetes.php');
 
     date_default_timezone_set('UTC');
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $filterEtat = filter_input(INPUT_POST, 'etat');
+    } else {
+        $filterEtat = 1;
+    }
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
+    <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
     <body>
@@ -22,6 +29,21 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
+            <div class="filtres">
+                <form action='listeAppel.php' method='POST' name='formFiltreClient'>
+                    <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
+                        <?php
+                        if ($filterEtat < 1) {
+                            echo "<option value='1'>Appels en cours</option>";
+                            echo "<option value='0' selected>Tous les appels</option>";
+                        } else {
+                            echo "<option value='1' selected>Appels en cours</option>";
+                            echo "<option value='0'>Tous les appels</option>";
+                        }
+                        ?>
+                    </select>
+                </form>
+            </div>
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
@@ -54,7 +76,7 @@
                 $traite = $appel['traite'];
                 $commentaire = $appel['commentaire'];
 
-                if ($traite == 0) {
+                if (($traite < 1) || ($filterEtat == 0)) {
 
                     $dateConvert = date_create($date);
                     $dateFr = date_format($dateConvert, 'd/m/Y');
@@ -75,30 +97,39 @@
                     echo "<td>" . $portable . "</td>";
                     echo "<td>" . $personnel . "</td>";
                     echo "<td>" . $motif . "</td>";
-                    
+
                     if ($commentaire == "") {
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
-                                                                                                                                                                                left=500, \n\
-                                                                                                                                                                                top=150, \n\
-                                                                                                                                                                                width=520, \n\
-                                                                                                                                                                                height=200, \n\
-                                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                                dependant=yes')"/></a></td><?php
-                    } else {
-                        echo "<td>" . $commentaire . "</td>";
+                                                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                                                        width=520, \n\
+                                                                                                                                                                                                        height=200, \n\
+                                                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                                                        dependant=yes')"/></a></td><?php
+                        } else {
+                            echo "<td>" . $commentaire . "</td>";
+                        }
+                        ?>
+                    <td><a href="listeAppel.php?id=<?php echo $idAppel ?>">
+                            <img <?php
+                            if ($traite == 0){
+                                if ($commentaire == "") {
+                                    echo "src='img/tick_light_blue.png'";
+                                } else {
+                                    echo "src='img/time.png'";
+                                }
+                            } else {
+                                echo "src='img/give_back.png'";
+                            }
+                            ?>title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
+                        <?php
+                        echo "</tr>";
                     }
-                    
-                    ?>
-                        <td><a href="listeAppel.php?id=<?php echo $idAppel ?>">
-                            <img <?php if($commentaire == "") { echo "src='img/tick_light_blue.png'"; } else { echo "src='img/time.png'"; } ?>title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
-                    <?php
-                    echo "</tr>";
                 }
-            }
 
-            echo "</table>";
-            ?>
+                echo "</table>";
+                ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
@@ -114,7 +145,20 @@
             <?php
         }
         ?>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+        <script src="lib/chosen.jquery.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': {allow_single_deselect: true},
+                '.chosen-select-no-single': {disable_search_threshold: 10},
+                '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                '.chosen-select-width': {width: "95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+        </script>
         <script>
             var timeOut;
             function backtotop() {
