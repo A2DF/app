@@ -20,6 +20,16 @@ function controleQuantite(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
+function controlePrix(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez choisir un prix";
+        $erreurs++;
+        $champ = "";
+    } else {
+        $champ = $champ_temp;
+    }
+}
+
 function controleClient(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez choisir un client";

@@ -48,7 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Contrôle du champ client
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
-
+    
+    $prix_temp = filter_input(INPUT_POST, "prix");
+    controlePrix($prix_temp, $prixErr, $prix_, $erreurs);
         //Contrôle du champ quantite
     $quantite_temp = filter_input(INPUT_POST, "quantite");
     controleQuantite($quantite_temp, $quantiteErr, $quantite_, $erreurs);
@@ -57,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
     $quantite_ = filter_input(INPUT_POST, "quantite");
-    $prix_ = filter_input(INPUT_POST, "prix");
     $acompte_ = filter_input(INPUT_POST, "acompte");
 
     if ($erreurs === 0) {
@@ -224,6 +225,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($quantiteErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
+            }
+            if ($prixErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
             }
             ?>
         </div>
