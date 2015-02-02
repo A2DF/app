@@ -121,13 +121,13 @@
                     }
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                                            height=380, \n\
+                                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                                            dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -135,51 +135,62 @@
                     echo "<td>" . $probleme;
                     ?>
                     <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le problème' onclick="window.open('ajoutProbleme.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                            dependant=yes')"/></a>
-                    <?php
-                    echo "</td><td>" . $solution;
-                    ?>
-                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier la solution' onclick="window.open('ajoutSolution.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                            dependant=yes')"/></a>
-                    
-                                                    <?php
-                        echo "</td>";
-                        echo "<td>" . $prix . "€";
+                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                                    height=200, \n\
+                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                    dependant=yes')"/></a>
+                        <?php
+                        echo "</td><td>" . $solution;
                         ?>
-                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le prix' onclick="window.open('ajoutPrix.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                            dependant=yes')"/></a>
+                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier la solution' onclick="window.open('ajoutSolution.php?id=<?php echo $idAtelier; ?>', 'search', '\
+                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                                    height=200, \n\
+                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                    dependant=yes')"/></a>
+
                     <?php
                     echo "</td>";
+                    echo "<td>" . $prix . "€";
+                    ?>
+                    <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le prix' onclick="window.open('ajoutPrix.php?id=<?php echo $idAtelier; ?>', 'search', '\
+                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                                    height=200, \n\
+                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                    dependant=yes')"/></a>
+                        <?php
+                        echo "</td>";
 
                         $entree_date = date_create($dateEntree);
                         $diff = date_diff($today_date, $entree_date)->format('%a');
-                        $duree = (int) $diff;
 
-                        if ($diff <= 0) {
+                        $interval = $today_date->diff($entree_date);
+                        $days = $interval->days;
+                        $period = new DatePeriod($entree_date, new DateInterval('P1D'), $today_date);
+                        
+                        foreach ($period as $dt) {
+                            $curr = $dt->format('D');
+
+                            if ($curr == 'Sat' || $curr == 'Sun') {
+                                $days--;
+                            }
+                        }
+
+                        if ($days <= 0) {
                             echo "<td><div class='progress'><div class='progress-bar' id='zero'></div></div></td>";
-                        } else if ($diff == 1) {
+                        } else if ($days == 1) {
                             echo "<td><div class='progress'><div class='progress-bar' id='thirtythree'></div></div></td>";
-                        } else if ($diff == 2) {
+                        } else if ($days == 2) {
                             echo "<td><div class='progress'><div class='progress-bar' id='sixtysix'></div></div></td>";
-                        } else if ($diff >= 3) {
+                        } else if ($days >= 3) {
                             echo "<td><div class='progress'><div class='progress-bar' id='onehundred'></div></div></td>";
                         }
 
@@ -195,32 +206,31 @@
                                 ?><td><img src='img/give_back.png' title='Rendu au client'/></td><?php
                             }
                             ?>
-                            <td id='print'><a target=_blank href="printAtelier.php?id=<?php echo $idAtelier ?>"><img src='img/printer.png' title='Imprimer la fiche atelier'/></a></td>
-                            <?php
-                            
-                            echo "</tr>";
-                        }
-                    }
-                    echo "</table>";
-                    ?>
+                    <td id='print'><a target=_blank href="printAtelier.php?id=<?php echo $idAtelier ?>"><img src='img/printer.png' title='Imprimer la fiche atelier'/></a></td>
+                    <?php
+                    echo "</tr>";
+                }
+            }
+            echo "</table>";
+            ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">
         </a>
 
-<?php
-$id = filter_input(INPUT_GET, 'id');
-$etat = filter_input(INPUT_GET, 'etat');
-if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
-    traiterAtelier($id, $etat);
-    ?>
+        <?php
+        $id = filter_input(INPUT_GET, 'id');
+        $etat = filter_input(INPUT_GET, 'etat');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+            traiterAtelier($id, $etat);
+            ?>
             <script language="javascript">
                 window.self.location = "listeAtelier.php";
             </script>
-    <?php
-}
-?>
+            <?php
+        }
+        ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <script src="lib/chosen.jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
