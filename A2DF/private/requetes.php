@@ -50,6 +50,17 @@ function listeCommande() {
     return $resultat;
 }
 
+function listeVente() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT  vente.idVente, vente.dateVente, vente.dateLivraison, vente.idClient as idClient, 
+                                            client.nom AS nomClient, client.prenom AS prenomClient, vente.typeProduit, vente.marqueProduit, 
+                                            vente.couleurProduit, vente.reference, vente.quantite, vente.prix, vente.acompte, vente.idTraitement, vente.traite
+                                    FROM vente, client
+                                    WHERE client.idClient = vente.idClient
+                                    ORDER BY vente.idVente DESC;");
+    return $resultat;
+}
+
 function unClient($idClient) {
     global $connexion;
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, courriel, tel, portable
@@ -86,6 +97,13 @@ function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO commande (dateCommande, idClient, typeProduit, marqueProduit, couleurProduit, quantite, prix, acompte)
                                     VALUES ('$dateCommande', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", '$quantite', '$prix', '$acompte');");
+    return $resultat;
+}
+
+function ajoutVente($dateVente, $dateLivraison, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $reference, $quantite, $prix, $acompte) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO commande (dateVente, dateLivraison, idClient, typeProduit, marqueProduit, couleurProduit, reference, quantite, prix, acompte)
+                                    VALUES ('$dateVente', '$dateLivraison', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$reference\", '$quantite', '$prix', '$acompte');");
     return $resultat;
 }
 
