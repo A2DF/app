@@ -1,7 +1,7 @@
 <html>
 
     <?php
-    include ('html/head.html');
+    include ('html/head.php');
     include ('private/requetes.php');
 
     date_default_timezone_set('UTC');

@@ -88,8 +88,10 @@ form li{
 }
 input[type="text"], input[type="password"] {
     font-family: 'Open Sans', sans-serif;
-    width:60%;
-    padding:0.7em 2em 0.7em 1.7em;
+    width:75%;
+    padding:0.7em 2em 0.7em 0.7em;
+    margin-left: 19px;
+    margin-bottom: 1px;
     color:#858282;
     font-size:18px;
     outline: none;

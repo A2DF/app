@@ -1,3 +1,6 @@
+<?php 
+    include('private/fonctions.php');
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
@@ -9,8 +12,8 @@
     <p class="flotte">
         <img src="img/mouse.png" alt="logo" />
     </p>
-    <div><a href="http://localhost/A2DF/index.php" style="line-height:80px;" class="logo"  ><h1>A2DF Informatique</h1></a>
-         <a href="login.php"><?= $_SESSION['user'] ?><img class="imgco" onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png" /></a>
+    <div><a href="http://localhost/A2DF/index.php" style="line-height:80px;" class="logo"  ><h1>A2DF Informatique - <?= $_SESSION['user'] ?></h1></a>
+        <a href="http://localhost/A2DF/login.php"><img class="imgco" onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png"/></a>
     </div>
 </header>
 <script>

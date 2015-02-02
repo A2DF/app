@@ -1,10 +1,8 @@
 <?php
-include ('html/head.html');
+include ('html/head.php');
 ?>
 <html>
     <body>
-
-
         <section>
             <article>                
                 <center><h1>VERSION ALPHA !</h1></center>
@@ -16,10 +14,5 @@ include ('html/head.html');
                 <center><img src="img/computer.png" alt="Ordinateur" /></center>
             </article>
         </section>
-
-        <footer>
-
-        </footer>
-
     </body>
 </html>
