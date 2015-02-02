@@ -25,13 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
     <head>
-        <title></title>
+        <title>A2DF Informatique</title>
         <meta charset='utf-8'>
         <link href='css/login.css' rel='stylesheet' type='text/css' />
         <meta name='viewport' content='width=device-width, initial-scale=1'>
     </head>
     <body>
         <div class='login-form'>
+            <h1></h1>
             <form action='login.php' method='POST' name='formLogin'>
                 <li>
                     <input type='text' name='user' value='<?= $user ?>'><a class='icon user'></a>

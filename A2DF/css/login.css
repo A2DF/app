@@ -31,7 +31,8 @@ img{max-width:100%;}
 body{
     //background:url(../img/iron.jpg)  no-repeat center fixed;
     background: url("../img/stripes.png") repeat;
-    background-color: #36AAE7;
+    //background-color: #36AAE7;
+    background-color: #444;
     position:relative;
     font-family: Arial;
 
