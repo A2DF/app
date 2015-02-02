@@ -102,7 +102,7 @@ function ajoutCommande($dateCommande, $idClient, $typeProduit, $marqueProduit, $
 
 function ajoutVente($dateVente, $dateLivraison, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $reference, $quantite, $prix, $acompte) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO commande (dateVente, dateLivraison, idClient, typeProduit, marqueProduit, couleurProduit, reference, quantite, prix, acompte)
+    $resultat = $connexion->exec("  INSERT INTO vente (dateVente, dateLivraison, idClient, typeProduit, marqueProduit, couleurProduit, reference, quantite, prix, acompte)
                                     VALUES ('$dateVente', '$dateLivraison', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$reference\", '$quantite', '$prix', '$acompte');");
     return $resultat;
 }
@@ -240,11 +240,27 @@ function payerCommande($idCommande) {
     return $resultat;
 }
 
+function payerVente($idVente) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE vente
+                                    SET traite = 1
+                                    WHERE idVente = $idVente;");
+    return $resultat;
+}
+
 function traiterCommande($idCommande, $etat) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE commande
                                     SET idTraitement = $etat + 1
                                     WHERE idCommande = $idCommande;");
+    return $resultat;
+}
+
+function traiterVente($idVente, $etat) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE vente
+                                    SET idTraitement = $etat + 1
+                                    WHERE idVente = $idVente;");
     return $resultat;
 }
 

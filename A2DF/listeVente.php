@@ -72,7 +72,7 @@
                     $dateFrBon = "";
                 }
 
-                if ($idTraitement < 2) {
+                if ($idTraitement < 1) {
 
 
                     //Affichage des données dans le tableau
@@ -97,11 +97,9 @@
                     echo "<td>" . $acompte . "€</td>";
 
                     if ($idTraitement == 0) {
-                        ?><td><a href="listeVente.php?id=<?php echo $idVente ?>&etat=<?php echo $idTraitement ?>"><INPUT type="button" name="nom" value="Non commandée" onclick="return(confirm('La commande a été passée ?'));"/></a></td><?php
-                    } else if ($idTraitement == 1) {
-                        ?><td><a href="listeVente.php?id=<?php echo $idVente ?>&etat=<?php echo $idTraitement ?>"><INPUT type="button" name="nom" value="Passée" onclick="return(confirm('La commande a été livrée ?'));"/></a></td><?php
-                            } else if ($idTraitement == 2) {
-                                ?><td>Livrée</td><?php
+                        ?><td><a href="listeVente.php?id=<?php echo $idVente ?>&etat=<?php echo $idTraitement ?>"><INPUT type="button" name="nom" value="En cours" onclick="return(confirm('La vente est terminée ?'));"/></a></td><?php
+                            } else if ($idTraitement == 1) {
+                                ?><td>Terminée</td><?php
                             }
                             ?>
                             <?php
@@ -119,7 +117,17 @@
                     echo "</table>";
                     ?>
         </div>
+        <?php
+        $id = filter_input(INPUT_GET, 'id');
+        $etat = filter_input(INPUT_GET, 'etat');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
+            traiterVente($id, $etat);
 
+            ?>
+            <script language="javascript">window.self.location = "listeVente.php";</script>    
+            <?php
+        }
+        ?>
         <?php
         $id_ = filter_input(INPUT_GET, 'id_');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
