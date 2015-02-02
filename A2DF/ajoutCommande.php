@@ -1,8 +1,6 @@
 
 <?php
-include ('html/head.html');
-include ('private/requetes.php');
-include ('private/fonctions.php');
+include ('html/head.php');
 
 date_default_timezone_set('UTC');
 $today_int = date("Y-m-d");
@@ -16,11 +14,11 @@ $client_ = "";
 $typeProduit_ = "";
 $marqueProduit_ = "";
 $couleurProduit_ = "";
-$quantite_="";
+$quantite_ = "";
 $prix_ = "";
-$acompte_="";
+$acompte_ = "";
 $idTraitement_ = "";
-$traite_="";
+$traite_ = "";
 
 //Initialisation des messages d'erreur
 $dateCommandeErr = "";
@@ -30,9 +28,9 @@ $marqueProduitErr = "";
 $couleurProduitErr = "";
 $quantiteErr = "";
 $prixErr = "";
-$acompteErr_="";
-$idTraiementErr_= "";
-$traiteErr_="";
+$acompteErr_ = "";
+$idTraiementErr_ = "";
+$traiteErr_ = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Contrôle du champ date
     //$date_temp = filter_input(INPUT_POST, "dateCommande");
     //controleDate($date_temp, $dateCommandeErr, $dateCommande_, $erreurs);
-    
     //Contrôle du champ date
     $date_temp = filter_input(INPUT_POST, "dateCommande");
     controleDate($date_temp, $dateCommandeErr, $dateCommande_, $erreurs);
@@ -48,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Contrôle du champ client
     $client_temp = filter_input(INPUT_POST, "client");
     controleClient($client_temp, $clientErr, $client_, $erreurs);
-    
+
     $prix_temp = filter_input(INPUT_POST, "prix");
     controlePrix($prix_temp, $prixErr, $prix_, $erreurs);
-        //Contrôle du champ quantite
+    //Contrôle du champ quantite
     $quantite_temp = filter_input(INPUT_POST, "quantite");
     controleQuantite($quantite_temp, $quantiteErr, $quantite_, $erreurs);
-    
+
     $typeProduit_ = filter_input(INPUT_POST, "typeProduit");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
@@ -64,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "Commande"
-        ajoutCommande($dateCommande_, $client_, $typeProduit_, $marqueProduit_, $couleurProduit_,$quantite_, $prix_, $acompte_);
+        ajoutCommande($dateCommande_, $client_, $typeProduit_, $marqueProduit_, $couleurProduit_, $quantite_, $prix_, $acompte_);
 
         //Redirection vers la liste des commandes
         header('Location: listeCommande.php');
@@ -98,12 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Date de commande :</td>
                                 <td class="images"></td>
-                               <?php
+                                <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     echo "<td><input type='text' name='dateCommande' id='datepicker' value='" . $dateCommande_ . "' readonly></td>";
                                 } else {
                                     echo "<td><input type='text' name='dateCommande' id='datepicker' value='" . $today_int . "' readonly></td>";
-                                        
                                 }
                                 ?>
                             </tr>
@@ -122,19 +118,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
                                         <option selected disabled hidden value=''></option>
-                                        <?php
-                                        $comboboxClient = comboboxClient();
-                                        foreach ($comboboxClient as $client) {
-                                            $idClie = $client['idClient'];
-                                            $nom = $client['nom'];
-                                            $prenom = $client['prenom'];
-                                            if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
-                                                echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
-                                            } else {
-                                                echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
-                                            }
-                                        }
-                                        ?>
+<?php
+$comboboxClient = comboboxClient();
+foreach ($comboboxClient as $client) {
+    $idClie = $client['idClient'];
+    $nom = $client['nom'];
+    $prenom = $client['prenom'];
+    if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
+        echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
+    } else {
+        echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
+    }
+}
+?>
                                     </select>
                                 </td>
 
@@ -214,22 +210,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             });
                 </script>
             </form>
-            <?php
-            if ($dateCommandeErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $dateCommandeErr . "<br />";
-            }
+<?php
+if ($dateCommandeErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $dateCommandeErr . "<br />";
+}
 
-            if ($clientErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
-            }
-            
-            if ($quantiteErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
-            }
-            if ($prixErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
-            }
-            ?>
+if ($clientErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
+}
+
+if ($quantiteErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
+}
+if ($prixErr <> "") {
+    echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
+}
+?>
         </div>
     </body>
 </html>

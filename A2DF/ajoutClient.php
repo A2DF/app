@@ -1,7 +1,7 @@
 <html>
     <?php
-    include ('private/requetes.php');
     include ('private/fonctions.php');
+    include ('private/requetes.php');
 
     //Initialisation du compteur d'erreurs pour le contrôle du formulaire
     $erreurs = 0;

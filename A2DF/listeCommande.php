@@ -1,8 +1,6 @@
 <html>
-
     <?php
-    include ('html/head.html');
-    include ('private/requetes.php');
+    include ('html/head.php');
 
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
@@ -25,9 +23,9 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
-            
-            
-            
+
+
+
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
@@ -66,7 +64,7 @@
                 $dateConverter = date_create($dateBonCommande);
                 $dateFrBon = date_format($dateConverter, 'd/m/Y');
 
-                if ($dateBonCommande == 0000-00-00) {
+                if ($dateBonCommande == 0000 - 00 - 00) {
                     $dateFrBon = "";
                 }
 
@@ -79,13 +77,13 @@
                     echo "<td>" . $dateFrBon . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                                            height=380, \n\
-                                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                                            dependant=yes')"/>
+                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -105,9 +103,9 @@
                             if ($traite == 0) {
                                 ?><td><a href="listeCommande.php?id_=<?php echo $idCommande ?>">
                                 <img src='img/coins_in_hand.png' title='Valider le paiement' onclick="return(confirm('La commande a t-elle été réglée ?'));"/></a></td><?php
-                    echo "</tr>";
-                } else if ($traite == 1) {
-                                ?><td><img src='img/tick_circle_frame.png' title='Paiement effectué'/></a></td><?php
+                        echo "</tr>";
+                    } else if ($traite == 1) {
+                        ?><td><img src='img/tick_circle_frame.png' title='Paiement effectué'/></a></td><?php
                                 echo "</tr>";
                             }
                         }

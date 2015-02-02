@@ -1,9 +1,8 @@
 <html>
     <?php
-    include ('private/requetes.php');
-    include ('private/fonctions.php');
+include ('private/fonctions.php');
 
-    $id = filter_input(INPUT_GET, 'id');
+$id = filter_input(INPUT_GET, 'id');
 
     $solution = "";
 

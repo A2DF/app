@@ -1,7 +1,6 @@
 <html>
     <?php
-    include ('private/requetes.php');
-    include ('private/fonctions.php');
+    include ('html/head.php');
 
     $idClient = filter_input(INPUT_GET, "id");
 
@@ -54,7 +53,7 @@
             ?>
 
             <script language="javascript">
-                window.opener.location=window.opener.location+"";
+                window.opener.location = window.opener.location + "";
                 window.self.close();
             </script>
 

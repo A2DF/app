@@ -1,8 +1,6 @@
 <html>
-
     <?php
-    include ('html/head.html');
-    include ('private/requetes.php');
+    include ('html/head.php');
 
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
@@ -25,9 +23,9 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
-            
-            
-            
+
+
+
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
@@ -68,7 +66,7 @@
                 $dateConverter = date_create($dateLivraison);
                 $dateFrLiv = date_format($dateConverter, 'd/m/Y');
 
-                if ($dateLivraison == 0000-00-00) {
+                if ($dateLivraison == 0000 - 00 - 00) {
                     $dateFrBon = "";
                 }
 
@@ -81,13 +79,13 @@
                     echo "<td>" . $dateFrLiv . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                                            height=380, \n\
-                                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                                            dependant=yes')"/>
+                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -98,17 +96,17 @@
 
                     if ($idTraitement == 0) {
                         ?><td><a href="listeVente.php?id=<?php echo $idVente ?>&etat=<?php echo $idTraitement ?>"><INPUT type="button" name="nom" value="En cours" onclick="return(confirm('La vente est terminée ?'));"/></a></td><?php
-                            } else if ($idTraitement == 1) {
-                                ?><td>Terminée</td><?php
+                    } else if ($idTraitement == 1) {
+                        ?><td>Terminée</td><?php
                             }
                             ?>
                             <?php
                             if ($traite == 0) {
                                 ?><td><a href="listeVente.php?id_=<?php echo $idVente ?>">
                                 <img src='img/coins_in_hand.png' title='Valider le paiement' onclick="return(confirm('La vente a t-elle été réglée ?'));"/></a></td><?php
-                    echo "</tr>";
-                } else if ($traite == 1) {
-                                ?><td><img src='img/tick_circle_frame.png' title='Paiement effectué'/></a></td><?php
+                        echo "</tr>";
+                    } else if ($traite == 1) {
+                        ?><td><img src='img/tick_circle_frame.png' title='Paiement effectué'/></a></td><?php
                                 echo "</tr>";
                             }
                         }
@@ -122,7 +120,6 @@
         $etat = filter_input(INPUT_GET, 'etat');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterVente($id, $etat);
-
             ?>
             <script language="javascript">window.self.location = "listeVente.php";</script>    
             <?php

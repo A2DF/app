@@ -1,8 +1,6 @@
 
 <?php
-include ('html/head.html');
-include ('private/requetes.php');
-include ('private/fonctions.php');
+include ('html/head.php');
 
 date_default_timezone_set('UTC');
 $today_int = date("Y-m-d");
@@ -88,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     echo "<td><input type='text' name='date' id='datepicker' value='" . $date_ . "' readonly></td>";
                                 } else {
                                     echo "<td><input type='text' name='date' id='datepicker' value='" . $today_int . "' readonly></td>";
-                                        
                                 }
                                 ?>
                             </tr>
@@ -232,7 +229,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($prioriteErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $prioriteErr . "<br />";
             }
-            
             ?>
         </div>
     </body>

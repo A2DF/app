@@ -1,7 +1,6 @@
 
 <?php
 include ('html/head.php');
-include ('private/requetes.php');
 
 date_default_timezone_set('UTC');
 $today_int = date("Y-m-d");
