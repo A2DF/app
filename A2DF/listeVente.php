@@ -57,6 +57,7 @@
                 $typeProduit = $vente['typeProduit'];
                 $marqueProduit = $vente['marqueProduit'];
                 $couleurProduit = $vente['couleurProduit'];
+                $reference = $vente['reference'];
                 $quantite = $vente['quantite'];
                 $prix = $vente['prix'];
                 $acompte = $vente['acompte'];
