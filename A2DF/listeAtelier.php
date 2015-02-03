@@ -103,7 +103,7 @@
                 $dateConvert = date_create($dateEntree);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
 
-                if ((($filterClient == $idClient) || ($filterClient == "")) && (($traitement < 5) || ($filterEtat == 0))) {
+                if ((($filterClient == $idClient) || ($filterClient == "")) && (($traitement < 4) || ($filterEtat == 0))) {
 
                     //Affichage des données dans le tableau
                     echo "<tr>";
