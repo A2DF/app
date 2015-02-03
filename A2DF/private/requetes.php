@@ -13,6 +13,15 @@ try {
     $connexion = null;
 }
 
+function login($user, $pass) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT login, mdp
+                                    FROM session
+                                    WHERE login = '$user'
+                                    AND mdp = '$pass'");
+    return $resultat;
+}
+        
 function listeAppel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite, appel.commentaire

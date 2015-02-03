@@ -1,11 +1,10 @@
 <?php
+include ("private/requetes.php");
 session_start();
 if ((isset($_SESSION['user'])) && (isset($_SESSION['pass']))) {
     session_destroy();
 }
 
-$user_valide = "admin";
-$pass_valide = "admin";
 $user = "";
 $pass = "";
 
@@ -13,12 +12,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $user = filter_input(INPUT_POST, 'user');
     $pass = filter_input(INPUT_POST, 'pass');
-
-    if (($user_valide == $user) && ($pass_valide == $pass)) {
+    $hash = sha1($pass);
+    
+    $login = login($user, $hash);
+    foreach ($login as $ok) {
+        $user_valide = $ok['login'];
+        $pass_valide = $ok['mdp'];
+    }
+    
+    if (($user = $user_valide) && ($hash = $pass_valide)){
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
         header('location: index.php');
         exit;
+    } else {
+        header('location: index.php');
     }
 }
 ?>
