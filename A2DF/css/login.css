@@ -42,6 +42,9 @@ body{
     width:32%;
     margin:9% auto 4% auto;
     position: relative;
+    box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
+-moz-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
+-webkit-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
 }
 .head {
     position: relative;
