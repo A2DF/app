@@ -103,9 +103,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='dateVente' id='datepicker' value='" . $dateVente_ . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateVente' id='datepickerVente' value='" . $dateVente_ . "' readonly></td>";
                                 } else {
-                                    echo "<td><input type='text' name='dateVente' id='datepicker' value='" . $today_int . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateVente' id='datepickerVente' value='" . $today_int . "' readonly></td>";
                                 }
                                 ?>
                             </tr>
@@ -115,9 +115,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='dateLivraison' id='datepicker' value='" . $dateLivraison_ . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateLivraison' id='datepickerLivraison' value='" . $dateLivraison_ . "' readonly></td>";
                                 } else {
-                                    echo "<td><input type='text' name='dateLivraison' id='datepicker' value='" . $today_int . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateLivraison' id='datepickerLivraison' value='" . $today_int . "' readonly></td>";
                                 }
                                 ?>
                             </tr>
@@ -222,9 +222,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <script type="text/javascript" src="lib/moment.js"></script>
                 <script type="text/javascript" src="lib/pikaday.js"></script>
                 <script>
-                                    var pickerDebut = new Pikaday(
+                                    var pickerVente = new Pikaday(
                                             {
-                                                field: document.getElementById('datepicker'),
+                                                field: document.getElementById('datepickerVente'),
+                                                firstDay: 1,
+                                                minDate: new Date('2000-01-01'),
+                                                maxDate: new Date('2020-12-31'),
+                                                yearRange: [2000, 2020],
+                                                //format: 'DD/MM/YYYY'
+                                            });
+                                    var pickerLivraison = new Pikaday(
+                                            {
+                                                field: document.getElementById('datepickerLivraison'),
                                                 firstDay: 1,
                                                 minDate: new Date('2000-01-01'),
                                                 maxDate: new Date('2020-12-31'),
