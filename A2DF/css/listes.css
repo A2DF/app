@@ -205,7 +205,7 @@ table.sortable td {
 }
 
 #traite {
-    width: 65px;
+    width: 75px;
 }
 
 #delai {
@@ -221,6 +221,14 @@ table.sortable td {
     width: 65px;
 }
 
+#prixTtc{
+    min-width: 100px;
+}
+
+#acompte{
+    min-width: 100px;
+}
+
 #mdp{
     width: 80px;
 }
@@ -233,9 +241,18 @@ table.sortable td {
     width: 65px;
 }
 
-#dateBonCommande {
+#dateCommande {
     width: 120px;
+    min-width: 100px;
 }
+#quantite {
+    width: 100px;
+}
+
+#reference {
+    min-width: 110px;
+}
+
 .urgent {
     color: red;
 }

@@ -31,11 +31,11 @@
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
             echo "<th id='dateCommande'>Date de commande</th>";
-            echo "<th id='dateBonCommande'>Date bon de commande</th>";
+            echo "<th id='dateCommande'>Date bon de commande</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='quantite'>Quantité</th>";
-            echo "<th id='prix'>Prix TTC</th>";
+            echo "<th id='prixTtc'>Prix TTC</th>";
             echo "<th id='acompte'>Acompte</th>";
             echo "<th id='traite'>Statut</th>";
             echo "<th id='traitement'>Paiement éffectué</th>";

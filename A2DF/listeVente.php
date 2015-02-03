@@ -30,15 +30,15 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='dateVente'>Date de vente</th>";
-            echo "<th id='dateLivraison'>Date livraison voulu</th>";
+            echo "<th id='dateCommande'>Date de vente</th>";
+            echo "<th id='dateCommande'>Date livraison voulu</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='reference'>Reference</th>";
             echo "<th id='quantite'>Quantité</th>";
             echo "<th id='prix'>Prix TTC</th>";
             echo "<th id='acompte'>Acompte</th>";
-            echo "<th id='idStatut'>Statut</th>";
+            echo "<th id='traite'>Statut</th>";
             echo "<th id='traite'>Paiement éffectué</th>";
             echo "</tr>";
 
