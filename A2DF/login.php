@@ -45,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="head">
                 <img class="img" src="img/a2dfhd.png" />
             </div>
-            
+            <div class="nomApp"><h1>Application de gestion</h1></div>
+            </br>
             <form action='login.php' method='POST' name='formLogin'>
                 <li>
                     <input type='text' name='user' value='<?= $user ?>'><a class='icon user'></a>
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
         <div class='copy-right'>
-            <p></p> 
+            <p>© Copyright 2015 - <b>Hugo & Alexandre</b></p> 
         </div>
     </body>
 </html>

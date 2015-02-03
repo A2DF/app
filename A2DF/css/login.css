@@ -238,29 +238,14 @@ input[type="submit"]{
 
 /****************/
 .copy-right {
-    position: absolute;
-    bottom:-16%;
-    left: 43.7%;
+    color: grey;
+    position: relative;
+    text-align: center;
+    float: bottom;
+    bottom: -18px;
+    
 }
-.copy-right p {
-    color: #fff;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;	
-    font-weight: 600;
-}
-.copy-right p a {
-    font-family: 'Open Sans', sans-serif;	
-    font-size: 1em;
-    color:#FF8E03;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-.copy-right p a:hover {
-    color:#fff;
-}
+
 /*-----start-responsive-design------*/
 @media (max-width:1024px){
     .login-form  {
@@ -359,3 +344,16 @@ input[type="submit"]{
         bottom:-10%;
     }
 }
+.nomApp {
+    text-align: center;
+    margin-top: -30px;
+    color: #36AAE7;
+    
+}
+h1{ 
+    text-align : center; 
+    text-decoration : none; 
+    font-family : Verdana, Geneva, Arial, Helvetica, sans-serif; 
+    font-size : 19px; 
+    font-weight : bold; 
+} 

@@ -5,8 +5,15 @@
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
     $today_date = date_create($today_int);
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $filterClient = filter_input(INPUT_POST, 'client');
+        $filterEtat = filter_input(INPUT_POST, 'etat');
+    } else {
+        $filterClient = "";
+        $filterEtat = 1;
+    }
     ?>
-
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
@@ -23,6 +30,37 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
+             <div class="filtres">
+                <form action='listeCommande.php' method='POST' name='formFiltreClient'>
+                    <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
+                        <option selected hidden value=''>Tous les clients</option>
+                        <?php
+                        $comboboxClient = comboboxClient();
+                        foreach ($comboboxClient as $client) {
+                            $filterId = $client['idClient'];
+                            $filterNom = $client['nom'];
+                            $filterPrenom = $client['prenom'];
+                            if ($filterClient == $filterId) {
+                                echo "<option value=" . $filterId . " selected>" . $filterNom . " " . $filterPrenom . "</option>";
+                            } else {
+                                echo "<option value=" . $filterId . ">" . $filterNom . " " . $filterPrenom . "</option>";
+                            }
+                        }
+                        ?></select>
+
+                    <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
+                        <?php
+                        if ($filterEtat < 1) {
+                            echo "<option value='1'>Commandes en cours</option>";
+                            echo "<option value='0' selected>Toutes les commandes</option>";
+                        } else {
+                            echo "<option value='1' selected>Commandes en cours</option>";
+                            echo "<option value='0'>Toutes les commandes</option>";
+                        }
+                        ?>
+                    </select>
+                </form>
+            </div>
 
 
 
@@ -70,7 +108,7 @@
                     $dateFrBon = "";
                 }
 
-                if ($idTraitement < 1) {
+                if ((($filterClient == $idClient) || ($filterClient == "")) && (($idTraitement < 1) || ($filterEtat == 0))) {
 
 
                     //Affichage des données dans le tableau
