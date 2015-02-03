@@ -1,6 +1,7 @@
 <?php 
     include('private/fonctions.php');
 ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
@@ -35,4 +36,5 @@ new_window.close();
         <li class='last'><a href='#'><span>S.A.V.</span><img class="imgmenu" src="img/small_business.png" alt="SAV" /></a></li>
     </ul>
 </div>
+
 </head>

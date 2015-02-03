@@ -1,6 +1,6 @@
 <html>
     <?php
-    include ('html/head.php');
+    include ('private/fonctions.php');
 
     $idClient = filter_input(INPUT_GET, "id");
 

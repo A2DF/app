@@ -15,7 +15,7 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
-    <body>
+    <body onload="refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
             <a  href="ajoutAppel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste des appels</div></div>
@@ -98,13 +98,13 @@
 
                     if ($commentaire == "") {
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
-                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                    width=520, \n\
-                                                                                                                                                                                                                    height=200, \n\
-                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                    dependant=yes')"/></a></td><?php
+                                                                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                                                                width=520, \n\
+                                                                                                                                                                                                                                height=200, \n\
+                                                                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                                                                dependant=yes')"/></a></td><?php
                         } else {
                             echo "<td>" . $commentaire . "</td>";
                         }
@@ -166,6 +166,24 @@
                 }
                 else
                     clearTimeout(timeOut);
+            }
+        </script>
+        <script>
+            var halt = 0;
+
+            function haltTimer() {
+                halt = 1;
+            }
+
+            function refreshOnIdle() {
+                if (halt == 0) {
+                    window.location.reload();
+                    haltTimer();
+                }
+                else {
+                    halt = 0;
+                    window.setTimeout("refreshOnIdle();", 10000);
+                }
             }
         </script>
     </body>
