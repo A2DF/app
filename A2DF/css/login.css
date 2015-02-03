@@ -45,15 +45,11 @@ body{
 }
 .head {
     position: absolute;
-    top:-15%;
-    left: 35%;
+    top:-22%;
+    left: 33.5%;
 }
 .head img {
-    border-radius:50%;
-    -webkit-border-radius:50%;
-    -o-border-radius:50%;
-    -moz-border-radius:50%;
-    border:6px solid rgba(221, 218, 215, 0.23);
+width: 70%;
 }
 form {
     padding:24% 2.5em;
