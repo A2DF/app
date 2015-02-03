@@ -40,9 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     </head>
     <body>
+        
         <div class='login-form'>
             <div class="head">
-                <img class="img" src="img/a2df.png" />
+                <img class="img" src="img/a2dfhd.png" />
             </div>
             
             <form action='login.php' method='POST' name='formLogin'>

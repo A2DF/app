@@ -44,15 +44,17 @@ body{
     position: relative;
 }
 .head {
-    position: absolute;
-    top:-22%;
-    left: 33.5%;
+    position: relative;
+    top: -60px;
+    width : 35%; 
+    margin : auto; 
 }
-.head img {
-width: 70%;
-}
+
 form {
-    padding:24% 2.5em;
+    padding-top:0%;
+    padding-left:10%;
+    padding-right:10%;
+    padding-bottom:20%;
 }
 form li{
     border:1px solid #B4B2B2;
@@ -64,7 +66,6 @@ form li{
     -webkit-border-radius: 0.3em;
     -o-border-radius: 0.3em;
     -moz-border-radius: 0.3em;
-
 }
 
 .icon{
