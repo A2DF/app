@@ -51,11 +51,11 @@
                     <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
                         <?php
                         if ($filterEtat < 1) {
-                            echo "<option value='1'>Commandes en cours</option>";
-                            echo "<option value='0' selected>Toutes les commandes</option>";
+                            echo "<option value='1'>Ventes en cours</option>";
+                            echo "<option value='0' selected>Toutes les ventes</option>";
                         } else {
-                            echo "<option value='1' selected>Commandes en cours</option>";
-                            echo "<option value='0'>Toutes les commandes</option>";
+                            echo "<option value='1' selected>Ventes en cours</option>";
+                            echo "<option value='0'>Toutes les ventes</option>";
                         }
                         ?>
                     </select>
