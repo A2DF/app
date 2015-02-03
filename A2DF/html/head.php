@@ -36,5 +36,21 @@ new_window.close();
         <li class='last'><a href='#'><span>S.A.V.</span><img class="imgmenu" src="img/small_business.png" alt="SAV" /></a></li>
     </ul>
 </div>
+<script>
+            var halt = 0;
 
+            function haltTimer() {
+                halt = 1;
+            }
+
+            function refreshOnIdle() {
+                if (halt == 0) {
+                    window.location.reload();
+                }
+                else {
+                    halt = 0;
+                    window.setTimeout("refreshOnIdle();", 300000);
+                }
+            }
+        </script>
 </head>

@@ -15,7 +15,7 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
-    <body onload="refreshOnIdle();" onmousemove="haltTimer();">
+    <body onload="haltTimer(); refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
             <a  href="ajoutAppel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste des appels</div></div>
@@ -168,23 +168,6 @@
                     clearTimeout(timeOut);
             }
         </script>
-        <script>
-            var halt = 0;
-
-            function haltTimer() {
-                halt = 1;
-            }
-
-            function refreshOnIdle() {
-                if (halt == 0) {
-                    window.location.reload();
-                    haltTimer();
-                }
-                else {
-                    halt = 0;
-                    window.setTimeout("refreshOnIdle();", 10000);
-                }
-            }
-        </script>
+        
     </body>
 </html>
