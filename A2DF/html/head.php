@@ -37,7 +37,7 @@ new_window.close();
         
         <?php
         if ($_SESSION['user'] == "direction") {
-        echo "<br /><br /><center>Direction</center><br />
+        echo "<br /><br /><center>----- Direction -----</center><br />
         <li><a href='#'><span>Comptabilité</span><img class='imgmenu' src='img/chart.png'/></a></li>
         <li><a href='#'><span>Fournisseurs</span><img class='imgmenu' src='img/lorry.png'/></a></li>
         <li><a href='#'><span>Personnel</span><img class='imgmenu' src='img/group.png'/></a></li>

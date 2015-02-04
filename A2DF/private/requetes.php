@@ -21,7 +21,7 @@ function login($user, $pass) {
                                     AND mdp = '$pass'");
     return $resultat;
 }
-        
+
 function listeAppel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, appel.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite, appel.commentaire
@@ -286,6 +286,38 @@ function ajoutDateBonCommande($idCommande, $today_int) {
     $resultat = $connexion->query(" UPDATE commande
                                     SET dateBonCommande = '$today_int'
                                     WHERE idCommande = $idCommande;");
+    return $resultat;
+}
+
+function mdpDirection() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT mdp
+                                    FROM session
+                                    WHERE login = 'direction';");
+    return $resultat;
+}
+
+function modifierMdpDirection($mdp) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE session
+                                    SET mdp = '$mdp'
+                                    WHERE login = 'direction';");
+    return $resultat;
+}
+
+function modifierMdpAccueil($mdp) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE session
+                                    SET mdp = '$mdp'
+                                    WHERE login = 'accueil';");
+    return $resultat;
+}
+
+function modifierMdpAtelier($mdp) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE session
+                                    SET mdp = '$mdp'
+                                    WHERE login = 'atelier';");
     return $resultat;
 }
 
