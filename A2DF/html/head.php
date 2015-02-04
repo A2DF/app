@@ -40,7 +40,7 @@ new_window.close();
         echo "<br /><br /><center>----- Direction -----</center><br />
         <li><a href='#'><span>Comptabilité</span><img class='imgmenu' src='img/chart.png'/></a></li>
         <li><a href='#'><span>Fournisseurs</span><img class='imgmenu' src='img/lorry.png'/></a></li>
-        <li><a href='#'><span>Personnel</span><img class='imgmenu' src='img/group.png'/></a></li>
+        <li><a href='listePersonnel.php'><span>Personnel</span><img class='imgmenu' src='img/group.png'/></a></li>
         <li class='last'><a href='listeSession.php'><span>Sessions</span><img class='imgmenu' src='img/lock.png'/></a></li>";
         }
         ?>
