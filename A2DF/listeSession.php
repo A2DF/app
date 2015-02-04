@@ -7,7 +7,10 @@ $okAtelier = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $mdpDirection = mdpDirection();
+    $RequeteMdpDirection = mdpDirection();
+    foreach ($RequeteMdpDirection as $mdpDirection) {
+        $hashedBaseMdpDirection = $mdpDirection['mdp'];
+    }
 
     $ancienMdpDirection = filter_input(INPUT_POST, "ancienMdpDirection");
     $hashedAncienMdpDirection = sha1($ancienMdpDirection);
@@ -19,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nouveauMdpAtelier = filter_input(INPUT_POST, "nouveauMdpAtelier");
     $confirmMdpAtelier = filter_input(INPUT_POST, "confirmMdpAtelier");
 
-    if ((($ancienMdpDirection <> "") && ($nouveauMdpDirection <> "") && ($confirmMdpDirection <> "")) && ($hashedAncienMdpDirection == $mdpDirection) && ($nouveauMdpDirection == $confirmMdpDirection)) {
+    if ((($ancienMdpDirection <> "") && ($nouveauMdpDirection <> "") && ($confirmMdpDirection <> "")) && ($hashedAncienMdpDirection == $hashedBaseMdpDirection) && ($nouveauMdpDirection == $confirmMdpDirection)) {
         $hashedMdpDirection = sha1($nouveauMdpDirection);
         modifierMdpDirection($hashedMdpDirection);
         $okDirection = "<p style='color:green'>Modification effectuée</p>";
