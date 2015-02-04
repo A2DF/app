@@ -176,58 +176,82 @@ table.sortable td {
 
 #numero {
     width: 55px;
+    min-width: 45px;
 }
 
 #date {
     width: 85px;
+    min-width: 85px;
+}
+
+#priorite {
+    width: 80px;
+    min-width: 75px;
 }
 
 #client {
     width: 235px;
-}
-
-#tel {
-    width: 130px;
-}
-
-#portable {
-    width: 130px;
-}
-
-#pour {
-    width: 100px;
-}
-
-#commentaire {
-    width: 250px;
-    min-width: 200px;
-}
-
-#probleme {
-    width: 250px;
-    min-width: 200px;
-}
-
-#solution {
-    width: 250px;
-    min-width: 200px;
-}
-
-#traite {
-    width: 55px;
-}
-
-#delai {
-    width: 200px;
-    min-width: 100px;
+    min-width: 95px;
 }
 
 #produit {
     width: 235px;
+    min-width: 95px;
+}
+
+#mdp{
+    width: 80px;
+    min-width: 85px;
+}
+
+#probleme {
+    width: 250px;
+    min-width: 150px;
+}
+
+#solution {
+    width: 250px;
+    min-width: 150px;
 }
 
 #prix{
     width: 65px;
+    min-width: 45px;
+}
+
+#delai {
+    width: 200px;
+    min-width: 85px;
+}
+
+#traite {
+    width: 55px;
+    min-width: 45px;
+}
+
+#print {
+    width: 55px;
+    min-width: 45px;
+}
+
+#tel {
+    width: 100px;
+    min-width: 100px;
+}
+
+#portable {
+    width: 100px;
+    min-width: 100px;
+}
+
+#pour {
+    width: 80px;
+    min-width: 80px;
+}
+
+#commentaire {
+    width: 250px;
+    min-width: 150px;
 }
 
 #prixTtc{
@@ -236,18 +260,6 @@ table.sortable td {
 
 #acompte{
     min-width: 100px;
-}
-
-#mdp{
-    width: 80px;
-}
-
-#priorite {
-    width: 80px;
-}
-
-#print {
-    width: 55px;
 }
 
 #dateCommande {
