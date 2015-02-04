@@ -39,14 +39,15 @@ $salaireErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Contrôle du champ date
-    $date_temp = filter_input(INPUT_POST, "dateEmbauche");
-    controleDate($date_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
+    $dateEmbauche_temp = filter_input(INPUT_POST, "dateEmbauche");
+    controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
 
+    $nom = filter_input(INPUT_POST, "nom");
+    
     //Contrôle du champ client
     $prenom_temp = filter_input(INPUT_POST, "prenom");
     controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
 
-    
     $adresse = filter_input(INPUT_POST, "adresse");
     $cp = filter_input(INPUT_POST, "cp");
     $ville = filter_input(INPUT_POST, "ville");
@@ -60,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "personnel"
-        ajoutAppel($dateEmbauche_, $nom_, $prenom_, $adresse_, $cp_, $ville_, $tel_, $portable_, $numSecu_, $contrat_, $salaire_);
+        ajoutPersonnel($dateEmbauche_, $nom_, $prenom_, $adresse_, $cp_, $ville_, $tel_, $portable_, $numSecu_, $contrat_, $salaire_);
 
         //Redirection vers la liste des employés
         header('Location: listePersonnel.php');
@@ -122,12 +123,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><input type='email' name='courriel' value='<?php echo $courriel_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Num. Portable :</td>
+                                <td class="label">Num. Fixe :</td>
                                 <td class="images"></td>
-                                <td><input type='tel' name='portable' value='<?php echo $portable_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
+                                <td><input type='tel' name='portable' value='<?php echo $tel_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
                             </tr>
                             <tr>
-                                <td class="label">Num. Fixe :</td>
+                                <td class="label">Num. Portable :</td>
                                 <td class="images"></td>
                                 <td><input type='tel' name='tel' value='<?php echo $portable_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
                             </tr>
