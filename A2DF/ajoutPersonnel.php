@@ -42,26 +42,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dateEmbauche_temp = filter_input(INPUT_POST, "dateEmbauche");
     controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
 
-    $nom = filter_input(INPUT_POST, "nom");
+    $nom_ = filter_input(INPUT_POST, "nom");
     
     //Contrôle du champ client
     $prenom_temp = filter_input(INPUT_POST, "prenom");
     controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
 
-    $adresse = filter_input(INPUT_POST, "adresse");
-    $cp = filter_input(INPUT_POST, "cp");
-    $ville = filter_input(INPUT_POST, "ville");
-    $courriel = filter_input(INPUT_POST, "courriel");
-    $tel = filter_input(INPUT_POST, "tel");
-    $portable = filter_input(INPUT_POST, "portable");
-    $numSecu = filter_input(INPUT_POST, "numSecu");
-    $salaire = filter_input(INPUT_POST, "salaire");
-    $contrat = filter_input(INPUT_POST, "contrat");
+    $adresse_ = filter_input(INPUT_POST, "adresse");
+    $cp_ = filter_input(INPUT_POST, "cp");
+    $ville_ = filter_input(INPUT_POST, "ville");
+    $courriel_ = filter_input(INPUT_POST, "courriel");
+    $tel_ = filter_input(INPUT_POST, "tel");
+    $portable_ = filter_input(INPUT_POST, "portable");
+    $numSecu_ = filter_input(INPUT_POST, "numSecu");
+    $salaire_ = filter_input(INPUT_POST, "salaire");
+    $contrat_ = filter_input(INPUT_POST, "contrat");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "personnel"
-        ajoutPersonnel($dateEmbauche_, $nom_, $prenom_, $adresse_, $cp_, $ville_, $tel_, $portable_, $numSecu_, $contrat_, $salaire_);
+        ajoutPersonnel($dateEmbauche_, $nom_, $prenom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $numSecu_, $contrat_, $salaire_);
 
         //Redirection vers la liste des employés
         header('Location: listePersonnel.php');
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Numéro de sécu :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='numSécu' value='<?php echo $numSecu_ ?>'></td>
+                                <td><input type='text' name='numSecu' value='<?php echo $numSecu_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Type contrat :</td>

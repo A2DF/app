@@ -190,7 +190,7 @@ table.sortable td {
 }
 
 #client {
-    width: 235px;
+    width: 180px;
     min-width: 95px;
 }
 
@@ -273,6 +273,16 @@ table.sortable td {
 #reference {
     min-width: 110px;
 }
+#numSecu {
+    min-width: 130px;
+}
+#contrat {
+    min-width: 80px;
+}
+#salaire {
+    min-width: 80px;
+}
+
 
 .urgent {
     color: red;

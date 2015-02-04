@@ -30,9 +30,9 @@
             echo "<tr>";
             echo "<th id='client'>Employé</th>";
             echo "<th id='date'>Date Embauche</th>";
-            echo "<th id='adresse'>Adresse</th>";
-            echo "<th id='tel'>Portable</th>";
+            echo "<th id='commentaire'>Adresse</th>";
             echo "<th id='tel'>Fixe</th>";
+            echo "<th id='tel'>Portable</th>";
             echo "<th id='tel'>Courriel</th>";
             echo "<th id='numSecu'>Numéro Sécu</th>";
             echo "<th id='contrat'>Contrat</th>";
@@ -76,7 +76,7 @@
                 echo "<td>" . $courriel . "</td>";
                 echo "<td>" . $numSecu . "</td>";
                 echo "<td>" . $contrat . "</td>";
-                echo "<td>" . $salaire . "</td>";
+                echo "<td>" . $salaire . "€</td>";
             }
             ?>
         </div>

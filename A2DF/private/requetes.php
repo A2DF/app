@@ -65,7 +65,7 @@ function listePersonnel() {
                                             personnel.adresse, personnel.cp, personnel.ville, personnel.courriel, 
                                             personnel.tel, personnel.portable, personnel.numSecu, personnel.contrat, personnel.salaire
                                     FROM personnel
-                                    ORDER BY personnel.nom DESC;");
+                                    ORDER BY personnel.nom ASC;");
     return $resultat;
 }
 
@@ -147,7 +147,7 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
-function ajoutPersonnel($dateEmbauche,$nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable,$numSecu, $contrat, $salaire) {
+function ajoutPersonnel($dateEmbauche,$nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable, $numSecu, $contrat, $salaire) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO personnel (dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire)
                                     VALUES ('$dateEmbauche',\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$numSecu', '$contrat', '$salaire');");
