@@ -12,6 +12,7 @@ table.sortable {
     margin-left: -29px;
     max-width: max-content;
     table-layout: fixed;
+    font-size: 14px;
 }
 
 table.sortable thead {
