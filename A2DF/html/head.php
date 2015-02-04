@@ -13,8 +13,8 @@
     <p class="flotte">
         <img src="img/mouse.png" alt="logo" />
     </p>
-    <div><a href="http://localhost/A2DF/index.php" style="line-height:80px;" class="logo"  ><h1>A2DF Informatique</h1></a>
-        <a href="http://localhost/A2DF/login.php"><img class="imgco" onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png"/></a>
+    <div><a href="index.php" style="line-height:80px;" class="logo"  ><h1>A2DF Informatique</h1></a>
+        <a href="login.php"><img class="imgco" onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png"/></a>
         <div class="log"><?= $_SESSION['user'] ?></div>
     </div>
 </header>
@@ -33,13 +33,13 @@ new_window.close();
         <li><a href='listeAtelier.php'><span>Atelier</span><img class="imgmenu" src="img/toolbox.png"/></a></li>
         <li><a href='listeCommande.php'><span>Commandes</span><img class="imgmenu" src="img/pci.png"/></a></li>
         <li><a href='listeVente.php'><span>Ventes</span><img class="imgmenu" src="img/cart.png"/></a></li>
-        <li class='last'><a href='#'><span>S.A.V.</span><img class="imgmenu" src="img/small_business.png"/></a></li>
+        <li class='last'><a href='#'><span><s>S.A.V.</s></span><img class="imgmenu" src="img/small_business.png"/></a></li>
         
         <?php
         if ($_SESSION['user'] == "direction") {
         echo "<br /><br /><center>----- Direction -----</center><br />
-        <li><a href='#'><span>Comptabilité</span><img class='imgmenu' src='img/chart.png'/></a></li>
-        <li><a href='#'><span>Fournisseurs</span><img class='imgmenu' src='img/lorry.png'/></a></li>
+        <li><a href='#'><span><s>Comptabilité</s></span><img class='imgmenu' src='img/chart.png'/></a></li>
+        <li><a href='#'><span><s>Fournisseurs</s></span><img class='imgmenu' src='img/lorry.png'/></a></li>
         <li><a href='listePersonnel.php'><span>Personnel</span><img class='imgmenu' src='img/group.png'/></a></li>
         <li class='last'><a href='listeSession.php'><span>Sessions</span><img class='imgmenu' src='img/lock.png'/></a></li>";
         }
