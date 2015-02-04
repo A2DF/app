@@ -74,7 +74,7 @@
             }
 
             if (isset($client['adresse'])) {
-                $adresse = $client['adresse'];
+                $adresse = ($client['adresse']);
             } else {
                 $adresse = "";
             }

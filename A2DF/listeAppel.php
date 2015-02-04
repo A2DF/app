@@ -120,8 +120,8 @@
                                                                                                                                                                                                                                                     dependant=yes')"/>
                     </td>
                     <?php
-                    echo "<td>" . $tel . "</td>";
-                    echo "<td>" . $portable . "</td>";
+                    echo "<td>" . wordwrap($tel,2," ",1) . "</td>";
+                    echo "<td>" . wordwrap($portable,2," ",1) . "</td>";
                     echo "<td>" . $personnel . "</td>";
                     echo "<td>" . $motif . "</td>";
 
