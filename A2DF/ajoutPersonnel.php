@@ -125,12 +125,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Num. Fixe :</td>
                                 <td class="images"></td>
-                                <td><input type='tel' name='portable' value='<?php echo $tel_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
+                                <td><input type='tel' name='tel' value='<?php echo $tel_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
                             </tr>
                             <tr>
                                 <td class="label">Num. Portable :</td>
                                 <td class="images"></td>
-                                <td><input type='tel' name='tel' value='<?php echo $portable_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
+                                <td><input type='tel' name='portable' value='<?php echo $portable_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
                             </tr>
                         </table>
                     </fieldset>
