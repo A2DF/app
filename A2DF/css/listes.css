@@ -445,8 +445,9 @@ table.sortable td {
 }
 
 .filtres {
-    float: right;
-    margin-top: -40px;
-    margin-right: 95px;
+    float: left;
+    margin-top: -30px;
+    margin-left: -29px;
+    height: 25px;
     z-index: 1;
 }
