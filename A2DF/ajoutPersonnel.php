@@ -44,8 +44,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Contrôle du champ client
     $prenom_temp = filter_input(INPUT_POST, "prenom");
-    controleClient($prenom_temp, $prenomErr, $prenom_, $erreurs);
+    controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
 
+    
+    $adresse = filter_input(INPUT_POST, "adresse");
+    $cp = filter_input(INPUT_POST, "cp");
+    $ville = filter_input(INPUT_POST, "ville");
+    $courriel = filter_input(INPUT_POST, "courriel");
+    $tel = filter_input(INPUT_POST, "tel");
+    $portable = filter_input(INPUT_POST, "portable");
+    $numSecu = filter_input(INPUT_POST, "numSecu");
+    $salaire = filter_input(INPUT_POST, "salaire");
+    $contrat = filter_input(INPUT_POST, "contrat");
 
     if ($erreurs === 0) {
 
@@ -134,9 +144,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
                                 } else {
-                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $today_int . "' readonly></td>";
+                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $today_int . "' readonly></td>";
                                 }
                                 ?>
                             </tr>

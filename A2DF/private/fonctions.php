@@ -46,6 +46,8 @@ function controleClient(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
+
+
 function controlePersonnel(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez choisir un personnel";
@@ -96,6 +98,15 @@ function controleNom(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
+function controlePre(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez saisir le prénom";
+        $erreurs++;
+        $champ = $champ_temp;
+    } else {
+        $champ = $champ_temp;
+    }
+}
 function controlePrenom(&$champ_temp, &$champ, &$lower) {
     $lower = strtolower($champ_temp);
     $champ = ucfirst($lower);
