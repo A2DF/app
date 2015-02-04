@@ -19,7 +19,8 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
     <script type="text/javascript" src="lib/nhpup_1.1.js"></script>
-    <body onload="haltTimer(); refreshOnIdle();" onmousemove="haltTimer();">
+    <body onload="haltTimer();
+            refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
             <a  href="ajoutAtelier.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste de suivi d'atelier</div></div>
@@ -52,12 +53,26 @@
 
                     <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
                         <?php
-                        if ($filterEtat < 1) {
-                            echo "<option value='1'>Dépannages en cours</option>";
+                        if ($filterEtat == 0) {
                             echo "<option value='0' selected>Tous les dépannages</option>";
-                        } else {
-                            echo "<option value='1' selected>Dépannages en cours</option>";
+                            echo "<option value='1'>Dépannages en cours</option>";
+                            echo "<option value='4'>Clients prévenus</option>";
+                            echo "<option value='5'>Dépannages terminés</option>";
+                        } else if ($filterEtat == 1) {
                             echo "<option value='0'>Tous les dépannages</option>";
+                            echo "<option value='1' selected>Dépannages en cours</option>";
+                            echo "<option value='4'>Clients prévenus</option>";
+                            echo "<option value='5'>Dépannages terminés</option>";
+                        } else if ($filterEtat == 4) {
+                            echo "<option value='0'>Tous les dépannages</option>";
+                            echo "<option value='1'>Dépannages en cours</option>";
+                            echo "<option value='4' selected>Clients prévenus</option>";
+                            echo "<option value='5'>Dépannages terminés</option>";
+                        } else if ($filterEtat >= 5) {
+                            echo "<option value='0'>Tous les dépannages</option>";
+                            echo "<option value='1'>Dépannages en cours</option>";
+                            echo "<option value='4'>Clients prévenus</option>";
+                            echo "<option value='5' selected>Dépannages terminés</option>";
                         }
                         ?>
                     </select>
@@ -73,8 +88,8 @@
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='mdp'>MDP</th>";
-            echo "<th id='commentaire'>Problème</th>";
-            echo "<th id='commentaire'>Solution</th>";
+            echo "<th id='probleme'>Problème</th>";
+            echo "<th id='solution'>Solution</th>";
             echo "<th id='prix'>Prix</th>";
             echo "<th id='delai'>Délai</th>";
             echo "<th id='traite'>Etat</th>";
@@ -103,7 +118,7 @@
                 $dateConvert = date_create($dateEntree);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
 
-                if ((($filterClient == $idClient) || ($filterClient == "")) && (($traitement < 4) || ($filterEtat == 0))) {
+                if ((($filterClient == $idClient) || ($filterClient == "")) && (($filterEtat == $traitement) || (($filterEtat == 1) && ($traitement < 4)) || ($filterEtat == 0))) {
 
                     //Affichage des données dans le tableau
                     echo "<tr>";
@@ -119,13 +134,13 @@
                     }
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -133,37 +148,37 @@
                     echo "<td>" . $probleme;
                     ?>
                     <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le problème' onclick="window.open('ajoutProbleme.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                            dependant=yes')"/></a>
+                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                                    height=200, \n\
+                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                    dependant=yes')"/></a>
                         <?php
                         echo "</td><td>" . $solution;
                         ?>
                     <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier la solution' onclick="window.open('ajoutSolution.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                            dependant=yes')"/></a>
+                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                    width=520, \n\
+                                                                                                                                                                                    height=200, \n\
+                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                    dependant=yes')"/></a>
 
                     <?php
                     echo "</td>";
                     echo "<td>" . $prix . "€";
                     ?>
                     <a href="listeAtelier.php"><img src='img/pencil.png' title='Modifier le prix' onclick="window.open('ajoutPrix.php?id=<?php echo $idAtelier; ?>', 'search', '\
-                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                            dependant=yes')"/></a>
+                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                            width=520, \n\
+                                                                                                                                                                            height=200, \n\
+                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                            dependant=yes')"/></a>
                         <?php
                         echo "</td>";
 
@@ -194,8 +209,8 @@
 
                         if ($traitement == 1) {
                             ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
-                        } else if ($traitement == 2) {
-                            ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                            } else if ($traitement == 2) {
+                                ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
                             } else if ($traitement == 3) {
                                 ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
                             } else if ($traitement == 4) {
@@ -232,16 +247,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <script src="lib/chosen.jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
-                var config = {
-                    '.chosen-select': {},
-                    '.chosen-select-deselect': {allow_single_deselect: true},
-                    '.chosen-select-no-single': {disable_search_threshold: 10},
-                    '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
-                    '.chosen-select-width': {width: "95%"}
-                }
-                for (var selector in config) {
-                    $(selector).chosen(config[selector]);
-                }
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': {allow_single_deselect: true},
+                '.chosen-select-no-single': {disable_search_threshold: 10},
+                '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                '.chosen-select-width': {width: "95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
         </script>
         <script>
             var timeOut;

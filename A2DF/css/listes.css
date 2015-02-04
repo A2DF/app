@@ -175,15 +175,15 @@ table.sortable td {
 }
 
 #numero {
-    width: 50px;
+    width: 55px;
 }
 
 #date {
-    width: 120px;
+    width: 85px;
 }
 
 #client {
-    width: 200px;
+    width: 235px;
 }
 
 #tel {
@@ -199,14 +199,22 @@ table.sortable td {
 }
 
 #commentaire {
-    width: 235px;
-    word-wrap: break-word;
-    overflow: hidden;
+    width: 250px;
+    min-width: 200px;
+}
+
+#probleme {
+    width: 250px;
+    min-width: 200px;
+}
+
+#solution {
+    width: 250px;
     min-width: 200px;
 }
 
 #traite {
-    width: 75px;
+    width: 55px;
 }
 
 #delai {
@@ -239,7 +247,7 @@ table.sortable td {
 }
 
 #print {
-    width: 65px;
+    width: 55px;
 }
 
 #dateCommande {
