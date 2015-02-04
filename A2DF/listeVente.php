@@ -31,7 +31,7 @@
         </div>
         <div class="tableaux">
              <div class="filtres">
-                <form action='listeCommande.php' method='POST' name='formFiltreClient'>
+                <form action='listeVente.php' method='POST' name='formFiltreClient'>
                     <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
                         <option selected hidden value=''>Tous les clients</option>
                         <?php
