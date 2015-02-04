@@ -15,7 +15,8 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
-    <body onload="haltTimer(); refreshOnIdle();" onmousemove="haltTimer();">
+    <body onload="haltTimer();
+            refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
             <a  href="ajoutAppel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste des appels</div></div>
@@ -63,6 +64,7 @@
 
                 //Récupération des données dans la base
                 $idAppel = $appel['idAppel'];
+                $idClient = $appel['idClient'];
                 $date = $appel['date'];
                 $nomClient = $appel['nomClient'];
                 $prenomClient = $appel['prenomClient'];
@@ -89,8 +91,17 @@
                     } else if ($priorite == "Normal") {
                         echo "<td class='normal'>" . $priorite . "</td>";
                     }
-
-                    echo "<td>" . $nomClient . " " . $prenomClient . "</td>";
+                    ?>
+                    <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                                                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                                                            height=380, \n\
+                                                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                                                            dependant=yes')"/>
+                    </td>
+                    <?php
                     echo "<td>" . $tel . "</td>";
                     echo "<td>" . $portable . "</td>";
                     echo "<td>" . $personnel . "</td>";
@@ -98,13 +109,13 @@
 
                     if ($commentaire == "") {
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
-                                                                                                                                                                                                                                left=500, \n\
-                                                                                                                                                                                                                                top=150, \n\
-                                                                                                                                                                                                                                width=520, \n\
-                                                                                                                                                                                                                                height=200, \n\
-                                                                                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                                                                                dependant=yes')"/></a></td><?php
+                                                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                                                            width=520, \n\
+                                                                                                                                                                                                                                            height=200, \n\
+                                                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                                                            dependant=yes')"/></a></td><?php
                         } else {
                             echo "<td>" . $commentaire . "</td>";
                         }
@@ -146,16 +157,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <script src="lib/chosen.jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
-                var config = {
-                    '.chosen-select': {},
-                    '.chosen-select-deselect': {allow_single_deselect: true},
-                    '.chosen-select-no-single': {disable_search_threshold: 10},
-                    '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
-                    '.chosen-select-width': {width: "95%"}
-                }
-                for (var selector in config) {
-                    $(selector).chosen(config[selector]);
-                }
+            var config = {
+                '.chosen-select': {},
+                '.chosen-select-deselect': {allow_single_deselect: true},
+                '.chosen-select-no-single': {disable_search_threshold: 10},
+                '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                '.chosen-select-width': {width: "95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
         </script>
         <script>
             var timeOut;
@@ -168,6 +179,6 @@
                     clearTimeout(timeOut);
             }
         </script>
-        
+
     </body>
 </html>

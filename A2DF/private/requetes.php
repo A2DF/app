@@ -24,7 +24,7 @@ function login($user, $pass) {
         
 function listeAppel() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite, appel.commentaire
+    $resultat = $connexion->query(" SELECT appel.idAppel, appel.date, appel.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, client.tel, client.portable, personnel.prenom AS personnel, appel.motif, priorite.libelle, appel.traite, appel.commentaire
                                     FROM appel, client, personnel, priorite
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
