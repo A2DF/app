@@ -59,6 +59,16 @@ function listeCommande() {
     return $resultat;
 }
 
+function listePersonnel() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT  personnel.idPersonnel, personnel.dateEmbauche, personnel.nom, personnel.prenom, 
+                                            personnel.adresse, personnel.cp, personnel.ville, personnel.courriel, 
+                                            personnel.tel, personnel.portable, personnel.numSecu, personnel.contrat, personnel.salaire
+                                    FROM personnel
+                                    ORDER BY personnel.nom DESC;");
+    return $resultat;
+}
+
 function listeVente() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  vente.idVente, vente.dateVente, vente.dateLivraison, vente.idClient as idClient, 
@@ -134,6 +144,13 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO client (nom, prenom, adresse, cp, ville, courriel, tel, portable)
                                     VALUES (\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable');");
+    return $resultat;
+}
+
+function ajoutPersonnel($dateEmbauche,$nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable,$numSecu, $contrat, $salaire) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO personnel (dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire)
+                                    VALUES ('$dateEmbauche',\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$numSecu', '$contrat', '$salaire');");
     return $resultat;
 }
 

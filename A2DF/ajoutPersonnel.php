@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <?php
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $date_ . "' readonly></td>";
+                                    echo "<td><input type='text' name='date' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
                                 } else {
                                     echo "<td><input type='text' name='date' id='datepicker' value='" . $today_int . "' readonly></td>";
                                 }

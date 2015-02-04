@@ -3,6 +3,8 @@
     include ('html/head.php');
 
     date_default_timezone_set('UTC');
+    $today_int = date("Y-m-d");
+    $today_date = date_create($today_int);
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
@@ -59,8 +61,11 @@
 
 
 
-                $dateConvert = date_create($date);
+                $dateConvert = date_create($dateEmbauche);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
+                
+                if ($dateEmbauche == 0000 - 00 - 00) {
+                $dateFr = "";}
                 //Affichage des données dans le tableau
                 echo "<tr>";
                 echo "<td>" . $nom . " " . $prenom . " </td>";
