@@ -5,8 +5,10 @@
     date_default_timezone_set('UTC');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $filterClient = filter_input(INPUT_POST, 'client');
         $filterEtat = filter_input(INPUT_POST, 'etat');
     } else {
+        $filterClient = "";
         $filterEtat = 1;
     }
     ?>
@@ -30,6 +32,22 @@
         <div class="tableaux">
             <div class="filtres">
                 <form action='listeAppel.php' method='POST' name='formFiltreClient'>
+                    <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
+                        <option selected hidden value=''>Tous les clients</option>
+                        <?php
+                        $comboboxClient = comboboxClient();
+                        foreach ($comboboxClient as $client) {
+                            $filterId = $client['idClient'];
+                            $filterNom = $client['nom'];
+                            $filterPrenom = $client['prenom'];
+                            if ($filterClient == $filterId) {
+                                echo "<option value=" . $filterId . " selected>" . $filterNom . " " . $filterPrenom . "</option>";
+                            } else {
+                                echo "<option value=" . $filterId . ">" . $filterNom . " " . $filterPrenom . "</option>";
+                            }
+                        }
+                        ?></select>
+
                     <select class="chosen-select" tabindex="2" name="etat" onChange="javascript:submit();">
                         <?php
                         if ($filterEtat < 1) {
@@ -76,7 +94,7 @@
                 $traite = $appel['traite'];
                 $commentaire = $appel['commentaire'];
 
-                if (($traite < 1) || ($filterEtat == 0)) {
+                if ((($filterClient == $idClient) || ($filterClient == "")) && (($traite < 1) || ($filterEtat == 0))) {
 
                     $dateConvert = date_create($date);
                     $dateFr = date_format($dateConvert, 'd/m/Y');
@@ -93,13 +111,13 @@
                     }
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                                                            height=380, \n\
-                                                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                                                            dependant=yes')"/>
+                                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $tel . "</td>";
@@ -109,30 +127,30 @@
 
                     if ($commentaire == "") {
                         ?><td><a href="listeAppel.php"><img src='img/pencil_add.png' title='Ajouter un commentaire' onclick="window.open('ajoutCommentaire.php?id=<?php echo $idAppel; ?>', 'search', '\
-                                                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                                                            width=520, \n\
-                                                                                                                                                                                                                                            height=200, \n\
-                                                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                                                            dependant=yes')"/></a></td><?php
-                        } else {
-                            echo "<td>" . $commentaire . "</td>";
-                        }
-                        ?>
+                                                                                                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                                                                                                        width=520, \n\
+                                                                                                                                                                                                                                                        height=200, \n\
+                                                                                                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                                                                                                        dependant=yes')"/></a></td><?php
+                                                      } else {
+                                                          echo "<td>" . $commentaire . "</td>";
+                                                      }
+                                                      ?>
                     <td><a href="listeAppel.php?id=<?php echo $idAppel ?>">
                             <img <?php
-                            if ($traite == 0) {
-                                if ($commentaire == "") {
-                                    echo "src='img/tick_light_blue.png'";
-                                } else {
-                                    echo "src='img/time.png'";
-                                }
-                            } else {
-                                echo "src='img/give_back.png'";
-                            }
-                            ?>title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
-                        <?php
+                if ($traite == 0) {
+                    if ($commentaire == "") {
+                        echo "src='img/tick_light_blue.png'";
+                    } else {
+                        echo "src='img/time.png'";
+                    }
+                } else {
+                    echo "src='img/give_back.png'";
+                }
+                                                      ?>title='Appel traité' onclick="return(confirm('Etes-vous sûr de vouloir supprimer cet appel ?'));"/></a></td>
+                                <?php
                         echo "</tr>";
                     }
                 }
