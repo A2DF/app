@@ -222,7 +222,7 @@ function comboboxPersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idPersonnel, prenom 
                                     FROM personnel
-                                    ORDER BY personnel.idStatut ASC;");
+                                    ORDER BY personnel.prenom ASC;");
     return $resultat;
 }
 
