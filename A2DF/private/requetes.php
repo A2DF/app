@@ -63,7 +63,7 @@ function listePersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  personnel.idPersonnel, personnel.dateEmbauche, personnel.nom, personnel.prenom, 
                                             personnel.adresse, personnel.cp, personnel.ville, personnel.courriel, 
-                                            personnel.tel, personnel.portable, personnel.numSecu, personnel.contrat, personnel.salaire
+                                            personnel.tel, personnel.portable, personnel.numSecu, personnel.contrat, personnel.salaire, personnel.traite
                                     FROM personnel
                                     ORDER BY personnel.nom ASC;");
     return $resultat;
@@ -301,6 +301,14 @@ function traiterVente($idVente, $etat) {
     $resultat = $connexion->query(" UPDATE vente
                                     SET idTraitement = $etat + 1
                                     WHERE idVente = $idVente;");
+    return $resultat;
+}
+
+function traiterPersonnel($idPersonnel) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE personnel
+                                    SET traite = 1
+                                    WHERE idPersonnel = $idPersonnel;");
     return $resultat;
 }
 

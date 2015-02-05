@@ -58,6 +58,7 @@
                 $numSecu = $personnel['numSecu'];
                 $contrat = $personnel['contrat'];
                 $salaire = $personnel['salaire'];
+                $traite = $personnel['traite'];
 
 
 
@@ -68,29 +69,50 @@
                     $dateFr = "";
                 }
                 //Affichage des données dans le tableau
-                echo "<tr>";
-                ?>
-                <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
-                                                                                                                                                                                                                        left=500, \n\
-                                                                                                                                                                                                                        top=150, \n\
-                                                                                                                                                                                                                        width=450, \n\
-                                                                                                                                                                                                                        height=500, \n\
-                                                                                                                                                                                                                        scrollbars=no, \n\
-                                                                                                                                                                                                                        resizable=no, \n\
-                                                                                                                                                                                                                        dependant=yes')"/>
-                </td>
-                <?php
-                echo "<td>" . $dateFr . "</td>";
-                echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
-                echo "<td>" . $tel . "</td>";
-                echo "<td>" . $portable . "</td>";
-                echo "<td>" . $courriel . "</td>";
-                echo "<td>" . $numSecu . "</td>";
-                echo "<td>" . $contrat . "</td>";
-                echo "<td>" . $salaire . "€</td>";
-            }
-            ?>
+                if ($traite == 0) {
+                    echo "<tr>";
+                    ?>
+                    <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
+                                                                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                                                                width=450, \n\
+                                                                                                                                                                                                                                height=500, \n\
+                                                                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                                                                dependant=yes')"/>
+                    </td>
+                    <?php
+                    echo "<td>" . $dateFr . "</td>";
+                    echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
+                    echo "<td>" . $tel . "</td>";
+                    echo "<td>" . $portable . "</td>";
+                    echo "<td>" . $courriel . "</td>";
+                    echo "<td>" . $numSecu . "</td>";
+                    echo "<td>" . $contrat . "</td>";
+                    echo "<td>" . $salaire . "€</td>";
+
+                    if ($traite == 0) {
+                        ?><td><a href="listePersonnel.php?id_=<?php echo $idPersonnel ?>">
+                                <img src='img/cross.png' title='Supprimer la personne' onclick="return(confirm('Supprimer la personne?'));"/></a></td><?php
+                        echo "</tr>";
+                    } else if ($traite == 1) {
+                        ?><td>Supprimé</td><?php
+                                echo "</tr>";
+                            }
+                        }
+                    }
+                    ?>
         </div>
+        <?php
+        $id_ = filter_input(INPUT_GET, 'id_');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
+            traiterPersonnel($id_);
+            ?>
+            <script language="javascript">window.self.location = "listePersonnel.php";</script>    
+            <?php
+        }
+        
+        ?>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">
