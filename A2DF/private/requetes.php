@@ -29,7 +29,7 @@ function listeAppel() {
                                     WHERE appel.idClient = client.idClient
                                     AND appel.idPersonnel = personnel.idPersonnel
                                     AND appel.idPriorite = priorite.idPriorite
-                                    ORDER BY appel.idAppel DESC;");
+                                    ORDER BY appel.date DESC;");
     return $resultat;
 }
 
@@ -44,7 +44,7 @@ function listeAtelier() {
                                     AND atelier.idPriorite = priorite.idPriorite
                                     AND atelier.typeProduit = materiel.idMateriel
                                     AND atelier.marqueProduit = marque.idMarque
-                                    ORDER BY atelier.idTraitement ASC;");
+                                    ORDER BY atelier.idTraitement, atelier.dateEntree ASC;");
     return $resultat;
 }
 
@@ -55,14 +55,15 @@ function listeCommande() {
                                             commande.couleurProduit, commande.quantite, commande.prix, commande.acompte, commande.idTraitement, commande.traite
                                     FROM commande, client
                                     WHERE client.idClient = commande.idClient
-                                    ORDER BY commande.idCommande DESC;");
+                                    ORDER BY commande.dateCommande DESC;");
     return $resultat;
 }
 
 function listeClient() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idClient, nom, prenom, adresse, cp, ville, courriel, tel, portable
-                                    FROM client");
+                                    FROM client
+                                    ORDER BY client.nom ASC;");
     return $resultat;
 }
 
@@ -83,7 +84,7 @@ function listeVente() {
                                             vente.couleurProduit, vente.reference, vente.quantite, vente.prix, vente.acompte, vente.idTraitement, vente.traite
                                     FROM vente, client
                                     WHERE client.idClient = vente.idClient
-                                    ORDER BY vente.idVente DESC;");
+                                    ORDER BY vente.dateVente DESC;");
     return $resultat;
 }
 
