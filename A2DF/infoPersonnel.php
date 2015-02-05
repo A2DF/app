@@ -1,7 +1,6 @@
 <html>
     <link rel="stylesheet" href="css/pikaday.css" />
     <?php
-    
     include ('private/fonctions.php');
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
@@ -11,54 +10,54 @@
     $erreurs = 0;
 
     //Initialisation des valeurs de champs
-$dateEmbauche_ = "";
-$nom_ = "";
-$prenom_ = "";
-$adresse_ = "";
-$cp_ = "";
-$ville_ = "";
-$tel_ = "";
-$portable_ = "";
-$courriel_="";
-$numSecu_ = "";
-$contrat_ = "";
-$salaire_ = "";
+    $dateEmbauche_ = "";
+    $nom_ = "";
+    $prenom_ = "";
+    $adresse_ = "";
+    $cp_ = "";
+    $ville_ = "";
+    $tel_ = "";
+    $portable_ = "";
+    $courriel_ = "";
+    $numSecu_ = "";
+    $contrat_ = "";
+    $salaire_ = "";
 
 //Initialisation des messages d'erreur
-$dateEmbaucheErr = "";
-$nomErr = "";
-$prenomErr = "";
-$adresseErr = "";
-$cpErr = "";
-$villeErr = "";
-$telErr = "";
-$portableErr = "";
-$courrielErr ="";
-$numSecuErr = "";
-$contratErr = "";
-$salaireErr = "";
+    $dateEmbaucheErr = "";
+    $nomErr = "";
+    $prenomErr = "";
+    $adresseErr = "";
+    $cpErr = "";
+    $villeErr = "";
+    $telErr = "";
+    $portableErr = "";
+    $courrielErr = "";
+    $numSecuErr = "";
+    $contratErr = "";
+    $salaireErr = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //Contrôle du champ date
-    $dateEmbauche_temp = filter_input(INPUT_POST, "dateEmbauche");
-    controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
+        //Contrôle du champ date
+        $dateEmbauche_temp = filter_input(INPUT_POST, "dateEmbauche");
+        controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
 
-    $nom_ = filter_input(INPUT_POST, "nom");
-    
-    //Contrôle du champ client
-    $prenom_temp = filter_input(INPUT_POST, "prenom");
-    controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
+        $nom_ = filter_input(INPUT_POST, "nom");
 
-    $adresse_ = filter_input(INPUT_POST, "adresse");
-    $cp_ = filter_input(INPUT_POST, "cp");
-    $ville_ = filter_input(INPUT_POST, "ville");
-    $courriel_ = filter_input(INPUT_POST, "courriel");
-    $tel_ = filter_input(INPUT_POST, "tel");
-    $portable_ = filter_input(INPUT_POST, "portable");
-    $numSecu_ = filter_input(INPUT_POST, "numSecu");
-    $salaire_ = filter_input(INPUT_POST, "salaire");
-    $contrat_ = filter_input(INPUT_POST, "contrat");
+        //Contrôle du champ client
+        $prenom_temp = filter_input(INPUT_POST, "prenom");
+        controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
+
+        $adresse_ = filter_input(INPUT_POST, "adresse");
+        $cp_ = filter_input(INPUT_POST, "cp");
+        $ville_ = filter_input(INPUT_POST, "ville");
+        $courriel_ = filter_input(INPUT_POST, "courriel");
+        $tel_ = filter_input(INPUT_POST, "tel");
+        $portable_ = filter_input(INPUT_POST, "portable");
+        $numSecu_ = filter_input(INPUT_POST, "numSecu");
+        $salaire_ = filter_input(INPUT_POST, "salaire");
+        $contrat_ = filter_input(INPUT_POST, "contrat");
 
 
         if ($erreurs === 0) {
@@ -122,25 +121,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $portable = "";
             }
-            
+
             if (isset($personnel['dateEmbauche'])) {
                 $dateEmbauche = $personnel['dateEmbauche'];
             } else {
                 $dateEmbauche = "";
             }
-            
+
             if (isset($personnel['numSecu'])) {
                 $numSecu = $personnel['numSecu'];
             } else {
                 $numSecu = "";
             }
-            
+
             if (isset($personnel['contrat'])) {
                 $contrat = $personnel['contrat'];
             } else {
                 $contrat = "";
             }
-            
+
             if (isset($personnel['salaire'])) {
                 $dsalaire = $personnel['salaire'];
             } else {
@@ -191,36 +190,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="tel" name="portable" value='<?php echo $portable ?>' pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
             </fieldset>
             <fieldset>
-                        <legend>Entreprise</legend>
-                        <table border="0">
-                            <tr>
-                                <td class="label">Date d'embauche :</td>
-                                <td class="images"></td>
-                                <?php
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
-                                } else {
-                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $today_int . "' readonly></td>";
-                                }
-                                ?>
-                            </tr>
-                            <tr>
-                                <td class="label">Numéro de sécu :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='numSecu' value='<?php echo $numSecu_ ?>'></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Type contrat :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='contrat' value='<?php echo $contrat_ ?>'></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Salaire mensuel brut :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='salaire' value='<?php echo $salaire_ ?>'></td>
-                            </tr>
-                        </table>
-                    </fieldset>
+                <legend>Entreprise</legend>
+                <table border="0">
+                    <tr>
+                        <td>Date d'embauche :</td>
+                        <img src="img/telephone.png" width="16" height="16"/>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
+                        } else {
+                            echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $today_int . "' readonly></td>";
+                        }
+                        ?>
+                    </tr>
+                    <tr>
+                        <td>Numéro de sécu :</td>
+                        <img src="img/telephone.png" width="16" height="16"/>
+                        <td><input type='text' name='numSecu' value='<?php echo $numSecu_ ?>'></td>
+                    </tr>
+                    <tr>
+                        <td>Type contrat :</td>
+                        <img src="img/telephone.png" width="16" height="16"/>
+                        <td><input type='text' name='contrat' value='<?php echo $contrat_ ?>'></td>
+                    </tr>
+                    <tr>
+                        <td>Salaire mensuel brut :</td>
+                        <img src="img/telephone.png" width="16" height="16"/>
+                        <td><input type='text' name='salaire' value='<?php echo $salaire_ ?>'></td>
+                    </tr>
+                </table>
+            </fieldset>
             <br />
             <input type="submit" value="Enregistrer">
             <input type='reset' value='Réinitialiser'>
@@ -228,17 +227,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </p>
         <script type="text/javascript" src="lib/moment.js"></script>
         <script type="text/javascript" src="lib/pikaday.js"></script>
-                <script>
-                                    var pickerDebut = new Pikaday(
-                                            {
-                                                field: document.getElementById('datepicker'),
-                                                firstDay: 1,
-                                                minDate: new Date('2000-01-01'),
-                                                maxDate: new Date('2020-12-31'),
-                                                yearRange: [2000, 2020],
-                                                //format: 'DD/MM/YYYY'
-                                            });
-                </script>
+        <script>
+                var pickerDebut = new Pikaday(
+                        {
+                            field: document.getElementById('datepicker'),
+                            firstDay: 1,
+                            minDate: new Date('2000-01-01'),
+                            maxDate: new Date('2020-12-31'),
+                            yearRange: [2000, 2020],
+                            //format: 'DD/MM/YYYY'
+                        });
+        </script>
     </form>
     <?php
     if ($prenomErr <> "") {
