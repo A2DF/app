@@ -84,8 +84,8 @@
                     <?php
                     echo "<td>" . $dateFr . "</td>";
                     echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
-                    echo "<td>" . $tel . "</td>";
-                    echo "<td>" . $portable . "</td>";
+                    echo "<td>" . wordwrap($tel, 2, " ", 1) . "</td>";
+                    echo "<td>" . wordwrap($portable, 2, " ", 1) . "</td>";
                     echo "<td>" . $courriel . "</td>";
                     echo "<td>" . $numSecu . "</td>";
                     echo "<td>" . $contrat . "</td>";
