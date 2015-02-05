@@ -13,12 +13,17 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
-
-
     <body onload="haltTimer();
             refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
-            <a  href="ajoutClient.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
+            <img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" onclick="window.open('ajoutClient.php', 'search', '\
+                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                        width=450, \n\
+                                                                                                                                                                        height=380, \n\
+                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                        dependant=yes');"/>
             <div class="ribbon-front"><div>Liste des clients</div></div>
             <div class="ribbon-edge-topleft"></div>
             <div class="ribbon-edge-topright"></div>
@@ -77,22 +82,22 @@
                     echo "<tr>";
                     ?>
                     <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                            left=500, \n\
-                                                                                                                                                                                                            top=150, \n\
-                                                                                                                                                                                                            width=450, \n\
-                                                                                                                                                                                                            height=500, \n\
-                                                                                                                                                                                                            scrollbars=no, \n\
-                                                                                                                                                                                                            resizable=no, \n\
-                                                                                                                                                                                                            dependant=yes')"/>
+                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
-                                                                                   <?php
-                                                                                   echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
-                                                                                   echo "<td>" . $courriel . "</td>";
-                                                                                   echo "<td>" . $tel . "</td>";
-                                                                                   echo "<td>" . $portable . "</td>";
-                                                                               }
-                                                                           }
-                                                                           ?>
+                    <?php
+                    echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
+                    echo "<td>" . $courriel . "</td>";
+                    echo "<td>" . $tel . "</td>";
+                    echo "<td>" . $portable . "</td>";
+                }
+            }
+            ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
