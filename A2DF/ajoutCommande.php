@@ -118,19 +118,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="client" value='<?php echo $client_ ?>'>
                                         <option selected disabled hidden value=''></option>
-<?php
-$comboboxClient = comboboxClient();
-foreach ($comboboxClient as $client) {
-    $idClie = $client['idClient'];
-    $nom = $client['nom'];
-    $prenom = $client['prenom'];
-    if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
-        echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
-    } else {
-        echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
-    }
-}
-?>
+                                        <?php
+                                        $comboboxClient = comboboxClient();
+                                        foreach ($comboboxClient as $client) {
+                                            $idClie = $client['idClient'];
+                                            $nom = $client['nom'];
+                                            $prenom = $client['prenom'];
+                                            if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
+                                                echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </td>
 
@@ -210,22 +210,22 @@ foreach ($comboboxClient as $client) {
                                             });
                 </script>
             </form>
-<?php
-if ($dateCommandeErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $dateCommandeErr . "<br />";
-}
+            <?php
+            if ($dateCommandeErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $dateCommandeErr . "<br />";
+            }
 
-if ($clientErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
-}
+            if ($clientErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $clientErr . "<br />";
+            }
 
-if ($quantiteErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
-}
-if ($prixErr <> "") {
-    echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
-}
-?>
+            if ($quantiteErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $quantiteErr . "<br />";
+            }
+            if ($prixErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
+            }
+            ?>
         </div>
     </body>
 </html>

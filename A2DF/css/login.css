@@ -43,8 +43,8 @@ body{
     margin:9% auto 4% auto;
     position: relative;
     box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
--moz-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
--webkit-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
+    -moz-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
+    -webkit-box-shadow: inset 0px 0px 10px 4px rgba(183, 183, 183, 0.75);
 }
 .head {
     position: relative;
@@ -242,7 +242,7 @@ input[type="submit"]{
     text-align: center;
     float: bottom;
     bottom: -18px;
-    
+
 }
 
 /*-----start-responsive-design------*/
@@ -347,7 +347,7 @@ input[type="submit"]{
     text-align: center;
     margin-top: -30px;
     color: #36AAE7;
-    
+
 }
 h1{ 
     text-align : center; 

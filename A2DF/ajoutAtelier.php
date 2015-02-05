@@ -18,7 +18,7 @@ $couleurProduit_ = "";
 $mdpProduit_ = "";
 $probleme_ = "";
 $solution_ = "";
-$prix_= "";
+$prix_ = "";
 
 
 //Initialisation des messages d'erreur
@@ -61,8 +61,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Insertion des données dans la table "Appel"
         ajoutAtelier($date_, $client_, $priorite_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_, $solution_, $prix_);
 
-        //Redirection vers la liste des appels
-        header('Location: listeAtelier.php');
+        //Récupération de l'idAtelier créé
+        $lastAtelier = lastAtelier($client_);
+        foreach ($lastAtelier as $atelier) {
+            $idAtelier = $atelier['idAtelier'];
+        }
+
+        //Ouverture d'une page d'impression
+        ?>
+        <script type="text/javascript" language="Javascript">
+            window.open('printAtelier.php?id=<?= $idAtelier ?>');
+            window.self.location = "listeAtelier.php";
+        </script>
+        <?php
     }
 }
 ?>
@@ -215,7 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </table>
                     </fieldset>
                 </div>
-                
+
                 <div class="boxBas">
                     <fieldset>
                         <legend>Devis</legend>

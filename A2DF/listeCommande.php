@@ -5,8 +5,8 @@
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
     $today_date = date_create($today_int);
-    
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $filterClient = filter_input(INPUT_POST, 'client');
         $filterEtat = filter_input(INPUT_POST, 'etat');
     } else {
@@ -19,7 +19,8 @@
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
     <script type="text/javascript" src="lib/nhpup_1.1.js"></script>
-    <body onload="haltTimer(); refreshOnIdle();" onmousemove="haltTimer();">
+    <body onload="haltTimer();
+            refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
             <a  href="ajoutCommande.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste des commandes</div></div>
@@ -31,7 +32,7 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
-            
+
             <div class="filtres">
                 <form action='listeCommande.php' method='POST' name='formFiltreClient'>
                     <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
@@ -113,13 +114,13 @@
                     echo "<td>" . $dateFrBon . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";

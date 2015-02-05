@@ -94,6 +94,7 @@ function unClient($idClient) {
                                     WHERE idClient = $idClient");
     return $resultat;
 }
+
 function unPersonnel($idPersonnel) {
     global $connexion;
     $resultat = $connexion->query(" SELECT dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire
@@ -101,6 +102,7 @@ function unPersonnel($idPersonnel) {
                                     WHERE idPersonnel = $idPersonnel");
     return $resultat;
 }
+
 function unProbleme($idAtelier) {
     global $connexion;
     $resultat = $connexion->query(" SELECT probleme
@@ -160,7 +162,7 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
-function ajoutPersonnel($dateEmbauche,$nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable, $numSecu, $contrat, $salaire) {
+function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable, $numSecu, $contrat, $salaire) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO personnel (dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire)
                                     VALUES ('$dateEmbauche',\"$nom\", \"$prenom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$numSecu', '$contrat', '$salaire');");
@@ -268,6 +270,14 @@ function etatDepannage($idAtelier) {
     $resultat = $connexion->query(" SELECT idTraitement
                                     FROM atelier
                                     WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
+function lastAtelier($client) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT MAX(idAtelier) AS idAtelier
+                                    FROM atelier
+                                    WHERE idClient = $client;");
     return $resultat;
 }
 

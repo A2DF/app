@@ -17,7 +17,7 @@ $cp_ = "";
 $ville_ = "";
 $tel_ = "";
 $portable_ = "";
-$courriel_="";
+$courriel_ = "";
 $numSecu_ = "";
 $contrat_ = "";
 $salaire_ = "";
@@ -31,7 +31,7 @@ $cpErr = "";
 $villeErr = "";
 $telErr = "";
 $portableErr = "";
-$courrielErr ="";
+$courrielErr = "";
 $numSecuErr = "";
 $contratErr = "";
 $salaireErr = "";
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
 
     $nom_ = filter_input(INPUT_POST, "nom");
-    
+
     //Contrôle du champ client
     $prenom_temp = filter_input(INPUT_POST, "prenom");
     controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
@@ -177,29 +177,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <script src="lib/chosen.jquery.js" type="text/javascript"></script>
                 <script src="js/ajoutClient.js" type="text/javascript"></script>
                 <script type="text/javascript">
-                                    var config = {
-                                        '.chosen-select': {},
-                                        '.chosen-select-deselect': {allow_single_deselect: true},
-                                        '.chosen-select-no-single': {disable_search_threshold: 10},
-                                        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
-                                        '.chosen-select-width': {width: "95%"}
-                                    }
-                                    for (var selector in config) {
-                                        $(selector).chosen(config[selector]);
-                                    }
+                    var config = {
+                        '.chosen-select': {},
+                        '.chosen-select-deselect': {allow_single_deselect: true},
+                        '.chosen-select-no-single': {disable_search_threshold: 10},
+                        '.chosen-select-no-results': {no_results_text: 'Oops, nothing found!'},
+                        '.chosen-select-width': {width: "95%"}
+                    }
+                    for (var selector in config) {
+                        $(selector).chosen(config[selector]);
+                    }
                 </script>
                 <script type="text/javascript" src="lib/moment.js"></script>
                 <script type="text/javascript" src="lib/pikaday.js"></script>
                 <script>
-                                    var pickerDebut = new Pikaday(
-                                            {
-                                                field: document.getElementById('datepicker'),
-                                                firstDay: 1,
-                                                minDate: new Date('2000-01-01'),
-                                                maxDate: new Date('2020-12-31'),
-                                                yearRange: [2000, 2020],
-                                                //format: 'DD/MM/YYYY'
-                                            });
+                    var pickerDebut = new Pikaday(
+                            {
+                                field: document.getElementById('datepicker'),
+                                firstDay: 1,
+                                minDate: new Date('2000-01-01'),
+                                maxDate: new Date('2020-12-31'),
+                                yearRange: [2000, 2020],
+                                //format: 'DD/MM/YYYY'
+                            });
                 </script>
             </form>
             <?php
@@ -210,7 +210,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($prenomErr <> "") {
                 echo "<img src='img/exclamation.png'/>  " . $prenomErr . "<br />";
             }
-
             ?>
         </div>
     </body>

@@ -73,13 +73,13 @@
                     echo "<tr>";
                     ?>
                     <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
-                                                                                                                                                                                                                                left=500, \n\
-                                                                                                                                                                                                                                top=150, \n\
-                                                                                                                                                                                                                                width=450, \n\
-                                                                                                                                                                                                                                height=500, \n\
-                                                                                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                                                                                dependant=yes')"/>
+                                                                                                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                                                                                                width=450, \n\
+                                                                                                                                                                                                                                                                height=500, \n\
+                                                                                                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                                                                                                dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $dateFr . "</td>";
@@ -92,8 +92,8 @@
                     echo "<td>" . $salaire . "€</td>";
 
                     if ($traite == 0) {
-                        ?><td><a href="listePersonnel.php?id_=<?php echo $idPersonnel ?>">
-                                <img src='img/cross.png' title='Supprimer la personne' onclick="return(confirm('Supprimer la personne?'));"/></a></td><?php
+                        ?><td id='numero'><a href="listePersonnel.php?id_=<?php echo $idPersonnel ?>">
+                                <img src='img/cross.png' width='16' title='Supprimer la personne' onclick="return(confirm('Supprimer la personne?'));"/></a></td><?php
                         echo "</tr>";
                     } else if ($traite == 1) {
                         ?><td>Supprimé</td><?php
@@ -111,7 +111,6 @@
             <script language="javascript">window.self.location = "listePersonnel.php";</script>    
             <?php
         }
-        
         ?>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();

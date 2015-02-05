@@ -1,5 +1,5 @@
-<?php 
-    include('private/fonctions.php');
+<?php
+include('private/fonctions.php');
 ?>
 
 <head>
@@ -19,13 +19,13 @@
     </div>
 </header>
 <script>
-function openPopUp(URL) {
-new_window = window.open(URL, 'window', 
-'toolbar=0,scrollbars=0,location=0, statusbar=0,menubar=0,resizable=0,width=400,height=415,left = 700,top = 150');
-}
-function closePopUp() {
-new_window.close();
-}
+    function openPopUp(URL) {
+        new_window = window.open(URL, 'window',
+                'toolbar=0,scrollbars=0,location=0, statusbar=0,menubar=0,resizable=0,width=400,height=415,left = 700,top = 150');
+    }
+    function closePopUp() {
+        new_window.close();
+    }
 </script>
 <div id='cssmenu' class="menu">
     <ul>
@@ -35,10 +35,10 @@ new_window.close();
         <li><a href='listeVente.php'><span>Ventes</span><img class="imgmenu" src="img/cart.png"/></a></li>
         <li><a href='listeClient.php'><span>Clients</span><img class="imgmenu" src="img/group.png"/></a></li>
         <li class='last'><a href='#'><span><s>S.A.V.</s></span><img class="imgmenu" src="img/small_business.png"/></a></li>
-        
+
         <?php
         if ($_SESSION['user'] == "direction") {
-        echo "<br /><br /><center>----- Direction -----</center><br />
+            echo "<br />
         <li><a href='#'><span><s>Comptabilité</s></span><img class='imgmenu' src='img/chart.png'/></a></li>
         <li><a href='#'><span><s>Fournisseurs</s></span><img class='imgmenu' src='img/lorry.png'/></a></li>
         <li><a href='listePersonnel.php'><span>Personnel</span><img class='imgmenu' src='img/staff.png'/></a></li>
@@ -48,20 +48,20 @@ new_window.close();
     </ul>
 </div>
 <script>
-            var halt = 0;
+    var halt = 0;
 
-            function haltTimer() {
-                halt = 1;
-            }
+    function haltTimer() {
+        halt = 1;
+    }
 
-            function refreshOnIdle() {
-                if (halt == 0) {
-                    window.location.reload();
-                }
-                else {
-                    halt = 0;
-                    window.setTimeout("refreshOnIdle();", 300000);
-                }
-            }
-        </script>
+    function refreshOnIdle() {
+        if (halt == 0) {
+            window.location.reload();
+        }
+        else {
+            halt = 0;
+            window.setTimeout("refreshOnIdle();", 300000);
+        }
+    }
+</script>
 </head>
