@@ -246,6 +246,7 @@ function comboboxPersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idPersonnel, prenom 
                                     FROM personnel
+                                    WHERE traite = 0
                                     ORDER BY personnel.prenom ASC;");
     return $resultat;
 }
