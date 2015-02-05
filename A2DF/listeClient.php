@@ -2,19 +2,23 @@
     <?php
     include ('html/head.php');
 
-    date_default_timezone_set('UTC');
-    $today_int = date("Y-m-d");
-    $today_date = date_create($today_int);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $filterClient = filter_input(INPUT_POST, 'client');
+    } else {
+        $filterClient = "";
+    }
     ?>
 
     <link href="css/listes.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.css" rel="stylesheet" type='text/css'>
     <script src="lib/sorttable.js"></script>
 
+
+
     <body onload="haltTimer();
             refreshOnIdle();" onmousemove="haltTimer();">
         <div class="ribbon-wrapper">
-            <a  href="ajoutPersonnel.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
+            <a  href="ajoutClient.php"><img class="img_liste" onmouseout="this.src = 'img/add1.png'" onmouseover="this.src = 'img/add2.png'" src="img/add1.png" /></a>
             <div class="ribbon-front"><div>Liste des clients</div></div>
             <div class="ribbon-edge-topleft"></div>
             <div class="ribbon-edge-topright"></div>
@@ -24,72 +28,71 @@
             <div class="ribbon-back-right"></div>
         </div>
         <div class="tableaux">
+            <div class="filtres">
+                <form action='listeClient.php' method='POST' name='formFiltreClient'>
+                    <select class="chosen-select" tabindex="2" name="client" onChange="javascript:submit();">
+                        <option selected hidden value=''>Tous les clients</option>
+                        <?php
+                        $comboboxClient = comboboxClient();
+                        foreach ($comboboxClient as $client) {
+                            $filterId = $client['idClient'];
+                            $filterNom = $client['nom'];
+                            $filterPrenom = $client['prenom'];
+                            if ($filterClient == $filterId) {
+                                echo "<option value=" . $filterId . " selected>" . $filterNom . " " . $filterPrenom . "</option>";
+                            } else {
+                                echo "<option value=" . $filterId . ">" . $filterNom . " " . $filterPrenom . "</option>";
+                            }
+                        }
+                        ?></select>
+                </form>
+            </div>
             <?php
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='client'>Employé</th>";
-            echo "<th id='date'>Date Embauche</th>";
+            echo "<th id='client'>Client</th>";
             echo "<th id='commentaire'>Adresse</th>";
+            echo "<th id='tel'>Courriel</th>";
             echo "<th id='tel'>Fixe</th>";
             echo "<th id='tel'>Portable</th>";
-            echo "<th id='tel'>Courriel</th>";
-            echo "<th id='numSecu'>Numéro Sécu</th>";
-            echo "<th id='contrat'>Contrat</th>";
-            echo "<th id='salaire'>Salaire</th>";
-
-
             echo "</tr>";
 
-            $listePersonnel = listePersonnel();
-            foreach ($listePersonnel as $personnel) {
+            $listeClient = listeClient();
+            foreach ($listeClient as $client) {
 
                 //Récupération des données dans la base
-                $idPersonnel = $personnel['idPersonnel'];
-                $nom = $personnel['nom'];
-                $prenom = $personnel['prenom'];
-                $dateEmbauche = $personnel['dateEmbauche'];
-                $adresse = $personnel['adresse'];
-                $cp = $personnel['cp'];
-                $ville = $personnel['ville'];
-                $tel = $personnel['tel'];
-                $portable = $personnel['portable'];
-                $courriel = $personnel['courriel'];
-                $numSecu = $personnel['numSecu'];
-                $contrat = $personnel['contrat'];
-                $salaire = $personnel['salaire'];
+                $idClient = $client['idClient'];
+                $nom = $client['nom'];
+                $prenom = $client['prenom'];
+                $adresse = $client['adresse'];
+                $cp = $client['cp'];
+                $ville = $client['ville'];
+                $courriel = $client['courriel'];
+                $tel = $client['tel'];
+                $portable = $client['portable'];
 
-
-
-                $dateConvert = date_create($dateEmbauche);
-                $dateFr = date_format($dateConvert, 'd/m/Y');
-
-                if ($dateEmbauche == 0000 - 00 - 00) {
-                    $dateFr = "";
-                }
-                //Affichage des données dans le tableau
-                echo "<tr>";
-                ?>
-                <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
-                                                                                                                                                                                                                        left=500, \n\
-                                                                                                                                                                                                                        top=150, \n\
-                                                                                                                                                                                                                        width=450, \n\
-                                                                                                                                                                                                                        height=500, \n\
-                                                                                                                                                                                                                        scrollbars=no, \n\
-                                                                                                                                                                                                                        resizable=no, \n\
-                                                                                                                                                                                                                        dependant=yes')"/>
-                </td>
-                <?php
-                echo "<td>" . $dateFr . "</td>";
-                echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
-                echo "<td>" . $tel . "</td>";
-                echo "<td>" . $portable . "</td>";
-                echo "<td>" . $courriel . "</td>";
-                echo "<td>" . $numSecu . "</td>";
-                echo "<td>" . $contrat . "</td>";
-                echo "<td>" . $salaire . "€</td>";
-            }
-            ?>
+                if (($filterClient == $idClient) || ($filterClient == "")) {
+                    //Affichage des données dans le tableau
+                    echo "<tr>";
+                    ?>
+                    <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
+                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                            height=500, \n\
+                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                            dependant=yes')"/>
+                    </td>
+                                                                                   <?php
+                                                                                   echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
+                                                                                   echo "<td>" . $courriel . "</td>";
+                                                                                   echo "<td>" . $tel . "</td>";
+                                                                                   echo "<td>" . $portable . "</td>";
+                                                                               }
+                                                                           }
+                                                                           ?>
         </div>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();

@@ -59,6 +59,13 @@ function listeCommande() {
     return $resultat;
 }
 
+function listeClient() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idClient, nom, prenom, adresse, cp, ville, courriel, tel, portable
+                                    FROM client");
+    return $resultat;
+}
+
 function listePersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  personnel.idPersonnel, personnel.dateEmbauche, personnel.nom, personnel.prenom, 
