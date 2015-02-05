@@ -192,19 +192,19 @@
             <fieldset>
                 <legend>Entreprise</legend>
                 <label>Date d'embauche :</label>
-                <img src="img/telephone.png" width="16" height="16"/>
+                <img src="img/date.png" width="16" height="16"/>
                 <input type='text' name='dateEmbauche' id='datepicker' value='<?php echo $dateEmbauche_ ?>' readonly>
                 <br />
                 <label>Numéro de sécu :</label>
-                <img src="img/telephone.png" width="16" height="16"/>
+                <img src="img/health.png" width="16" height="16"/>
                 <input type='text' name='numSecu' value='<?php echo $numSecu_ ?>'>
                 <br />
                 <label>Type contrat :</label>
-                <img src="img/telephone.png" width="16" height="16"/>
+                <img src="img/note.png" width="16" height="16"/>
                 <input type='text' name='contrat' value='<?php echo $contrat_ ?>'>
                 <br />
                 <label>Salaire mensuel brut :</label>
-                <img src="img/telephone.png" width="16" height="16"/>
+                <img src="img/euro.png" width="16" height="16"/>
                 <input type='text' name='salaire' value='<?php echo $salaire_ ?>'>
 
             </fieldset>
