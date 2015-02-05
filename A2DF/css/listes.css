@@ -175,7 +175,7 @@ table.sortable td {
 }
 
 #numero {
-    width: 55px;
+    width: 50px;
     min-width: 45px;
 }
 
@@ -235,12 +235,12 @@ table.sortable td {
 }
 
 #tel {
-    width: 100px;
+    width: 110px;
     min-width: 100px;
 }
 
 #portable {
-    width: 100px;
+    width: 110px;
     min-width: 100px;
 }
 
@@ -273,16 +273,18 @@ table.sortable td {
 #reference {
     min-width: 110px;
 }
+
 #numSecu {
     min-width: 130px;
 }
+
 #contrat {
     min-width: 80px;
 }
+
 #salaire {
     min-width: 80px;
 }
-
 
 .urgent {
     color: red;
