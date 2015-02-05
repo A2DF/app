@@ -87,7 +87,13 @@ function unClient($idClient) {
                                     WHERE idClient = $idClient");
     return $resultat;
 }
-
+function unPersonnel($idPersonnel) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire
+                                    FROM personnel
+                                    WHERE idPersonnel = $idPersonnel");
+    return $resultat;
+}
 function unProbleme($idAtelier) {
     global $connexion;
     $resultat = $connexion->query(" SELECT probleme
@@ -159,6 +165,14 @@ function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $co
     $resultat = $connexion->exec("  UPDATE client
                                     SET nom = \"$nom\", prenom = \"$prenom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable'
                                     WHERE idClient = $idClient;");
+    return $resultat;
+}
+
+function modificationPersonnel($idPersonnel, $dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable, $numSecu, $contrat, $salaire) {
+    global $connexion;
+    $resultat = $connexion->exec("  UPDATE personnel
+                                    SET dateEmbauche = '$dateEmbauche', nom = \"$nom\", prenom = \"$prenom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable', numSecu = '$numSecu', contrat = \"$contrat\", salaire = '$salaire'
+                                    WHERE idPersonnel = $idPersonnel;");
     return $resultat;
 }
 

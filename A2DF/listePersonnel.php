@@ -63,12 +63,23 @@
 
                 $dateConvert = date_create($dateEmbauche);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
-                
+
                 if ($dateEmbauche == 0000 - 00 - 00) {
-                $dateFr = "";}
+                    $dateFr = "";
+                }
                 //Affichage des données dans le tableau
                 echo "<tr>";
-                echo "<td>" . $nom . " " . $prenom . " </td>";
+                ?>
+                <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
+                                                                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                                                                        width=650, \n\
+                                                                                                                                                                                                                        height=680, \n\
+                                                                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                                                                        dependant=yes')"/>
+                </td>
+                <?php
                 echo "<td>" . $dateFr . "</td>";
                 echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
                 echo "<td>" . $tel . "</td>";
