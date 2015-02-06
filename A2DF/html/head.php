@@ -14,7 +14,7 @@ include('private/fonctions.php');
         <img src="img/mouse.png" alt="logo" />
     </p>
     <div><a href="index.php" style="line-height:80px;" class="logo"  ><h1>A2DF Informatique</h1></a>
-        <a href="login.php"><img class="imgco" onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png"/></a>
+        <a href="login.php"><img class="imgco" title='Déconnexion' onmouseout="this.src = 'img/co_off.png'" onmouseover="this.src = 'img/co_on.png'" src="img/co_off.png"/></a>
         <div class="log"><?= $_SESSION['user'] ?></div>
     </div>
 </header>

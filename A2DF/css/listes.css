@@ -461,4 +461,5 @@ table.sortable td {
 
 .filtres img {
     vertical-align: middle;
+    cursor: pointer;
 }
