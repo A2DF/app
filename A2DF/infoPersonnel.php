@@ -1,5 +1,9 @@
 <html>
     <?php
+    if ($_SESSION['user'] <> "direction") {
+        header('Location: login.php');
+    }
+
     include ('private/fonctions.php');
     date_default_timezone_set('UTC');
 

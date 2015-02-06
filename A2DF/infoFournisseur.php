@@ -1,5 +1,9 @@
 <html>
     <?php
+    if ($_SESSION['user'] <> "direction") {
+        header('Location: login.php');
+    }
+
     include ('private/fonctions.php');
     date_default_timezone_set('UTC');
 
@@ -37,7 +41,7 @@
         //Contrôle du champ nom
         $nom_temp = filter_input(INPUT_POST, "nom");
         controleNom($nom_temp, $nomErr, $nom_, $erreurs);
-        
+
         $adresse_ = filter_input(INPUT_POST, "adresse");
         $cp_ = filter_input(INPUT_POST, "cp");
         $ville_ = filter_input(INPUT_POST, "ville");
@@ -189,10 +193,10 @@
                         });
         </script>
     </form>
-            <?php
+    <?php
     if ($nomErr <> "") {
         echo "<img src='img/exclamation.png'/>  " . $nomErr . "<br />";
     }
-?>
+    ?>
 </body>
 </html>

@@ -1,5 +1,8 @@
-
 <?php
+if ($_SESSION['user'] <> "direction") {
+    header('Location: login.php');
+}
+
 include ('html/head.php');
 
 date_default_timezone_set('UTC');
@@ -36,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Contrôle du champ nom
     $nom_temp = filter_input(INPUT_POST, "nom");
     controleNom($nom_temp, $nomErr, $nom_, $erreurs);
-        
+
     $adresse_ = filter_input(INPUT_POST, "adresse");
     $cp_ = filter_input(INPUT_POST, "cp");
     $ville_ = filter_input(INPUT_POST, "ville");
@@ -169,11 +172,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             });
                 </script>
             </form>
-                <?php
-    if ($nomErr <> "") {
-        echo "<img src='img/exclamation.png'/>  " . $nomErr . "<br />";
-    }
-?>
+            <?php
+            if ($nomErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $nomErr . "<br />";
+            }
+            ?>
         </div>
     </body>
 </html>
