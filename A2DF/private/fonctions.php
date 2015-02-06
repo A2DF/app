@@ -89,7 +89,7 @@ function controlePriorite(&$champ_temp, &$champErr, &$champ, &$erreurs) {
 
 function controleNom(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
-        $champErr = "Veuillez entrer le nom du client";
+        $champErr = "Veuillez entrer un nom";
         $erreurs++;
         $champ = $champ_temp;
     } else {

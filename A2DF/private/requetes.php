@@ -179,10 +179,10 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
-function ajoutFournisseur($nom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
+function ajoutFournisseur($nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO fournisseur (nom, adresse, cp, ville, courriel, tel, portable)
-                                    VALUES (\"$nom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable');");
+    $resultat = $connexion->exec("  INSERT INTO fournisseur (nom, adresse, cp, ville, courriel, tel, portable, login, mdp)
+                                    VALUES (\"$nom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$login', '$mdp');");
     return $resultat;
 }
 

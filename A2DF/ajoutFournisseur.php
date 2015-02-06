@@ -9,23 +9,18 @@ $today_int = date("Y-m-d");
 $erreurs = 0;
 
 //Initialisation des valeurs de champs
-$dateEmbauche_ = "";
 $nom_ = "";
-$prenom_ = "";
 $adresse_ = "";
 $cp_ = "";
 $ville_ = "";
 $tel_ = "";
 $portable_ = "";
 $courriel_ = "";
-$numSecu_ = "";
-$contrat_ = "";
-$salaire_ = "";
+$login_ = "";
+$mdp_ = "";
 
 //Initialisation des messages d'erreur
-$dateEmbaucheErr = "";
 $nomErr = "";
-$prenomErr = "";
 $adresseErr = "";
 $cpErr = "";
 $villeErr = "";
@@ -33,35 +28,28 @@ $telErr = "";
 $portableErr = "";
 $courrielErr = "";
 $numSecuErr = "";
-$contratErr = "";
-$salaireErr = "";
+$loginErr = "";
+$mdpErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //Contrôle du champ date
-    $dateEmbauche_temp = filter_input(INPUT_POST, "dateEmbauche");
-    controleDate($dateEmbauche_temp, $dateEmbaucheErr, $dateEmbauche_, $erreurs);
-
-    $nom_ = filter_input(INPUT_POST, "nom");
-
-    //Contrôle du champ client
-    $prenom_temp = filter_input(INPUT_POST, "prenom");
-    controlePre($prenom_temp, $prenomErr, $prenom_, $erreurs);
-
+    //Contrôle du champ nom
+    $nom_temp = filter_input(INPUT_POST, "nom");
+    controleNom($nom_temp, $nomErr, $nom_, $erreurs);
+        
     $adresse_ = filter_input(INPUT_POST, "adresse");
     $cp_ = filter_input(INPUT_POST, "cp");
     $ville_ = filter_input(INPUT_POST, "ville");
     $courriel_ = filter_input(INPUT_POST, "courriel");
     $tel_ = filter_input(INPUT_POST, "tel");
     $portable_ = filter_input(INPUT_POST, "portable");
-    $numSecu_ = filter_input(INPUT_POST, "numSecu");
-    $salaire_ = filter_input(INPUT_POST, "salaire");
-    $contrat_ = filter_input(INPUT_POST, "contrat");
+    $login_ = filter_input(INPUT_POST, "login");
+    $mdp_ = filter_input(INPUT_POST, "mdp");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "fournisseur"
-        ajoutFournisseur($dateEmbauche_, $nom_, $prenom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $numSecu_, $contrat_, $salaire_);
+        ajoutFournisseur($nom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $login_, $mdp_);
 
         //Redirection vers la liste des employés
         header('Location: listeFournisseur.php');
@@ -96,11 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Nom :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='nom' value='<?php echo $nom_ ?>'></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Prénom :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='prenom' value='<?php echo $prenom_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Adresse :</td>
@@ -138,33 +121,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="boxBas">
                     <fieldset>
-                        <legend>Entreprise</legend>
+                        <legend>Identifiants</legend>
                         <table border="0">
                             <tr>
-                                <td class="label">Date d'embauche :</td>
+                                <td class="label">Login :</td>
                                 <td class="images"></td>
-                                <?php
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $dateEmbauche_ . "' readonly></td>";
-                                } else {
-                                    echo "<td><input type='text' name='dateEmbauche' id='datepicker' value='" . $today_int . "' readonly></td>";
-                                }
-                                ?>
+                                <td><input type='text' name='login' value='<?php echo $login_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Numéro de sécu :</td>
+                                <td class="label">Mot de passe :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='numSecu' value='<?php echo $numSecu_ ?>'></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Type contrat :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='contrat' value='<?php echo $contrat_ ?>'></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Salaire mensuel brut :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='salaire' value='<?php echo $salaire_ ?>'></td>
+                                <td><input type='text' name='mdp' value='<?php echo $mdp_ ?>'></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -202,15 +169,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             });
                 </script>
             </form>
-            <?php
-            if ($dateEmbaucheErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $dateEmbaucheErr . "<br />";
-            }
-
-            if ($prenomErr <> "") {
-                echo "<img src='img/exclamation.png'/>  " . $prenomErr . "<br />";
-            }
-            ?>
+                <?php
+    if ($nomErr <> "") {
+        echo "<img src='img/exclamation.png'/>  " . $nomErr . "<br />";
+    }
+?>
         </div>
     </body>
 </html>
