@@ -1,10 +1,10 @@
 <html>
     <?php
+    include ('html/head.php');
+
     if ($_SESSION['user'] <> "direction") {
         header('Location: login.php');
     }
-
-    include ('html/head.php');
 
     date_default_timezone_set('UTC');
     $today_int = date("Y-m-d");
@@ -77,13 +77,13 @@
                     echo "<tr>";
                     ?>
                     <td class="info" ><?php echo $nom . " " . $prenom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoPersonnel.php?id=<?php echo $idPersonnel ?>', 'search', '\
-                                                                                                                                                                                                                                                                                                left=500, \n\
-                                                                                                                                                                                                                                                                                                top=150, \n\
-                                                                                                                                                                                                                                                                                                width=450, \n\
-                                                                                                                                                                                                                                                                                                height=500, \n\
-                                                                                                                                                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                                                                                                                                                dependant=yes')"/>
+                                                                                                                                                                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                                                                                                                                                                width=450, \n\
+                                                                                                                                                                                                                                                                                                                                height=500, \n\
+                                                                                                                                                                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                                                                                                                                                                dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $dateFr . "</td>";

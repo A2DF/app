@@ -1,9 +1,9 @@
 <?php
+include ('html/head.php');
+
 if ($_SESSION['user'] <> "direction") {
     header('Location: login.php');
 }
-
-include ('html/head.php');
 
 $okDirection = "";
 $okAccueil = "";

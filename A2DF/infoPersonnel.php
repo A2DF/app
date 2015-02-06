@@ -1,11 +1,11 @@
 <html>
     <?php
+    include ('private/fonctions.php');
+    date_default_timezone_set('UTC');
+
     if ($_SESSION['user'] <> "direction") {
         header('Location: login.php');
     }
-
-    include ('private/fonctions.php');
-    date_default_timezone_set('UTC');
 
     $idPersonnel = filter_input(INPUT_GET, "id");
 

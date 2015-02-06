@@ -1,10 +1,10 @@
 <html>
     <?php
+    include ('html/head.php');
+
     if ($_SESSION['user'] <> "direction") {
         header('Location: login.php');
     }
-
-    include ('html/head.php');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $filterFournisseur = filter_input(INPUT_POST, 'fournisseur');
@@ -82,13 +82,13 @@
                     echo "<tr>";
                     ?>
                     <td class="info" ><?php echo $nom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoFournisseur.php?id=<?php echo $idFournisseur ?>', 'search', '\
-                                                                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                                                                    height=410, \n\
-                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                                                                                                    height=410, \n\
+                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
