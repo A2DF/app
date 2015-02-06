@@ -3,6 +3,8 @@
     include ('private/fonctions.php');
 
     $id = filter_input(INPUT_GET, 'id');
+    $filterClient = filter_input(INPUT_GET, 'fc');
+    $filterEtat = filter_input(INPUT_GET, 'fe');
 
     $solution = "";
 
@@ -15,7 +17,7 @@
         ?>
 
         <script language="javascript">
-            window.opener.location = "listeAtelier.php";
+            window.opener.location = "listeAtelier.php?fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>";
             window.self.close();
         </script>
 
@@ -38,7 +40,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
         <link href="css/formulaires.css" rel="stylesheet" type="text/css">
-        <form method="post" action="ajoutSolution.php?id=<?= $id ?>" autocomplete="off">
+        <form method="post" action="ajoutSolution.php?id=<?= $id ?>&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>" autocomplete="off">
             <fieldset>
                 <legend>Solution</legend>
                 <textarea name="solution" rows="5" maxlength='300'><?= $solution ?></textarea>

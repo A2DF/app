@@ -433,9 +433,16 @@ table.sortable td {
     top:1px;
 }
 
+.filtres {
+    float: left;
+    margin-top: -30px;
+    margin-left: -29px;
+    height: 25px;
+    z-index: 1;
+    //background-color: red;
+}
+
 .input, select {
-    overflow: hidden;
-    padding: 0 0 0 8px;
     height: 25px;
     border: 1px solid #aaa;
     border-radius: 5px;
@@ -445,21 +452,13 @@ table.sortable td {
     background: -moz-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
     background: -o-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
     background: linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
-    background-clip: padding-box;
     box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
     color: #444;
-    text-decoration: none;
-    white-space: nowrap;
     width:200px;
     height: 25px;
     z-index: 1;
-
 }
 
-.filtres {
-    float: left;
-    margin-top: -30px;
-    margin-left: -29px;
-    height: 25px;
-    z-index: 1;
+.filtres img {
+    vertical-align: middle;
 }
