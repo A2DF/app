@@ -67,6 +67,14 @@ function listeClient() {
     return $resultat;
 }
 
+function listeFournisseur() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idFournisseur, nom, adresse, cp, ville, courriel, tel, portable, login, mdp
+                                    FROM fournisseur
+                                    ORDER BY fournisseur.nom ASC;");
+    return $resultat;
+}
+
 function listePersonnel() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  personnel.idPersonnel, personnel.dateEmbauche, personnel.nom, personnel.prenom, 
@@ -93,6 +101,14 @@ function unClient($idClient) {
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, courriel, tel, portable
                                     FROM client
                                     WHERE idClient = $idClient");
+    return $resultat;
+}
+
+function unFournisseur($idFournisseur) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT nom, adresse, cp, ville, courriel, tel, portable, login, mdp
+                                    FROM fournisseur
+                                    WHERE idFournisseur = $idFournisseur");
     return $resultat;
 }
 
@@ -163,6 +179,13 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
+function ajoutFournisseur($nom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO fournisseur (nom, adresse, cp, ville, courriel, tel, portable)
+                                    VALUES (\"$nom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable');");
+    return $resultat;
+}
+
 function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable, $numSecu, $contrat, $salaire) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO personnel (dateEmbauche, nom, prenom, adresse, cp, ville, courriel, tel, portable, numSecu, contrat, salaire)
@@ -175,6 +198,14 @@ function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $co
     $resultat = $connexion->exec("  UPDATE client
                                     SET nom = \"$nom\", prenom = \"$prenom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable'
                                     WHERE idClient = $idClient;");
+    return $resultat;
+}
+
+function modificationFournisseur($idFournisseur, $nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp) {
+    global $connexion;
+    $resultat = $connexion->exec("  UPDATE fournisseur
+                                    SET nom = \"$nom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable', login = '$login', mdp = '$mdp'
+                                    WHERE idFournisseur = $idFournisseur;");
     return $resultat;
 }
 
@@ -223,6 +254,14 @@ function comboboxClient() {
     $resultat = $connexion->query(" SELECT idClient, nom, prenom
                                     FROM client
                                     ORDER BY client.nom ASC;");
+    return $resultat;
+}
+
+function comboboxFournisseur() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idFournisseur, nom
+                                    FROM fournisseur
+                                    ORDER BY fournisseur.nom ASC;");
     return $resultat;
 }
 
