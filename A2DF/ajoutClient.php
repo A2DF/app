@@ -58,10 +58,16 @@
         if ($erreurs === 0) {
             //Insertion des données dans la table "Client"
             ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable);
+
+            //Récupération de l'idAtelier créé
+            $lastClient = lastClient($nom);
+            foreach ($lastClient as $client) {
+                $idClient = $client['idClient'];
+            }
             ?>
 
             <script language="javascript">
-                window.opener.location = window.opener.location + "?id=<?php echo $nom ?>";
+                window.opener.location = window.opener.location + "?id=<?php echo $idClient ?>";
                 window.self.close();
             </script>
 

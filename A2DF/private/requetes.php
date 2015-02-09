@@ -322,6 +322,14 @@ function lastAtelier($client) {
     return $resultat;
 }
 
+function lastClient($nom) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT MAX(idClient) AS idClient
+                                    FROM client
+                                    WHERE nom = '$nom';");
+    return $resultat;
+}
+
 function traiterAppel($idAppel) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE appel
