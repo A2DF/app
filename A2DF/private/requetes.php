@@ -96,6 +96,16 @@ function listeVente() {
     return $resultat;
 }
 
+function listeProduit() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, occasion
+                                    FROM produit, type, marque
+                                    WHERE produit.idType = type.idType
+                                    AND produit.idMarque = marque.idMarque
+                                    ORDER BY produit.libelle ASC;");
+    return $resultat;
+}
+
 function unClient($idClient) {
     global $connexion;
     $resultat = $connexion->query(" SELECT nom, prenom, adresse, cp, ville, courriel, tel, portable
@@ -193,6 +203,13 @@ function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $co
     return $resultat;
 }
 
+function ajoutProduit($libelle, $type, $marque, $prix, $occasion, $image) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO produit (libelle, type, marque, prix, image, occasion)
+                                    VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$occasion');");
+    return $resultat;
+}
+
 function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $portable) {
     global $connexion;
     $resultat = $connexion->exec("  UPDATE client
@@ -270,6 +287,14 @@ function comboboxMateriel() {
     $resultat = $connexion->query(" SELECT idMateriel, libelle
                                     FROM materiel
                                     ORDER BY materiel.libelle ASC;");
+    return $resultat;
+}
+
+function comboboxType() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idType, libelle
+                                    FROM type
+                                    ORDER BY idType ASC;");
     return $resultat;
 }
 
