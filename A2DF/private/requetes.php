@@ -205,7 +205,7 @@ function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $co
 
 function ajoutProduit($libelle, $type, $marque, $prix, $occasion, $image) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO produit (libelle, type, marque, prix, image, occasion)
+    $resultat = $connexion->exec("  INSERT INTO produit (libelle, idType, idMarque, prix, image, occasion)
                                     VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$occasion');");
     return $resultat;
 }
