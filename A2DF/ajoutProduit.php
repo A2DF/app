@@ -12,12 +12,12 @@ $today_int = date("Y-m-d");
 $erreurs = 0;
 
 //Initialisation des valeurs de champs
-$libelle = "";
-$type = "";
-$marque = "";
-$prix = "";
-$image = "";
-$occasion = "";
+$libelle_ = "";
+$type_ = "";
+$marque_ = "";
+$prix_ = "";
+$image_ = "";
+$occasion_ = "";
 
 //Initialisation des messages d'erreur
 $libelleErr = "";
@@ -29,57 +29,44 @@ $occasionErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $libelle = filter_input(INPUT_POST, "libelle");
-    $type = filter_input(INPUT_POST, "type");
-    $marque = filter_input(INPUT_POST, "marque");
-    $prix = filter_input(INPUT_POST, "prix");
-    $image = filter_input(INPUT_POST, "fileToUpload");
-    $occasion = filter_input(INPUT_POST, "occasion");
+    $libelle_ = filter_input(INPUT_POST, "libelle");
+    $type_ = filter_input(INPUT_POST, "type");
+    $marque_ = filter_input(INPUT_POST, "marque");
+    $prix_ = filter_input(INPUT_POST, "prix");
+    $image_ = filter_input(INPUT_POST, "image");
+    $occasion_ = filter_input(INPUT_POST, "occasion");
 
-    $target_dir = "produits/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-    // Check if image file is a actual image or fake image{
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+    $dossier = 'produits/';
+    $fichier = basename($_FILES['image']['name']);
+    $taille_maxi = 100000;
+    $taille = filesize($_FILES['image']['tmp_name']);
+    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    $extension = strrchr($_FILES['image']['name'], '.');
+    
+    //Début des vérifications de sécurité...
+    if (!in_array($extension, $extensions)) { //Si l'extension n'est pas dans le tableau
+        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
     }
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
+    if ($taille > $taille_maxi) {
+        $erreur = 'Le fichier est trop gros...';
     }
-    // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-    // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
+    if (!isset($erreur)) { //S'il n'y a pas d'erreur, on upload
+        //On formate le nom du fichier ici...
+        $fichier = strtr($fichier, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier)) { //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+            echo 'Upload effectué avec succès !';
+        } else { //Sinon (la fonction renvoie FALSE).
+            echo 'Echec de l\'upload !';
         }
+    } else {
+        echo $erreur;
     }
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "produit"
-        ajoutProduit($libelle, $type, $marque, $prix, $occasion, $image);
+        ajoutProduit($libelle_, $type_, $marque_, $prix_, $occasion_, $image_);
 
         //Redirection vers la liste des employés
         header('Location: listeProduit.php');
@@ -113,27 +100,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Libelle :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='libelle' value='<?php echo $libelle ?>'></td>
+                                <td><input type='text' name='libelle' value='<?php echo $libelle_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Type :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='type' value='<?php echo $type ?>'></td>
+                                <td>
+                                    <select class="chosen-select" tabindex="2" name="type" value='<?php echo $type_ ?>'>
+                                        <option selected value='443'></option>
+                                        <?php
+                                        $comboboxType = comboboxType();
+                                        foreach ($comboboxType as $type) {
+                                            $idType = $type['idType'];
+                                            $libelleType = $type['libelle'];
+                                            if ($idType == $type_) {
+                                                echo "<option value=" . $idType . " selected>" . $libelleType . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idType . ">" . $libelleType . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="label">Marque :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='marque' value='<?php echo $marque ?>'></td>
+                                <td>
+                                    <select class="chosen-select" tabindex="2" name="marque" value='<?php echo $marque_ ?>'>
+                                        <option selected value='443'></option>
+                                        <?php
+                                        $comboboxMarque = comboboxMarque();
+                                        foreach ($comboboxMarque as $marque) {
+                                            $idMarq = $marque['idMarque'];
+                                            $libelleMarque = $marque['libelle'];
+                                            if ($idMarq == $marque_) {
+                                                echo "<option value=" . $idMarq . " selected>" . $libelleMarque . "</option>";
+                                            } else {
+                                                echo "<option value=" . $idMarq . ">" . $libelleMarque . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </td>
                             </tr>    
                             <tr>
                                 <td class="label">Prix :</td>
                                 <td class="images"></td>
-                                <td><input type='text' name='prix' value='<?php echo $prix ?>'></td>
+                                <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
                             </tr>
                             <tr>
                                 <td class="label">Image :</td>
                                 <td class="images"></td>
-                                <td><input type='file' name='fileToUpload' id='fileToUpload' value='<?php echo $image ?>'></td>
+                                <td><input type="hidden" name="MAX_FILE_SIZE" value="100000"><input type='file' name='image' id='image'></td>
                             </tr>
                             <tr>
                                 <td class="label">Occasion :</td>

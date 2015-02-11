@@ -1,13 +1,6 @@
-<div id="dialog-form" title="Create new user">
-    <p class="validateTips">All form fields are required.</p>
-    <form>
-        <fieldset>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="text">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" value="" class="text">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="" class="text">
-        </fieldset>
-    </form>
-</div>  
+<form method="POST" action="php.php" enctype="multipart/form-data">
+     <!-- On limite le fichier à 100Ko -->
+     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+     Fichier : <input type="file" name="avatar">
+     <input type="submit" name="envoyer" value="Envoyer le fichier">
+</form>

@@ -79,8 +79,14 @@
                     echo "<td>" . $type . "</td>";
                     echo "<td>" . $marque . "</td>";
                     echo "<td>" . $libelle . "</td>";
-                    echo "<td>" . $prix . "</td>";
-                    echo "<td>" . $occasion . "</td>";
+                    echo "<td>" . $prix . "€</td>";
+                    
+                    if ($occasion == 1) {
+                        echo "<td>Occasion</td>";
+                    } else {
+                        echo "<td></td>";    
+                    }
+                    
                     echo "<td>" . $image . "</td>";
                     echo "</tr>";
                 }
