@@ -52,8 +52,7 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='produit'>Type</th>";
-            echo "<th id='commentaire'>Marque</th>";
+            echo "<th id='print'>Type</th>";
             echo "<th id='tel'>Produit</th>";
             echo "<th id='tel'>Prix</th>";
             echo "<th id='tel'>Occasion</th>";
@@ -76,9 +75,8 @@
                 if (($filterType == $typeid) || ($filterType == "")) {
                     //Affichage des données dans le tableau
                     echo "<tr>";
-                    echo "<td>" . $type . "</td>";
-                    echo "<td>" . $marque . "</td>";
-                    echo "<td>" . $libelle . "</td>";
+                    echo "<td><img src='img/type_" . $typeid . ".png'></td>";
+                    echo "<td>" . $marque . " " . $libelle . "</td>";
                     echo "<td>" . $prix . "€</td>";
                     
                     if ($occasion == 1) {

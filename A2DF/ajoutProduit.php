@@ -102,11 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <legend>Informations</legend>
                         <table border="0">
                             <tr>
-                                <td class="label">Libelle :</td>
-                                <td class="images"></td>
-                                <td><input type='text' name='libelle' value='<?php echo $libelle_ ?>'></td>
-                            </tr>
-                            <tr>
                                 <td class="label">Type :</td>
                                 <td class="images"></td>
                                 <td>
@@ -146,7 +141,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         ?>
                                     </select>
                                 </td>
-                            </tr>    
+                            </tr>
+                            <tr>
+                                <td class="label">Libelle :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='libelle' value='<?php echo $libelle_ ?>'></td>
+                            </tr>
                             <tr>
                                 <td class="label">Prix :</td>
                                 <td class="images"></td>
