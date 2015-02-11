@@ -37,6 +37,16 @@ function controlePrix(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
+function controleLibelle(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez choisir un libellé";
+        $erreurs++;
+        $champ = $champ_temp;
+    } else {
+        $champ = $champ_temp;
+    }
+}
+
 function controleClient(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez choisir un client";

@@ -102,7 +102,7 @@ function listeProduit() {
                                     FROM produit, type, marque
                                     WHERE produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque
-                                    ORDER BY produit.libelle ASC;");
+                                    ORDER BY produit.idType, produit.idMarque, produit.libelle ASC;");
     return $resultat;
 }
 

@@ -10,6 +10,8 @@ $today_int = date("Y-m-d");
 
 //Initialisation du compteur d'erreurs pour le contrôle du formulaire
 $erreurs = 0;
+$erreurExt = "";
+$erreurPoids = "";
 
 //Initialisation des valeurs de champs
 $libelle_ = "";
@@ -29,44 +31,46 @@ $occasionErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $libelle_ = filter_input(INPUT_POST, "libelle");
+    $libelle_temp = filter_input(INPUT_POST, "libelle");
+    controleLibelle($libelle_temp, $libelleErr, $libelle_, $erreurs);
+
     $type_ = filter_input(INPUT_POST, "type");
     $marque_ = filter_input(INPUT_POST, "marque");
-    $prix_ = filter_input(INPUT_POST, "prix");
+
+    $prix_temp = filter_input(INPUT_POST, "prix");
+    controlePrix($prix_temp, $prixErr, $prix_, $erreurs);
+
     $image_ = filter_input(INPUT_POST, "image");
     $occasion_ = filter_input(INPUT_POST, "occasion");
 
     $dossier = 'produits/';
     $fichier = basename($_FILES['image']['name']);
-    $taille_maxi = 100000;
+    $taille_maxi = 1000000;
     $taille = filesize($_FILES['image']['tmp_name']);
-    $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+    $extensions = array('.png', '.PNG', '.jpg', '.JPG', '.jpeg', '.JPEG');
     $extension = strrchr($_FILES['image']['name'], '.');
-    
+
     //Début des vérifications de sécurité...
     if (!in_array($extension, $extensions)) { //Si l'extension n'est pas dans le tableau
-        $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+        $erreurExt = 'Vous devez uploader une image de type png, jpg ou jpeg';
+        $erreurs++;
     }
+
     if ($taille > $taille_maxi) {
-        $erreur = 'Le fichier est trop gros...';
-    }
-    if (!isset($erreur)) { //S'il n'y a pas d'erreur, on upload
-        //On formate le nom du fichier ici...
-        $fichier = strtr($fichier, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier)) { //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-            echo 'Upload effectué avec succès !';
-        } else { //Sinon (la fonction renvoie FALSE).
-            echo 'Echec de l\'upload !';
-        }
-    } else {
-        echo $erreur;
+        $erreurPoids = 'Le fichier est trop gros';
+        $erreurs++;
     }
 
     if ($erreurs === 0) {
 
+        $fichier = iconv('UTF-8', 'ISO-8859-15', $fichier);
+        $fichier = strtr($fichier, 'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+        $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+        //Insertion de l'image dans le dossier "produits"
+        move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier);
+
         //Insertion des données dans la table "produit"
-        ajoutProduit($libelle_, $type_, $marque_, $prix_, $occasion_, $image_);
+        ajoutProduit($libelle_, $type_, $marque_, $prix_, $occasion_, $fichier);
 
         //Redirection vers la liste des employés
         header('Location: listeProduit.php');
@@ -107,7 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="type" value='<?php echo $type_ ?>'>
-                                        <option selected value='443'></option>
                                         <?php
                                         $comboboxType = comboboxType();
                                         foreach ($comboboxType as $type) {
@@ -128,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="images"></td>
                                 <td>
                                     <select class="chosen-select" tabindex="2" name="marque" value='<?php echo $marque_ ?>'>
-                                        <option selected value='443'></option>
+                                        <option selected value='443'>Inconnue</option>
                                         <?php
                                         $comboboxMarque = comboboxMarque();
                                         foreach ($comboboxMarque as $marque) {
@@ -150,14 +153,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Image :</td>
-                                <td class="images"></td>
-                                <td><input type="hidden" name="MAX_FILE_SIZE" value="100000"><input type='file' name='image' id='image'></td>
-                            </tr>
-                            <tr>
                                 <td class="label">Occasion :</td>
                                 <td class="images"></td>
-                                <td><input type='checkbox' name='occasion' value='1'/></td>
+                                <td>
+                                    <?php
+                                    if ($occasion_ == 1) {
+                                        echo "<input type='checkbox' name='occasion' value='1' checked/>";
+                                    } else {
+                                        echo "<input type='checkbox' name='occasion' value='1'/>";
+                                    }
+                                    ?>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="boxBas">
+                    <fieldset>
+                        <legend>Image</legend>
+                        <table>
+                            <tr>
+                                <td><input type="hidden" name="MAX_FILE_SIZE" value="1000000"><input type='file' name='image' value=''></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -195,6 +212,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             });
                 </script>
             </form>
+            <?php
+            if ($libelleErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $libelleErr . "<br />";
+            }
+
+            if ($prixErr <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $prixErr . "<br />";
+            }
+
+            if ($erreurExt <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $erreurExt . "<br />";
+            }
+
+            if ($erreurPoids <> "") {
+                echo "<img src='img/exclamation.png'/>  " . $erreurPoids . "<br />";
+            }
+            ?>
         </div>
     </body>
 </html>
