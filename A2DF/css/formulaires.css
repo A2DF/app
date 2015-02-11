@@ -50,7 +50,7 @@ input, textarea, select, option {
     background-color:#F5FAFE;
 }
 
-input, select {
+input[type="text"], input[type="submit"], input[type="reset"], input[type="password"], input[type="tel"], input[type="email"], select {
     overflow: hidden;
     padding: 0 0 0 8px;
     height: 25px;
@@ -83,26 +83,9 @@ textarea {
     margin-left: 3px;
 }
 
-.boutons {
-    //background-color: orange;
-    display: inline-block;
-    float: bottom;
-    vertical-align: bottom;
-    margin-top: 10px;
-    padding-left: 2px;
-}
-
-input[type="submit"] {
-    width: 100px;
-}
-
-input[type="reset"] {
-    width: 100px;
-}
-
 input[type="file"] {
-    
     overflow: hidden;
+    padding: 0 0 0 8px;
     border: 1px solid #aaa;
     border-radius: 5px;
     background-color: #fff;
@@ -118,17 +101,41 @@ input[type="file"] {
     text-align: right;
     white-space: nowrap;
     resize: none;
-    width: 448px;
-    height: 38px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    height: 39px;
     padding-top: 8px;
     margin-top: 4px;
     margin-bottom: 5px;
-    margin-right: 6px;
+    margin-right: 2px;
     margin-left: 3px;
+}
 
+.checkbox {
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+.boutons {
+    //background-color: orange;
+    display: inline-block;
+    float: bottom;
+    vertical-align: bottom;
+    margin-top: 10px;
+    padding-left: 2px;
+}
+
+input[type="submit"] {
+    width: 100px;
+}
+
+input[type="reset"] {
+    width: 100px;
 }
 
 /* Image retour dans le ribbon */

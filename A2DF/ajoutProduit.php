@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <tr>
                                 <td class="label">Occasion :</td>
                                 <td class="images"></td>
-                                <td>
+                                <td class="checkbox">
                                     <?php
                                     if ($occasion_ == 1) {
                                         echo "<input type='checkbox' name='occasion' value='1' checked/>";
