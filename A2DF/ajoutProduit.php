@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image_ = filter_input(INPUT_POST, "image");
     $occasion_ = filter_input(INPUT_POST, "occasion");
 
-    $dossier = 'produits/';
+    $dossier = '../A2DF-Website/produits/';
     $fichier = basename($_FILES['image']['name']);
     $taille_maxi = 1000000;
     $taille = filesize($_FILES['image']['tmp_name']);
