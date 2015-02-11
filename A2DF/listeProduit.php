@@ -53,10 +53,11 @@
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
             echo "<th id='print'>Type</th>";
-            echo "<th id='tel'>Produit</th>";
-            echo "<th id='tel'>Prix</th>";
+            echo "<th id='produit'>Produit</th>";
+            echo "<th id='prix'>Prix</th>";
             echo "<th id='tel'>Occasion</th>";
-            echo "<th id='tel'>Image associée</th>";
+            echo "<th id='tel'>Image</th>";
+            echo "<th id='probleme'>Nom de l'image</th>";
             echo "</tr>";
 
             $listeProduit = listeProduit();
@@ -85,6 +86,7 @@
                         echo "<td></td>";    
                     }
                     
+                    echo "<td><img src='../A2DF-Website/produits/" . $image . "' height='47px'></td>";
                     echo "<td>" . $image . "</td>";
                     echo "</tr>";
                 }
