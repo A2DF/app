@@ -19,7 +19,7 @@ $type_ = "";
 $marque_ = "";
 $prix_ = "";
 $image_ = "";
-$occasion_ = "";
+$etat_ = "";
 
 //Initialisation des messages d'erreur
 $libelleErr = "";
@@ -27,7 +27,7 @@ $typeErr = "";
 $marqueErr = "";
 $prixErr = "";
 $imageErr = "";
-$occasionErr = "";
+$etatErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     controlePrix($prix_temp, $prixErr, $prix_, $erreurs);
 
     $image_ = filter_input(INPUT_POST, "image");
-    $occasion_ = filter_input(INPUT_POST, "occasion");
+    $etat_ = filter_input(INPUT_POST, "etat");
 
     $dossier = '../A2DF-Website/produits/';
     $fichier = basename($_FILES['image']['name']);
@@ -52,12 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Début des vérifications de sécurité...
     if (!in_array($extension, $extensions)) { //Si l'extension n'est pas dans le tableau
-        $erreurExt = 'Vous devez uploader une image de type png, jpg ou jpeg';
+        $erreurExt = 'L\'image doit être de type png, jpg ou jpeg';
         $erreurs++;
     }
 
     if ($taille > $taille_maxi) {
-        $erreurPoids = 'Le fichier est trop gros';
+        $erreurPoids = 'L\'image ne doit pas dépasser 1 Mo';
         $erreurs++;
     }
 
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier);
 
         //Insertion des données dans la table "produit"
-        ajoutProduit($libelle_, $type_, $marque_, $prix_, $occasion_, $fichier);
+        ajoutProduit($libelle_, $type_, $marque_, $prix_, $etat_, $fichier);
 
         //Redirection vers la liste des employés
         header('Location: listeProduit.php');
@@ -153,14 +153,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Occasion :</td>
+                                <td class="label">Etat :</td>
                                 <td class="images"></td>
                                 <td class="checkbox">
                                     <?php
-                                    if ($occasion_ == 1) {
-                                        echo "<input type='checkbox' name='occasion' value='1' checked/>";
-                                    } else {
-                                        echo "<input type='checkbox' name='occasion' value='1'/>";
+                                    if ($etat_ == 0) {
+                                        echo "<label><input type='radio' name='etat' value='0' checked/>Neuf</label>";
+                                        echo "<label><input type='radio' name='etat' value='1'/>Occasion</label>";
+                                        echo "<label><input type='radio' name='etat' value='2'/>Destockage</label>";
+                                    } else if ($etat_ == 1) {
+                                        echo "<label><input type='radio' name='etat' value='0'/>Neuf</label>";
+                                        echo "<label><input type='radio' name='etat' value='1' checked/>Occasion</label>";
+                                        echo "<label><input type='radio' name='etat' value='2'/>Destockage</label>";
+                                    } else if ($etat_ == 2){
+                                        echo "<label><input type='radio' name='etat' value='0'/>Neuf</label>";
+                                        echo "<label><input type='radio' name='etat' value='1'/>Occasion</label>";
+                                        echo "<label><input type='radio' name='etat' value='2' checked/>Destockage</label>";
                                     }
                                     ?>
                                 </td>

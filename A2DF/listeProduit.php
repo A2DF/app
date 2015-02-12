@@ -70,7 +70,7 @@
                 $type = $produit['type'];
                 $marque = $produit['marque'];
                 $prix = $produit['prix'];
-                $occasion = $produit['occasion'];
+                $etat = $produit['etat'];
                 $image = $produit['image'];
 
                 if (($filterType == $typeid) || ($filterType == "")) {
@@ -80,10 +80,12 @@
                     echo "<td>" . $marque . " " . $libelle . "</td>";
                     echo "<td>" . $prix . "€</td>";
                     
-                    if ($occasion == 1) {
+                    if ($etat == 1) {
                         echo "<td>Occasion</td>";
+                    } else if ($etat == 2) {
+                        echo "<td>Destockage</td>";
                     } else {
-                        echo "<td></td>";    
+                        echo "<td></td>";
                     }
                     
                     echo "<td><img src='../A2DF-Website/produits/" . $image . "' height='47px'></td>";

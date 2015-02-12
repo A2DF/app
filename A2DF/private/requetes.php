@@ -98,7 +98,7 @@ function listeVente() {
 
 function listeProduit() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, occasion
+    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat
                                     FROM produit, type, marque
                                     WHERE produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque
@@ -203,10 +203,10 @@ function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $co
     return $resultat;
 }
 
-function ajoutProduit($libelle, $type, $marque, $prix, $occasion, $image) {
+function ajoutProduit($libelle, $type, $marque, $prix, $etat, $image) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO produit (libelle, idType, idMarque, prix, image, occasion)
-                                    VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$occasion');");
+    $resultat = $connexion->exec("  INSERT INTO produit (libelle, idType, idMarque, prix, image, etat)
+                                    VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$etat');");
     return $resultat;
 }
 
