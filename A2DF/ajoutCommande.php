@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             $idClie = $client['idClient'];
                                             $nom = $client['nom'];
                                             $prenom = $client['prenom'];
-                                            if (($idClie == $client_) || ($nom == filter_input(INPUT_GET, 'id'))) {
+                                            if (($idClie == $client_) || ($idClie == filter_input(INPUT_GET, 'id'))) {
                                                 echo "<option value=" . $idClie . " selected>" . $nom . " " . $prenom . "</option>";
                                             } else {
                                                 echo "<option value=" . $idClie . ">" . $nom . " " . $prenom . "</option>";

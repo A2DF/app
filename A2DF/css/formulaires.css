@@ -50,7 +50,7 @@ input, textarea, select, option {
     background-color:#F5FAFE;
 }
 
-input[type="text"], input[type="submit"], input[type="reset"], input[type="password"], input[type="tel"], input[type="email"], select {
+input[type="text"], input[type="submit"], input[type="reset"], input[type="password"], input[type="tel"], input[type="email"], input[type="number"], select {
     overflow: hidden;
     padding: 0 0 0 8px;
     height: 25px;
