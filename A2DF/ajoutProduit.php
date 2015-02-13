@@ -20,6 +20,11 @@ $marque_ = "";
 $prix_ = "";
 $image_ = "";
 $etat_ = "";
+$info1_ = "";
+$info2_ = "";
+$info3_ = "";
+$info4_ = "";
+$info5_ = "";
 
 //Initialisation des messages d'erreur
 $libelleErr = "";
@@ -28,6 +33,11 @@ $marqueErr = "";
 $prixErr = "";
 $imageErr = "";
 $etatErr = "";
+$info1Err = "";
+$info2Err = "";
+$info3Err = "";
+$info4Err = "";
+$info5Err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -42,6 +52,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $image_ = filter_input(INPUT_POST, "image");
     $etat_ = filter_input(INPUT_POST, "etat");
+    $info1_ = filter_input(INPUT_POST, "info1");
+    $info2_ = filter_input(INPUT_POST, "info2");
+    $info3_ = filter_input(INPUT_POST, "info3");
+    $info4_ = filter_input(INPUT_POST, "info4");
+    $info5_ = filter_input(INPUT_POST, "info5");
 
     $dossier = '../A2DF-Website/produits/';
     $fichier = basename($_FILES['image']['name']);
@@ -70,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier);
 
         //Insertion des données dans la table "produit"
-        ajoutProduit($libelle_, $type_, $marque_, $prix_, $etat_, $fichier);
+        ajoutProduit($libelle_, $type_, $marque_, $prix_, $etat_, $fichier, $info1_, $info2_, $info3_, $info4_, $info5_);
 
         //Redirection vers la liste des employés
         header('Location: listeProduit.php');
@@ -143,12 +158,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </td>
                             </tr>
                             <tr>
-                                <td class="label">Libelle :</td>
+                                <td class="label">Libelle* :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='libelle' value='<?php echo $libelle_ ?>'></td>
                             </tr>
                             <tr>
-                                <td class="label">Prix :</td>
+                                <td class="label">Prix* :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='prix' value='<?php echo $prix_ ?>'></td>
                             </tr>
@@ -165,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         echo "<label><input type='radio' name='etat' value='0'/>Neuf</label>";
                                         echo "<label><input type='radio' name='etat' value='1' checked/>Occasion</label>";
                                         echo "<label><input type='radio' name='etat' value='2'/>Destockage</label>";
-                                    } else if ($etat_ == 2){
+                                    } else if ($etat_ == 2) {
                                         echo "<label><input type='radio' name='etat' value='0'/>Neuf</label>";
                                         echo "<label><input type='radio' name='etat' value='1'/>Occasion</label>";
                                         echo "<label><input type='radio' name='etat' value='2' checked/>Destockage</label>";
@@ -177,10 +192,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </fieldset>
                 </div>
 
+                <div class="boxMilieu">
+                    <fieldset>
+                        <legend>Compléments</legend>
+                        <table border="0">
+                            <tr>
+                                <td class="label">Ligne 1 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info1' value='<?= $info1_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 2 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info2' value='<?= $info2_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 3 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info3' value='<?= $info3_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 4 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info4' value='<?= $info4_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 5 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info5' value='<?= $info5_ ?>'></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
                 <div class="boxBas">
                     <fieldset>
                         <legend>Image</legend>
-                        <table>
+                        <table border="0">
                             <tr>
                                 <td><input type="hidden" name="MAX_FILE_SIZE" value="1000000"><input type='file' name='image' value=''></td>
                             </tr>

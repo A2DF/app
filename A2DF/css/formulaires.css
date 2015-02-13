@@ -110,15 +110,10 @@ input[type="file"] {
     margin-left: 3px;
 }
 
-.checkbox {
-    text-align: center;
-}
-
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    
 }
 
 .boutons {

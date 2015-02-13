@@ -57,7 +57,11 @@
             echo "<th id='prix'>Prix</th>";
             echo "<th id='tel'>Occasion</th>";
             echo "<th id='tel'>Image</th>";
-            echo "<th id='probleme'>Nom de l'image</th>";
+            echo "<th id='tel'>Ligne 1</th>";
+            echo "<th id='tel'>Ligne 2</th>";
+            echo "<th id='tel'>Ligne 3</th>";
+            echo "<th id='tel'>Ligne 4</th>";
+            echo "<th id='tel'>Ligne 5</th>";
             echo "</tr>";
 
             $listeProduit = listeProduit();
@@ -72,6 +76,11 @@
                 $prix = $produit['prix'];
                 $etat = $produit['etat'];
                 $image = $produit['image'];
+                $info1 = $produit['info1'];
+                $info2 = $produit['info2'];
+                $info3 = $produit['info3'];
+                $info4 = $produit['info4'];
+                $info5 = $produit['info5'];
 
                 if (($filterType == $typeid) || ($filterType == "")) {
                     //Affichage des données dans le tableau
@@ -79,7 +88,7 @@
                     echo "<td><img src='img/type_" . $typeid . ".png'></td>";
                     echo "<td>" . $marque . " " . $libelle . "</td>";
                     echo "<td>" . $prix . "€</td>";
-                    
+
                     if ($etat == 1) {
                         echo "<td>Occasion</td>";
                     } else if ($etat == 2) {
@@ -87,9 +96,13 @@
                     } else {
                         echo "<td></td>";
                     }
-                    
-                    echo "<td><img src='../A2DF-Website/produits/" . $image . "' height='47px'></td>";
-                    echo "<td>" . $image . "</td>";
+
+                    echo "<td><img src='../A2DF-Website/produits/" . $image . "' height='47px' title='" . $image . "'></td>";
+                    echo "<td>" . $info1 . "</td>";
+                    echo "<td>" . $info2 . "</td>";
+                    echo "<td>" . $info3 . "</td>";
+                    echo "<td>" . $info4 . "</td>";
+                    echo "<td>" . $info5 . "</td>";
                     echo "</tr>";
                 }
             }
