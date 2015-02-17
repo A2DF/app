@@ -48,6 +48,15 @@ function listeAtelier() {
     return $resultat;
 }
 
+function listeSav() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT sav.idSAV, sav.date, sav.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, sav.typeProduit, sav.marqueProduit, sav.couleurProduit, sav.mdpProduit, sav.numSerie, sav.probleme, historique.idEtat AS idEtat
+                                    FROM sav, client, historique, etat 
+                                    WHERE sav.idClient = client.idClient AND sav.idSAV = historique.idSAV AND historique.idEtat = etat.idEtat ORDER BY etat.idEtat, sav.date ASC;");
+    
+    return $resultat;
+}
+
 function listeCommande() {
     global $connexion;
     $resultat = $connexion->query(" SELECT  commande.idCommande, commande.dateCommande, commande.dateBonCommande, commande.idClient as idClient, 
@@ -172,6 +181,13 @@ function ajoutAppel($date, $idClient, $idPersonnel, $motif, $idPriorite) {
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO appel (date, idClient, idPersonnel, motif, idPriorite)
                                     VALUES ('$date', '$idClient', '$idPersonnel', \"$motif\", '$idPriorite');");
+    return $resultat;
+}
+
+function ajoutSav($date, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $mdpProduit, $numSerie, $probleme) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO sav (date, idClient, typeProduit, marqueProduit, couleurProduit, mdpProduit, numSerie, probleme)
+                                    VALUES ('$date', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$mdpProduit\", \"$numSerie\", \"$probleme\");");
     return $resultat;
 }
 
@@ -360,6 +376,14 @@ function traiterAppel($idAppel) {
     $resultat = $connexion->query(" UPDATE appel
                                     SET traite = 1
                                     WHERE idAppel = $idAppel;");
+    return $resultat;
+}
+
+function traiterSav($idSAV, $etat) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE sav
+                                    SET idEtat = $etat + 1
+                                    WHERE idSAV = $idSAV;");
     return $resultat;
 }
 
