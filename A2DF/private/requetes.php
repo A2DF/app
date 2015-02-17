@@ -50,7 +50,7 @@ function listeAtelier() {
 
 function listeSav() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT sav.idSAV, sav.date, sav.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, sav.typeProduit, sav.marqueProduit, sav.couleurProduit, sav.mdpProduit, sav.numSerie, sav.probleme, sav.idEtat
+    $resultat = $connexion->query(" SELECT sav.idSAV, sav.date, sav.dateAction, sav.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, sav.typeProduit, sav.marqueProduit, sav.couleurProduit, sav.mdpProduit, sav.numSerie, sav.probleme, sav.idEtat
                                     FROM sav, client
                                     WHERE sav.idClient = client.idClient ORDER BY sav.idEtat, sav.date ASC;");
     
@@ -440,6 +440,14 @@ function ajoutDateBonCommande($idCommande, $today_int) {
     $resultat = $connexion->query(" UPDATE commande
                                     SET dateBonCommande = '$today_int'
                                     WHERE idCommande = $idCommande;");
+    return $resultat;
+}
+
+function ajoutDateAction($idSAV, $today_int) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE sav
+                                    SET dateAction = '$today_int'
+                                    WHERE idSAV = $idSAV;");
     return $resultat;
 }
 

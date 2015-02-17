@@ -71,6 +71,7 @@
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
             echo "<th id='date'>Date du retour</th>";
+            echo "<th id='date'>Date du dernier état</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='reference'>Numéro de serie</th>";
@@ -84,6 +85,7 @@
                 //Récupération des données dans la base
                 $idSAV = $sav['idSAV'];
                 $date = $sav['date'];
+                $dateAction = $sav['dateAction'];
                 $idClient = $sav['idClient'];
                 $nomClient = $sav['nomClient'];
                 $prenomClient = $sav['prenomClient'];
@@ -96,12 +98,18 @@
                 $idEtat = $sav['idEtat'];
                 $dateConvert = date_create($date);
                 $dateFr = date_format($dateConvert, 'd/m/Y');
+                $dateConverter = date_create($dateAction);
+                $dateFrBon = date_format($dateConverter, 'd/m/Y');
 
-
+                if ($dateAction == 0000 - 00 - 00) {
+                    $dateFrBon = "";
+                }
+                
                 if ((($filterClient == $idClient) || ($filterClient == "")) && (($idEtat < 3) || ($filterEtat == 0))) {
                     //Affichage des données dans le tableau
                     echo "<tr>";
                     echo "<td>" . $dateFr . "</td>";
+                    echo "<td>" . $dateFrBon . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
                                                                                                                                                                                                                                                                                                                                             left=500, \n\
@@ -141,8 +149,7 @@
         $etat = filter_input(INPUT_GET, 'etat');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterSav($id, $etat);
-            //if($etat==1){
-            //}
+            ajoutDateAction($id, $today_int);
             ?>
             <script language="javascript">window.self.location = "listeSav.php";</script>    
             <?php
