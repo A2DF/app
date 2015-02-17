@@ -104,13 +104,13 @@
                     echo "<td>" . $dateFr . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                                                                                                                                            left=500, \n\
+                                                                                                                                                                                                                                                                                                                                            top=150, \n\
+                                                                                                                                                                                                                                                                                                                                            width=450, \n\
+                                                                                                                                                                                                                                                                                                                                            height=380, \n\
+                                                                                                                                                                                                                                                                                                                                            scrollbars=no, \n\
+                                                                                                                                                                                                                                                                                                                                            resizable=no, \n\
+                                                                                                                                                                                                                                                                                                                                            dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -119,11 +119,13 @@
                     echo "<td>" . $probleme . "</td>";
 
                     if ($idEtat == 0) {
-                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="<?php echo $idEtat ?>" onclick="return(confirm('Allez vous traiter ce SAV ?'));"/></a></td><?php
+                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="Déclaré en panne" onclick="return(confirm('Allez vous traiter ce SAV ?'));"/></a></td><?php
                     } else if ($idEtat == 1) {
-                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="<?php echo $idEtat ?>" onclick="return(confirm('Le SAV est terminé ?'));"/></a></td><?php
+                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="En SAV" onclick="return(confirm('Le SAV est-il chez A2DF ?'));"/></a></td><?php
                             } else if ($idEtat == 2) {
-                                ?><td><?php echo $idEtat ?></td><?php
+                                ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="Chez A2DF" onclick="return(confirm('Retourné au client ?'));"/></a></td><?php
+                            } else if ($idEtat == 3) {
+                                ?><td>Retourné au client</td><?php
                             }
                             ?>
                             <?php
@@ -140,8 +142,6 @@
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
             traiterSav($id, $etat);
             //if($etat==1){
-        
-
             //}
             ?>
             <script language="javascript">window.self.location = "listeSav.php";</script>    

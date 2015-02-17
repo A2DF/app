@@ -50,9 +50,9 @@ function listeAtelier() {
 
 function listeSav() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT sav.idSAV, sav.date, sav.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, sav.typeProduit, sav.marqueProduit, sav.couleurProduit, sav.mdpProduit, sav.numSerie, sav.probleme, historique.idEtat AS idEtat
-                                    FROM sav, client, historique, etat 
-                                    WHERE sav.idClient = client.idClient AND sav.idSAV = historique.idSAV AND historique.idEtat = etat.idEtat ORDER BY etat.idEtat, sav.date ASC;");
+    $resultat = $connexion->query(" SELECT sav.idSAV, sav.date, sav.idClient AS idClient, client.nom AS nomClient, client.prenom AS prenomClient, sav.typeProduit, sav.marqueProduit, sav.couleurProduit, sav.mdpProduit, sav.numSerie, sav.probleme, sav.idEtat
+                                    FROM sav, client
+                                    WHERE sav.idClient = client.idClient ORDER BY sav.idEtat, sav.date ASC;");
     
     return $resultat;
 }
