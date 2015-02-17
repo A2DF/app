@@ -16,7 +16,7 @@ $listeProduit = $connexion->query(" SELECT idProduit, produit.libelle, produit.i
                                     FROM produit, type, marque
                                     WHERE produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque
-                                    ORDER BY produit.idType, produit.idMarque, produit.libelle ASC;");
+                                    ORDER BY produit.idProduit DESC;");
 
 header("Content-type: text/xml");
 $xml = "<?xml version='1.0' encoding='UTF-8'?>";
