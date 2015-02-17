@@ -419,6 +419,13 @@ function traiterVente($idVente, $etat) {
     return $resultat;
 }
 
+function traiterProduit($idProduit) {
+    global $connexion;
+    $resultat = $connexion->query(" DELETE FROM produit
+                                    WHERE idProduit = $idProduit");
+    return $resultat;
+}
+
 function traiterPersonnel($idPersonnel) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE personnel

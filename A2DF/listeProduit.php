@@ -103,11 +103,26 @@
                     echo "<td>" . $info3 . "</td>";
                     echo "<td>" . $info4 . "</td>";
                     echo "<td>" . $info5 . "</td>";
-                    echo "</tr>";
+                    
+
+                    
+                        ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
+                                <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
+                        echo "</tr>";
+                    }
                 }
-            }
+            
             ?>
         </div>
+        <?php
+        $id_ = filter_input(INPUT_GET, 'id_');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
+            traiterProduit($id_);
+            ?>
+            <script language="javascript">window.self.location = "listeProduit.php";</script>    
+            <?php
+        }
+        ?>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">
