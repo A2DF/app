@@ -97,7 +97,7 @@
                         echo "<td></td>";
                     }
 
-                    echo "<td><img src='../A2DF-Website/produits/" . $image . "' height='47px' title='" . $image . "'></td>";
+                    echo "<td><img src='produits/" . $image . "' height='47px' title='" . $image . "'></td>";
                     echo "<td>" . $info1 . "</td>";
                     echo "<td>" . $info2 . "</td>";
                     echo "<td>" . $info3 . "</td>";

@@ -42,17 +42,17 @@ foreach ($listeProduit as $produit) {
 //Affichage des données
     $xml.= "<produit>";
     $xml.= "<id>" . $idProduit . "</id>";
-    $xml.= "<libelle>\"" . $libelle . "\"</libelle>";
-    $xml.= "<type>\"" . $type . "\"</type>";
-    $xml.= "<marque>\"" . $marque . "\"</marque>";
-    $xml.= "<prix>\"" . $prix . "\"</prix>";
-    $xml.= "<etat>\"" . $etat . "\"</etat>";
-    $xml.= "<image>\"" . $image . "\"</image>";
-    $xml.= "<info1>\"" . $info1 . "\"</info1>";
-    $xml.= "<info2>\"" . $info2 . "\"</info2>";
-    $xml.= "<info3>\"" . $info3 . "\"</info3>";
-    $xml.= "<info4>\"" . $info4 . "\"</info4>";
-    $xml.= "<info5>\"" . $info5 . "\"</info5>";
+    $xml.= "<libelle>" . $libelle . "</libelle>";
+    $xml.= "<type>" . $typeid . "</type>";
+    $xml.= "<marque>" . $marque . "</marque>";
+    $xml.= "<prix>" . $prix . "</prix>";
+    $xml.= "<etat>" . $etat . "</etat>";
+    $xml.= "<image>" . $image . "</image>";
+    $xml.= "<info1>" . $info1 . "</info1>";
+    $xml.= "<info2>" . $info2 . "</info2>";
+    $xml.= "<info3>" . $info3 . "</info3>";
+    $xml.= "<info4>" . $info4 . "</info4>";
+    $xml.= "<info5>" . $info5 . "</info5>";
     $xml.= "</produit>";
 }
 
