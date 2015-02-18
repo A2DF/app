@@ -76,6 +76,12 @@ function listeClient() {
     return $resultat;
 }
 
+function listePret() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT pret.idPret, pret.datePret, pret.dateRetour, pret.idClient as idClient, client.nom AS nomClient, client.prenom AS prenomClient, marque.libelle AS marqueProduit, materiel.libelle AS typeProduit, pret.couleurProduit, pret.reference, pret.motif, pret.etat FROM pret, client, marque, materiel WHERE client.idClient = pret.idClient AND marque.idMarque = pret.marqueProduit AND materiel.idMateriel = pret.typeProduit ORDER BY pret.datePret DESC;");
+    return $resultat;
+}
+
 function listeFournisseur() {
     global $connexion;
     $resultat = $connexion->query(" SELECT idFournisseur, nom, adresse, cp, ville, courriel, tel, portable, login, mdp
@@ -174,6 +180,13 @@ function ajoutVente($dateVente, $dateLivraison, $idClient, $typeProduit, $marque
     global $connexion;
     $resultat = $connexion->exec("  INSERT INTO vente (dateVente, dateLivraison, idClient, typeProduit, marqueProduit, couleurProduit, reference, quantite, prix, acompte)
                                     VALUES ('$dateVente', '$dateLivraison', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$reference\", '$quantite', '$prix', '$acompte');");
+    return $resultat;
+}
+
+function ajoutPret($datePret, $dateRetour, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $reference, $motif) {
+    global $connexion;
+    $resultat = $connexion->exec("  INSERT INTO vente (datePret, dateRetour, idClient, typeProduit, marqueProduit, couleurProduit, reference, motif)
+                                    VALUES ('$datePret', '$dateRetour', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$reference\", \"$motif\");");
     return $resultat;
 }
 
@@ -408,6 +421,14 @@ function traiterCommande($idCommande, $etat) {
     $resultat = $connexion->query(" UPDATE commande
                                     SET idTraitement = $etat + 1
                                     WHERE idCommande = $idCommande;");
+    return $resultat;
+}
+
+function traiterPret($idPret, $etat) {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE pret
+                                    SET etat = $etat + 1
+                                    WHERE idPret = $idPret;");
     return $resultat;
 }
 
