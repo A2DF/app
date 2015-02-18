@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <body>
         <div class="contenu">
             <div class="ribbon-wrapper">
-                <a  href="listeAppel.php"><img class="img_liste" onmouseout="this.src = 'img/arrow_undo.png'" onmouseover="this.src = 'img/arrow_undo1.png'" src="img/arrow_undo.png" /></a>
                 <div class="ribbon-front"><div class="titre">Signaler un bug</div></div>
                 <div class="ribbon-edge-topleft"></div>
                 <div class="ribbon-edge-topright"></div>
