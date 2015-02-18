@@ -107,7 +107,7 @@ function listeVente() {
 
 function listeProduit() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5
+    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5, info6, info7, info8
                                     FROM produit, type, marque
                                     WHERE produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque
@@ -219,10 +219,10 @@ function ajoutPersonnel($dateEmbauche, $nom, $prenom, $adresse, $cp, $ville, $co
     return $resultat;
 }
 
-function ajoutProduit($libelle, $type, $marque, $prix, $etat, $image, $info1, $info2, $info3, $info4, $info5) {
+function ajoutProduit($libelle, $type, $marque, $prix, $etat, $image, $info1, $info2, $info3, $info4, $info5, $info6, $info7, $info8) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO produit (libelle, idType, idMarque, prix, image, etat, info1, info2, info3, info4, info5)
-                                    VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$etat', \"$info1\", \"$info2\", \"$info3\", \"$info4\", \"$info5\");");
+    $resultat = $connexion->exec("  INSERT INTO produit (libelle, idType, idMarque, prix, image, etat, info1, info2, info3, info4, info5, info6, info7, info8)
+                                    VALUES (\"$libelle\", \"$type\", \"$marque\", '$prix', \"$image\", '$etat', \"$info1\", \"$info2\", \"$info3\", \"$info4\", \"$info5\", \"$info6\", \"$info7\", \"$info8\");");
     return $resultat;
 }
 

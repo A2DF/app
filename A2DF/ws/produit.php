@@ -12,7 +12,7 @@ try {
 }
 
 global $connexion;
-$listeProduit = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5
+$listeProduit = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5, info6, info7, info8
                                     FROM produit, type, marque
                                     WHERE produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque
@@ -38,6 +38,9 @@ foreach ($listeProduit as $produit) {
     $info3 = $produit['info3'];
     $info4 = $produit['info4'];
     $info5 = $produit['info5'];
+    $info6 = $produit['info6'];
+    $info7 = $produit['info7'];
+    $info8 = $produit['info8'];
 
 //Affichage des données
     $xml.= "<produit>";
@@ -53,6 +56,9 @@ foreach ($listeProduit as $produit) {
     $xml.= "<info3>" . $info3 . "</info3>";
     $xml.= "<info4>" . $info4 . "</info4>";
     $xml.= "<info5>" . $info5 . "</info5>";
+    $xml.= "<info6>" . $info6 . "</info6>";
+    $xml.= "<info7>" . $info7 . "</info7>";
+    $xml.= "<info8>" . $info8 . "</info8>";
     $xml.= "</produit>";
 }
 

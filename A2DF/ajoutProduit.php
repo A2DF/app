@@ -25,6 +25,9 @@ $info2_ = "";
 $info3_ = "";
 $info4_ = "";
 $info5_ = "";
+$info6_ = "";
+$info7_ = "";
+$info8_ = "";
 
 //Initialisation des messages d'erreur
 $libelleErr = "";
@@ -38,6 +41,9 @@ $info2Err = "";
 $info3Err = "";
 $info4Err = "";
 $info5Err = "";
+$info6Err = "";
+$info7Err = "";
+$info8Err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -57,6 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $info3_ = filter_input(INPUT_POST, "info3");
     $info4_ = filter_input(INPUT_POST, "info4");
     $info5_ = filter_input(INPUT_POST, "info5");
+    $info6_ = filter_input(INPUT_POST, "info6");
+    $info7_ = filter_input(INPUT_POST, "info7");
+    $info8_ = filter_input(INPUT_POST, "info8");
 
     $dossier = 'produits/';
     $fichier = basename($_FILES['image']['name']);
@@ -85,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES['image']['tmp_name'], $dossier . $fichier);
 
         //Insertion des données dans la table "produit"
-        ajoutProduit($libelle_, $type_, $marque_, $prix_, $etat_, $fichier, $info1_, $info2_, $info3_, $info4_, $info5_);
+        ajoutProduit($libelle_, $type_, $marque_, $prix_, $etat_, $fichier, $info1_, $info2_, $info3_, $info4_, $info5_, $info6_, $info7_, $info8_);
 
         //Redirection vers la liste des employés
         header('Location: listeProduit.php');
@@ -220,6 +229,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Ligne 5 :</td>
                                 <td class="images"></td>
                                 <td><input type='text' name='info5' value='<?= $info5_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 6 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info6' value='<?= $info6_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 7 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info7' value='<?= $info7_ ?>'></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Ligne 8 :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='info8' value='<?= $info8_ ?>'></td>
                             </tr>
                         </table>
                     </fieldset>

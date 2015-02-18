@@ -62,6 +62,9 @@
             echo "<th id='tel'>Ligne 3</th>";
             echo "<th id='tel'>Ligne 4</th>";
             echo "<th id='tel'>Ligne 5</th>";
+            echo "<th id='tel'>Ligne 6</th>";
+            echo "<th id='tel'>Ligne 7</th>";
+            echo "<th id='tel'>Ligne 8</th>";
             echo "</tr>";
 
             $listeProduit = listeProduit();
@@ -81,6 +84,9 @@
                 $info3 = $produit['info3'];
                 $info4 = $produit['info4'];
                 $info5 = $produit['info5'];
+                $info6 = $produit['info6'];
+                $info7 = $produit['info7'];
+                $info8 = $produit['info8'];
 
                 if (($filterType == $typeid) || ($filterType == "")) {
                     //Affichage des données dans le tableau
@@ -103,15 +109,15 @@
                     echo "<td>" . $info3 . "</td>";
                     echo "<td>" . $info4 . "</td>";
                     echo "<td>" . $info5 . "</td>";
-                    
+                    echo "<td>" . $info6 . "</td>";
+                    echo "<td>" . $info7 . "</td>";
+                    echo "<td>" . $info8 . "</td>";
 
-                    
                         ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
                                 <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
                         echo "</tr>";
                     }
                 }
-            
             ?>
         </div>
         <?php
