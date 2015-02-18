@@ -54,17 +54,11 @@
             echo "<tr>";
             echo "<th id='print'>Type</th>";
             echo "<th id='produit'>Produit</th>";
+            echo "<th id='tel'>Caractéristiques</th>";
             echo "<th id='prix'>Prix</th>";
             echo "<th id='tel'>Occasion</th>";
             echo "<th id='tel'>Image</th>";
-            echo "<th id='tel'>Ligne 1</th>";
-            echo "<th id='tel'>Ligne 2</th>";
-            echo "<th id='tel'>Ligne 3</th>";
-            echo "<th id='tel'>Ligne 4</th>";
-            echo "<th id='tel'>Ligne 5</th>";
-            echo "<th id='tel'>Ligne 6</th>";
-            echo "<th id='tel'>Ligne 7</th>";
-            echo "<th id='tel'>Ligne 8</th>";
+            
             echo "</tr>";
 
             $listeProduit = listeProduit();
@@ -93,6 +87,7 @@
                     echo "<tr>";
                     echo "<td><img src='img/type_" . $typeid . ".png'></td>";
                     echo "<td>" . $marque . " " . $libelle . "</td>";
+                    echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";
                     echo "<td>" . $prix . "€</td>";
 
                     if ($etat == 1) {
@@ -104,14 +99,6 @@
                     }
 
                     echo "<td><img src='produits/" . $image . "' height='47px' title='" . $image . "'></td>";
-                    echo "<td>" . $info1 . "</td>";
-                    echo "<td>" . $info2 . "</td>";
-                    echo "<td>" . $info3 . "</td>";
-                    echo "<td>" . $info4 . "</td>";
-                    echo "<td>" . $info5 . "</td>";
-                    echo "<td>" . $info6 . "</td>";
-                    echo "<td>" . $info7 . "</td>";
-                    echo "<td>" . $info8 . "</td>";
 
                         ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
                                 <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
