@@ -49,7 +49,10 @@ include('private/fonctions.php');
         }
         ?>
     </ul>
+    <br>
+    <div class='report'><a href='report.php'><span>Signaler un bug</span></a></div>
 </div>
+
 <script>
     var halt = 0;
 

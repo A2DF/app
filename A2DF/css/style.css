@@ -425,3 +425,12 @@ header {
 .log:first-letter {
     text-transform: uppercase;
 }
+
+.report {
+    text-align: center;
+}
+
+.report a {
+    text-decoration: none;
+    color: #A8A8A8;
+}
