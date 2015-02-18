@@ -47,6 +47,16 @@ function controlePrix(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
+function controleTypeProduit(&$champ_temp, &$champErr, &$champ, &$erreurs) {
+    if (trim($champ_temp) === "") {
+        $champErr = "Veuillez choisir un type de produit";
+        $erreurs++;
+        $champ = $champ_temp;
+    } else {
+        $champ = $champ_temp;
+    }
+}
+
 function controleLibelle(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez choisir un libellé";
@@ -56,6 +66,7 @@ function controleLibelle(&$champ_temp, &$champErr, &$champ, &$erreurs) {
         $champ = $champ_temp;
     }
 }
+
 
 function controleClient(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {

@@ -33,6 +33,7 @@ include('private/fonctions.php');
         <li><a href='listeAtelier.php'><span>Atelier</span><img class="imgmenu" src="img/toolbox.png"/></a></li>
         <li><a href='listeCommande.php'><span>Commandes</span><img class="imgmenu" src="img/pci.png"/></a></li>
         <li><a href='listeVente.php'><span>Ventes</span><img class="imgmenu" src="img/cart.png"/></a></li>
+        <li><a href='listePret.php'><span>Prêts</span><img class="imgmenu" src="img/receipt_share.png"/></a></li>
         <li><a href='listeClient.php'><span>Clients</span><img class="imgmenu" src="img/group.png"/></a></li>
         <li class='last'><a href='listeSav.php'><span>S.A.V.</span><img class="imgmenu" src="img/small_business.png"/></a></li>
 
