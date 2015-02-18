@@ -185,7 +185,7 @@ function ajoutVente($dateVente, $dateLivraison, $idClient, $typeProduit, $marque
 
 function ajoutPret($datePret, $dateRetour, $idClient, $typeProduit, $marqueProduit, $couleurProduit, $reference, $motif) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO vente (datePret, dateRetour, idClient, typeProduit, marqueProduit, couleurProduit, reference, motif)
+    $resultat = $connexion->exec("  INSERT INTO pret (datePret, dateRetour, idClient, typeProduit, marqueProduit, couleurProduit, reference, motif)
                                     VALUES ('$datePret', '$dateRetour', '$idClient', \"$typeProduit\", \"$marqueProduit\", \"$couleurProduit\", \"$reference\", \"$motif\");");
     return $resultat;
 }
