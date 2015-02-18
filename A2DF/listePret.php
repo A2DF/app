@@ -75,7 +75,7 @@
             echo "<th id='produit'>Produit</th>";
             echo "<th id='reference'>Reference</th>";
             echo "<th id='probleme'>Motif</th>";
-            echo "<th id='traite'>Statut</th>";
+            echo "<th id='date'>Statut</th>";
             echo "</tr>";
 
             $listePret = listePret();
