@@ -7,11 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $message = filter_input(INPUT_POST, 'message');
 
-    $to = 'contact@a2dfinformatique.com';
-    $email_subject = "Contact depuis le site pour";
-    $email_body = "You have received a new message from your website's contact form.\n\n" . $message;
-    $headers = "From: contact@a2dfinformatique.com\n";
-    $headers .= "Reply-To:";
+    $to = 'hugo.jerome44@gmail.com';
+    $email_subject = "Bug dans l'application A2DF";
+    $email_body = $message;
+    $headers = "";
     mail($to, $email_subject, $email_body, $headers);
 
     header('Location: index.php');
