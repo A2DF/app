@@ -1,4 +1,5 @@
 <html>
+    <meta charset="UTF-8">
     <?php
     include ('private/fonctions.php');
 
