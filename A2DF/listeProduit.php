@@ -58,7 +58,7 @@
             echo "<th id='prix'>Prix</th>";
             echo "<th id='tel'>Occasion</th>";
             echo "<th id='tel'>Image</th>";
-            
+
             echo "</tr>";
 
             $listeProduit = listeProduit();
@@ -86,7 +86,17 @@
                     //Affichage des données dans le tableau
                     echo "<tr>";
                     echo "<td><img src='img/type_" . $typeid . ".png'></td>";
-                    echo "<td>" . $marque . " " . $libelle . "</td>";
+                    ?>
+                    <td class="info"><?php echo $marque . " " . $libelle . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoProduit.php?id=<?php echo $idProduit ?>', 'search', '\
+                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                    dependant=yes')"/>
+                    </td>
+                    <?php
                     echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";
                     echo "<td>" . $prix . "€</td>";
 
@@ -99,12 +109,11 @@
                     }
 
                     echo "<td><img src='produits/" . $image . "' height='47px' title='" . $image . "'></td>";
-
-                        ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
-                                <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
-                        echo "</tr>";
-                    }
-                }
+                    ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
+                            <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
+            echo "</tr>";
+        }
+    }
             ?>
         </div>
         <?php

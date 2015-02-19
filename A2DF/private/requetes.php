@@ -132,6 +132,17 @@ function unClient($idClient) {
     return $resultat;
 }
 
+function unProduit($idProduit) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5, info6, info7, info8
+                                    FROM produit, type, marque
+                                    WHERE idProduit = $idProduit
+                                    AND produit.idType = type.idType
+                                    AND produit.idMarque = marque.idMarque");
+                                
+    return $resultat;
+}
+
 function unFournisseur($idFournisseur) {
     global $connexion;
     $resultat = $connexion->query(" SELECT nom, adresse, cp, ville, courriel, tel, portable, login, mdp
@@ -247,6 +258,14 @@ function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $co
     $resultat = $connexion->exec("  UPDATE client
                                     SET nom = \"$nom\", prenom = \"$prenom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable'
                                     WHERE idClient = $idClient;");
+    return $resultat;
+}
+
+function modificationProduit($idProduit,$libelle, $type, $marque, $prix, $etat, $image, $info1, $info2, $info3, $info4, $info5, $info6, $info7, $info8) {
+    global $connexion;
+    $resultat = $connexion->exec("  UPDATE produit
+                                    SET libelle = \"$libelle\", prenom = \"$type\", marque = \"$marque\", prix = '$prix', image = \"$image\", etat = '$etat', info1 = \"$info1\", info2 = \"$info2\", info3 = \"$info3\", info4 = \"$info4\", info5 = \"$info5\", info6 = \"$info6\", info7 = \"$info7\", info8 = \"$info8\"
+                                    WHERE idProduit = $idProduit;");
     return $resultat;
 }
 
