@@ -58,9 +58,9 @@
             echo "<th id='tel'>Courriel</th>";
             echo "<th id='tel'>Fixe</th>";
             echo "<th id='tel'>Portable</th>";
-            echo "<th id='tel'>Login</th>";
-            echo "<th id='tel'>Mot de passe</th>";
             echo "<th id='tel'>Interlocuteur</th>";
+            echo "<th id='tel'>Login</th>";
+            echo "<th id='tel'>Mot de passe</th>";           
             echo "</tr>";
 
             $listeFournisseur = listeFournisseur();
@@ -97,13 +97,27 @@
                     echo "<td>" . $courriel . "</td>";
                     echo "<td>" . wordwrap($tel, 2, " ", 1) . "</td>";
                     echo "<td>" . wordwrap($portable, 2, " ", 1) . "</td>";
+                    echo "<td>" . $interlocuteur . "</td>";
                     echo "<td>" . $login . "</td>";
                     echo "<td>" . $mdp . "</td>";
-                    echo "<td>" . $interlocuteur . "</td>";
+                    
+                    
+                    ?><td id='numero'><a href="listeFournisseur.php?id_=<?php echo $idFournisseur ?>">
+                            <img src='img/cross.png' width='16' title='Supprimer le fournisseur' onclick="return(confirm('Supprimer le fournisseur?'));"/></a></td><?php
+                    echo "</tr>";
                 }
             }
             ?>
         </div>
+        <?php
+        $id_ = filter_input(INPUT_GET, 'id_');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
+            traiterFournisseur($id_);
+            ?>
+            <script language="javascript">window.self.location = "listeFournisseur.php";</script>    
+            <?php
+        }
+        ?>
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">

@@ -469,6 +469,13 @@ function traiterProduit($idProduit) {
     return $resultat;
 }
 
+function traiterFournisseur($idFournisseur) {
+    global $connexion;
+    $resultat = $connexion->query(" DELETE FROM fournisseur
+                                    WHERE idFournisseur = $idFournisseur");
+    return $resultat;
+}
+
 function traiterPersonnel($idPersonnel) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE personnel
