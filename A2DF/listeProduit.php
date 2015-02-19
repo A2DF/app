@@ -66,11 +66,11 @@
                     }
 
                     if ($statut == 0) {
-                        ?><a href="listeProduit.php?online=yes"><img src="img/offline.png" width="25" onclick="return(confirm('Voulez-vous mettre le catalogue en ligne ?'));"></a><?php
+                        ?><a href="listeProduit.php?online=yes"><img src="img/offline.png" width="25" title="Catalogue hors-ligne" onclick="return(confirm('Voulez-vous mettre le catalogue en ligne ?'));"></a><?php
                     }
 
                     if ($statut == 1) {
-                        ?><a href="listeProduit.php?online=no"><img src="img/online.png" width="25" onclick="return(confirm('Voulez-vous mettre le catalogue hors-ligne ?'));"></a><?php
+                        ?><a href="listeProduit.php?online=no"><img src="img/online.png" width="25" title="Catalogue en ligne" onclick="return(confirm('Voulez-vous mettre le catalogue hors-ligne ?'));"></a><?php
                         }
                         ?>
 
@@ -116,13 +116,13 @@
                     echo "<td><img src='img/type_" . $typeid . ".png'></td>";
                     ?>
                     <td class="info"><?php echo $marque . " " . $libelle . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoProduit.php?id=<?php echo $idProduit ?>', 'search', '\
-                                                                                                                                                                                                                left=500, \n\
-                                                                                                                                                                                                                top=150, \n\
-                                                                                                                                                                                                                width=450, \n\
-                                                                                                                                                                                                                height=600, \n\
-                                                                                                                                                                                                                scrollbars=no, \n\
-                                                                                                                                                                                                                resizable=no, \n\
-                                                                                                                                                                                                                dependant=yes')"/>
+                                                                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                                                                        width=430, \n\
+                                                                                                                                                                                                                        height=600, \n\
+                                                                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                                                                        dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";
