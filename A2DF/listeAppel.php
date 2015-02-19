@@ -65,7 +65,7 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='date'>Date</th>";
+            echo "<th id='dateCommande'>Date</th>";
             echo "<th id='priorite'>Priorite</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='tel'>Fixe</th>";

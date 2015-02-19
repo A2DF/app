@@ -58,7 +58,7 @@
             echo "<tr>";
             echo "<th id='client'>Client</th>";
             echo "<th id='commentaire'>Adresse</th>";
-            echo "<th id='tel'>Courriel</th>";
+            echo "<th id='client'>Courriel</th>";
             echo "<th id='tel'>Fixe</th>";
             echo "<th id='tel'>Portable</th>";
             echo "</tr>";

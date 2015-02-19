@@ -53,7 +53,7 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='fournisseur'>Fournisseur</th>";
+            echo "<th id='client'>Fournisseur</th>";
             echo "<th id='commentaire'>Adresse</th>";
             echo "<th id='tel'>Courriel</th>";
             echo "<th id='tel'>Fixe</th>";

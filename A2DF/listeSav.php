@@ -70,8 +70,8 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='date'>Date du retour</th>";
-            echo "<th id='date'>Date du dernier état</th>";
+            echo "<th id='dateCommande'>Date du retour</th>";
+            echo "<th id='dateCommande'>Date du dernier état</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
             echo "<th id='reference'>Numéro de serie</th>";
