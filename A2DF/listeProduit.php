@@ -2,7 +2,7 @@
     <?php
     include ('html/head.php');
 
-    if ($_SESSION['user'] <> "direction") {
+    if ($_SESSION['user'] != "direction") {
         header('Location: login.php');
     }
 
@@ -76,79 +76,79 @@
 
                 </form>
             </div>
-<?php
+            <?php
 //Affichage de la première ligne du tableau
-echo "<table border='1' class='sortable'>";
-echo "<tr>";
-echo "<th id='print'>Type</th>";
-echo "<th id='produit'>Produit</th>";
-echo "<th id='tel'>Caractéristiques</th>";
-echo "<th id='prix'>Prix</th>";
-echo "<th id='tel'>Occasion</th>";
-echo "<th id='tel'>Image</th>";
+            echo "<table border='1' class='sortable'>";
+            echo "<tr>";
+            echo "<th id='print'>Type</th>";
+            echo "<th id='produit'>Produit</th>";
+            echo "<th id='tel'>Caractéristiques</th>";
+            echo "<th id='prix'>Prix</th>";
+            echo "<th id='tel'>Occasion</th>";
+            echo "<th id='tel'>Image</th>";
 
-echo "</tr>";
+            echo "</tr>";
 
-$listeProduit = listeProduit();
-foreach ($listeProduit as $produit) {
+            $listeProduit = listeProduit();
+            foreach ($listeProduit as $produit) {
 
-    //Récupération des données dans la base
-    $idProduit = $produit['idProduit'];
-    $libelle = $produit['libelle'];
-    $typeid = $produit['idType'];
-    $type = $produit['type'];
-    $marque = $produit['marque'];
-    $prix = $produit['prix'];
-    $etat = $produit['etat'];
-    $image = $produit['image'];
-    $info1 = $produit['info1'];
-    $info2 = $produit['info2'];
-    $info3 = $produit['info3'];
-    $info4 = $produit['info4'];
-    $info5 = $produit['info5'];
-    $info6 = $produit['info6'];
-    $info7 = $produit['info7'];
-    $info8 = $produit['info8'];
+                //Récupération des données dans la base
+                $idProduit = $produit['idProduit'];
+                $libelle = $produit['libelle'];
+                $typeid = $produit['idType'];
+                $type = $produit['type'];
+                $marque = $produit['marque'];
+                $prix = $produit['prix'];
+                $etat = $produit['etat'];
+                $image = $produit['image'];
+                $info1 = $produit['info1'];
+                $info2 = $produit['info2'];
+                $info3 = $produit['info3'];
+                $info4 = $produit['info4'];
+                $info5 = $produit['info5'];
+                $info6 = $produit['info6'];
+                $info7 = $produit['info7'];
+                $info8 = $produit['info8'];
 
-    if (($filterType == $typeid) || ($filterType == "")) {
-        //Affichage des données dans le tableau
-        echo "<tr>";
-        echo "<td><img src='img/type_" . $typeid . ".png'></td>";
-        ?>
+                if (($filterType == $typeid) || ($filterType == "")) {
+                    //Affichage des données dans le tableau
+                    echo "<tr>";
+                    echo "<td><img src='img/type_" . $typeid . ".png'></td>";
+                    ?>
                     <td class="info"><?php echo $marque . " " . $libelle . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoProduit.php?id=<?php echo $idProduit ?>', 'search', '\
-                                                                                                                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                left=500, \n\
+                                                                                                                                                                                                                top=150, \n\
+                                                                                                                                                                                                                width=500, \n\
+                                                                                                                                                                                                                height=700, \n\
+                                                                                                                                                                                                                scrollbars=no, \n\
+                                                                                                                                                                                                                resizable=no, \n\
+                                                                                                                                                                                                                dependant=yes')"/>
                     </td>
-                                                                                      <?php
-                                                                                      echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";
-                                                                                      echo "<td>" . $prix . "€</td>";
+                    <?php
+                    echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";
+                    echo "<td>" . $prix . "€</td>";
 
-                                                                                      if ($etat == 1) {
-                                                                                          echo "<td>Occasion</td>";
-                                                                                      } else if ($etat == 2) {
-                                                                                          echo "<td>Destockage</td>";
-                                                                                      } else {
-                                                                                          echo "<td></td>";
-                                                                                      }
+                    if ($etat == 1) {
+                        echo "<td>Occasion</td>";
+                    } else if ($etat == 2) {
+                        echo "<td>Destockage</td>";
+                    } else {
+                        echo "<td></td>";
+                    }
 
-                                                                                      echo "<td><img src='produits/" . $image . "' height='47px' title='" . $image . "'></td>";
-                                                                                      ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
+                    echo "<td><img src='produits/" . $image . "' height='47px' title='" . $image . "'></td>";
+                    ?><td id='numero'><a href="listeProduit.php?id_=<?php echo $idProduit ?>">
                             <img src='img/cross.png' width='16' title='Supprimer le produit' onclick="return(confirm('Supprimer le produit?'));"/></a></td><?php
                     echo "</tr>";
                 }
             }
             ?>
         </div>
-            <?php
-            $id_ = filter_input(INPUT_GET, 'id_');
-            if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
-                traiterProduit($id_);
-                ?>
+        <?php
+        $id_ = filter_input(INPUT_GET, 'id_');
+        if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id_ > 0)) {
+            traiterProduit($id_);
+            ?>
             <script language="javascript">window.self.location = "listeProduit.php";</script>    
             <?php
         }
