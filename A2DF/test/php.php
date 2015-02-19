@@ -19,7 +19,6 @@ if (!isset($erreur)) { //S'il n'y a pas d'erreur, on upload
     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 
     move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier);
-    
 } else {
     echo $erreur;
 }

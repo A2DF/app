@@ -116,13 +116,13 @@
                     echo "<td><img src='img/type_" . $typeid . ".png'></td>";
                     ?>
                     <td class="info"><?php echo $marque . " " . $libelle . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoProduit.php?id=<?php echo $idProduit ?>', 'search', '\
-                                                                                                                                                                                                                        left=500, \n\
-                                                                                                                                                                                                                        top=150, \n\
-                                                                                                                                                                                                                        width=430, \n\
-                                                                                                                                                                                                                        height=600, \n\
-                                                                                                                                                                                                                        scrollbars=no, \n\
-                                                                                                                                                                                                                        resizable=no, \n\
-                                                                                                                                                                                                                        dependant=yes')"/>
+                                                                                                                                                                                                                                                        left=500, \n\
+                                                                                                                                                                                                                                                        top=150, \n\
+                                                                                                                                                                                                                                                        width=430, \n\
+                                                                                                                                                                                                                                                        height=600, \n\
+                                                                                                                                                                                                                                                        scrollbars=no, \n\
+                                                                                                                                                                                                                                                        resizable=no, \n\
+                                                                                                                                                                                                                                                        dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . " 1." . $info1 . " | 2." . $info2 . " | 3." . $info3 . " | 4." . $info4 . " | 5." . $info5 . " | 6." . $info6 . " | 7." . $info7 . " | 8." . $info8 . " | " . "</td>";

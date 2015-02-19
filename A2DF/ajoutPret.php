@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Contrôle du champ typeProduit
     $typeProduit_temp = filter_input(INPUT_POST, "typeProduit");
     controleTypeProduit($typeProduit_temp, $typeProduitErr, $typeProduit_, $erreurs);
-    
+
     $dateRetour_ = filter_input(INPUT_POST, "dateRetour");
     $marqueProduit_ = filter_input(INPUT_POST, "marqueProduit");
     $couleurProduit_ = filter_input(INPUT_POST, "couleurProduit");
@@ -233,24 +233,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <script type="text/javascript" src="lib/moment.js"></script>
                 <script type="text/javascript" src="lib/pikaday.js"></script>
                 <script>
-                            var pickerPret = new Pikaday(
-                                {
-                                field: document.getElementById('datepickerPret'),
-                                firstDay: 1,
-                                minDate: new Date('2000-01-01'),
-                                maxDate: new Date('2020-12-31'),
-                                yearRange: [2000, 2020],
-                            //format: 'DD/MM/YYYY'
-            });
-                    var pickerRetour = new Pikaday(
-                            {
-                                field: document.getElementById('datepickerRetour'),
-                                firstDay: 1,
-                                minDate: new Date('2000-01-01'),
-                                maxDate: new Date('2020-12-31'),
-                                yearRange: [2000, 2020],
-                                //format: 'DD/MM/YYYY'
-                            });
+                                    var pickerPret = new Pikaday(
+                                            {
+                                                field: document.getElementById('datepickerPret'),
+                                                firstDay: 1,
+                                                minDate: new Date('2000-01-01'),
+                                                maxDate: new Date('2020-12-31'),
+                                                yearRange: [2000, 2020],
+                                                //format: 'DD/MM/YYYY'
+                                            });
+                                    var pickerRetour = new Pikaday(
+                                            {
+                                                field: document.getElementById('datepickerRetour'),
+                                                firstDay: 1,
+                                                minDate: new Date('2000-01-01'),
+                                                maxDate: new Date('2020-12-31'),
+                                                yearRange: [2000, 2020],
+                                                //format: 'DD/MM/YYYY'
+                                            });
                 </script>
             </form>
             <?php

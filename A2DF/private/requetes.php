@@ -56,7 +56,7 @@ function listeSav() {
                                     AND sav.marqueProduit = marque.idMarque
                                     AND sav.typeProduit = materiel.idMateriel
                                     ORDER BY sav.idEtat, sav.date ASC;");
-    
+
     return $resultat;
 }
 
@@ -139,7 +139,7 @@ function unProduit($idProduit) {
                                     WHERE idProduit = $idProduit
                                     AND produit.idType = type.idType
                                     AND produit.idMarque = marque.idMarque");
-                                
+
     return $resultat;
 }
 

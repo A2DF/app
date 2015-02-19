@@ -109,13 +109,13 @@
                     echo "<td>" . $dateFrLiv . "</td>";
                     ?>
                     <td class="info" ><?php echo $nomClient . " " . $prenomClient . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoClient.php?id=<?php echo $idClient ?>', 'search', '\
-                                                                                                                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                                                                                                                    height=380, \n\
-                                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                                                                                                                                                    height=380, \n\
+                                                                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $typeProduit . " " . $marqueProduit . " " . $couleurProduit . "</td>";
@@ -145,7 +145,7 @@
             <?php
         }
         ?>
-        
+
         <a class="backtotop" href="#" onclick="backtotop();
                 return false;"><img src="img/up6.png" onclick="backtotop();
                         return false;" alt="Retour haut de page">

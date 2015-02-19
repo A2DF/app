@@ -60,7 +60,7 @@
             echo "<th id='tel'>Portable</th>";
             echo "<th id='tel'>Interlocuteur</th>";
             echo "<th id='tel'>Login</th>";
-            echo "<th id='tel'>Mot de passe</th>";           
+            echo "<th id='tel'>Mot de passe</th>";
             echo "</tr>";
 
             $listeFournisseur = listeFournisseur();
@@ -84,13 +84,13 @@
                     echo "<tr>";
                     ?>
                     <td class="info" ><?php echo $nom . " " ?><img src="img/information.png" title="Informations" onclick="window.open('infoFournisseur.php?id=<?php echo $idFournisseur ?>', 'search', '\
-                                                                                                                                                                                                                                                                                                                    left=500, \n\
-                                                                                                                                                                                                                                                                                                                    top=150, \n\
-                                                                                                                                                                                                                                                                                                                    width=450, \n\
-                                                                                                                                                                                                                                                                                                                    height=410, \n\
-                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
-                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
-                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
+                                                                                                                                                                                                                                                                                                                                                    left=500, \n\
+                                                                                                                                                                                                                                                                                                                                                    top=150, \n\
+                                                                                                                                                                                                                                                                                                                                                    width=450, \n\
+                                                                                                                                                                                                                                                                                                                                                    height=410, \n\
+                                                                                                                                                                                                                                                                                                                                                    scrollbars=no, \n\
+                                                                                                                                                                                                                                                                                                                                                    resizable=no, \n\
+                                                                                                                                                                                                                                                                                                                                                    dependant=yes')"/>
                     </td>
                     <?php
                     echo "<td>" . $adresse . " " . $cp . " " . $ville . "</td>";
@@ -100,8 +100,6 @@
                     echo "<td>" . $interlocuteur . "</td>";
                     echo "<td>" . $login . "</td>";
                     echo "<td>" . $mdp . "</td>";
-                    
-                    
                     ?><td id='numero'><a href="listeFournisseur.php?id_=<?php echo $idFournisseur ?>">
                             <img src='img/cross.png' width='16' title='Supprimer le fournisseur' onclick="return(confirm('Supprimer le fournisseur?'));"/></a></td><?php
                     echo "</tr>";

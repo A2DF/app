@@ -4,7 +4,7 @@ include ('html/head.php');
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $message = filter_input(INPUT_POST, 'message');
 
     $to = 'contact@a2dfinformatique.com';
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: contact@a2dfinformatique.com\n";
     $headers .= "Reply-To:";
     mail($to, $email_subject, $email_body, $headers);
-    
+
     header('Location: index.php');
 }
 ?>

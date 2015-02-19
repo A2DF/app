@@ -15,7 +15,7 @@ $typeProduit_ = "";
 $marqueProduit_ = "";
 $couleurProduit_ = "";
 $mdpProduit_ = "";
-$numSerie_="";
+$numSerie_ = "";
 $probleme_ = "";
 
 

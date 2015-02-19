@@ -67,7 +67,6 @@ function controleLibelle(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     }
 }
 
-
 function controleClient(&$champ_temp, &$champErr, &$champ, &$erreurs) {
     if (trim($champ_temp) === "") {
         $champErr = "Veuillez choisir un client";
