@@ -87,7 +87,7 @@ function listePret() {
 
 function listeFournisseur() {
     global $connexion;
-    $resultat = $connexion->query(" SELECT idFournisseur, nom, adresse, cp, ville, courriel, tel, portable, login, mdp
+    $resultat = $connexion->query(" SELECT idFournisseur, nom, adresse, cp, ville, courriel, tel, portable, login, mdp, interlocuteur
                                     FROM fournisseur
                                     ORDER BY fournisseur.nom ASC;");
     return $resultat;
@@ -145,7 +145,7 @@ function unProduit($idProduit) {
 
 function unFournisseur($idFournisseur) {
     global $connexion;
-    $resultat = $connexion->query(" SELECT nom, adresse, cp, ville, courriel, tel, portable, login, mdp
+    $resultat = $connexion->query(" SELECT nom, adresse, cp, ville, courriel, tel, portable, login, mdp, interlocuteur
                                     FROM fournisseur
                                     WHERE idFournisseur = $idFournisseur");
     return $resultat;
@@ -232,10 +232,10 @@ function ajoutClient($nom, $prenom, $adresse, $cp, $ville, $courriel, $tel, $por
     return $resultat;
 }
 
-function ajoutFournisseur($nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp) {
+function ajoutFournisseur($nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp, $interlocuteur) {
     global $connexion;
-    $resultat = $connexion->exec("  INSERT INTO fournisseur (nom, adresse, cp, ville, courriel, tel, portable, login, mdp)
-                                    VALUES (\"$nom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$login', '$mdp');");
+    $resultat = $connexion->exec("  INSERT INTO fournisseur (nom, adresse, cp, ville, courriel, tel, portable, login, mdp, interlocuteur)
+                                    VALUES (\"$nom\", \"$adresse\", \"$cp\", \"$ville\", '$courriel', '$tel', '$portable', '$login', '$mdp', \"$interlocuteur\" );");
     return $resultat;
 }
 
@@ -269,10 +269,10 @@ function modificationProduit($idProduit, $libelle, $type, $marque, $prix, $etat,
     return $resultat;
 }
 
-function modificationFournisseur($idFournisseur, $nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp) {
+function modificationFournisseur($idFournisseur, $nom, $adresse, $cp, $ville, $courriel, $tel, $portable, $login, $mdp, $interlocuteur) {
     global $connexion;
     $resultat = $connexion->exec("  UPDATE fournisseur
-                                    SET nom = \"$nom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable', login = '$login', mdp = '$mdp'
+                                    SET nom = \"$nom\", adresse = \"$adresse\", cp = \"$cp\", ville = \"$ville\", courriel = '$courriel', tel = '$tel', portable = '$portable', login = '$login', mdp = '$mdp', interlocuteur = \"$interlocuteur\"
                                     WHERE idFournisseur = $idFournisseur;");
     return $resultat;
 }

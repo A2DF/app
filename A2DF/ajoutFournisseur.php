@@ -21,6 +21,7 @@ $portable_ = "";
 $courriel_ = "";
 $login_ = "";
 $mdp_ = "";
+$interlocuteur_ = "";
 
 //Initialisation des messages d'erreur
 $nomErr = "";
@@ -33,6 +34,7 @@ $courrielErr = "";
 $numSecuErr = "";
 $loginErr = "";
 $mdpErr = "";
+$interlocuteurErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -48,11 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $portable_ = filter_input(INPUT_POST, "portable");
     $login_ = filter_input(INPUT_POST, "login");
     $mdp_ = filter_input(INPUT_POST, "mdp");
+    $interlocuteur_ = filter_input(INPUT_POST, "interlocuteur");
 
     if ($erreurs === 0) {
 
         //Insertion des données dans la table "fournisseur"
-        ajoutFournisseur($nom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $login_, $mdp_);
+        ajoutFournisseur($nom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $login_, $mdp_, $interlocuteur_);
 
         //Redirection vers la liste des employés
         header('Location: listeFournisseur.php');
@@ -117,6 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <td class="label">Num. Portable :</td>
                                 <td class="images"></td>
                                 <td><input type='tel' name='portable' value='<?php echo $portable_ ?>'pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Interlocuteur :</td>
+                                <td class="images"></td>
+                                <td><input type='text' name='interlocuteur' value='<?php echo $interlocuteur_ ?>'></td>
                             </tr>
                         </table>
                     </fieldset>

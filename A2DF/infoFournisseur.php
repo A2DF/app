@@ -23,6 +23,7 @@
     $courriel_ = "";
     $login_ = "";
     $mdp_ = "";
+    $interlocuteur_ = "";
 
 //Initialisation des messages d'erreur
 
@@ -35,6 +36,7 @@
     $courrielErr = "";
     $loginErr = "";
     $mdpErr = "";
+    $interlocuteurErr = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -50,10 +52,11 @@
         $portable_ = filter_input(INPUT_POST, "portable");
         $login_ = filter_input(INPUT_POST, "login");
         $mdp_ = filter_input(INPUT_POST, "mdp");
+        $interlocuteur_ = filter_input(INPUT_POST, "interlocuteur");
 
         if ($erreurs === 0) {
             //Modification des données dans la table "Client"
-            modificationFournisseur($idFournisseur, $nom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $login_, $mdp_);
+            modificationFournisseur($idFournisseur, $nom_, $adresse_, $cp_, $ville_, $courriel_, $tel_, $portable_, $login_, $mdp_, $interlocuteur_);
             ?>
 
             <script language="javascript">
@@ -123,6 +126,11 @@
             } else {
                 $mdp_ = "";
             }
+            if (isset($fournisseur['interlocuteur'])) {
+                $interlocuteur_ = $fournisseur['interlocuteur'];
+            } else {
+                $interlocuteur_ = "";
+            }
         }
     }
     ?>
@@ -162,6 +170,10 @@
                 <label for="cp">Téléphone portable :</label>
                 <img src="img/phone.png" width="16" height="16"/>
                 <input type="tel" name="portable" value='<?php echo $portable_ ?>' pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
+                <br />
+                <label for="cp">Interlocuteur :</label>
+                <img src="img/church.png" width="16" height="16"/>
+                <input type="text" name="interlocuteur" value='<?php echo $interlocuteur_ ?>'/>
             </fieldset>
             <br />
             <fieldset>

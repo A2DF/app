@@ -60,6 +60,7 @@
             echo "<th id='tel'>Portable</th>";
             echo "<th id='tel'>Login</th>";
             echo "<th id='tel'>Mot de passe</th>";
+            echo "<th id='tel'>Interlocuteur</th>";
             echo "</tr>";
 
             $listeFournisseur = listeFournisseur();
@@ -76,6 +77,7 @@
                 $portable = $fournisseur['portable'];
                 $login = $fournisseur['login'];
                 $mdp = $fournisseur['mdp'];
+                $interlocuteur = $fournisseur['interlocuteur'];
 
                 if (($filterFournisseur == $idFournisseur) || ($filterFournisseur == "")) {
                     //Affichage des données dans le tableau
@@ -97,6 +99,7 @@
                     echo "<td>" . wordwrap($portable, 2, " ", 1) . "</td>";
                     echo "<td>" . $login . "</td>";
                     echo "<td>" . $mdp . "</td>";
+                    echo "<td>" . $interlocuteur . "</td>";
                 }
             }
             ?>
