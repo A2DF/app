@@ -261,10 +261,10 @@ function modificationClient($idClient, $nom, $prenom, $adresse, $cp, $ville, $co
     return $resultat;
 }
 
-function modificationProduit($idProduit,$libelle, $type, $marque, $prix, $etat, $image, $info1, $info2, $info3, $info4, $info5, $info6, $info7, $info8) {
+function modificationProduit($idProduit, $libelle, $type, $marque, $prix, $etat, $info1, $info2, $info3, $info4, $info5, $info6, $info7, $info8) {
     global $connexion;
     $resultat = $connexion->exec("  UPDATE produit
-                                    SET libelle = \"$libelle\", prenom = \"$type\", marque = \"$marque\", prix = '$prix', image = \"$image\", etat = '$etat', info1 = \"$info1\", info2 = \"$info2\", info3 = \"$info3\", info4 = \"$info4\", info5 = \"$info5\", info6 = \"$info6\", info7 = \"$info7\", info8 = \"$info8\"
+                                    SET libelle = \"$libelle\", prenom = \"$type\", marque = \"$marque\", prix = '$prix', etat = '$etat', info1 = \"$info1\", info2 = \"$info2\", info3 = \"$info3\", info4 = \"$info4\", info5 = \"$info5\", info6 = \"$info6\", info7 = \"$info7\", info8 = \"$info8\"
                                     WHERE idProduit = $idProduit;");
     return $resultat;
 }
