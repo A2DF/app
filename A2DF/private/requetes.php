@@ -533,4 +533,25 @@ function modifierMdpAtelier($mdp) {
     return $resultat;
 }
 
+function getStatut() {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT online
+                                    FROM magasin;");
+    return $resultat;
+}
+
+function setOnline() {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE magasin
+                                    SET online = 1;");
+    return $resultat;
+}
+
+function setOffline() {
+    global $connexion;
+    $resultat = $connexion->query(" UPDATE magasin
+                                    SET online = 0;");
+    return $resultat;
+}
+
 ?>
