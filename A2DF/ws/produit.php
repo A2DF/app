@@ -1,4 +1,5 @@
 <?php
+
 include ('../private/conf.php');
 define('USER', $mysql_user);
 define('MDP', $mysql_pass);
@@ -18,8 +19,16 @@ $listeProduit = $connexion->query(" SELECT idProduit, produit.libelle, produit.i
                                     AND produit.idMarque = marque.idMarque
                                     ORDER BY produit.idProduit DESC;");
 
+$statutMagasin = $connexion->query("SELECT online
+                                    FROM magasin;");
+foreach ($statutMagasin as $statut) {
+    $online = $statut['online'];
+}
+
 header("Content-type: text/xml");
 $xml = "<?xml version='1.0' encoding='UTF-8'?>";
+$xml.= "<magasin>";
+$xml.= "<online>" . $online . "</online>";
 $xml.= "<produits>";
 
 foreach ($listeProduit as $produit) {
@@ -63,5 +72,6 @@ foreach ($listeProduit as $produit) {
 }
 
 $xml.= "</produits>";
+$xml.= "</magasin>";
 echo $xml;
 ?>
