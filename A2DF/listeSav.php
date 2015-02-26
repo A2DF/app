@@ -70,7 +70,7 @@
             //Affichage de la première ligne du tableau
             echo "<table border='1' class='sortable'>";
             echo "<tr>";
-            echo "<th id='dateCommande'>Date du retour</th>";
+            echo "<th id='dateCommande'>Date du SAV</th>";
             echo "<th id='dateCommande'>Date du dernier état</th>";
             echo "<th id='client'>Client</th>";
             echo "<th id='produit'>Produit</th>";
@@ -127,9 +127,9 @@
                     echo "<td>" . $probleme . "</td>";
 
                     if ($idEtat == 0) {
-                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="Déclaré en panne" onclick="return(confirm('Allez vous traiter ce SAV ?'));"/></a></td><?php
+                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="Déclaré en panne" onclick="return(confirm('Le produit est-il partit en SAV ?'));"/></a></td><?php
                     } else if ($idEtat == 1) {
-                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="En SAV" onclick="return(confirm('Le SAV est-il chez A2DF ?'));"/></a></td><?php
+                        ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="En SAV" onclick="return(confirm('Le produit est-il de retour chez A2DF ?'));"/></a></td><?php
                             } else if ($idEtat == 2) {
                                 ?><td><a href="listeSav.php?id=<?php echo $idSAV ?>&etat=<?php echo $idEtat ?>"><INPUT type="button" name="nom" value="Chez A2DF" onclick="return(confirm('Retourné au client ?'));"/></a></td><?php
                             } else if ($idEtat == 3) {

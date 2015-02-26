@@ -214,7 +214,7 @@
                          if ($traitement == 1) {
                              ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>"><img src="img/ball_red.png" title="Machine non traitée" onclick="return(confirm('Dépannage en cours ?'));"/></a></td><?php
                     } else if ($traitement == 2) {
-                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a></td><?php
+                        ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>"><img src="img/ball_yellow.png" title="Dépannage en cours" onclick="return(confirm('Dépannage terminé ?'));"/></a><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&sav=1&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>"><img src="img/backups.png" title="Envoi en SAV" onclick="return(confirm('Envoyer en SAV ?'));"/></a></td><?php
                             } else if ($traitement == 3) {
                                 ?><td><a href="listeAtelier.php?id=<?php echo $idAtelier ?>&etat=<?php echo $traitement ?>&fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>"><img src="img/ball_green.png" title="Dépannage terminé" onclick="return(confirm('Client prévenu ?'));"/></a></td><?php
                             } else if ($traitement == 4) {
@@ -234,8 +234,27 @@
         <?php
         $id = filter_input(INPUT_GET, 'id');
         $etat = filter_input(INPUT_GET, 'etat');
+        $sav = filter_input(INPUT_GET, 'sav');
         if (($_SERVER["REQUEST_METHOD"] == "GET") && ($id > 0)) {
-            traiterAtelier($id, $etat);
+            if (($sav != 1) && ($etat != 0)) {
+                traiterAtelier($id, $etat);
+            } else {
+                $unAtelier = unAtelier($id);
+                
+                foreach ($unAtelier as $atelier_) {
+
+                //Récupération des données dans la base
+                $idClient_ = $atelier_['idClient'];
+                $typeProduit_ = $atelier_['typeProduit'];
+                $marqueProduit_ = $atelier_['marqueProduit'];
+                $couleurProduit_ = $atelier_['couleurProduit'];
+                $mdpProduit_ = $atelier_['mdpProduit'];
+                $probleme_ = $atelier_['probleme'];
+                }
+                
+                envoyerSAV($today_int, $idClient_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_);
+                supprimerAtelier($id);
+            }
             ?>
             <script language="javascript">
                 window.self.location = "listeAtelier.php?fc=<?= $filterClient ?>&fe=<?= $filterEtat ?>";

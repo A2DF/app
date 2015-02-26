@@ -132,6 +132,14 @@ function unClient($idClient) {
     return $resultat;
 }
 
+function unAtelier($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" SELECT idClient, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme
+                                    FROM atelier
+                                    WHERE idAtelier = $idAtelier");
+    return $resultat;
+}
+
 function unProduit($idProduit) {
     global $connexion;
     $resultat = $connexion->query(" SELECT idProduit, produit.libelle, produit.idType, type.libelle AS type, produit.idMarque, marque.libelle AS marque, prix, image, etat, info1, info2, info3, info4, info5, info6, info7, info8
@@ -488,6 +496,20 @@ function traiterAtelier($idAtelier, $etat) {
     global $connexion;
     $resultat = $connexion->query(" UPDATE atelier
                                     SET idTraitement = $etat + 1
+                                    WHERE idAtelier = $idAtelier;");
+    return $resultat;
+}
+
+function envoyerSAV($today_int, $idClient_, $typeProduit_, $marqueProduit_, $couleurProduit_, $mdpProduit_, $probleme_) {
+    global $connexion;
+    $resultat = $connexion->query(" INSERT INTO SAV (date, typeProduit, marqueProduit, couleurProduit, mdpProduit, probleme, idClient)
+                                    VALUES ('$today_int', $typeProduit_, $marqueProduit_, \"$couleurProduit_\", \"$mdpProduit_\", \"$probleme_\", $idClient_);");
+    return $resultat;
+}
+
+function SupprimerAtelier($idAtelier) {
+    global $connexion;
+    $resultat = $connexion->query(" DELETE FROM atelier
                                     WHERE idAtelier = $idAtelier;");
     return $resultat;
 }
